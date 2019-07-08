@@ -1,0 +1,25 @@
+#include "plugin.h"
+#include "ukuipanel.h"
+#include "ilxqtpanelplugin.h"
+Plugin::Plugin(const LXQt::PluginInfo &desktopFile, LXQt::Settings *settings, const QString &settingsGroup, UkuiPanel *panel):
+	QFrame(panel)
+{
+	mSettings = PluginSettingsFactory::create(settings, settingsGroup);
+	if(ILXQtPanelPluginLibrary const * pluginLib = findStaticPlugin(desktopFile.id()))
+	{
+
+	}
+}
+ILXQtPanelPluginLibrary const * Plugin::findStaticPlugin(const QString &libraryName)
+{
+	/*
+    qDebug() << "libraryName="   << libraryName;
+    // find a static plugin library by name -> binary search
+    plugin_tuple_t const * plugin = std::lower_bound(plugins_begin, plugins_end, libraryName
+            , [] (plugin_tuple_t const & plugin, QString const & name) -> bool { return std::get<0>(plugin) < name; });
+    if (plugins_end != plugin && libraryName == std::get<0>(*plugin))
+        return std::get<1>(*plugin).get();
+    return nullptr;
+    */
+}
+
