@@ -1,0 +1,14 @@
+Source: ukui-panel
+Section: x11
+Priority: optional
+Maintainer: hepuyao <hepuyao@kylinos.cn>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 4.1.2
+#Vcs-Git: https://anonscm.debian.org/git/collab-maint/ukui-panel.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ukui-panel.git
+
+Package: ukui-panel-2.0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
