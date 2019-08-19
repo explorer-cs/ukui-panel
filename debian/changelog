@@ -1,8 +1,64 @@
+ukui-panel (0.0.0.11) juniper; urgency=medium
+
+  * 
+
+ --  <hepuyao@kylinos.cn>  Mon, 19 Aug 2019 09:55:59 +0800
+
 ukui-panel (0.0.0.9) juniper; rgency=medium
 
-  *copy ilxpanel.h from /ukui-panel/panel to ukui-panel/
+  * 
 
  -- hepuyao <hepuyao@kylinos.cn>  Mon, 29 Jul 2019 10:51:07 +0800
+
+ukui-panel (0.0.0.8) juniper; urgency=medium
+
+  * 
+
+ -- hepuyao <kylin@kylin-QiTianM425-N000>  Mon, 29 Jul 2019 10:34:15 +0800
+
+ukui-panel (0.0.0.7) juniper; urgency=medium
+
+  * 
+
+ -- hepuyao <kylin@kylin-QiTianM425-N000>  Mon, 29 Jul 2019 10:31:06 +0800
+
+ukui-panel (0.0.0.6) juniper; urgency=medium
+
+  * 
+
+ -- hepuyao <hepuyao@kylinos.cn>  Mon, 29 Jul 2019 10:16:40 +0800
+
+ukui-panel (0.0.0.5) juniper; urgency=medium
+
+  * 
+
+ -- hepuyao <hepuyao@kylinos.cn>  Mon, 29 Jul 2019 09:53:15 +0800
+
+ukui-panel (0.0.0.1) juniper; urgency=medium
+
+  * hepuyao 
+
+ -- hepuyao <hepuyao@kylinos.cn>  Sat, 27 Jul 2019 12:02:48 +0800
+
+ukui-panel (2.1.0.1) juniper; urgency=medium
+
+  * 
+
+ -- hepuyao <hepuyao@kylinos.cn>  Sat, 27 Jul 2019 11:33:13 +0800
+
+ukui-panel (0.0.0.4) juniper; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- hepuyao <hepuyao@kylinos.cn>  Sat, 27 Jul 2019 10:30:07 +0800
+
+
+ukui-panel (0.0.0.3) juniper; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- hepuyao <hepuyao@kylinos.cn>  Sat, 27 Jul 2019 10:30:07 +0800
+
 
 ukui-panel (0.0.0.2) juniper; urgency=medium
 
