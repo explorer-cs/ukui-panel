@@ -21,8 +21,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += ukuipanelapplication.h ukuipanel.h panelpluginsmodel.h plugin.h pluginsettings.h
-SOURCES += main.cpp ukuipanelapplication.cpp ukuipanel.cpp  panelpluginsmodel.cpp plugin.cpp pluginsettings.cpp
+HEADERS += ukuipanelapplication.h ukuipanel.h panelpluginsmodel.h plugin.h pluginsettings.h \
+    ukuimenu.h \
+    config/addplugindialog.h \
+    config/configpaneldialog.h \
+    config/configpanelwidget.h \
+    config/configpluginswidget.h \
+    windownotifier.h
+SOURCES += main.cpp ukuipanelapplication.cpp ukuipanel.cpp  panelpluginsmodel.cpp plugin.cpp pluginsettings.cpp \
+    ukuimenu.cpp \
+    config/addplugindialog.cpp \
+    config/configpaneldialog.cpp \
+    config/configpanelwidget.cpp \
+    config/configpluginswidget.cpp \
+    windownotifier.cpp
 INCLUDEPATH += /usr/include/lxqt \
                /usr/include/x86_64-linux-gnu/qt5/QtWidgets \
                /usr/include/qt5xdg  \
@@ -30,8 +42,14 @@ INCLUDEPATH += /usr/include/lxqt \
                /usr/include/KF5  \
                /usr/include/KF5/KWindowSystem \
 	       /usr/include/x86_64-linux-gnu/qt5/QtXml/ \
-	       /usr/include/x86_64-linux-gnu/qt5/QtDBus/
+               /usr/include/x86_64-linux-gnu/qt5/QtDBus/\
+               /usr/include/lxqt/LXQt/
 LIBS += -lKF5WindowSystem \
         -llxqt \
 	-lQt5Xdg
+
+FORMS += \
+    config/addplugindialog.ui \
+    config/configpanelwidget.ui \
+    config/configpluginswidget.ui
 

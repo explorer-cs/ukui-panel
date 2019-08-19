@@ -3,6 +3,9 @@
 #include "ilxqtpanelplugin.h"
 #include "plugin-desktopswitch/desktopswitch.h"
 #include <memory>
+#include <XdgIcon>
+
+
 extern void * loadPluginTranslation_desktopswitch_helper;
 Plugin::Plugin(const LXQt::PluginInfo &desktopFile, LXQt::Settings *settings, const QString &settingsGroup, UkuiPanel *panel):
 	QFrame(panel)
@@ -59,4 +62,68 @@ bool Plugin::loadLib(ILXQtPanelPluginLibrary const * pluginLib)
     mPluginWidget = mPlugin->widget();
     return true;
 }
+
+QMenu *Plugin::ukuiMenu() const
+{
+    QString name = this->name().replace("&", "&&");
+    QMenu* menu = new QMenu(windowTitle());
+
+    if (mPlugin->flags().testFlag(ILXQtPanelPlugin::HaveConfigDialog))
+    {
+        QAction* configAction = new QAction(
+            XdgIcon::fromTheme(QLatin1String("preferences-other")),
+            tr("Configure \"%1\"").arg(name), menu);
+        menu->addAction(configAction);
+        connect(configAction, SIGNAL(triggered()), this, SLOT(showConfigureDialog()));
+    }
+
+    QAction* moveAction = new QAction(XdgIcon::fromTheme("transform-move"), tr("Move \"%1\"").arg(name), menu);
+    menu->addAction(moveAction);
+    connect(moveAction, SIGNAL(triggered()), this, SIGNAL(startMove()));
+
+    menu->addSeparator();
+
+    QAction* removeAction = new QAction(
+        XdgIcon::fromTheme(QLatin1String("list-remove")),
+        tr("Remove \"%1\"").arg(name), menu);
+    menu->addAction(removeAction);
+    connect(removeAction, SIGNAL(triggered()), this, SLOT(requestRemove()));
+
+    return menu;
+}
+
+void Plugin::realign()
+{
+    if (mPlugin)
+        mPlugin->realign();
+}
+
+void Plugin::showConfigureDialog()
+{
+    /*
+    if (!mConfigDialog)
+        mConfigDialog = mPlugin->configureDialog();
+
+    if (!mConfigDialog)
+        return;
+
+    connect(this, &Plugin::destroyed, mConfigDialog.data(), &QWidget::close);
+    mPanel->willShowWindow(mConfigDialog);
+    mConfigDialog->show();
+    mConfigDialog->raise();
+    mConfigDialog->activateWindow();
+
+    WId wid = mConfigDialog->windowHandle()->winId();
+    KWindowSystem::activateWindow(wid);
+    KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
+    */
+}
+
+void Plugin::requestRemove()
+{
+    emit remove();
+    deleteLater();
+}
+
+
 
