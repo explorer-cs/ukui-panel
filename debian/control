@@ -2,13 +2,38 @@ Source: ukui-panel
 Section: x11
 Priority: optional
 Maintainer: hepuyao <hepuyao@kylinos.cn>
-Build-Depends: debhelper (>= 10)
+Build-Depends: debhelper (>= 12),
+               libasound2-dev,
+               libdbusmenu-qt5-dev,
+               libglib2.0-dev,
+               libicu-dev,
+               libkf5solid-dev,
+               libkf5windowsystem-dev,
+               liblxqt-globalkeys-ui0-dev (>= 0.14.0),
+               liblxqt-globalkeys0-dev (>= 0.14.0),
+               liblxqt0-dev (>= 0.14.0),
+               libpulse-dev,
+               libqt5svg5-dev,
+               libqt5x11extras5-dev,
+               libsensors4-dev [!hurd-any],
+               libstatgrab-dev [linux-any],
+               libsysstat-qt5-0-dev (>= 0.4.2),
+               libx11-dev,
+               libxcb-damage0-dev,
+               libxcb-util0-dev,
+               libxcb-xkb-dev,
+               libxcomposite-dev,
+               libxdamage-dev,
+               libxkbcommon-dev,
+               libxkbcommon-x11-dev,
+               libxrender-dev
+
 Standards-Version: 4.1.2
 #Vcs-Git: https://anonscm.debian.org/git/collab-maint/ukui-panel.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ukui-panel.git
 
 Package: ukui-panel-2.0
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: lxmenu-data, lxqt-policykit, ${misc:Depends}, ${shlibs:Depends}
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
