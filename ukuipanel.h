@@ -12,7 +12,7 @@
 
 #define CFG_KEY_PLUGINS            	"plugins"
 #define PLUGIN_DESKTOPS_DIR		"/usr/share/lxqt/lxqt-panel/"   //临时位置，后面要获取安装目录 set(PLUGIN_DESKTOPS_DIR \"${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROJECT}\")
-
+#define PLUGIN_DESKTOPS_LOCAL_DIR		"/usr/local/share/lxqt/lxqt-panel/"
 
 class Plugin;
 class ILXQtPanel;

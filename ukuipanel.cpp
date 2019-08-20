@@ -187,12 +187,13 @@ QStringList UkuiPanel::pluginDesktopDirs()
     dirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     dirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/lxqt/lxqt-panel");
     dirs << PLUGIN_DESKTOPS_DIR;
+    dirs << PLUGIN_DESKTOPS_LOCAL_DIR;
     qDebug() << dirs;
     return dirs;
 }
 void UkuiPanel::loadPlugins()
 {
-    	qDebug() << "UkuiPanel::loadPlugins";
+    qDebug() << "UkuiPanel::loadPlugins";
 	QString names_key(mConfigGroup);
 	names_key += '/';
 	names_key += QLatin1String(CFG_KEY_PLUGINS);	

@@ -245,7 +245,7 @@ public:
 };
 
 
-//Q_DECLARE_INTERFACE(ILXQtPanelPluginLibrary,
-//                    "lxqt.org/Panel/PluginInterface/3.0")
+Q_DECLARE_INTERFACE(ILXQtPanelPluginLibrary,
+                    "lxqt.org/Panel/PluginInterface/3.0")
 
 #endif // ILXQTPANELPLUGIN_H

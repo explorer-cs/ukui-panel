@@ -29,27 +29,27 @@ void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
 	LXQt::PluginInfoList list;
 	QSet<QString> processed;
 
-    	for (const QString &desktopFilesDir : desktopDirs)
-    	{
-            //qk
-        	const QDir dir(desktopFilesDir);
-	        const QFileInfoList files = dir.entryInfoList(QStringList(QString("%1.desktop").arg(type)), QDir::Files | QDir::Readable);
-        	for (const QFileInfo &file : files)
-        	{
-            		if (processed.contains(file.fileName()))
-               	 		continue;
+    for (const QString &desktopFilesDir : desktopDirs)
+    {
+        //qk
+        const QDir dir(desktopFilesDir);
+        const QFileInfoList files = dir.entryInfoList(QStringList(QString("%1.desktop").arg(type)), QDir::Files | QDir::Readable);
+        for (const QFileInfo &file : files)
+        {
+                if (processed.contains(file.fileName()))
+                    continue;
 
-            		processed << file.fileName();
+                processed << file.fileName();
 
-            		LXQt::PluginInfo item;
-            		item.load(file.canonicalFilePath());
+                LXQt::PluginInfo item;
+                item.load(file.canonicalFilePath());
 
-            		if (item.isValid() && item.serviceType() == "LXQtPanel/Plugin")
-                		list.append(item);
-        	}
-    	}
-
-	loadPlugin(list.first(), name);	
+                if (item.isValid() && item.serviceType() == "LXQtPanel/Plugin")
+                    list.append(item);
+        }
+    }
+    if(!list.isEmpty())
+        loadPlugin(list.first(), name);
 }
 
 
