@@ -1,2 +1,5 @@
-ukui-panel.pro.user
-plugin.cpp.bak
+ukui-panel.pro.*
+plugin.cpp.*
+ukui-panel
+*.o
+Makefile
