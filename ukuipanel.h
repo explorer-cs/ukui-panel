@@ -5,46 +5,48 @@
 #include "panelpluginsmodel.h"
 #include <LXQt/Settings>
 #include "ilxqtpanel.h"
-#include<QMenu>
+#include <QMenu>
 #include <QPointer>
 #include <QTimer>
+#include <QRect>
 #include <QPropertyAnimation>
+#include "panel/ukuipanellayout.h"
 
 #define CFG_KEY_PLUGINS            	"plugins"
 #define PLUGIN_DESKTOPS_DIR		"/usr/share/lxqt/lxqt-panel/"   //临时位置，后面要获取安装目录 set(PLUGIN_DESKTOPS_DIR \"${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROJECT}\")
-#define PLUGIN_DESKTOPS_LOCAL_DIR		"/usr/local/share/lxqt/lxqt-panel/"
+
 
 class Plugin;
 class ILXQtPanel;
 class PanelPluginsModel;
 class WindowNotifier;
 class ConfigPanelDialog;
-class UkuiPanel : public QFrame
+class UkuiPanel : public QFrame, public ILXQtPanel
 {
     Q_OBJECT
 
     friend class PanelPluginsModel;
+
 public:
     enum Alignment {
         AlignmentLeft   = -1, //!< Align the panel to the left or top
         AlignmentCenter =  0, //!< Center the panel
         AlignmentRight  =  1 //!< Align the panel to the right or bottom
     };
+
 public:
         UkuiPanel(const QString &configGroup,LXQt::Settings *settings);
         ~UkuiPanel();
         /*show menu*/
         void showUkuiMenu(Plugin *plugin = 0);
         /*calc pos*/
-        QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const;
+        //QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const;
         //ILXQtPanel::Position position() const override { return mPosition; }
-        void willShowWindow(QWidget * w);
+        //void willShowWindow(QWidget * w);
         void saveSettings(bool _bVar = false);
 
         /*ui parameter set*/
         // Settings
-        int iconSize() const  { return mIconSize; } //!< Implement ILXQtPanel::iconSize().
-        int lineCount() const  { return mLineCount; } //!< Implement ILXQtPanel::lineCount().
         int panelSize() const { return mPanelSize; }
         int length() const { return mLength; }
         bool lengthInPercents() const { return mLengthInPercents; }
@@ -63,7 +65,19 @@ public:
         void setReserveSpace(bool reserveSpace, bool save);
 
         bool isPluginSingletonAndRunnig(QString const & pluginId) const;
+        void pluginFlagsChanged(const ILXQtPanelPlugin * plugin);
 
+        /*override from ilxqt class begin*/
+        // ILXQtPanel overrides ........
+        int iconSize() const override { return mIconSize; } //!< Implement ILXQtPanel::iconSize().
+        int lineCount() const  override{ return mLineCount; } //!< Implement ILXQtPanel::lineCount().
+        ILXQtPanel::Position position() const override { return mPosition; }
+
+        QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const override;
+        QRect calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const override;
+        QRect globalGometry()const;
+        void willShowWindow(QWidget * w) override;
+        //end
         QScopedPointer<PanelPluginsModel> mPlugins;
 signals:
     /**
@@ -73,14 +87,19 @@ signals:
      * plugins so they can realign, too.
      */
     void realigned();
+    void pluginRemoved();
+    void deletedByUser(UkuiPanel *self);
+    void pluginAdded();
 
  public slots:
         void showConfigDialog();
         void showAddPluginDialog();
+        void show();
+        void hidePanel();
 public:
-        void deletedByUser(UkuiPanel *self);
-        void pluginAdded();
         LXQt::Settings *settings() const { return mSettings; }
+        UkuiPanel::Alignment alignment() const { return mAlignment; }
+        void pluginMoved(Plugin * plug);
 
 protected:
 	bool event(QEvent *event);
@@ -106,7 +125,7 @@ private :
 
     Alignment mAlignment;
 
-   // ILXQtPanel::Position mPosition;
+    ILXQtPanel::Position mPosition;
 
     int mScreenNum;
 
@@ -141,12 +160,14 @@ private :
 
     bool mLockPanel;
 
+    UkuiPanelLayout* mLayout;
+
     QScopedPointer<WindowNotifier> mStandaloneWindows;
-public slots:
-//	void show();
+
+    QFrame *mUkuiPanelWidget;
+
 private slots:
 	void setPanelGeometry();
 	void updateWmStrut();
-    //ILXQtPanel::Position mPosition;
 };
 #endif // UKUIPANEL_H

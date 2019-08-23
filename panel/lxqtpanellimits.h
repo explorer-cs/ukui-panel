@@ -2,11 +2,11 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org/
+ * https://lxqt.org
  *
- * Copyright: 2013 LXQt team
+ * Copyright: 2012 Razor team
  * Authors:
- *   Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
+ *   Luís Pereira <luis.artur.pereira@gmail.com>
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -25,15 +25,23 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef __LXQT_PANEL_GLOBALS_H__
-#define __LXQT_PANEL_GLOBALS_H__
+#ifndef LXQTPANELLIMITS_H
+#define LXQTPANELLIMITS_H
 
-#include <QtGlobal>
+#define PANEL_DEFAULT_SIZE 32
+#define PANEL_MINIMUM_SIZE 16
+#define PANEL_MAXIMUM_SIZE 200
+#define PANEL_HIDE_SIZE 4
 
-#ifdef COMPILE_LXQT_PANEL
-#define LXQT_PANEL_API Q_DECL_EXPORT
-#else
-#define LXQT_PANEL_API Q_DECL_IMPORT
-#endif
+#define PANEL_DEFAULT_ICON_SIZE 22
+#define PANEL_DEFAULT_LINE_COUNT 1
 
-#endif // __LXQT_PANEL_GLOBALS_H__
+#define PANEL_DEFAULT_BACKGROUND_COLOR "#CCCCCC"
+
+#define PANEL_HIDE_DELAY 500
+#define PANEL_HIDE_FIRST_TIME (5000 - PANEL_HIDE_DELAY)
+
+#define PANEL_SHOW_DELAY 0
+
+#define SETTINGS_SAVE_DELAY 3000
+#endif // LXQTPANELLIMITS_H

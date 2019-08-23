@@ -29,6 +29,7 @@
 #ifndef ILXQTPANELPLUGIN_H
 #define ILXQTPANELPLUGIN_H
 
+#include <QtPlugin>
 #include "ilxqtpanel.h"
 #include "lxqtpanelglobals.h"
 
@@ -245,7 +246,7 @@ public:
 };
 
 
-//Q_DECLARE_INTERFACE(ILXQtPanelPluginLibrary,
-//                    "lxqt.org/Panel/PluginInterface/3.0")
+Q_DECLARE_INTERFACE(ILXQtPanelPluginLibrary,
+                    "lxqt.org/Panel/PluginInterface/3.0")
 
 #endif // ILXQTPANELPLUGIN_H

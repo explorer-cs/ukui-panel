@@ -27,14 +27,26 @@ HEADERS += ukuipanelapplication.h ukuipanel.h panelpluginsmodel.h plugin.h plugi
     config/configpaneldialog.h \
     config/configpanelwidget.h \
     config/configpluginswidget.h \
-    windownotifier.h
+    windownotifier.h \
+    plugin-desktopswitch/desktopswitch.h \
+    plugin-desktopswitch/desktopswitchbutton.h \
+    plugin-desktopswitch/desktopswitchconfiguration.h \
+    lxqtpanelpluginconfigdialog.h \
+    panel/ukuipanellayout.h \
+    ukuipluginmoveprocessor.h
 SOURCES += main.cpp ukuipanelapplication.cpp ukuipanel.cpp  panelpluginsmodel.cpp plugin.cpp pluginsettings.cpp \
     ukuimenu.cpp \
     config/addplugindialog.cpp \
     config/configpaneldialog.cpp \
     config/configpanelwidget.cpp \
     config/configpluginswidget.cpp \
-    windownotifier.cpp
+    windownotifier.cpp \
+    plugin-desktopswitch/desktopswitch.cpp \
+    plugin-desktopswitch/desktopswitchbutton.cpp \
+    plugin-desktopswitch/desktopswitchconfiguration.cpp \
+    lxqtpanelpluginconfigdialog.cpp \
+    panel/ukuipanellayout.cpp \
+    ukuipluginmoveprocessor.cpp
 INCLUDEPATH += /usr/include/lxqt \
                /usr/include/x86_64-linux-gnu/qt5/QtWidgets \
                /usr/include/qt5xdg  \
@@ -43,13 +55,17 @@ INCLUDEPATH += /usr/include/lxqt \
                /usr/include/KF5/KWindowSystem \
 	       /usr/include/x86_64-linux-gnu/qt5/QtXml/ \
                /usr/include/x86_64-linux-gnu/qt5/QtDBus/\
+               /usr/include/KF5/KWindowSystem/\
+               /usr/include/lxqt-globalkeys/\
                /usr/include/lxqt/LXQt/
 LIBS += -lKF5WindowSystem \
         -llxqt \
+        -lQt5X11Extras\
 	-lQt5Xdg
 
 FORMS += \
     config/addplugindialog.ui \
     config/configpanelwidget.ui \
-    config/configpluginswidget.ui
+    config/configpluginswidget.ui \
+    plugin-desktopswitch/desktopswitchconfiguration.ui
 

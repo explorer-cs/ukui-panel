@@ -28,7 +28,7 @@
 #include "configpanelwidget.h"
 #include "ui_configpanelwidget.h"
 
-//#include "../lxqtpanellimits.h"
+#include "panel/lxqtpanellimits.h"
 
 #include <KWindowSystem/KWindowSystem>
 #include <QDebug>
@@ -44,7 +44,7 @@
 struct ScreenPosition
 {
     int screen;
-    //ILXQtPanel::Position position;
+    ILXQtPanel::Position position;
 };
 Q_DECLARE_METATYPE(ScreenPosition)
 
@@ -66,13 +66,13 @@ ConfigPanelWidget::ConfigPanelWidget(UkuiPanel *panel, QWidget *parent) :
     mOldLength = mPanel->length();
     mOldLengthInPercents = mPanel->lengthInPercents();
 
-    //mOldAlignment = mPanel->alignment();
+    mOldAlignment = mPanel->alignment();
 
     mOldScreenNum = mPanel->screenNum();
     mScreenNum = mOldScreenNum;
 
-    //mOldPosition = mPanel->position();
-    //mPosition = mOldPosition;
+    mOldPosition = mPanel->position();
+    mPosition = mOldPosition;
 
     mOldHidable = mPanel->hidable();
 
@@ -81,8 +81,8 @@ ConfigPanelWidget::ConfigPanelWidget(UkuiPanel *panel, QWidget *parent) :
     mOldAnimation = mPanel->animationTime();
     mOldShowDelay = mPanel->showDelay();
 
-    //ui->spinBox_panelSize->setMinimum(PANEL_MINIMUM_SIZE);
-   // ui->spinBox_panelSize->setMaximum(PANEL_MAXIMUM_SIZE);
+    ui->spinBox_panelSize->setMinimum(PANEL_MINIMUM_SIZE);
+    ui->spinBox_panelSize->setMaximum(PANEL_MAXIMUM_SIZE);
 
     mOldFontColor = mPanel->fontColor();
     mFontColor = mOldFontColor;
@@ -489,4 +489,5 @@ void ConfigPanelWidget::pickBackgroundImage()
     connect(d, &QFileDialog::fileSelected, ui->lineEdit_customBgImage, &QLineEdit::setText);
     d->show();
 }
+
 

@@ -26,6 +26,10 @@ public:
     virtual int rowCount(const QModelIndex & parent = QModelIndex()) const override;
     virtual QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const override;
 
+    Plugin const *pluginByID(QString id) const;
+
+    QList<Plugin *>plugins() const;
+
 signals:
     /*!
      * \brief pluginAdded gets emitted whenever a new Plugin is added
@@ -48,10 +52,20 @@ signals:
      * \sa pluginMovedUp
      */
     void pluginMoved(Plugin * plugin); //plugin can be nullptr in case of move of not loaded plugin
+
+    void pluginMovedUp(Plugin * plugin);
 public slots:
     void addPlugin(const LXQt::PluginInfo &desktopFile);
-    Plugin const *pluginByID(QString id) const;
+
     void removePlugin();
+
+    void onMovePluginUp(QModelIndex const & index);
+
+    void onMovePluginDown(QModelIndex const & index);
+
+    void onRemovePlugin(QModelIndex const & index);
+
+    void onConfigurePlugin(QModelIndex const & index);
 
 
 private:
@@ -69,6 +83,11 @@ private:
 
     void removePlugin(pluginslist_t::iterator plugin);
 
+    bool isIndexValid(QModelIndex const & index) const;
+
     const QString mNamesKey;
 };
+
+Q_DECLARE_METATYPE(Plugin const *)
+
 #endif // PANELPLUGINSMODEL_H

@@ -28,8 +28,7 @@
 #ifndef DESKTOPSWITCHCERCONFIGURATION_H
 #define DESKTOPSWITCHCERCONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
-#include "../panel/pluginsettings.h"
+#include "lxqtpanelpluginconfigdialog.h"
 
 #include <QFormLayout>
 #include <QLineEdit>

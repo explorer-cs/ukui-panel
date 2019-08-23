@@ -52,24 +52,22 @@ ConfigPluginsWidget::ConfigPluginsWidget(UkuiPanel *panel, QWidget* parent) :
         QScopedPointer<QAbstractItemDelegate> d(ui->listView_plugins->itemDelegate());
         ui->listView_plugins->setItemDelegate(new LXQt::HtmlDelegate(QSize(16, 16), ui->listView_plugins));
     }
-#if 1
     resetButtons();
 
     connect(ui->listView_plugins->selectionModel(), &QItemSelectionModel::selectionChanged,
             this, &ConfigPluginsWidget::resetButtons);
 
-    //connect(ui->pushButton_moveUp,      &QToolButton::clicked, [this, plugins] { plugins->onMovePluginUp(ui->listView_plugins->currentIndex()); });
-   // connect(ui->pushButton_moveDown,    &QToolButton::clicked, [this, plugins] { plugins->onMovePluginDown(ui->listView_plugins->currentIndex()); });
+    connect(ui->pushButton_moveUp,      &QToolButton::clicked, [this, plugins] { plugins->onMovePluginUp(ui->listView_plugins->currentIndex()); });
+    connect(ui->pushButton_moveDown,    &QToolButton::clicked, [this, plugins] { plugins->onMovePluginDown(ui->listView_plugins->currentIndex()); });
 
     connect(ui->pushButton_addPlugin, &QPushButton::clicked, this, &ConfigPluginsWidget::showAddPluginDialog);
-    //connect(ui->pushButton_removePlugin, &QToolButton::clicked, [this, plugins] { plugins->onRemovePlugin(ui->listView_plugins->currentIndex()); });
+    connect(ui->pushButton_removePlugin, &QToolButton::clicked, [this, plugins] { plugins->onRemovePlugin(ui->listView_plugins->currentIndex()); });
 
-    //connect(ui->pushButton_pluginConfig, &QToolButton::clicked, [this, plugins] { plugins->onConfigurePlugin(ui->listView_plugins->currentIndex()); });
+    connect(ui->pushButton_pluginConfig, &QToolButton::clicked, [this, plugins] { plugins->onConfigurePlugin(ui->listView_plugins->currentIndex()); });
 
-    //connect(plugins, &PanelPluginsModel::pluginAdded, this, &ConfigPluginsWidget::resetButtons);
+    connect(plugins, &PanelPluginsModel::pluginAdded, this, &ConfigPluginsWidget::resetButtons);
     connect(plugins, &PanelPluginsModel::pluginRemoved, this, &ConfigPluginsWidget::resetButtons);
-    //connect(plugins, &PanelPluginsModel::pluginMoved, this, &ConfigPluginsWidget::resetButtons);
-#endif
+    connect(plugins, &PanelPluginsModel::pluginMoved, this, &ConfigPluginsWidget::resetButtons);
 }
 
 ConfigPluginsWidget::~ConfigPluginsWidget()
@@ -97,7 +95,7 @@ void ConfigPluginsWidget::showAddPluginDialog()
 
 void ConfigPluginsWidget::resetButtons()
 {
-#if 0
+
     PanelPluginsModel *model = mPanel->mPlugins.data();
     QItemSelectionModel *selectionModel = ui->listView_plugins->selectionModel();
     bool hasSelection = selectionModel->hasSelection();
@@ -105,6 +103,7 @@ void ConfigPluginsWidget::resetButtons()
     bool isLastSelected = selectionModel->isSelected(model->index(model->rowCount() - 1));
 
     bool hasConfigDialog = false;
+
     if (hasSelection)
     {
         Plugin const * plugin
@@ -117,5 +116,5 @@ void ConfigPluginsWidget::resetButtons()
     ui->pushButton_moveUp->setEnabled(hasSelection && !isFirstSelected);
     ui->pushButton_moveDown->setEnabled(hasSelection && !isLastSelected);
     ui->pushButton_pluginConfig->setEnabled(hasSelection && hasConfigDialog);
-#endif
+
 }

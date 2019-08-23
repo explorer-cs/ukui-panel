@@ -88,7 +88,6 @@ AddPluginDialog::~AddPluginDialog()
 
 void AddPluginDialog::filter()
 {
-#if 1
     QListWidget* pluginList = ui->pluginList;
 
     const int curr_item = 0 < pluginList->count() ? pluginList->currentRow() : 0;
@@ -125,7 +124,6 @@ void AddPluginDialog::filter()
 
     if (pluginCount > 0)
         ui->pluginList->setCurrentRow(curr_item < pluginCount ? curr_item : pluginCount - 1);
-#endif
 }
 
 void AddPluginDialog::emitPluginSelected()

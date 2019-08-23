@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -isystem /usr/include/lxqt -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/qt5xdg -isystem /usr/include/x86_64-linux-gnu/qt5/QtX11Extras -isystem /usr/include/KF5 -isystem /usr/include/KF5/KWindowSystem -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtDBus -isystem /usr/include/lxqt/LXQt -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I. -I. -isystem /usr/include/lxqt -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/qt5xdg -isystem /usr/include/x86_64-linux-gnu/qt5/QtX11Extras -isystem /usr/include/KF5 -isystem /usr/include/KF5/KWindowSystem -isystem /usr/include/x86_64-linux-gnu/qt5/QtXml -isystem /usr/include/x86_64-linux-gnu/qt5/QtDBus -isystem /usr/include/KF5/KWindowSystem -isystem /usr/include/lxqt-globalkeys -isystem /usr/include/lxqt/LXQt -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -isystem /usr/include/libdrm -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,10 +37,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = ukui-panel1.0.0
-DISTDIR = /home/hepuyao/2019/work/temp2/ukui-panel/.tmp/ukui-panel1.0.0
+DISTDIR = /home/hepuyao/下载/0822/ukui-panel-master/.tmp/ukui-panel1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
-LIBS          = $(SUBLIBS) -lKF5WindowSystem -llxqt -lQt5Xdg -lQt5Widgets -lQt5Gui -lQt5Core /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
+LIBS          = $(SUBLIBS) -lKF5WindowSystem -llxqt -lQt5X11Extras -lQt5Xdg -lQt5Widgets -lQt5Gui -lQt5Core /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -63,7 +63,13 @@ SOURCES       = main.cpp \
 		config/configpaneldialog.cpp \
 		config/configpanelwidget.cpp \
 		config/configpluginswidget.cpp \
-		windownotifier.cpp moc_ukuipanelapplication.cpp \
+		windownotifier.cpp \
+		plugin-desktopswitch/desktopswitch.cpp \
+		plugin-desktopswitch/desktopswitchbutton.cpp \
+		plugin-desktopswitch/desktopswitchconfiguration.cpp \
+		lxqtpanelpluginconfigdialog.cpp \
+		panel/ukuipanellayout.cpp \
+		ukuipluginmoveprocessor.cpp moc_ukuipanelapplication.cpp \
 		moc_ukuipanel.cpp \
 		moc_panelpluginsmodel.cpp \
 		moc_plugin.cpp \
@@ -71,7 +77,13 @@ SOURCES       = main.cpp \
 		moc_configpaneldialog.cpp \
 		moc_configpanelwidget.cpp \
 		moc_configpluginswidget.cpp \
-		moc_windownotifier.cpp
+		moc_windownotifier.cpp \
+		moc_desktopswitch.cpp \
+		moc_desktopswitchbutton.cpp \
+		moc_desktopswitchconfiguration.cpp \
+		moc_lxqtpanelpluginconfigdialog.cpp \
+		moc_ukuipanellayout.cpp \
+		moc_ukuipluginmoveprocessor.cpp
 OBJECTS       = main.o \
 		ukuipanelapplication.o \
 		ukuipanel.o \
@@ -84,6 +96,12 @@ OBJECTS       = main.o \
 		configpanelwidget.o \
 		configpluginswidget.o \
 		windownotifier.o \
+		desktopswitch.o \
+		desktopswitchbutton.o \
+		desktopswitchconfiguration.o \
+		lxqtpanelpluginconfigdialog.o \
+		ukuipanellayout.o \
+		ukuipluginmoveprocessor.o \
 		moc_ukuipanelapplication.o \
 		moc_ukuipanel.o \
 		moc_panelpluginsmodel.o \
@@ -92,7 +110,13 @@ OBJECTS       = main.o \
 		moc_configpaneldialog.o \
 		moc_configpanelwidget.o \
 		moc_configpluginswidget.o \
-		moc_windownotifier.o
+		moc_windownotifier.o \
+		moc_desktopswitch.o \
+		moc_desktopswitchbutton.o \
+		moc_desktopswitchconfiguration.o \
+		moc_lxqtpanelpluginconfigdialog.o \
+		moc_ukuipanellayout.o \
+		moc_ukuipluginmoveprocessor.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -189,7 +213,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		config/configpaneldialog.h \
 		config/configpanelwidget.h \
 		config/configpluginswidget.h \
-		windownotifier.h main.cpp \
+		windownotifier.h \
+		plugin-desktopswitch/desktopswitch.h \
+		plugin-desktopswitch/desktopswitchbutton.h \
+		plugin-desktopswitch/desktopswitchconfiguration.h \
+		lxqtpanelpluginconfigdialog.h \
+		panel/ukuipanellayout.h \
+		ukuipluginmoveprocessor.h main.cpp \
 		ukuipanelapplication.cpp \
 		ukuipanel.cpp \
 		panelpluginsmodel.cpp \
@@ -200,7 +230,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		config/configpaneldialog.cpp \
 		config/configpanelwidget.cpp \
 		config/configpluginswidget.cpp \
-		windownotifier.cpp
+		windownotifier.cpp \
+		plugin-desktopswitch/desktopswitch.cpp \
+		plugin-desktopswitch/desktopswitchbutton.cpp \
+		plugin-desktopswitch/desktopswitchconfiguration.cpp \
+		lxqtpanelpluginconfigdialog.cpp \
+		panel/ukuipanellayout.cpp \
+		ukuipluginmoveprocessor.cpp
 QMAKE_TARGET  = ukui-panel
 DESTDIR       = 
 TARGET        = ukui-panel
@@ -209,7 +245,7 @@ TARGET        = ukui-panel
 first: all
 ####### Build rules
 
-ukui-panel: ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h $(OBJECTS)  
+ukui-panel: ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h ui_desktopswitchconfiguration.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ukui-panel.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -299,6 +335,7 @@ Makefile: ukui-panel.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.c
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		ukui-panel.pro \
+		/usr/lib/x86_64-linux-gnu/libQt5X11Extras.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
@@ -390,6 +427,7 @@ Makefile: ukui-panel.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.c
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ukui-panel.pro:
+/usr/lib/x86_64-linux-gnu/libQt5X11Extras.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
@@ -408,9 +446,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ukuipanelapplication.h ukuipanel.h panelpluginsmodel.h plugin.h pluginsettings.h ukuimenu.h config/addplugindialog.h config/configpaneldialog.h config/configpanelwidget.h config/configpluginswidget.h windownotifier.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp ukuipanelapplication.cpp ukuipanel.cpp panelpluginsmodel.cpp plugin.cpp pluginsettings.cpp ukuimenu.cpp config/addplugindialog.cpp config/configpaneldialog.cpp config/configpanelwidget.cpp config/configpluginswidget.cpp windownotifier.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents config/addplugindialog.ui config/configpanelwidget.ui config/configpluginswidget.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ukuipanelapplication.h ukuipanel.h panelpluginsmodel.h plugin.h pluginsettings.h ukuimenu.h config/addplugindialog.h config/configpaneldialog.h config/configpanelwidget.h config/configpluginswidget.h windownotifier.h plugin-desktopswitch/desktopswitch.h plugin-desktopswitch/desktopswitchbutton.h plugin-desktopswitch/desktopswitchconfiguration.h lxqtpanelpluginconfigdialog.h panel/ukuipanellayout.h ukuipluginmoveprocessor.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp ukuipanelapplication.cpp ukuipanel.cpp panelpluginsmodel.cpp plugin.cpp pluginsettings.cpp ukuimenu.cpp config/addplugindialog.cpp config/configpaneldialog.cpp config/configpanelwidget.cpp config/configpluginswidget.cpp windownotifier.cpp plugin-desktopswitch/desktopswitch.cpp plugin-desktopswitch/desktopswitchbutton.cpp plugin-desktopswitch/desktopswitchconfiguration.cpp lxqtpanelpluginconfigdialog.cpp panel/ukuipanellayout.cpp ukuipluginmoveprocessor.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents config/addplugindialog.ui config/configpanelwidget.ui config/configpluginswidget.ui plugin-desktopswitch/desktopswitchconfiguration.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -442,54 +480,52 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_ukuipanelapplication.cpp moc_ukuipanel.cpp moc_panelpluginsmodel.cpp moc_plugin.cpp moc_addplugindialog.cpp moc_configpaneldialog.cpp moc_configpanelwidget.cpp moc_configpluginswidget.cpp moc_windownotifier.cpp
+compiler_moc_header_make_all: moc_ukuipanelapplication.cpp moc_ukuipanel.cpp moc_panelpluginsmodel.cpp moc_plugin.cpp moc_addplugindialog.cpp moc_configpaneldialog.cpp moc_configpanelwidget.cpp moc_configpluginswidget.cpp moc_windownotifier.cpp moc_desktopswitch.cpp moc_desktopswitchbutton.cpp moc_desktopswitchconfiguration.cpp moc_lxqtpanelpluginconfigdialog.cpp moc_ukuipanellayout.cpp moc_ukuipluginmoveprocessor.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_ukuipanelapplication.cpp moc_ukuipanel.cpp moc_panelpluginsmodel.cpp moc_plugin.cpp moc_addplugindialog.cpp moc_configpaneldialog.cpp moc_configpanelwidget.cpp moc_configpluginswidget.cpp moc_windownotifier.cpp
+	-$(DEL_FILE) moc_ukuipanelapplication.cpp moc_ukuipanel.cpp moc_panelpluginsmodel.cpp moc_plugin.cpp moc_addplugindialog.cpp moc_configpaneldialog.cpp moc_configpanelwidget.cpp moc_configpluginswidget.cpp moc_windownotifier.cpp moc_desktopswitch.cpp moc_desktopswitchbutton.cpp moc_desktopswitchconfiguration.cpp moc_lxqtpanelpluginconfigdialog.cpp moc_ukuipanellayout.cpp moc_ukuipluginmoveprocessor.cpp
 moc_ukuipanelapplication.cpp: ukuipanelapplication.h \
+		ilxqtpanel.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ukuipanelapplication.h -o moc_ukuipanelapplication.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ukuipanelapplication.h -o moc_ukuipanelapplication.cpp
 
 moc_ukuipanel.cpp: ukuipanel.h \
 		panelpluginsmodel.h \
 		ukuipanel.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ukuipanel.h -o moc_ukuipanel.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ukuipanel.h -o moc_ukuipanel.cpp
 
 moc_panelpluginsmodel.cpp: panelpluginsmodel.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include panelpluginsmodel.h -o moc_panelpluginsmodel.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include panelpluginsmodel.h -o moc_panelpluginsmodel.cpp
 
 moc_plugin.cpp: plugin.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include plugin.h -o moc_plugin.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include plugin.h -o moc_plugin.cpp
 
 moc_addplugindialog.cpp: config/addplugindialog.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/addplugindialog.h -o moc_addplugindialog.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/addplugindialog.h -o moc_addplugindialog.cpp
 
 moc_configpaneldialog.cpp: config/configpaneldialog.h \
 		config/configpanelwidget.h \
@@ -497,50 +533,90 @@ moc_configpaneldialog.cpp: config/configpaneldialog.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		config/configpluginswidget.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpaneldialog.h -o moc_configpaneldialog.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpaneldialog.h -o moc_configpaneldialog.cpp
 
 moc_configpanelwidget.cpp: config/configpanelwidget.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpanelwidget.h -o moc_configpanelwidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpanelwidget.h -o moc_configpanelwidget.cpp
 
 moc_configpluginswidget.cpp: config/configpluginswidget.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpluginswidget.h -o moc_configpluginswidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include config/configpluginswidget.h -o moc_configpluginswidget.cpp
 
 moc_windownotifier.cpp: windownotifier.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/2019/work/temp2/ukui-panel/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/2019/work/temp2/ukui-panel -I/home/hepuyao/2019/work/temp2/ukui-panel -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include windownotifier.h -o moc_windownotifier.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include windownotifier.h -o moc_windownotifier.cpp
+
+moc_desktopswitch.cpp: plugin-desktopswitch/desktopswitch.h \
+		panel/ilxqtpanelplugin.h \
+		ilxqtpanel.h \
+		plugin-desktopswitch/desktopswitchbutton.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include plugin-desktopswitch/desktopswitch.h -o moc_desktopswitch.cpp
+
+moc_desktopswitchbutton.cpp: plugin-desktopswitch/desktopswitchbutton.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include plugin-desktopswitch/desktopswitchbutton.h -o moc_desktopswitchbutton.cpp
+
+moc_desktopswitchconfiguration.cpp: plugin-desktopswitch/desktopswitchconfiguration.h \
+		lxqtpanelpluginconfigdialog.h \
+		pluginsettings.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include plugin-desktopswitch/desktopswitchconfiguration.h -o moc_desktopswitchconfiguration.cpp
+
+moc_lxqtpanelpluginconfigdialog.cpp: lxqtpanelpluginconfigdialog.h \
+		pluginsettings.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include lxqtpanelpluginconfigdialog.h -o moc_lxqtpanelpluginconfigdialog.cpp
+
+moc_ukuipanellayout.cpp: panel/ukuipanellayout.h \
+		ilxqtpanel.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include panel/ukuipanellayout.h -o moc_ukuipanellayout.cpp
+
+moc_ukuipluginmoveprocessor.cpp: ukuipluginmoveprocessor.h \
+		plugin.h \
+		ukuipanel.h \
+		panelpluginsmodel.h \
+		ilxqtpanel.h \
+		panel/ukuipanellayout.h \
+		pluginsettings.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/hepuyao/下载/0822/ukui-panel-master/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hepuyao/下载/0822/ukui-panel-master -I/home/hepuyao/下载/0822/ukui-panel-master -I/usr/include/lxqt -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/qt5xdg -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/KF5 -I/usr/include/KF5/KWindowSystem -I/usr/include/x86_64-linux-gnu/qt5/QtXml -I/usr/include/x86_64-linux-gnu/qt5/QtDBus -I/usr/include/KF5/KWindowSystem -I/usr/include/lxqt-globalkeys -I/usr/include/lxqt/LXQt -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ukuipluginmoveprocessor.h -o moc_ukuipluginmoveprocessor.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h
+compiler_uic_make_all: ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h ui_desktopswitchconfiguration.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h
+	-$(DEL_FILE) ui_addplugindialog.h ui_configpanelwidget.h ui_configpluginswidget.h ui_desktopswitchconfiguration.h
 ui_addplugindialog.h: config/addplugindialog.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic config/addplugindialog.ui -o ui_addplugindialog.h
@@ -553,6 +629,10 @@ ui_configpluginswidget.h: config/configpluginswidget.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic config/configpluginswidget.ui -o ui_configpluginswidget.h
 
+ui_desktopswitchconfiguration.h: plugin-desktopswitch/desktopswitchconfiguration.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic plugin-desktopswitch/desktopswitchconfiguration.ui -o ui_desktopswitchconfiguration.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -563,26 +643,25 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: main.cpp ukuipanelapplication.h
+main.o: main.cpp ukuipanelapplication.h \
+		ilxqtpanel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 ukuipanelapplication.o: ukuipanelapplication.cpp ukuipanelapplication.h \
+		ilxqtpanel.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
-		ilxqtpanel.h \
-		lxqtpanelglobals.h
+		panel/ukuipanellayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ukuipanelapplication.o ukuipanelapplication.cpp
 
 ukuipanel.o: ukuipanel.cpp ukuipanel.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		windownotifier.h \
 		ukuipanelapplication.h \
 		ukuimenu.h \
@@ -594,10 +673,9 @@ ukuipanel.o: ukuipanel.cpp ukuipanel.h \
 panelpluginsmodel.o: panelpluginsmodel.cpp panelpluginsmodel.h \
 		ukuipanel.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ukuipanelapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o panelpluginsmodel.o panelpluginsmodel.cpp
 
@@ -605,9 +683,8 @@ plugin.o: plugin.cpp plugin.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		plugin-desktopswitch/desktopswitch.h \
 		panel/ilxqtpanelplugin.h \
 		plugin-desktopswitch/desktopswitchbutton.h
@@ -625,9 +702,8 @@ addplugindialog.o: config/addplugindialog.cpp ui_addplugindialog.h \
 		ukuipanel.h \
 		panelpluginsmodel.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ukuipanelapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addplugindialog.o config/addplugindialog.cpp
 
@@ -637,9 +713,8 @@ configpaneldialog.o: config/configpaneldialog.cpp config/configpaneldialog.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		config/configpluginswidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o configpaneldialog.o config/configpaneldialog.cpp
 
@@ -648,10 +723,10 @@ configpanelwidget.o: config/configpanelwidget.cpp config/configpanelwidget.h \
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
-		ui_configpanelwidget.h
+		panel/ukuipanellayout.h \
+		ui_configpanelwidget.h \
+		panel/lxqtpanellimits.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o configpanelwidget.o config/configpanelwidget.cpp
 
 configpluginswidget.o: config/configpluginswidget.cpp config/configpluginswidget.h \
@@ -659,15 +734,56 @@ configpluginswidget.o: config/configpluginswidget.cpp config/configpluginswidget
 		panelpluginsmodel.h \
 		plugin.h \
 		pluginsettings.h \
-		ilxqtpanelplugin.h \
 		ilxqtpanel.h \
-		lxqtpanelglobals.h \
+		panel/ukuipanellayout.h \
 		ui_configpluginswidget.h \
 		config/addplugindialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o configpluginswidget.o config/configpluginswidget.cpp
 
 windownotifier.o: windownotifier.cpp windownotifier.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windownotifier.o windownotifier.cpp
+
+desktopswitch.o: plugin-desktopswitch/desktopswitch.cpp plugin-desktopswitch/desktopswitch.h \
+		panel/ilxqtpanelplugin.h \
+		ilxqtpanel.h \
+		plugin-desktopswitch/desktopswitchbutton.h \
+		plugin-desktopswitch/desktopswitchconfiguration.h \
+		lxqtpanelpluginconfigdialog.h \
+		pluginsettings.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o desktopswitch.o plugin-desktopswitch/desktopswitch.cpp
+
+desktopswitchbutton.o: plugin-desktopswitch/desktopswitchbutton.cpp plugin-desktopswitch/desktopswitchbutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o desktopswitchbutton.o plugin-desktopswitch/desktopswitchbutton.cpp
+
+desktopswitchconfiguration.o: plugin-desktopswitch/desktopswitchconfiguration.cpp plugin-desktopswitch/desktopswitchconfiguration.h \
+		lxqtpanelpluginconfigdialog.h \
+		pluginsettings.h \
+		ui_desktopswitchconfiguration.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o desktopswitchconfiguration.o plugin-desktopswitch/desktopswitchconfiguration.cpp
+
+lxqtpanelpluginconfigdialog.o: lxqtpanelpluginconfigdialog.cpp lxqtpanelpluginconfigdialog.h \
+		pluginsettings.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lxqtpanelpluginconfigdialog.o lxqtpanelpluginconfigdialog.cpp
+
+ukuipanellayout.o: panel/ukuipanellayout.cpp panel/ukuipanellayout.h \
+		ilxqtpanel.h \
+		plugin.h \
+		ukuipanel.h \
+		panelpluginsmodel.h \
+		pluginsettings.h \
+		panel/lxqtpanellimits.h \
+		panel/ilxqtpanelplugin.h \
+		ukuipluginmoveprocessor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ukuipanellayout.o panel/ukuipanellayout.cpp
+
+ukuipluginmoveprocessor.o: ukuipluginmoveprocessor.cpp ukuipluginmoveprocessor.h \
+		plugin.h \
+		ukuipanel.h \
+		panelpluginsmodel.h \
+		ilxqtpanel.h \
+		panel/ukuipanellayout.h \
+		pluginsettings.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ukuipluginmoveprocessor.o ukuipluginmoveprocessor.cpp
 
 moc_ukuipanelapplication.o: moc_ukuipanelapplication.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ukuipanelapplication.o moc_ukuipanelapplication.cpp
@@ -695,6 +811,24 @@ moc_configpluginswidget.o: moc_configpluginswidget.cpp
 
 moc_windownotifier.o: moc_windownotifier.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_windownotifier.o moc_windownotifier.cpp
+
+moc_desktopswitch.o: moc_desktopswitch.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_desktopswitch.o moc_desktopswitch.cpp
+
+moc_desktopswitchbutton.o: moc_desktopswitchbutton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_desktopswitchbutton.o moc_desktopswitchbutton.cpp
+
+moc_desktopswitchconfiguration.o: moc_desktopswitchconfiguration.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_desktopswitchconfiguration.o moc_desktopswitchconfiguration.cpp
+
+moc_lxqtpanelpluginconfigdialog.o: moc_lxqtpanelpluginconfigdialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_lxqtpanelpluginconfigdialog.o moc_lxqtpanelpluginconfigdialog.cpp
+
+moc_ukuipanellayout.o: moc_ukuipanellayout.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ukuipanellayout.o moc_ukuipanellayout.cpp
+
+moc_ukuipluginmoveprocessor.o: moc_ukuipluginmoveprocessor.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ukuipluginmoveprocessor.o moc_ukuipluginmoveprocessor.cpp
 
 ####### Install
 

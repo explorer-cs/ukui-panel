@@ -4,17 +4,79 @@
 #include "plugin-desktopswitch/desktopswitch.h"
 #include <memory>
 #include <XdgIcon>
+#include <QDebug>
+#include <QProcessEnvironment>
+#include <QStringList>
+#include <QDir>
+#include <QFileInfo>
+#include <QPluginLoader>
+#include <QGridLayout>
+#include <QDialog>
+#include <QEvent>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QApplication>
+#include <QWindow>
+#include <memory>
+#include <kwindowsystem.h>
 
+#include <LXQt/Settings>
+#include <LXQt/Translator>
+#include <XdgIcon>
 
+// statically linked built-in plugins
+#include "plugin-desktopswitch/desktopswitch.h" // desktopswitch
 extern void * loadPluginTranslation_desktopswitch_helper;
+
+
+QColor Plugin::mMoveMarkerColor= QColor(255, 0, 0, 255);
+
+
 Plugin::Plugin(const LXQt::PluginInfo &desktopFile, LXQt::Settings *settings, const QString &settingsGroup, UkuiPanel *panel):
-	QFrame(panel)
+    QFrame(panel),
+    mDesktopFile(desktopFile),
+    mPluginLoader(0),
+    mPlugin(0),
+    mPluginWidget(0),
+    mAlignment(AlignLeft),
+    mPanel(panel)
 {
+
+    setWindowTitle(desktopFile.name());
+    mName = desktopFile.name();
+
+    bool found = false;
 	mSettings = PluginSettingsFactory::create(settings, settingsGroup);
 	if(ILXQtPanelPluginLibrary const * pluginLib = findStaticPlugin(desktopFile.id()))
 	{
-		loadLib(pluginLib);
+        found = true;
+        loadLib(pluginLib);
 	}
+    if (!isLoaded())
+    {
+        if (!found)
+            qDebug() << QString("Plugin %1 not found in the").arg(desktopFile.id());
+
+        return;
+    }
+
+    if (mPluginWidget)
+    {
+	    printf("mPluginWidget  === true\n");
+        QGridLayout* layout = new QGridLayout(this);
+        layout->setSpacing(0);
+        layout->setContentsMargins(0, 0, 0, 0);
+        setLayout(layout);
+        layout->addWidget(mPluginWidget, 0, 0);
+    }
+
+    saveSettings();
+
+    // delay the connection to settingsChanged to avoid conflicts
+    // while the plugin is still being initialized
+   //connect(mSettings, &PluginSettings::settingsChanged,
+            //this, &Plugin::settingsChanged);
+
 }
 namespace
 {
@@ -22,9 +84,9 @@ namespace
     typedef std::tuple<QString, plugin_ptr_t, void *> plugin_tuple_t;
 
     static plugin_tuple_t const static_plugins[] = {
-#if defined(WITH_DESKTOPSWITCH_PLUGIN)
-        std::make_tuple(QLatin1String("desktopswitch"), plugin_ptr_t{new DesktopSwitchPluginLibrary}, loadPluginTranslation_desktopswitch_helper),// desktopswitch
-#endif
+//#if defined(WITH_DESKTOPSWITCH_PLUGIN)
+    std::make_tuple(QLatin1String("desktopswitch"), plugin_ptr_t{new DesktopSwitchPluginLibrary}, nullptr),// desktopswitch
+//#endif
     };
     static constexpr plugin_tuple_t const * const plugins_begin = static_plugins;
     static constexpr plugin_tuple_t const * const plugins_end = static_plugins + sizeof (static_plugins) / sizeof (static_plugins[0]);
@@ -33,8 +95,8 @@ namespace
     {
         assert_helper()
         {
-//            Q_ASSERT(std::is_sorted(plugins_begin, plugins_end
-//                        , [] (plugin_tuple_t const & p1, plugin_tuple_t const & p2) -> bool { return std::get<0>(p1) < std::get<0>(p2); }));
+           Q_ASSERT(std::is_sorted(plugins_begin, plugins_end
+                       , [] (plugin_tuple_t const & p1, plugin_tuple_t const & p2) -> bool { return std::get<0>(p1) < std::get<0>(p2); }));
         }
     };
     static assert_helper h;
@@ -55,11 +117,17 @@ bool Plugin::loadLib(ILXQtPanelPluginLibrary const * pluginLib)
     ILXQtPanelPluginStartupInfo startupInfo;
     startupInfo.settings = mSettings;
     startupInfo.desktopFile = &mDesktopFile;
-//    startupInfo.lxqtPanel = mPanel;  //需要去掉注释，会报错，接下来研究
+    startupInfo.lxqtPanel = mPanel;  //需要去掉注释，会报错，接下来研究
 
     mPlugin = pluginLib->instance(startupInfo);
 
     mPluginWidget = mPlugin->widget();
+    if (mPluginWidget)
+    {
+        mPluginWidget->setObjectName(mPlugin->themeId());
+        watchWidgets(mPluginWidget);
+    }
+    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     return true;
 }
 
@@ -100,7 +168,6 @@ void Plugin::realign()
 
 void Plugin::showConfigureDialog()
 {
-    /*
     if (!mConfigDialog)
         mConfigDialog = mPlugin->configureDialog();
 
@@ -116,13 +183,100 @@ void Plugin::showConfigureDialog()
     WId wid = mConfigDialog->windowHandle()->winId();
     KWindowSystem::activateWindow(wid);
     KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
-    */
 }
 
 void Plugin::requestRemove()
 {
     emit remove();
     deleteLater();
+}
+
+
+// load dynamic plugin from a *.so module
+bool Plugin::loadModule(const QString &libraryName)
+{
+    mPluginLoader = new QPluginLoader(libraryName);
+
+    if (!mPluginLoader->load())
+    {
+        qWarning() << mPluginLoader->errorString();
+        return false;
+    }
+
+    QObject *obj = mPluginLoader->instance();
+    if (!obj)
+    {
+        qWarning() << mPluginLoader->errorString();
+        return false;
+    }
+
+    ILXQtPanelPluginLibrary* pluginLib= qobject_cast<ILXQtPanelPluginLibrary*>(obj);
+    if (!pluginLib)
+    {
+        qWarning() << QString("Can't load plugin \"%1\". Plugin is not a ILXQtPanelPluginLibrary.").arg(mPluginLoader->fileName());
+        delete obj;
+        return false;
+    }
+    return loadLib(pluginLib);
+}
+
+void Plugin::watchWidgets(QObject * const widget)
+{
+    // the QWidget might not be fully constructed yet, but we can rely on the isWidgetType()
+    if (!widget->isWidgetType())
+        return;
+    widget->installEventFilter(this);
+    // watch also children (recursive)
+    for (auto const & child : widget->children())
+    {
+        watchWidgets(child);
+    }
+}
+
+void Plugin::unwatchWidgets(QObject * const widget)
+{
+    widget->removeEventFilter(this);
+    // unwatch also children (recursive)
+    for (auto const & child : widget->children())
+    {
+        unwatchWidgets(child);
+    }
+}
+
+
+void Plugin::saveSettings()
+{
+    /*
+    mSettings->setValue("alignment", (mAlignment == AlignLeft) ? "Left" : "Right");
+    mSettings->setValue("type", mDesktopFile.id());
+    mSettings->sync();*/
+
+}
+
+void Plugin::setAlignment(Plugin::Alignment alignment)
+{
+    mAlignment = alignment;
+    saveSettings();
+}
+
+
+void Plugin::settingsChanged()
+{
+    mPlugin->settingsChanged();
+}
+
+bool Plugin::isSeparate() const
+{
+   return mPlugin->isSeparate();
+}
+
+
+/************************************************
+
+ ************************************************/
+bool Plugin::isExpandable() const
+{
+    return mPlugin->isExpandable();
 }
 
 

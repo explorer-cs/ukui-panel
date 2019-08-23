@@ -10,6 +10,7 @@
 #include <QString>
 #include <QDesktopWidget>
 #include <QMenu>
+#include <QPushButton>
 #include <QMessageBox>
 #include <QDropEvent>
 #include <XdgIcon>
@@ -54,7 +55,7 @@ UkuiPanel::UkuiPanel(const QString &configGroup,LXQt::Settings *settings) :
     mLineCount(0),
     mLength(0),
     mAlignment(AlignmentLeft),
-    //mPosition(ILXQtPanel::PositionBottom),
+    mPosition(ILXQtPanel::PositionBottom),
     mScreenNum(0), //whatever (avoid conditional on uninitialized value)
     mActualScreenNum(0),
     mHidable(false),
@@ -65,7 +66,68 @@ UkuiPanel::UkuiPanel(const QString &configGroup,LXQt::Settings *settings) :
     mAnimation(nullptr),
     mLockPanel(false)
 {
-	qDebug()<< "UkuiPanel::UkuiPanel";
+
+    //LXQtPanel (inherits QFrame) -> lav (QGridLayout) -> LXQtPanelWidget (QFrame) -> LXQtPanelLayout
+    mUkuiPanelWidget = new QFrame(this);
+    mUkuiPanelWidget->setObjectName("BackgroundWidget");
+    QGridLayout* lav = new QGridLayout();
+    lav->setContentsMargins(0, 0, 0, 0);
+    setLayout(lav);
+    this->layout()->addWidget(mUkuiPanelWidget);
+    QPushButton *button =new QPushButton("kkkkkkkkkkkkkkkkk");
+//    this->layout()->addWidget(button);
+
+
+    mLayout = new UkuiPanelLayout(mUkuiPanelWidget);
+    connect(mLayout, &UkuiPanelLayout::pluginMoved, this, &UkuiPanel::pluginMoved);
+    
+    if(mLayout == NULL){
+	printf("button NULL-------------\n");
+    } else{
+	printf("button not NULL-------------\n");
+    }
+/*
+   int left, top, right, bottom;
+mLayout->getContentsMargins(&left,&top,&right,&bottom);
+printf("left=%d\n",left);
+printf("right=%d\n",right);
+printf("top=%d\n",top);
+printf("bottom=%d\n",bottom);
+
+mLayout->setContentsMargins(0,0,400,40);
+mLayout->getContentsMargins(&left,&top,&right,&bottom);
+printf("left=%d\n",left);
+printf("right=%d\n",right);
+printf("top=%d\n",top);
+printf("bottom=%d\n",bottom);
+*/
+
+//    mUkuiPanelWidget->setLayout(mLayout);
+//
+//QHBoxLayout *topLayout = new QHBoxLayout;
+QHBoxLayout *topLayout = new QHBoxLayout;  
+
+topLayout->setContentsMargins(0,890,100,900);
+
+    topLayout->addWidget(button);
+    mUkuiPanelWidget->resize(40,40);
+    mUkuiPanelWidget->setLayout(topLayout);
+
+//    this->setLayout(topLayout);
+//    
+    /*
+    QVBoxLayout Q_V_L=new QVBoxLayout();
+    Q_V_L->addLayout(topLayout);
+    Q_V_L->setContentsMargins(0,0,0,0);
+    mUkuiPanelWidget->setLayout(Q_V_L);
+    this->setLayout(Q_V_L);
+    */
+//    mUkuiPanelWidget->layout()->addWidget(button);
+
+
+
+    mLayout->setLineCount(mLineCount);
+    qDebug()<< "UkuiPanel::UkuiPanel";
 	Qt::WindowFlags flags = Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
 	flags |= Qt::WindowDoesNotAcceptFocus;
 	setWindowFlags(flags);
@@ -82,13 +144,12 @@ UkuiPanel::UkuiPanel(const QString &configGroup,LXQt::Settings *settings) :
 UkuiPanel::~UkuiPanel()
 {
 }
-/*
 void UkuiPanel::show()
 {
-	qDebug()<<  "kuiPanel::show";
-//	QWidget::show();
+    QWidget::show();
+    KWindowSystem::setOnDesktop(effectiveWinId(), NET::OnAllDesktops);
 }
-*/
+
 bool UkuiPanel::event(QEvent *event)
 {
     qDebug() <<  "UkuiPanel::event";
@@ -172,12 +233,12 @@ void UkuiPanel::updateWmStrut()
                                         );
 	*/
 
-        KWindowSystem::setExtendedStrut(wid,
-                                        0, 0, 0,
-                                        0, 0, 0,
-                                        0, 0, 0,
-                                        40, rect.left(), rect.right()
-                                        );
+    KWindowSystem::setExtendedStrut(wid,
+                                    0, 0, 0,
+                                    0, 0, 0,
+                                    0, 0, 0,
+                                    40, rect.left(), rect.right()
+                                    );
 	
 }
 QStringList UkuiPanel::pluginDesktopDirs()
@@ -187,17 +248,30 @@ QStringList UkuiPanel::pluginDesktopDirs()
     dirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     dirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/lxqt/lxqt-panel");
     dirs << PLUGIN_DESKTOPS_DIR;
-    dirs << PLUGIN_DESKTOPS_LOCAL_DIR;
     qDebug() << dirs;
     return dirs;
 }
 void UkuiPanel::loadPlugins()
 {
-    qDebug() << "UkuiPanel::loadPlugins";
+    	qDebug() << "UkuiPanel::loadPlugins";
 	QString names_key(mConfigGroup);
 	names_key += '/';
 	names_key += QLatin1String(CFG_KEY_PLUGINS);	
 	mPlugins.reset(new PanelPluginsModel(this, names_key, pluginDesktopDirs()));
+    connect(mPlugins.data(), &PanelPluginsModel::pluginAdded, mLayout, &UkuiPanelLayout::addPlugin);
+    connect(mPlugins.data(), &PanelPluginsModel::pluginMovedUp, mLayout, &UkuiPanelLayout::moveUpPlugin);
+    //reemit signals
+    connect(mPlugins.data(), &PanelPluginsModel::pluginAdded, this, &UkuiPanel::pluginAdded);
+    connect(mPlugins.data(), &PanelPluginsModel::pluginRemoved, this, &UkuiPanel::pluginRemoved);
+
+    const auto plugins = mPlugins->plugins();
+    for (auto const & plugin : plugins)
+    {
+	    printf("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk\n");
+        mLayout->addPlugin(plugin);
+	this->layout()->addWidget(plugin);
+        connect(plugin, &Plugin::dragLeft, [this] { mShowDelayTimer.stop(); hidePanel(); });
+    }
 }
 
 void UkuiPanel::showUkuiMenu(Plugin *plugin)
@@ -263,7 +337,7 @@ void UkuiPanel::showUkuiMenu(Plugin *plugin)
 
 void UkuiPanel::willShowWindow(QWidget * w)
 {
-    //mStandaloneWindows->observeWindow(w);
+    mStandaloneWindows->observeWindow(w);
 }
 
 
@@ -271,25 +345,24 @@ QRect UkuiPanel::calculatePopupWindowPos(QPoint const & absolutePos, QSize const
 {
     int x = absolutePos.x(), y = absolutePos.y();
 
-    /*switch (position())
+    switch (position())
     {
     case ILXQtPanel::PositionTop:
-        y = globalGeometry().bottom();
+        y = globalGometry().bottom();
         break;
 
     case ILXQtPanel::PositionBottom:
-        y = globalGeometry().top() - windowSize.height();
+        y = globalGometry().top() - windowSize.height();
         break;
 
     case ILXQtPanel::PositionLeft:
-        x = globalGeometry().right();
+        x = globalGometry().right();
         break;
 
     case ILXQtPanel::PositionRight:
-        x = globalGeometry().left() - windowSize.width();
+        x = globalGometry().left() - windowSize.width();
         break;
     }
-*/
     QRect res(QPoint(x, y), windowSize);
 
     QRect screen = QApplication::desktop()->screenGeometry(this);
@@ -310,6 +383,11 @@ QRect UkuiPanel::calculatePopupWindowPos(QPoint const & absolutePos, QSize const
         res.moveTop(screen.top());
 
     return res;
+}
+
+QRect UkuiPanel::calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const
+{
+    return geometry();
 }
 
 void UkuiPanel::saveSettings(bool _bVar)
@@ -408,5 +486,47 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
     else
         return plugin->iPlugin()->flags().testFlag(ILXQtPanelPlugin::SingleInstance);
 }
+
+ QRect UkuiPanel::globalGometry() const
+ {
+     return geometry();
+ }
+
+ void UkuiPanel::pluginFlagsChanged(const ILXQtPanelPlugin * plugin)
+ {
+
+ }
+
+ void UkuiPanel::hidePanel()
+ {
+     if (mHidable && !mHidden
+             && !mStandaloneWindows->isAnyWindowShown()
+        )
+         mHideTimer.start();
+ }
+
+ void UkuiPanel::pluginMoved(Plugin * plug)
+ {
+     //get new position of the moved plugin
+     bool found{false};
+     QString plug_is_before;
+    /* for (int i=0; i<mLayout->count(); ++i)
+     {
+         Plugin *plugin = qobject_cast<Plugin*>(mLayout->itemAt(i)->widget());
+         if (plugin)
+         {
+             if (found)
+             {
+                 //we found our plugin in previous cycle -> is before this (or empty as last)
+                 plug_is_before = plugin->settingsGroup();
+                 break;
+             } else
+                 found = (plug == plugin);
+         }
+     }
+     mPlugins->movePlugin(plug, plug_is_before);
+     */
+ }
+
 
 

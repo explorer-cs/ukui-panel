@@ -1,8 +1,10 @@
 #include <QtDebug>
 #include <QApplication>
 #include <LXQt/Settings>
+#include "ilxqtpanel.h"
 
 class UkuiPanel;
+class ILXQtPanel;
 class UkuiPanelApplicationPrivate;
 class UkuiPanelApplication : public QApplication
 {
@@ -38,6 +40,7 @@ class UkuiPanelApplicationPrivate {
 public:
 
     	UkuiPanelApplicationPrivate(UkuiPanelApplication *q);
+        ILXQtPanel::Position computeNewPanelPosition(const UkuiPanel *p, const int screenNum);
 //    	~UkuiPanelApplicationPrivate() {};
 
     	LXQt::Settings *mSettings;

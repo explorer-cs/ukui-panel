@@ -50,6 +50,7 @@ public:
     int screenNum() const { return mScreenNum; }
     ILXQtPanel::Position position() const { return mPosition; }
     void updateIconThemeSettings();
+    void fillComboBox_position();
 
 signals:
     void changed();
@@ -71,8 +72,8 @@ private:
     int mScreenNum;
     ILXQtPanel::Position mPosition;
 
+
     //void addPosition(const QString& name, int screen, UkuiPanel::Position position);
-    void fillComboBox_position();
     void fillComboBox_alignment();
     void fillComboBox_icon();
     int indexForPosition(int screen, ILXQtPanel::Position position);
@@ -89,7 +90,7 @@ private:
     int mOldLength;
     bool mOldLengthInPercents;
     UkuiPanel::Alignment mOldAlignment;
-    //ILXQtPanel::Position mOldPosition;
+    ILXQtPanel::Position mOldPosition;
     bool mOldHidable;
     bool mOldVisibleMargin;
     int mOldAnimation;
