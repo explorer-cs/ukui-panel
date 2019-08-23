@@ -5,3 +5,4 @@ ukui-panel
 *.swp
 *CMakeFiles*
 Makefile
+.qmake.stash

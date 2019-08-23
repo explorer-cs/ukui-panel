@@ -75,7 +75,7 @@ public:
 
         QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const override;
         QRect calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const override;
-        QRect globalGometry()const;
+        QRect globalGeometry()const override;
         void willShowWindow(QWidget * w) override;
         //end
         QScopedPointer<PanelPluginsModel> mPlugins;

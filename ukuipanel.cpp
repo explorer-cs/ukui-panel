@@ -348,19 +348,19 @@ QRect UkuiPanel::calculatePopupWindowPos(QPoint const & absolutePos, QSize const
     switch (position())
     {
     case ILXQtPanel::PositionTop:
-        y = globalGometry().bottom();
+        y = globalGeometry().bottom();
         break;
 
     case ILXQtPanel::PositionBottom:
-        y = globalGometry().top() - windowSize.height();
+        y = globalGeometry().top() - windowSize.height();
         break;
 
     case ILXQtPanel::PositionLeft:
-        x = globalGometry().right();
+        x = globalGeometry().right();
         break;
 
     case ILXQtPanel::PositionRight:
-        x = globalGometry().left() - windowSize.width();
+        x = globalGeometry().left() - windowSize.width();
         break;
     }
     QRect res(QPoint(x, y), windowSize);
@@ -487,7 +487,7 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
         return plugin->iPlugin()->flags().testFlag(ILXQtPanelPlugin::SingleInstance);
 }
 
- QRect UkuiPanel::globalGometry() const
+ QRect UkuiPanel::globalGeometry() const
  {
      return geometry();
  }
