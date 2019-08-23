@@ -52,8 +52,8 @@ void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
 //	QStringList plugin_names = mPanel->settings()->value(mNamesKey).toStringList();
 //	QString name= "taskbar";
 //	QString type="taskbar";
-	QString name= "desktopswitch";
-	QString type="desktopswitch";
+    QString name= "desktopswitch";
+    QString type="desktopswitch";
 	LXQt::PluginInfoList list;
 	QSet<QString> processed;
 
@@ -76,8 +76,8 @@ void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
                     list.append(item);
         }
     }
-
-	loadPlugin(list.first(), name);	
+    if(!list.isEmpty())
+        loadPlugin(list.first(), name);
 }
 
 

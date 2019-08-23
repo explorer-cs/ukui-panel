@@ -23,7 +23,7 @@
 #include <LXQt/Settings>
 #include <LXQt/Translator>
 #include <XdgIcon>
-
+#include <QLabel>
 // statically linked built-in plugins
 #include "plugin-desktopswitch/desktopswitch.h" // desktopswitch
 extern void * loadPluginTranslation_desktopswitch_helper;
@@ -67,7 +67,9 @@ Plugin::Plugin(const LXQt::PluginInfo &desktopFile, LXQt::Settings *settings, co
         layout->setSpacing(0);
         layout->setContentsMargins(0, 0, 0, 0);
         setLayout(layout);
-        layout->addWidget(mPluginWidget, 0, 0);
+        QLabel * label = new QLabel("學習");
+        layout->addWidget(label, 0, 1);
+        layout->addWidget(mPluginWidget,0, 0);
     }
 
     saveSettings();

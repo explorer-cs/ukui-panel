@@ -35,7 +35,7 @@
 #include <KWindowSystem/KWindowSystem>
 #include <QX11Info>
 #include <cmath>
-
+#include <QLabel>
 #include "desktopswitch.h"
 #include "desktopswitchbutton.h"
 #include "desktopswitchconfiguration.h"
@@ -57,7 +57,8 @@ DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
 
     mLayout = new LXQt::GridLayout(&mWidget);
     mWidget.setLayout(mLayout);
-
+    QLabel *label = new QLabel("桌面切換");
+    mWidget.layout()->addWidget(label);
     settingsChanged();
 
     onCurrentDesktopChanged(KWindowSystem::currentDesktop());

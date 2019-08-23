@@ -48,12 +48,11 @@ AddPluginDialog::AddPluginDialog(QWidget *parent):
 {
     ui->setupUi(this);
 
-
     QStringList desktopFilesDirs;
     desktopFilesDirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     desktopFilesDirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/lxqt/lxqt-panel");
     desktopFilesDirs << PLUGIN_DESKTOPS_DIR;
-
+    desktopFilesDirs << PLUGIN_DESKTOPS_LOCAL_DIR;
     mPlugins = LXQt::PluginInfo::search(desktopFilesDirs, QLatin1String("LXQtPanel/Plugin"), QLatin1String("*"));
     std::sort(mPlugins.begin(), mPlugins.end(), [](const LXQt::PluginInfo &p1, const LXQt::PluginInfo &p2) {
         return p1.name() < p2.name() || (p1.name() == p2.name() && p1.comment() < p2.comment());

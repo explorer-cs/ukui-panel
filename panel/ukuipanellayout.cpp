@@ -19,7 +19,7 @@
 #include "ukuipluginmoveprocessor.h"
 #include <QToolButton>
 #include <QStyle>
-
+#include <QLabel>
 #define ANIMATION_DURATION 250
 
 class ItemMoveAnimation : public QVariantAnimation

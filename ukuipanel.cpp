@@ -75,12 +75,12 @@ UkuiPanel::UkuiPanel(const QString &configGroup,LXQt::Settings *settings) :
     setLayout(lav);
     this->layout()->addWidget(mUkuiPanelWidget);
     QPushButton *button =new QPushButton("kkkkkkkkkkkkkkkkk");
-//    this->layout()->addWidget(button);
+//    this->layout()->addWidget(button);d
 
 
     mLayout = new UkuiPanelLayout(mUkuiPanelWidget);
     connect(mLayout, &UkuiPanelLayout::pluginMoved, this, &UkuiPanel::pluginMoved);
-    
+
     if(mLayout == NULL){
 	printf("button NULL-------------\n");
     } else{
@@ -105,13 +105,13 @@ printf("bottom=%d\n",bottom);
 //    mUkuiPanelWidget->setLayout(mLayout);
 //
 //QHBoxLayout *topLayout = new QHBoxLayout;
-QHBoxLayout *topLayout = new QHBoxLayout;  
+//QHBoxLayout *topLayout = new QHBoxLayout;
 
-topLayout->setContentsMargins(0,890,100,900);
+//topLayout->setContentsMargins(0,890,100,900);
 
-    topLayout->addWidget(button);
-    mUkuiPanelWidget->resize(40,40);
-    mUkuiPanelWidget->setLayout(topLayout);
+//    topLayout->addWidget(button);
+//    mUkuiPanelWidget->resize(40,40);
+//    mUkuiPanelWidget->setLayout(topLayout);
 
 //    this->setLayout(topLayout);
 //    
@@ -248,12 +248,13 @@ QStringList UkuiPanel::pluginDesktopDirs()
     dirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     dirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/lxqt/lxqt-panel");
     dirs << PLUGIN_DESKTOPS_DIR;
+    dirs << PLUGIN_DESKTOPS_LOCAL_DIR;
     qDebug() << dirs;
     return dirs;
 }
 void UkuiPanel::loadPlugins()
 {
-    	qDebug() << "UkuiPanel::loadPlugins";
+    qDebug() << "UkuiPanel::loadPlugins";
 	QString names_key(mConfigGroup);
 	names_key += '/';
 	names_key += QLatin1String(CFG_KEY_PLUGINS);	
@@ -269,7 +270,7 @@ void UkuiPanel::loadPlugins()
     {
 	    printf("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk\n");
         mLayout->addPlugin(plugin);
-	this->layout()->addWidget(plugin);
+        this->layout()->addWidget(plugin);
         connect(plugin, &Plugin::dragLeft, [this] { mShowDelayTimer.stop(); hidePanel(); });
     }
 }
