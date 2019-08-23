@@ -134,7 +134,7 @@ void ConfigPanelWidget::reset()
     ui->spinBox_iconSize->setValue(mOldIconSize);
     ui->spinBox_lineCount->setValue(mOldLineCount);
 
-    //ui->comboBox_position->setCurrentIndex(indexForPosition(mOldScreenNum, mOldPosition));
+    ui->comboBox_position->setCurrentIndex(indexForPosition(mOldScreenNum, mOldPosition));
 
     ui->checkBox_hidable->setChecked(mOldHidable);
 
@@ -171,14 +171,14 @@ void ConfigPanelWidget::reset()
  ************************************************/
 void ConfigPanelWidget::fillComboBox_position()
 {
-   /*
+
     int screenCount = QApplication::desktop()->screenCount();
     if (screenCount == 1)
     {
-        addPosition(tr("Top of desktop"), 0, LXQtPanel::PositionTop);
-        addPosition(tr("Left of desktop"), 0, LXQtPanel::PositionLeft);
-        addPosition(tr("Right of desktop"), 0, LXQtPanel::PositionRight);
-        addPosition(tr("Bottom of desktop"), 0, LXQtPanel::PositionBottom);
+        addPosition(tr("Top of desktop"), 0, UkuiPanel::PositionTop);
+        addPosition(tr("Left of desktop"), 0, UkuiPanel::PositionLeft);
+        addPosition(tr("Right of desktop"), 0, UkuiPanel::PositionRight);
+        addPosition(tr("Bottom of desktop"), 0, UkuiPanel::PositionBottom);
     }
     else
     {
@@ -187,13 +187,13 @@ void ConfigPanelWidget::fillComboBox_position()
             if (screenNum)
                 ui->comboBox_position->insertSeparator(9999);
 
-            addPosition(tr("Top of desktop %1").arg(screenNum +1), screenNum, LXQtPanel::PositionTop);
-            addPosition(tr("Left of desktop %1").arg(screenNum +1), screenNum, LXQtPanel::PositionLeft);
-            addPosition(tr("Right of desktop %1").arg(screenNum +1), screenNum, LXQtPanel::PositionRight);
-            addPosition(tr("Bottom of desktop %1").arg(screenNum +1), screenNum, LXQtPanel::PositionBottom);
+            addPosition(tr("Top of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionTop);
+            addPosition(tr("Left of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionLeft);
+            addPosition(tr("Right of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionRight);
+            addPosition(tr("Bottom of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionBottom);
         }
     }
-    */
+
 }
 
 
@@ -283,13 +283,13 @@ void ConfigPanelWidget::updateIconThemeSettings()
     */
 }
 
-/*
+
 void ConfigPanelWidget::addPosition(const QString& name, int screen, UkuiPanel::Position position)
 {
-    if (LXQtPanel::canPlacedOn(screen, position))
+    if (UkuiPanel::canPlacedOn(screen, position))
         ui->comboBox_position->addItem(name, QVariant::fromValue((ScreenPosition){screen, position}));
 }
-*/
+
 
 /************************************************
  *
@@ -322,47 +322,47 @@ ConfigPanelWidget::~ConfigPanelWidget()
  ************************************************/
 void ConfigPanelWidget::editChanged()
 {
-#if 0
-    mPanel->setPanelSize(ui->spinBox_panelSize->value(), true);
-    mPanel->setIconSize(ui->spinBox_iconSize->value(), true);
-    mPanel->setLineCount(ui->spinBox_lineCount->value(), true);
 
-    mPanel->setLength(ui->spinBox_length->value(),
-                      ui->comboBox_lenghtType->currentIndex() == 0,
-                      true);
+//    mPanel->setPanelSize(ui->spinBox_panelSize->value(), true);
+//    mPanel->setIconSize(ui->spinBox_iconSize->value(), true);
+//    mPanel->setLineCount(ui->spinBox_lineCount->value(), true);
 
-    LXQtPanel::Alignment align = LXQtPanel::Alignment(
-        ui->comboBox_alignment->itemData(
-            ui->comboBox_alignment->currentIndex()
-        ).toInt());
+//    mPanel->setLength(ui->spinBox_length->value(),
+//                      ui->comboBox_lenghtType->currentIndex() == 0,
+//                      true);
 
-    mPanel->setAlignment(align, true);
+//    LXQtPanel::Alignment align = LXQtPanel::Alignment(
+//        ui->comboBox_alignment->itemData(
+//            ui->comboBox_alignment->currentIndex()
+//        ).toInt());
+
+//    mPanel->setAlignment(align, true);
     mPanel->setPosition(mScreenNum, mPosition, true);
-    mPanel->setHidable(ui->checkBox_hidable->isChecked(), true);
-    mPanel->setVisibleMargin(ui->checkBox_visibleMargin->isChecked(), true);
-    mPanel->setAnimationTime(ui->spinBox_animation->value(), true);
-    mPanel->setShowDelay(ui->spinBox_delay->value(), true);
+//    mPanel->setHidable(ui->checkBox_hidable->isChecked(), true);
+//    mPanel->setVisibleMargin(ui->checkBox_visibleMargin->isChecked(), true);
+//    mPanel->setAnimationTime(ui->spinBox_animation->value(), true);
+//    mPanel->setShowDelay(ui->spinBox_delay->value(), true);
 
     mPanel->setFontColor(ui->checkBox_customFontColor->isChecked() ? mFontColor : QColor(), true);
-    if (ui->checkBox_customBgColor->isChecked())
-    {
+//    if (ui->checkBox_customBgColor->isChecked())
+//    {
         mPanel->setBackgroundColor(mBackgroundColor, true);
-        mPanel->setOpacity(ui->slider_opacity->value(), true);
-    }
-    else
-    {
-        mPanel->setBackgroundColor(QColor(), true);
-        mPanel->setOpacity(100, true);
-    }
+//        mPanel->setOpacity(ui->slider_opacity->value(), true);
+//    }
+//    else
+//    {
+//        mPanel->setBackgroundColor(QColor(), true);
+//        mPanel->setOpacity(100, true);
+//    }
 
-    QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
-    mPanel->setBackgroundImage(image, true);
+//    QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
+//    mPanel->setBackgroundImage(image, true);
 
-    if (!ui->groupBox_icon->isChecked())
-        mPanel->setIconTheme(QString());
-    else if (!ui->comboBox_icon->currentText().isEmpty())
-        mPanel->setIconTheme(ui->comboBox_icon->currentText());
-#endif
+//    if (!ui->groupBox_icon->isChecked())
+//        mPanel->setIconTheme(QString());
+//    else if (!ui->comboBox_icon->currentText().isEmpty())
+//        mPanel->setIconTheme(ui->comboBox_icon->currentText());
+
 }
 
 

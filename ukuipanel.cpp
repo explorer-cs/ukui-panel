@@ -529,5 +529,151 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
      */
  }
 
+ void UkuiPanel::realign()
+ {
+     if (!isVisible())
+         return;
+ #if 0
+     qDebug() << "** Realign *********************";
+     qDebug() << "PanelSize:   " << mPanelSize;
+     qDebug() << "IconSize:      " << mIconSize;
+     qDebug() << "LineCount:     " << mLineCount;
+     qDebug() << "Length:        " << mLength << (mLengthInPercents ? "%" : "px");
+     qDebug() << "Alignment:     " << (mAlignment == 0 ? "center" : (mAlignment < 0 ? "left" : "right"));
+     qDebug() << "Position:      " << positionToStr(mPosition) << "on" << mScreenNum;
+     qDebug() << "Plugins count: " << mPlugins.count();
+ #endif
 
+     setPanelGeometry();
+
+     // Reserve our space on the screen ..........
+     // It's possible that our geometry is not changed, but screen resolution is changed,
+     // so resetting WM_STRUT is still needed. To make it simple, we always do it.
+     updateWmStrut();
+ }
+
+ void UkuiPanel::setFontColor(QColor color, bool save)
+ {
+     mFontColor = color;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+ void UkuiPanel::setBackgroundColor(QColor color, bool save)
+ {
+     mBackgroundColor = color;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+
+ void UkuiPanel::setPosition(int screen, ILXQtPanel::Position position, bool save)
+ {
+     if (mScreenNum == screen &&
+             mPosition == position)
+         return;
+
+     mActualScreenNum = screen;
+     mPosition = position;
+     qDebug()<<mLayout;
+     if(mLayout == nullptr)
+     {
+         return;
+     }
+     mLayout->setPosition(mPosition);
+
+     if (save)
+     {
+         mScreenNum = screen;
+         saveSettings(true);
+     }
+
+     // Qt 5 adds a new class QScreen and add API for setting the screen of a QWindow.
+     // so we had better use it. However, without this, our program should still work
+     // as long as XRandR is used. Since XRandR combined all screens into a large virtual desktop
+     // every screen and their virtual siblings are actually on the same virtual desktop.
+     // So things still work if we don't set the screen correctly, but this is not the case
+     // for other backends, such as the upcoming wayland support. Hence it's better to set it.
+     if(windowHandle())
+     {
+         // QScreen* newScreen = qApp->screens().at(screen);
+         // QScreen* oldScreen = windowHandle()->screen();
+         // const bool shouldRecreate = windowHandle()->handle() && !(oldScreen && oldScreen->virtualSiblings().contains(newScreen));
+         // Q_ASSERT(shouldRecreate == false);
+
+         // NOTE: When you move a window to another screen, Qt 5 might recreate the window as needed
+         // But luckily, this never happen in XRandR, so Qt bug #40681 is not triggered here.
+         // (The only exception is when the old screen is destroyed, Qt always re-create the window and
+         // this corner case triggers #40681.)
+         // When using other kind of multihead settings, such as Xinerama, this might be different and
+         // unless Qt developers can fix their bug, we have no way to workaround that.
+         windowHandle()->setScreen(qApp->screens().at(screen));
+     }
+
+     realign();
+ }
+ void UkuiPanel::updateStyleSheet()
+ {
+     QStringList sheet;
+     sheet << QString("Plugin > QAbstractButton, LXQtTray { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
+     sheet << QString("Plugin > * > QAbstractButton, TrayIcon { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
+
+     if (mFontColor.isValid())
+         sheet << QString("Plugin * { color: " + mFontColor.name() + "; }");
+
+     //QString object = UKuiPanelWidget->objectName();
+
+     if (mBackgroundColor.isValid())
+     {
+         QString color = QString("%1, %2, %3, %4")
+             .arg(mBackgroundColor.red())
+             .arg(mBackgroundColor.green())
+             .arg(mBackgroundColor.blue())
+             .arg((float) mOpacity / 100);
+         sheet << QString("LXQtPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
+     }
+
+     if (QFileInfo(mBackgroundImage).exists())
+         sheet << QString("LXQtPanel #BackgroundWidget { background-image: url('" + mBackgroundImage + "');}");
+
+     setStyleSheet(sheet.join("\n"));
+ }
+
+ bool UkuiPanel::canPlacedOn(int screenNum, UkuiPanel::Position position)
+ {
+     QDesktopWidget* dw = QApplication::desktop();
+
+     switch (position)
+     {
+     case UkuiPanel::PositionTop:
+         for (int i = 0; i < dw->screenCount(); ++i)
+             if (dw->screenGeometry(i).bottom() < dw->screenGeometry(screenNum).top())
+                 return false;
+         return true;
+
+     case UkuiPanel::PositionBottom:
+         for (int i = 0; i < dw->screenCount(); ++i)
+             if (dw->screenGeometry(i).top() > dw->screenGeometry(screenNum).bottom())
+                 return false;
+         return true;
+
+     case UkuiPanel::PositionLeft:
+         for (int i = 0; i < dw->screenCount(); ++i)
+             if (dw->screenGeometry(i).right() < dw->screenGeometry(screenNum).left())
+                 return false;
+         return true;
+
+     case UkuiPanel::PositionRight:
+         for (int i = 0; i < dw->screenCount(); ++i)
+             if (dw->screenGeometry(i).left() > dw->screenGeometry(screenNum).right())
+                 return false;
+         return true;
+     }
+
+     return false;
+ }
 

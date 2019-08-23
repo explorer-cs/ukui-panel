@@ -79,6 +79,8 @@ public:
         void willShowWindow(QWidget * w) override;
         //end
         QScopedPointer<PanelPluginsModel> mPlugins;
+        static bool canPlacedOn(int screenNum, UkuiPanel::Position position);
+
 signals:
     /**
      * @brief This signal gets emitted whenever this panel receives a
@@ -96,6 +98,10 @@ signals:
         void showAddPluginDialog();
         void show();
         void hidePanel();
+        void setPosition(int screen, ILXQtPanel::Position position, bool save);
+        void setFontColor(QColor color, bool save);
+        void setBackgroundColor(QColor color, bool save);
+
 public:
         LXQt::Settings *settings() const { return mSettings; }
         UkuiPanel::Alignment alignment() const { return mAlignment; }
@@ -165,9 +171,11 @@ private :
     QScopedPointer<WindowNotifier> mStandaloneWindows;
 
     QFrame *mUkuiPanelWidget;
+    void updateStyleSheet();
 
 private slots:
 	void setPanelGeometry();
 	void updateWmStrut();
+    void realign();
 };
 #endif // UKUIPANEL_H

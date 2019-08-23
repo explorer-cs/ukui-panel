@@ -73,7 +73,7 @@ private:
     ILXQtPanel::Position mPosition;
 
 
-    //void addPosition(const QString& name, int screen, UkuiPanel::Position position);
+    void addPosition(const QString& name, int screen, UkuiPanel::Position position);
     void fillComboBox_alignment();
     void fillComboBox_icon();
     int indexForPosition(int screen, ILXQtPanel::Position position);
