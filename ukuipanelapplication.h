@@ -16,9 +16,11 @@ public:
 	Q_DECLARE_PRIVATE(UkuiPanelApplication)
 //	Q_DISABLE_COPY(UkuiPanelApplication)
 
-        UkuiPanel*addPanel(const QString& name);
+    UkuiPanel*addPanel(const QString& name);
 
-        bool isPluginSingletonAndRunnig(QString const & pluginId) const;
+    bool isPluginSingletonAndRunnig(QString const & pluginId) const;
+
+    void setIconTheme(const QString &iconTheme);
 
 public slots:
     void addNewPanel();
@@ -33,6 +35,7 @@ signals:
     void pluginRemoved();
 private:
     QList<UkuiPanel*> mPanels;
+    QString mGlobalIconTheme;
 };
 
 class UkuiPanelApplicationPrivate {

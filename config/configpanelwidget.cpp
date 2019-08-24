@@ -44,7 +44,7 @@
 struct ScreenPosition
 {
     int screen;
-    ILXQtPanel::Position position;
+    UkuiPanel::Position position;
 };
 Q_DECLARE_METATYPE(ScreenPosition)
 
@@ -134,7 +134,7 @@ void ConfigPanelWidget::reset()
     ui->spinBox_iconSize->setValue(mOldIconSize);
     ui->spinBox_lineCount->setValue(mOldLineCount);
 
-    ui->comboBox_position->setCurrentIndex(indexForPosition(mOldScreenNum, mOldPosition));
+    //ui->comboBox_position->setCurrentIndex(indexForPosition(mOldScreenNum, mOldPosition));
 
     ui->checkBox_hidable->setChecked(mOldHidable);
 
@@ -171,7 +171,6 @@ void ConfigPanelWidget::reset()
  ************************************************/
 void ConfigPanelWidget::fillComboBox_position()
 {
-
     int screenCount = QApplication::desktop()->screenCount();
     if (screenCount == 1)
     {
@@ -193,7 +192,13 @@ void ConfigPanelWidget::fillComboBox_position()
             addPosition(tr("Bottom of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionBottom);
         }
     }
+}
 
+
+void ConfigPanelWidget::addPosition(const QString& name, int screen, UkuiPanel::Position position)
+{
+    if (UkuiPanel::canPlacedOn(screen, position))
+        ui->comboBox_position->addItem(name, QVariant::fromValue((ScreenPosition){screen, position}));
 }
 
 
@@ -203,13 +208,13 @@ void ConfigPanelWidget::fillComboBox_position()
 void ConfigPanelWidget::fillComboBox_alignment()
 {
     /*
-    ui->comboBox_alignment->setItemData(0, QVariant(LXQtPanel::AlignmentLeft));
-    ui->comboBox_alignment->setItemData(1, QVariant(LXQtPanel::AlignmentCenter));
-    ui->comboBox_alignment->setItemData(2,  QVariant(LXQtPanel::AlignmentRight));
+    ui->comboBox_alignment->setItemData(0, QVariant(UkuiPanel::AlignmentLeft));
+    ui->comboBox_alignment->setItemData(1, QVariant(UkuiPanel::AlignmentCenter));
+    ui->comboBox_alignment->setItemData(2,  QVariant(UkuiPanel::AlignmentRight));
 
 
-    if (mPosition   == ILXQtPanel::PositionTop ||
-        mPosition   == ILXQtPanel::PositionBottom)
+    if (mPosition   == IUkuiPanel::PositionTop ||
+        mPosition   == IUkuiPanel::PositionBottom)
     {
         ui->comboBox_alignment->setItemText(0, tr("Left"));
         ui->comboBox_alignment->setItemText(1, tr("Center"));
@@ -283,18 +288,18 @@ void ConfigPanelWidget::updateIconThemeSettings()
     */
 }
 
-
+/*
 void ConfigPanelWidget::addPosition(const QString& name, int screen, UkuiPanel::Position position)
 {
     if (UkuiPanel::canPlacedOn(screen, position))
         ui->comboBox_position->addItem(name, QVariant::fromValue((ScreenPosition){screen, position}));
 }
-
+*/
 
 /************************************************
  *
  ************************************************/
-int ConfigPanelWidget::indexForPosition(int screen, ILXQtPanel::Position position)
+int ConfigPanelWidget::indexForPosition(int screen, UkuiPanel::Position position)
 {
    /*
     for (int i = 0; i < ui->comboBox_position->count(); i++)
@@ -322,47 +327,45 @@ ConfigPanelWidget::~ConfigPanelWidget()
  ************************************************/
 void ConfigPanelWidget::editChanged()
 {
+    mPanel->setPanelSize(ui->spinBox_panelSize->value(), true);
+    mPanel->setIconSize(ui->spinBox_iconSize->value(), true);
+    mPanel->setLineCount(ui->spinBox_lineCount->value(), true);
 
-//    mPanel->setPanelSize(ui->spinBox_panelSize->value(), true);
-//    mPanel->setIconSize(ui->spinBox_iconSize->value(), true);
-//    mPanel->setLineCount(ui->spinBox_lineCount->value(), true);
+    mPanel->setLength(ui->spinBox_length->value(),
+                      ui->comboBox_lenghtType->currentIndex() == 0,
+                      true);
 
-//    mPanel->setLength(ui->spinBox_length->value(),
-//                      ui->comboBox_lenghtType->currentIndex() == 0,
-//                      true);
+    UkuiPanel::Alignment align = UkuiPanel::Alignment(
+        ui->comboBox_alignment->itemData(
+            ui->comboBox_alignment->currentIndex()
+        ).toInt());
 
-//    LXQtPanel::Alignment align = LXQtPanel::Alignment(
-//        ui->comboBox_alignment->itemData(
-//            ui->comboBox_alignment->currentIndex()
-//        ).toInt());
-
-//    mPanel->setAlignment(align, true);
+    mPanel->setAlignment(align, true);
     mPanel->setPosition(mScreenNum, mPosition, true);
-//    mPanel->setHidable(ui->checkBox_hidable->isChecked(), true);
-//    mPanel->setVisibleMargin(ui->checkBox_visibleMargin->isChecked(), true);
-//    mPanel->setAnimationTime(ui->spinBox_animation->value(), true);
-//    mPanel->setShowDelay(ui->spinBox_delay->value(), true);
+    mPanel->setHidable(ui->checkBox_hidable->isChecked(), true);
+    mPanel->setVisibleMargin(ui->checkBox_visibleMargin->isChecked(), true);
+    mPanel->setAnimationTime(ui->spinBox_animation->value(), true);
+    mPanel->setShowDelay(ui->spinBox_delay->value(), true);
 
     mPanel->setFontColor(ui->checkBox_customFontColor->isChecked() ? mFontColor : QColor(), true);
-//    if (ui->checkBox_customBgColor->isChecked())
-//    {
+    if (ui->checkBox_customBgColor->isChecked())
+    {
         mPanel->setBackgroundColor(mBackgroundColor, true);
-//        mPanel->setOpacity(ui->slider_opacity->value(), true);
-//    }
-//    else
-//    {
-//        mPanel->setBackgroundColor(QColor(), true);
-//        mPanel->setOpacity(100, true);
-//    }
+        mPanel->setOpacity(ui->slider_opacity->value(), true);
+    }
+    else
+    {
+        mPanel->setBackgroundColor(QColor(), true);
+        mPanel->setOpacity(100, true);
+    }
 
-//    QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
-//    mPanel->setBackgroundImage(image, true);
+    QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
+    mPanel->setBackgroundImage(image, true);
 
-//    if (!ui->groupBox_icon->isChecked())
-//        mPanel->setIconTheme(QString());
-//    else if (!ui->comboBox_icon->currentText().isEmpty())
-//        mPanel->setIconTheme(ui->comboBox_icon->currentText());
-
+    if (!ui->groupBox_icon->isChecked())
+        mPanel->setIconTheme(QString());
+    else if (!ui->comboBox_icon->currentText().isEmpty())
+        mPanel->setIconTheme(ui->comboBox_icon->currentText());
 }
 
 
@@ -372,7 +375,6 @@ void ConfigPanelWidget::editChanged()
 void ConfigPanelWidget::widthTypeChanged()
 {
     int max = getMaxLength();
-#if 0
     if (ui->comboBox_lenghtType->currentIndex() == 0)
     {
         // Percents .............................
@@ -387,7 +389,6 @@ void ConfigPanelWidget::widthTypeChanged()
         ui->spinBox_length->setRange(-max, max);
         ui->spinBox_length->setValue(v);
     }
-#endif
 }
 
 
@@ -396,15 +397,13 @@ void ConfigPanelWidget::widthTypeChanged()
  ************************************************/
 int ConfigPanelWidget::getMaxLength()
 {
-#if 0
     QDesktopWidget* dw = QApplication::desktop();
 
-    if (mPosition == ILXQtPanel::PositionTop ||
-        mPosition == ILXQtPanel::PositionBottom)
+    if (mPosition == UkuiPanel::PositionTop ||
+        mPosition == UkuiPanel::PositionBottom)
         return dw->screenGeometry(mScreenNum).width();
     else
         return dw->screenGeometry(mScreenNum).height();
-#endif
 }
 
 
@@ -413,34 +412,32 @@ int ConfigPanelWidget::getMaxLength()
  ************************************************/
 void ConfigPanelWidget::positionChanged()
 {
-#if 0
     ScreenPosition sp = ui->comboBox_position->itemData(
-        ui->comboBox_position->currentIndex()).value<ScreenPosition>();
+    ui->comboBox_position->currentIndex()).value<ScreenPosition>();
 
-        bool updateAlig = (sp.position == ILXQtPanel::PositionTop ||
-        sp.position == ILXQtPanel::PositionBottom) !=
-        (mPosition   == ILXQtPanel::PositionTop ||
-        mPosition   == ILXQtPanel::PositionBottom);
+    bool updateAlig = (sp.position == UkuiPanel::PositionTop ||
+    sp.position == UkuiPanel::PositionBottom) !=
+    (mPosition   == UkuiPanel::PositionTop ||
+    mPosition   == UkuiPanel::PositionBottom);
 
-        int oldMax = getMaxLength();
-        mPosition = sp.position;
-        mScreenNum = sp.screen;
-        int newMax = getMaxLength();
+    int oldMax = getMaxLength();
+    mPosition = sp.position;
+    mScreenNum = sp.screen;
+    int newMax = getMaxLength();
 
-        if (ui->comboBox_lenghtType->currentIndex() == 1 &&
-            oldMax != newMax)
-        {
-            // Pixels ...............................
-            int v = ui->spinBox_length->value() * 1.0 * newMax / oldMax;
-            ui->spinBox_length->setMaximum(newMax);
-            ui->spinBox_length->setValue(v);
-        }
+    if (ui->comboBox_lenghtType->currentIndex() == 1 &&
+        oldMax != newMax)
+    {
+        // Pixels ...............................
+        int v = ui->spinBox_length->value() * 1.0 * newMax / oldMax;
+        ui->spinBox_length->setMaximum(newMax);
+        ui->spinBox_length->setValue(v);
+    }
 
-        if (updateAlig)
-            fillComboBox_alignment();
+    if (updateAlig)
+        fillComboBox_alignment();
 
-        editChanged();
- #endif
+    editChanged();
 }
 
 /************************************************

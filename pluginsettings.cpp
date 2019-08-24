@@ -8,8 +8,13 @@ public:
         , mGroup(group)
     {
     }
+    QString prefix() const
+    {
+        if (!mSubGroups.empty())
+            return mSubGroups.join('/');
+        return QString();
+    }
 
-    QString prefix() const;
     inline QString fullPrefix() const
     {
         return mGroup + "/" + prefix();
@@ -30,5 +35,14 @@ PluginSettings::PluginSettings(LXQt::Settings* settings, const QString &group, Q
 PluginSettings* PluginSettingsFactory::create(LXQt::Settings *settings, const QString &group, QObject *parent/* = nullptr*/)
 {
     return new PluginSettings{settings, group, parent};
+}
+
+QVariant PluginSettings::value(const QString &key, const QVariant &defaultValue) const
+{
+    Q_D(const PluginSettings);
+    d->mSettings->beginGroup(d->fullPrefix());
+    QVariant value = d->mSettings->value(key, defaultValue);
+    d->mSettings->endGroup();
+    return value;
 }
 

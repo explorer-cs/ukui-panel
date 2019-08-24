@@ -11,6 +11,7 @@
 #include <QRect>
 #include <QPropertyAnimation>
 #include "panel/ukuipanellayout.h"
+#include "panel/lxqtpanellimits.h"
 
 #define CFG_KEY_PLUGINS            	"plugins"
 #define PLUGIN_DESKTOPS_DIR		"/usr/share/lxqt/lxqt-panel/"   //临时位置，后面要获取安装目录 set(PLUGIN_DESKTOPS_DIR \"${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROJECT}\")
@@ -39,11 +40,10 @@ public:
         ~UkuiPanel();
         /*show menu*/
         void showUkuiMenu(Plugin *plugin = 0);
-        /*calc pos*/
-        //QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const;
-        //ILXQtPanel::Position position() const override { return mPosition; }
-        //void willShowWindow(QWidget * w);
+
         void saveSettings(bool _bVar = false);
+
+        static bool canPlacedOn(int screenNum, UkuiPanel::Position position);
 
         /*ui parameter set*/
         // Settings
@@ -61,8 +61,27 @@ public:
         bool visibleMargin() const { return mVisibleMargin; }
         int animationTime() const { return mAnimationTime; }
         int showDelay() const { return mShowDelayTimer.interval(); }
+        void realign();
+        /*set panel attribute*/
+        void setPanelSize(int value, bool save);
+        void setIconSize(int value, bool save); //!< \sa setPanelSize()
+        void setLineCount(int value, bool save); //!< \sa setPanelSize()
+        void setLength(int length, bool inPercents, bool save); //!< \sa setPanelSize()
+        void setPosition(int screen, ILXQtPanel::Position position, bool save); //!< \sa setPanelSize()
+        void setAlignment(UkuiPanel::Alignment value, bool save); //!< \sa setPanelSize()
+        void setFontColor(QColor color, bool save); //!< \sa setPanelSize()
+        void setBackgroundColor(QColor color, bool save); //!< \sa setPanelSize()
+        void setBackgroundImage(QString path, bool save); //!< \sa setPanelSize()
+        void setOpacity(int opacity, bool save); //!< \sa setPanelSize()
+        void setReserveSpace(bool reserveSpace, bool save); //!< \sa setPanelSize()
+        void setHidable(bool hidable, bool save); //!< \sa setPanelSize()
+        void setVisibleMargin(bool visibleMargin, bool save); //!< \sa setPanelSize()
+        void setAnimationTime(int animationTime, bool save); //!< \sa setPanelSize()
+        void setShowDelay(int showDelay, bool save); //!< \sa setPanelSize()
+        void setIconTheme(const QString& iconTheme);
+        void updateStyleSheet();
 
-        void setReserveSpace(bool reserveSpace, bool save);
+         void updateConfigDialog() const;
 
         bool isPluginSingletonAndRunnig(QString const & pluginId) const;
         void pluginFlagsChanged(const ILXQtPanelPlugin * plugin);
@@ -79,8 +98,6 @@ public:
         void willShowWindow(QWidget * w) override;
         //end
         QScopedPointer<PanelPluginsModel> mPlugins;
-        static bool canPlacedOn(int screenNum, UkuiPanel::Position position);
-
 signals:
     /**
      * @brief This signal gets emitted whenever this panel receives a
@@ -98,10 +115,6 @@ signals:
         void showAddPluginDialog();
         void show();
         void hidePanel();
-        void setPosition(int screen, ILXQtPanel::Position position, bool save);
-        void setFontColor(QColor color, bool save);
-        void setBackgroundColor(QColor color, bool save);
-
 public:
         LXQt::Settings *settings() const { return mSettings; }
         UkuiPanel::Alignment alignment() const { return mAlignment; }
@@ -115,67 +128,69 @@ private :
 
 	void loadPlugins();
 
+        void setPanelGeometry(bool animate = false);
+
 	QStringList pluginDesktopDirs();
 
 	LXQt::Settings *mSettings;
 
-    int mPanelSize;
+        int mPanelSize;
 
-    int mIconSize;
+        int mIconSize;
 
-    int mLineCount;
+        int mLineCount;
 
-    int mLength;
+        int mLength;
 
-    bool mLengthInPercents;
+        bool mLengthInPercents;
 
-    Alignment mAlignment;
+        Alignment mAlignment;
 
-    ILXQtPanel::Position mPosition;
+        ILXQtPanel::Position mPosition;
 
-    int mScreenNum;
+        int mScreenNum;
 
-    int mActualScreenNum;
+        int mActualScreenNum;
 
-    QTimer mDelaySave;
+        QTimer mDelaySave;
 
-    bool mHidable;
+        bool mHidable;
 
-    bool mVisibleMargin;
+        bool mVisibleMargin;
 
-    bool mHidden;
+        bool mHidden;
 
-    QTimer mHideTimer;
+        QTimer mHideTimer;
 
-    int mAnimationTime;
+        int mAnimationTime;
 
-    QTimer mShowDelayTimer;
+        QTimer mShowDelayTimer;
 
-    QColor mFontColor; //!< Font color that is used in the style sheet.
-    QColor mBackgroundColor; //!< Background color that is used in the style sheet.
-    QString mBackgroundImage; //!< Background image that is used in the style sheet.
+        QColor mFontColor; //!< Font color that is used in the style sheet.
+        QColor mBackgroundColor; //!< Background color that is used in the style sheet.
+        QString mBackgroundImage; //!< Background image that is used in the style sheet.
 
-    int mOpacity;
+        int mOpacity;
 
-    bool mReserveSpace;
+        bool mReserveSpace;
 
-    QPointer<ConfigPanelDialog> mConfigDialog;
+        QPointer<ConfigPanelDialog> mConfigDialog;
 
 
-    QPropertyAnimation *mAnimation;
+        QPropertyAnimation *mAnimation;
 
-    bool mLockPanel;
+        bool mLockPanel;
 
-    UkuiPanelLayout* mLayout;
+        UkuiPanelLayout* mLayout;
 
-    QScopedPointer<WindowNotifier> mStandaloneWindows;
+        QScopedPointer<WindowNotifier> mStandaloneWindows;
 
-    QFrame *mUkuiPanelWidget;
-    void updateStyleSheet();
+        QFrame *mUkuiPanelWidget;
+        void setMargins();
+
 
 private slots:
-	void setPanelGeometry();
+        //void setPanelGeometry();
 	void updateWmStrut();
-    void realign();
 };
 #endif // UKUIPANEL_H

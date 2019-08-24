@@ -152,7 +152,7 @@ void UkuiPanel::show()
 
 bool UkuiPanel::event(QEvent *event)
 {
-    qDebug() <<  "UkuiPanel::event";
+    //qDebug() <<  "UkuiPanel::event";
     switch (event->type())
     {
     case QEvent::ContextMenu:
@@ -196,10 +196,12 @@ bool UkuiPanel::event(QEvent *event)
 void UkuiPanel::showEvent(QShowEvent *event)
 {
 	qDebug() << "UkuiPanel::showEvent";
-	setPanelGeometry();
+    setPanelGeometry();
 	updateWmStrut();
 }
-void UkuiPanel::setPanelGeometry()
+/*old ukui-panel*/
+/*
+void UkuiPanel::setPanelGeometry(bool animate)
 {
 	qDebug() << "UkuiPanel::setPanelGeometry";
 	const QRect currentScreen = QApplication::desktop()->screenGeometry();
@@ -214,6 +216,294 @@ void UkuiPanel::setPanelGeometry()
         this->setGeometry(rect);
 
 }
+*/
+/*  ok 但是任务栏显示的位置不对
+void UkuiPanel::setPanelGeometry(bool animate)
+{
+    const QRect currentScreen = QApplication::desktop()->screenGeometry(mActualScreenNum);
+    QRect rect;
+
+    if (isHorizontal())
+    {
+        // Horiz panel ***************************
+        rect.setHeight(qMax(16, mPanelSize));
+        if (mLengthInPercents)
+            rect.setWidth(currentScreen.width() * mLength / 100.0);
+        else
+        {
+            if (mLength <= 0)
+                rect.setWidth(currentScreen.width() + mLength);
+            else
+                rect.setWidth(mLength);
+        }
+
+        rect.setWidth(qMax(rect.size().width(), mLayout->minimumSize().width()));
+
+        // Horiz ......................
+        switch (mAlignment)
+        {
+        case UkuiPanel::AlignmentLeft:
+            rect.moveLeft(currentScreen.left());
+            break;
+
+        case UkuiPanel::AlignmentCenter:
+            rect.moveCenter(currentScreen.center());
+            break;
+
+        case UkuiPanel::AlignmentRight:
+            rect.moveRight(currentScreen.right());
+            break;
+        }
+
+        // Vert .......................
+        if (mPosition == ILXQtPanel::PositionTop)
+        {
+            if (mHidden)
+                rect.moveBottom(currentScreen.top() + 4 - 1);
+            else
+                rect.moveTop(currentScreen.top());
+        }
+        else
+        {
+            if (mHidden)
+                rect.moveTop(currentScreen.bottom() - 4 + 1);
+            else
+                rect.moveBottom(currentScreen.bottom());
+        }
+    }
+    else
+    {
+        // Vert panel ***************************
+        rect.setWidth(qMax(16, mPanelSize));
+        if (mLengthInPercents)
+            rect.setHeight(currentScreen.height() * mLength / 100.0);
+        else
+        {
+            if (mLength <= 0)
+                rect.setHeight(currentScreen.height() + mLength);
+            else
+                rect.setHeight(mLength);
+        }
+
+        rect.setHeight(qMax(rect.size().height(), mLayout->minimumSize().height()));
+
+        // Vert .......................
+        switch (mAlignment)
+        {
+        case UkuiPanel::AlignmentLeft:
+            rect.moveTop(currentScreen.top());
+            break;
+
+        case UkuiPanel::AlignmentCenter:
+            rect.moveCenter(currentScreen.center());
+            break;
+
+        case UkuiPanel::AlignmentRight:
+            rect.moveBottom(currentScreen.bottom());
+            break;
+        }
+
+        // Horiz ......................
+        if (mPosition == ILXQtPanel::PositionLeft)
+        {
+            if (mHidden)
+                rect.moveRight(currentScreen.left() + 4 - 1);
+            else
+                rect.moveLeft(currentScreen.left());
+        }
+        else
+        {
+            if (mHidden)
+                rect.moveLeft(currentScreen.right() - 4 + 1);
+            else
+                rect.moveRight(currentScreen.right());
+        }
+    }
+    if (rect != geometry())
+    {
+        setFixedSize(rect.size());
+        if (animate)
+        {
+            if (mAnimation == nullptr)
+            {
+                mAnimation = new QPropertyAnimation(this, "geometry");
+                mAnimation->setEasingCurve(QEasingCurve::Linear);
+                //Note: for hiding, the margins are set after animation is finished
+                connect(mAnimation, &QAbstractAnimation::finished, [this] { if (mHidden) setMargins(); });
+            }
+            mAnimation->setDuration(mAnimationTime);
+            mAnimation->setStartValue(geometry());
+            mAnimation->setEndValue(rect);
+            //Note: for showing-up, the margins are removed instantly
+            if (!mHidden)
+                setMargins();
+            mAnimation->start();
+        }
+        else
+        {
+            setMargins();
+            setGeometry(rect);
+        }
+    }
+}
+*/
+
+void UkuiPanel::setPanelGeometry(bool animate)
+{
+    const QRect currentScreen = QApplication::desktop()->screenGeometry(mActualScreenNum);
+    QRect rect;
+
+    if (isHorizontal())
+    {
+        // Horiz panel ***************************
+        rect.setHeight(qMax(PANEL_MINIMUM_SIZE, mPanelSize));
+        if (mLengthInPercents)
+            rect.setWidth(currentScreen.width() * mLength / 100.0);
+        else
+        {
+            if (mLength <= 0)
+                rect.setWidth(currentScreen.width() + mLength);
+            else
+                rect.setWidth(mLength);
+        }
+
+        rect.setWidth(qMax(rect.size().width(), mLayout->minimumSize().width()));
+
+        // Horiz ......................
+        switch (mAlignment)
+        {
+        case UkuiPanel::AlignmentLeft:
+            rect.moveLeft(currentScreen.left());
+            break;
+
+        case UkuiPanel::AlignmentCenter:
+            rect.moveCenter(currentScreen.center());
+            break;
+
+        case UkuiPanel::AlignmentRight:
+            rect.moveRight(currentScreen.right());
+            break;
+        }
+
+        // Vert .......................
+        if (mPosition == ILXQtPanel::PositionTop)
+        {
+            if (mHidden)
+                rect.moveBottom(currentScreen.top() + PANEL_HIDE_SIZE - 1);
+            else
+                rect.moveTop(currentScreen.top());
+        }
+        else
+        {
+            if (mHidden)
+                rect.moveTop(currentScreen.bottom() - PANEL_HIDE_SIZE + 1);
+            else
+                rect.moveBottom(currentScreen.bottom());
+        }
+    }
+    else
+    {
+        // Vert panel ***************************
+        rect.setWidth(qMax(PANEL_MINIMUM_SIZE, mPanelSize));
+        if (mLengthInPercents)
+            rect.setHeight(currentScreen.height() * mLength / 100.0);
+        else
+        {
+            if (mLength <= 0)
+                rect.setHeight(currentScreen.height() + mLength);
+            else
+                rect.setHeight(mLength);
+        }
+
+        rect.setHeight(qMax(rect.size().height(), mLayout->minimumSize().height()));
+
+        // Vert .......................
+        switch (mAlignment)
+        {
+        case UkuiPanel::AlignmentLeft:
+            rect.moveTop(currentScreen.top());
+            break;
+
+        case UkuiPanel::AlignmentCenter:
+            rect.moveCenter(currentScreen.center());
+            break;
+
+        case UkuiPanel::AlignmentRight:
+            rect.moveBottom(currentScreen.bottom());
+            break;
+        }
+
+        // Horiz ......................
+        if (mPosition == ILXQtPanel::PositionLeft)
+        {
+            if (mHidden)
+                rect.moveRight(currentScreen.left() + PANEL_HIDE_SIZE - 1);
+            else
+                rect.moveLeft(currentScreen.left());
+        }
+        else
+        {
+            if (mHidden)
+                rect.moveLeft(currentScreen.right() - PANEL_HIDE_SIZE + 1);
+            else
+                rect.moveRight(currentScreen.right());
+        }
+    }
+    if (rect != geometry())
+    {
+        setFixedSize(rect.size());
+        if (animate)
+        {
+            if (mAnimation == nullptr)
+            {
+                mAnimation = new QPropertyAnimation(this, "geometry");
+                mAnimation->setEasingCurve(QEasingCurve::Linear);
+                //Note: for hiding, the margins are set after animation is finished
+                connect(mAnimation, &QAbstractAnimation::finished, [this] { if (mHidden) setMargins(); });
+            }
+            mAnimation->setDuration(mAnimationTime);
+            mAnimation->setStartValue(geometry());
+            mAnimation->setEndValue(rect);
+            //Note: for showing-up, the margins are removed instantly
+            if (!mHidden)
+                setMargins();
+            mAnimation->start();
+        }
+        else
+        {
+            setMargins();
+            setGeometry(rect);
+        }
+    }
+}
+void UkuiPanel::setMargins()
+{
+    if (mHidden)
+    {
+        if (isHorizontal())
+        {
+            if (mPosition == ILXQtPanel::PositionTop)
+                mLayout->setContentsMargins(0, 0, 0, 4);
+            else
+                mLayout->setContentsMargins(0, 4, 0, 0);
+        }
+        else
+        {
+            if (mPosition == ILXQtPanel::PositionLeft)
+                mLayout->setContentsMargins(0, 0, 4, 0);
+            else
+                mLayout->setContentsMargins(4, 0, 0, 0);
+        }
+        if (!mVisibleMargin)
+            setWindowOpacity(0.0);
+    }
+    else {
+        mLayout->setContentsMargins(0, 0, 0, 0);
+        if (!mVisibleMargin)
+            setWindowOpacity(1.0);
+    }
+}
+
 void UkuiPanel::updateWmStrut()
 {
 	WId wid = effectiveWinId();
@@ -449,6 +739,70 @@ void UkuiPanel::showConfigDialog()
     KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
 }
 
+
+bool UkuiPanel::canPlacedOn(int screenNum, UkuiPanel::Position position)
+{
+    QDesktopWidget* dw = QApplication::desktop();
+
+    switch (position)
+    {
+    case UkuiPanel::PositionTop:
+        for (int i = 0; i < dw->screenCount(); ++i)
+            if (dw->screenGeometry(i).bottom() < dw->screenGeometry(screenNum).top())
+                return false;
+        return true;
+
+    case UkuiPanel::PositionBottom:
+        for (int i = 0; i < dw->screenCount(); ++i)
+            if (dw->screenGeometry(i).top() > dw->screenGeometry(screenNum).bottom())
+                return false;
+        return true;
+
+    case UkuiPanel::PositionLeft:
+        for (int i = 0; i < dw->screenCount(); ++i)
+            if (dw->screenGeometry(i).right() < dw->screenGeometry(screenNum).left())
+                return false;
+        return true;
+
+    case UkuiPanel::PositionRight:
+        for (int i = 0; i < dw->screenCount(); ++i)
+            if (dw->screenGeometry(i).left() > dw->screenGeometry(screenNum).right())
+                return false;
+        return true;
+    }
+
+    return false;
+}
+
+
+/************************************************
+
+ ************************************************/
+void UkuiPanel::setPanelSize(int value, bool save)
+{
+    if (mPanelSize != value)
+    {
+        mPanelSize = value;
+        realign();
+
+        if (save)
+            saveSettings(true);
+    }
+}
+
+void UkuiPanel::realign()
+{
+    if (!isVisible())
+        return;
+    setPanelGeometry();
+
+    // Reserve our space on the screen ..........
+    // It's possible that our geometry is not changed, but screen resolution is changed,
+    // so resetting WM_STRUT is still needed. To make it simple, we always do it.
+    updateWmStrut();
+}
+
+
 void UkuiPanel::showAddPluginDialog()
 {
     if (mConfigDialog.isNull())
@@ -529,49 +883,66 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
      */
  }
 
- void UkuiPanel::realign()
+
+ void UkuiPanel::setIconSize(int value, bool save)
  {
-     if (!isVisible())
+     if (mIconSize != value)
+     {
+         mIconSize = value;
+         updateStyleSheet();
+         mLayout->setLineSize(mIconSize);
+
+         if (save)
+             saveSettings(true);
+
+         realign();
+     }
+ }
+
+
+ /************************************************
+
+  ************************************************/
+ void UkuiPanel::setLineCount(int value, bool save)
+ {
+     if (mLineCount != value)
+     {
+         mLineCount = value;
+         mLayout->setEnabled(false);
+         mLayout->setLineCount(mLineCount);
+         mLayout->setEnabled(true);
+
+         if (save)
+             saveSettings(true);
+
+         realign();
+     }
+ }
+
+
+ /************************************************
+
+  ************************************************/
+ void UkuiPanel::setLength(int length, bool inPercents, bool save)
+ {
+     if (mLength == length &&
+             mLengthInPercents == inPercents)
          return;
- #if 0
-     qDebug() << "** Realign *********************";
-     qDebug() << "PanelSize:   " << mPanelSize;
-     qDebug() << "IconSize:      " << mIconSize;
-     qDebug() << "LineCount:     " << mLineCount;
-     qDebug() << "Length:        " << mLength << (mLengthInPercents ? "%" : "px");
-     qDebug() << "Alignment:     " << (mAlignment == 0 ? "center" : (mAlignment < 0 ? "left" : "right"));
-     qDebug() << "Position:      " << positionToStr(mPosition) << "on" << mScreenNum;
-     qDebug() << "Plugins count: " << mPlugins.count();
- #endif
 
-     setPanelGeometry();
-
-     // Reserve our space on the screen ..........
-     // It's possible that our geometry is not changed, but screen resolution is changed,
-     // so resetting WM_STRUT is still needed. To make it simple, we always do it.
-     updateWmStrut();
- }
-
- void UkuiPanel::setFontColor(QColor color, bool save)
- {
-     mFontColor = color;
-     updateStyleSheet();
+     mLength = length;
+     mLengthInPercents = inPercents;
 
      if (save)
          saveSettings(true);
- }
 
- void UkuiPanel::setBackgroundColor(QColor color, bool save)
- {
-     mBackgroundColor = color;
-     updateStyleSheet();
-
-     if (save)
-         saveSettings(true);
+     realign();
  }
 
 
- void UkuiPanel::setPosition(int screen, ILXQtPanel::Position position, bool save)
+ /************************************************
+
+  ************************************************/
+ void UkuiPanel::setPosition(int screen, UkuiPanel::Position position, bool save)
  {
      if (mScreenNum == screen &&
              mPosition == position)
@@ -579,11 +950,6 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
 
      mActualScreenNum = screen;
      mPosition = position;
-     qDebug()<<mLayout;
-     if(mLayout == nullptr)
-     {
-         return;
-     }
      mLayout->setPosition(mPosition);
 
      if (save)
@@ -616,6 +982,73 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
 
      realign();
  }
+
+ /************************************************
+  *
+  ************************************************/
+ void UkuiPanel::setAlignment(Alignment value, bool save)
+ {
+     if (mAlignment == value)
+         return;
+
+     mAlignment = value;
+
+     if (save)
+         saveSettings(true);
+
+     realign();
+ }
+
+ /************************************************
+  *
+  ************************************************/
+ void UkuiPanel::setFontColor(QColor color, bool save)
+ {
+     mFontColor = color;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+ /************************************************
+
+  ************************************************/
+ void UkuiPanel::setBackgroundColor(QColor color, bool save)
+ {
+     mBackgroundColor = color;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+ /************************************************
+
+  ************************************************/
+ void UkuiPanel::setBackgroundImage(QString path, bool save)
+ {
+     mBackgroundImage = path;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+
+ /************************************************
+  *
+  ************************************************/
+ void UkuiPanel::setOpacity(int opacity, bool save)
+ {
+     mOpacity = opacity;
+     updateStyleSheet();
+
+     if (save)
+         saveSettings(true);
+ }
+
+
  void UkuiPanel::updateStyleSheet()
  {
      QStringList sheet;
@@ -625,7 +1058,7 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
      if (mFontColor.isValid())
          sheet << QString("Plugin * { color: " + mFontColor.name() + "; }");
 
-     //QString object = UKuiPanelWidget->objectName();
+     QString object = mUkuiPanelWidget->objectName();
 
      if (mBackgroundColor.isValid())
      {
@@ -634,46 +1067,83 @@ bool UkuiPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
              .arg(mBackgroundColor.green())
              .arg(mBackgroundColor.blue())
              .arg((float) mOpacity / 100);
-         sheet << QString("LXQtPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
+         sheet << QString("UkuiPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
      }
 
      if (QFileInfo(mBackgroundImage).exists())
-         sheet << QString("LXQtPanel #BackgroundWidget { background-image: url('" + mBackgroundImage + "');}");
+         sheet << QString("UkuiPanel #BackgroundWidget { background-image: url('" + mBackgroundImage + "');}");
 
      setStyleSheet(sheet.join("\n"));
  }
 
- bool UkuiPanel::canPlacedOn(int screenNum, UkuiPanel::Position position)
+ void UkuiPanel::setVisibleMargin(bool visibleMargin, bool save)
  {
-     QDesktopWidget* dw = QApplication::desktop();
+     if (mVisibleMargin == visibleMargin)
+         return;
 
-     switch (position)
-     {
-     case UkuiPanel::PositionTop:
-         for (int i = 0; i < dw->screenCount(); ++i)
-             if (dw->screenGeometry(i).bottom() < dw->screenGeometry(screenNum).top())
-                 return false;
-         return true;
+     mVisibleMargin = visibleMargin;
 
-     case UkuiPanel::PositionBottom:
-         for (int i = 0; i < dw->screenCount(); ++i)
-             if (dw->screenGeometry(i).top() > dw->screenGeometry(screenNum).bottom())
-                 return false;
-         return true;
+     if (save)
+         saveSettings(true);
 
-     case UkuiPanel::PositionLeft:
-         for (int i = 0; i < dw->screenCount(); ++i)
-             if (dw->screenGeometry(i).right() < dw->screenGeometry(screenNum).left())
-                 return false;
-         return true;
-
-     case UkuiPanel::PositionRight:
-         for (int i = 0; i < dw->screenCount(); ++i)
-             if (dw->screenGeometry(i).left() > dw->screenGeometry(screenNum).right())
-                 return false;
-         return true;
-     }
-
-     return false;
+     realign();
  }
+
+
+ void UkuiPanel::setAnimationTime(int animationTime, bool save)
+ {
+     if (mAnimationTime == animationTime)
+         return;
+
+     mAnimationTime = animationTime;
+
+     if (save)
+         saveSettings(true);
+ }
+
+ void UkuiPanel::setShowDelay(int showDelay, bool save)
+ {
+     if (mShowDelayTimer.interval() == showDelay)
+         return;
+
+     mShowDelayTimer.setInterval(showDelay);
+
+     if (save)
+         saveSettings(true);
+ }
+
+
+ void UkuiPanel::setHidable(bool hidable, bool save)
+ {
+     if (mHidable == hidable)
+         return;
+
+     mHidable = hidable;
+
+     if (save)
+         saveSettings(true);
+
+     realign();
+ }
+
+ void UkuiPanel::setIconTheme(const QString& iconTheme)
+ {
+     UkuiPanelApplication *a = reinterpret_cast<UkuiPanelApplication*>(qApp);
+     a->setIconTheme(iconTheme);
+ }
+
+
+ void UkuiPanel::updateConfigDialog() const
+ {
+     if (!mConfigDialog.isNull() && mConfigDialog->isVisible())
+     {
+         mConfigDialog->updateIconThemeSettings();
+         const QList<QWidget*> widgets = mConfigDialog->findChildren<QWidget*>();
+         for (QWidget *widget : widgets)
+             widget->update();
+     }
+ }
+
+
+
 

@@ -11,6 +11,7 @@ public:
 	PluginSettings(LXQt::Settings *settings, const QString &group, QObject *parent = nullptr);
 	QScopedPointer<PluginSettingsPrivate> d_ptr;
 	Q_DECLARE_PRIVATE(PluginSettings)
+    QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
 
 /*signals:
     void settingsChanged();*/

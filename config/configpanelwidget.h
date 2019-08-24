@@ -51,6 +51,8 @@ public:
     ILXQtPanel::Position position() const { return mPosition; }
     void updateIconThemeSettings();
     void fillComboBox_position();
+    void addPosition(const QString& name, int screen, UkuiPanel::Position position);
+    bool canPlacedOn(int screenNum, UkuiPanel::Position position);
 
 signals:
     void changed();
@@ -73,7 +75,7 @@ private:
     ILXQtPanel::Position mPosition;
 
 
-    void addPosition(const QString& name, int screen, UkuiPanel::Position position);
+    //void addPosition(const QString& name, int screen, UkuiPanel::Position position);
     void fillComboBox_alignment();
     void fillComboBox_icon();
     int indexForPosition(int screen, ILXQtPanel::Position position);

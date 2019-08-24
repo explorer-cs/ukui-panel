@@ -1032,12 +1032,7 @@ void UkuiPanelLayout::moveUpPlugin(Plugin * plugin)
  ************************************************/
 void UkuiPanelLayout::addPlugin(Plugin * plugin)
 {
-	printf("--------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    qDebug()<<"Plugin Add from here!!!!!!!!!!!!!!";
-//    qDebug()<<plugin->name();
-    qDebug()<<"Plugin is"<<plugin->name();
-    printf("Plugin Add from here!!!!!!!!!!!!!!");
-    printf("Plugin is =====%s\n",plugin->name());
+
     connect(plugin, &Plugin::startMove, this, &UkuiPanelLayout::startMovePlugin);
 
     const int prev_count = count();

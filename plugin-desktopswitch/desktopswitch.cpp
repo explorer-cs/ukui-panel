@@ -57,8 +57,8 @@ DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
 
     mLayout = new LXQt::GridLayout(&mWidget);
     mWidget.setLayout(mLayout);
-    QLabel *label = new QLabel("桌面切換");
-    mWidget.layout()->addWidget(label);
+//    QLabel *label = new QLabel("桌面切換");
+//    mWidget.layout()->addWidget(label);
     settingsChanged();
 
     onCurrentDesktopChanged(KWindowSystem::currentDesktop());
@@ -235,7 +235,6 @@ void DesktopSwitch::onDesktopNamesChanged()
 
 void DesktopSwitch::settingsChanged()
 {
-    /*
     int value = settings()->value("rows", 1).toInt();
     if (mRows != value)
     {
@@ -248,7 +247,6 @@ void DesktopSwitch::settingsChanged()
         mLabelType = static_cast<DesktopSwitchButton::LabelType>(value);
         refresh();
     }
-    */
 }
 
 void DesktopSwitch::realign()

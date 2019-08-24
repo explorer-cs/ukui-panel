@@ -72,6 +72,25 @@ bool UkuiPanelApplication::isPluginSingletonAndRunnig(QString const & pluginId) 
     return false;
 }
 
+// See LXQtPanelApplication::LXQtPanelApplication for why this isn't good.
+void UkuiPanelApplication::setIconTheme(const QString &iconTheme)
+{
+    Q_D(UkuiPanelApplication);
+
+    d->mSettings->setValue("iconTheme", iconTheme == mGlobalIconTheme ? QString() : iconTheme);
+    QString newTheme = iconTheme.isEmpty() ? mGlobalIconTheme : iconTheme;
+    if (newTheme != QIcon::themeName())
+    {
+        QIcon::setThemeName(newTheme);
+        for(UkuiPanel* panel : qAsConst(mPanels))
+        {
+            panel->update();
+            panel->updateConfigDialog();
+        }
+    }
+}
+
+
 void UkuiPanelApplication::addNewPanel()
 {
 
