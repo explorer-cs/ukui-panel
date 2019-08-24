@@ -3,6 +3,7 @@ plugin.cpp.*
 ukui-panel
 *.o
 *.swp
-*CMakeFiles*
+CMakeLists.txt.user
+build
 Makefile
 .qmake.stash
