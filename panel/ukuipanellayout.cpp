@@ -1047,12 +1047,7 @@ void UKUIPanelLayout::moveUpPlugin(Plugin * plugin)
  ************************************************/
 void UKUIPanelLayout::addPlugin(Plugin * plugin)
 {
-<<<<<<< HEAD
     connect(plugin, &Plugin::startMove, this, &UKUIPanelLayout::startMovePlugin);
-=======
-
-    connect(plugin, &Plugin::startMove, this, &UkuiPanelLayout::startMovePlugin);
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890
 
     const int prev_count = count();
     addWidget(plugin);

@@ -44,11 +44,7 @@ using namespace LXQt;
 struct ScreenPosition
 {
     int screen;
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
     IUKUIPanel::Position position;
-=======
-    UkuiPanel::Position position;
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 };
 Q_DECLARE_METATYPE(ScreenPosition)
 
@@ -169,17 +165,10 @@ void ConfigPanelWidget::fillComboBox_position()
     int screenCount = QApplication::desktop()->screenCount();
     if (screenCount == 1)
     {
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
         addPosition(tr("Top of desktop"), 0, UKUIPanel::PositionTop);
         addPosition(tr("Left of desktop"), 0, UKUIPanel::PositionLeft);
         addPosition(tr("Right of desktop"), 0, UKUIPanel::PositionRight);
         addPosition(tr("Bottom of desktop"), 0, UKUIPanel::PositionBottom);
-=======
-        addPosition(tr("Top of desktop"), 0, UkuiPanel::PositionTop);
-        addPosition(tr("Left of desktop"), 0, UkuiPanel::PositionLeft);
-        addPosition(tr("Right of desktop"), 0, UkuiPanel::PositionRight);
-        addPosition(tr("Bottom of desktop"), 0, UkuiPanel::PositionBottom);
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
     }
     else
     {
@@ -188,28 +177,12 @@ void ConfigPanelWidget::fillComboBox_position()
             if (screenNum)
                 ui->comboBox_position->insertSeparator(9999);
 
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
             addPosition(tr("Top of desktop %1").arg(screenNum +1), screenNum, UKUIPanel::PositionTop);
             addPosition(tr("Left of desktop %1").arg(screenNum +1), screenNum, UKUIPanel::PositionLeft);
             addPosition(tr("Right of desktop %1").arg(screenNum +1), screenNum, UKUIPanel::PositionRight);
             addPosition(tr("Bottom of desktop %1").arg(screenNum +1), screenNum, UKUIPanel::PositionBottom);
         }
     }
-=======
-            addPosition(tr("Top of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionTop);
-            addPosition(tr("Left of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionLeft);
-            addPosition(tr("Right of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionRight);
-            addPosition(tr("Bottom of desktop %1").arg(screenNum +1), screenNum, UkuiPanel::PositionBottom);
-        }
-    }
-}
-
-
-void ConfigPanelWidget::addPosition(const QString& name, int screen, UkuiPanel::Position position)
-{
-    if (UkuiPanel::canPlacedOn(screen, position))
-        ui->comboBox_position->addItem(name, QVariant::fromValue((ScreenPosition){screen, position}));
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 }
 
 
@@ -218,7 +191,6 @@ void ConfigPanelWidget::addPosition(const QString& name, int screen, UkuiPanel::
  ************************************************/
 void ConfigPanelWidget::fillComboBox_alignment()
 {
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
     ui->comboBox_alignment->setItemData(0, QVariant(UKUIPanel::AlignmentLeft));
     ui->comboBox_alignment->setItemData(1, QVariant(UKUIPanel::AlignmentCenter));
     ui->comboBox_alignment->setItemData(2,  QVariant(UKUIPanel::AlignmentRight));
@@ -226,16 +198,6 @@ void ConfigPanelWidget::fillComboBox_alignment()
 
     if (mPosition   == IUKUIPanel::PositionTop ||
         mPosition   == IUKUIPanel::PositionBottom)
-=======
-    /*
-    ui->comboBox_alignment->setItemData(0, QVariant(UkuiPanel::AlignmentLeft));
-    ui->comboBox_alignment->setItemData(1, QVariant(UkuiPanel::AlignmentCenter));
-    ui->comboBox_alignment->setItemData(2,  QVariant(UkuiPanel::AlignmentRight));
-
-
-    if (mPosition   == IUkuiPanel::PositionTop ||
-        mPosition   == IUkuiPanel::PositionBottom)
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
     {
         ui->comboBox_alignment->setItemText(0, tr("Left"));
         ui->comboBox_alignment->setItemText(1, tr("Center"));
@@ -255,11 +217,7 @@ void ConfigPanelWidget::fillComboBox_alignment()
  ************************************************/
 void ConfigPanelWidget::addPosition(const QString& name, int screen, UKUIPanel::Position position)
 {
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
     if (UKUIPanel::canPlacedOn(screen, position))
-=======
-    if (UkuiPanel::canPlacedOn(screen, position))
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
         ui->comboBox_position->addItem(name, QVariant::fromValue((ScreenPosition){screen, position}));
 }
 
@@ -267,11 +225,7 @@ void ConfigPanelWidget::addPosition(const QString& name, int screen, UKUIPanel::
 /************************************************
  *
  ************************************************/
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
 int ConfigPanelWidget::indexForPosition(int screen, IUKUIPanel::Position position)
-=======
-int ConfigPanelWidget::indexForPosition(int screen, UkuiPanel::Position position)
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 {
     for (int i = 0; i < ui->comboBox_position->count(); i++)
     {
@@ -305,11 +259,7 @@ void ConfigPanelWidget::editChanged()
                       ui->comboBox_lenghtType->currentIndex() == 0,
                       true);
 
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
     UKUIPanel::Alignment align = UKUIPanel::Alignment(
-=======
-    UkuiPanel::Alignment align = UkuiPanel::Alignment(
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
         ui->comboBox_alignment->itemData(
             ui->comboBox_alignment->currentIndex()
         ).toInt());
@@ -334,14 +284,6 @@ void ConfigPanelWidget::editChanged()
 
     QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
     mPanel->setBackgroundImage(image, true);
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
-=======
-
-    if (!ui->groupBox_icon->isChecked())
-        mPanel->setIconTheme(QString());
-    else if (!ui->comboBox_icon->currentText().isEmpty())
-        mPanel->setIconTheme(ui->comboBox_icon->currentText());
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 }
 
 
@@ -351,10 +293,7 @@ void ConfigPanelWidget::editChanged()
 void ConfigPanelWidget::widthTypeChanged()
 {
     int max = getMaxLength();
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
 
-=======
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
     if (ui->comboBox_lenghtType->currentIndex() == 0)
     {
         // Percents .............................
@@ -379,13 +318,8 @@ int ConfigPanelWidget::getMaxLength()
 {
     QDesktopWidget* dw = QApplication::desktop();
 
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
     if (mPosition == IUKUIPanel::PositionTop ||
         mPosition == IUKUIPanel::PositionBottom)
-=======
-    if (mPosition == UkuiPanel::PositionTop ||
-        mPosition == UkuiPanel::PositionBottom)
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
         return dw->screenGeometry(mScreenNum).width();
     else
         return dw->screenGeometry(mScreenNum).height();
@@ -398,42 +332,31 @@ int ConfigPanelWidget::getMaxLength()
 void ConfigPanelWidget::positionChanged()
 {
     ScreenPosition sp = ui->comboBox_position->itemData(
-    ui->comboBox_position->currentIndex()).value<ScreenPosition>();
+        ui->comboBox_position->currentIndex()).value<ScreenPosition>();
 
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
         bool updateAlig = (sp.position == IUKUIPanel::PositionTop ||
         sp.position == IUKUIPanel::PositionBottom) !=
         (mPosition   == IUKUIPanel::PositionTop ||
         mPosition   == IUKUIPanel::PositionBottom);
-=======
-    bool updateAlig = (sp.position == UkuiPanel::PositionTop ||
-    sp.position == UkuiPanel::PositionBottom) !=
-    (mPosition   == UkuiPanel::PositionTop ||
-    mPosition   == UkuiPanel::PositionBottom);
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 
-    int oldMax = getMaxLength();
-    mPosition = sp.position;
-    mScreenNum = sp.screen;
-    int newMax = getMaxLength();
+        int oldMax = getMaxLength();
+        mPosition = sp.position;
+        mScreenNum = sp.screen;
+        int newMax = getMaxLength();
 
-    if (ui->comboBox_lenghtType->currentIndex() == 1 &&
-        oldMax != newMax)
-    {
-        // Pixels ...............................
-        int v = ui->spinBox_length->value() * 1.0 * newMax / oldMax;
-        ui->spinBox_length->setMaximum(newMax);
-        ui->spinBox_length->setValue(v);
-    }
+        if (ui->comboBox_lenghtType->currentIndex() == 1 &&
+            oldMax != newMax)
+        {
+            // Pixels ...............................
+            int v = ui->spinBox_length->value() * 1.0 * newMax / oldMax;
+            ui->spinBox_length->setMaximum(newMax);
+            ui->spinBox_length->setValue(v);
+        }
 
-    if (updateAlig)
-        fillComboBox_alignment();
+        if (updateAlig)
+            fillComboBox_alignment();
 
-<<<<<<< HEAD:panel/config/configpanelwidget.cpp
         editChanged();
-=======
-    editChanged();
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.cpp
 }
 
 /************************************************

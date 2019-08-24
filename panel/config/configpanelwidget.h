@@ -48,15 +48,7 @@ public:
     ~ConfigPanelWidget();
 
     int screenNum() const { return mScreenNum; }
-<<<<<<< HEAD:panel/config/configpanelwidget.h
-    IUKUIPanel::Position position() const { return mPosition; }
-=======
-    ILXQtPanel::Position position() const { return mPosition; }
-    void updateIconThemeSettings();
-    void fillComboBox_position();
-    void addPosition(const QString& name, int screen, UkuiPanel::Position position);
-    bool canPlacedOn(int screenNum, UkuiPanel::Position position);
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890:config/configpanelwidget.h
+    UKUIPanel::Position position() const { return mPosition; }
 
 signals:
     void changed();
@@ -76,12 +68,12 @@ private:
     Ui::ConfigPanelWidget *ui;
     UKUIPanel *mPanel;
     int mScreenNum;
-    IUKUIPanel::Position mPosition;
+    UKUIPanel::Position mPosition;
 
     void addPosition(const QString& name, int screen, UKUIPanel::Position position);
     void fillComboBox_position();
     void fillComboBox_alignment();
-    int indexForPosition(int screen, IUKUIPanel::Position position);
+    int indexForPosition(int screen, UKUIPanel::Position position);
     int getMaxLength();
 
     // new values
@@ -95,7 +87,7 @@ private:
     int mOldLength;
     bool mOldLengthInPercents;
     UKUIPanel::Alignment mOldAlignment;
-    IUKUIPanel::Position mOldPosition;
+    UKUIPanel::Position mOldPosition;
     bool mOldHidable;
     int mOldAnimation;
     int mOldShowDelay;
