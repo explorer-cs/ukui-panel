@@ -29,6 +29,7 @@
 #include "ukuipanelapplication.h"
 #include "ukuipanelapplication_p.h"
 #include "ukuipanel.h"
+#include "comm_func.h"
 #include "config/configpaneldialog.h"
 #include <LXQt/Settings>
 #include <QtDebug>
@@ -36,6 +37,7 @@
 #include <QScreen>
 #include <QWindow>
 #include <QCommandLineParser>
+#include <QFile>
 
 UKUIPanelApplicationPrivate::UKUIPanelApplicationPrivate(UKUIPanelApplication *q)
     : mSettings(0),
@@ -101,7 +103,14 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     const QString configFile = parser.value(configFileOption);
 
     if (configFile.isEmpty())
+    {
+        QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
+        QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
+        QFile file(loaclCong+"panel.conf");
+        if(!file.exists())
+            copyFileToPath(defaultConf,loaclCong,"panel.conf",false);
         d->mSettings = new LXQt::Settings(QLatin1String("panel"), this);
+    }
     else
         d->mSettings = new LXQt::Settings(configFile, QSettings::IniFormat, this);
 

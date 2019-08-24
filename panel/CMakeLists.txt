@@ -17,9 +17,10 @@ set(PRIV_HEADERS
     config/configpanelwidget.h
     config/configpluginswidget.h
     config/addplugindialog.h
+    comm_func.h
 )
 
-# using ukui namespace in the public headers.
+# using lxqt namespace in the public headers.
 set(PUB_HEADERS
     ukuipanelglobals.h
     pluginsettings.h
@@ -43,6 +44,7 @@ set(SOURCES
     config/configpanelwidget.cpp
     config/configpluginswidget.cpp
     config/addplugindialog.cpp
+    comm_func.cpp
 )
 
 set(UI
