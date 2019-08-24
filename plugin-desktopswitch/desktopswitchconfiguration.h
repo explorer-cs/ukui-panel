@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -28,7 +28,8 @@
 #ifndef DESKTOPSWITCHCERCONFIGURATION_H
 #define DESKTOPSWITCHCERCONFIGURATION_H
 
-#include "lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/pluginsettings.h"
 
 #include <QFormLayout>
 #include <QLineEdit>

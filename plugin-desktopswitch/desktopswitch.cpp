@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://razor-qt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -35,7 +35,7 @@
 #include <KWindowSystem/KWindowSystem>
 #include <QX11Info>
 #include <cmath>
-#include <QLabel>
+
 #include "desktopswitch.h"
 #include "desktopswitchbutton.h"
 #include "desktopswitchconfiguration.h"
@@ -51,14 +51,17 @@ DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
     mDesktops(new NETRootInfo(QX11Info::connection(), NET::NumberOfDesktops | NET::CurrentDesktop | NET::DesktopNames, NET::WM2DesktopLayout)),
     mLabelType(static_cast<DesktopSwitchButton::LabelType>(-1))
 {
-    printf("DesktopSwitch::DesktopSwitch---\n");
     m_buttons = new QButtonGroup(this);
     connect (m_pSignalMapper, SIGNAL(mapped(int)), this, SLOT(setDesktop(int)));
 
     mLayout = new LXQt::GridLayout(&mWidget);
     mWidget.setLayout(mLayout);
+<<<<<<< HEAD
+
+=======
 //    QLabel *label = new QLabel("桌面切換");
 //    mWidget.layout()->addWidget(label);
+>>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890
     settingsChanged();
 
     onCurrentDesktopChanged(KWindowSystem::currentDesktop());
@@ -77,13 +80,12 @@ DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
 void DesktopSwitch::registerShortcuts()
 {
     // Register shortcuts to change desktop
-    /*
     GlobalKeyShortcut::Action * gshortcut;
     QString path;
     QString description;
     for (int i = 0; i < 12; ++i)
     {
-        //path = QString("/panel/%1/desktop_%2").arg(settings()->group()).arg(i + 1);
+        path = QString("/panel/%1/desktop_%2").arg(settings()->group()).arg(i + 1);
         description = tr("Switch to desktop %1").arg(i + 1);
 
         gshortcut = GlobalKeyShortcut::Client::instance()->addAction(QString(), path, description, this);
@@ -95,14 +97,13 @@ void DesktopSwitch::registerShortcuts()
             m_pSignalMapper->setMapping(gshortcut, i);
         }
     }
-    */
 }
 
 void DesktopSwitch::shortcutRegistered()
 {
-   // GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
+    GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
 
-    /*disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &DesktopSwitch::shortcutRegistered);
+    disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &DesktopSwitch::shortcutRegistered);
 
     const int i = m_keys.indexOf(shortcut);
     Q_ASSERT(-1 != i);
@@ -110,7 +111,7 @@ void DesktopSwitch::shortcutRegistered()
     if (shortcut->shortcut().isEmpty())
     {
         shortcut->changeShortcut(DEFAULT_SHORTCUT_TEMPLATE.arg(i + 1));
-    }*/
+    }
 }
 
 void DesktopSwitch::onWindowChanged(WId id, NET::Properties properties, NET::Properties2 properties2)

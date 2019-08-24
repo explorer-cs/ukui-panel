@@ -1,0 +1,12 @@
+/usr/local/share/ukui/ukui-panel/showdesktop.desktop
+/usr/local/bin/ukui-panel
+/usr/local/share/ukui/panel.conf
+/usr/local/include/ukui/ukuipanelglobals.h
+/usr/local/include/ukui/pluginsettings.h
+/usr/local/include/ukui/iukuipanelplugin.h
+/usr/local/include/ukui/iukuipanel.h
+/usr/local/share/man/man1/ukui-panel.1
+/etc/xdg/autostart/ukui-panel.desktop
+/usr/local/share/desktop-directories/lxqt-leave.directory
+/usr/local/share/desktop-directories/lxqt-settings.directory
+/etc/xdg/menus/lxqt-applications.menu

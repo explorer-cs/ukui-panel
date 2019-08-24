@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -54,8 +54,8 @@ DesktopSwitchConfiguration::~DesktopSwitchConfiguration()
 
 void DesktopSwitchConfiguration::loadSettings()
 {
-    /*ui->rowsSB->setValue(settings().value("rows", 1).toInt());
-    ui->labelTypeCB->setCurrentIndex(settings().value("labelType", 0).toInt());*/
+    ui->rowsSB->setValue(settings().value("rows", 1).toInt());
+    ui->labelTypeCB->setCurrentIndex(settings().value("labelType", 0).toInt());
 }
 
 void DesktopSwitchConfiguration::loadDesktopsNames()
@@ -77,11 +77,11 @@ void DesktopSwitchConfiguration::loadDesktopsNames()
 
 void DesktopSwitchConfiguration::rowsChanged(int value)
 {
-    //settings().setValue("rows", value);
+    settings().setValue("rows", value);
 }
 
 void DesktopSwitchConfiguration::labelTypeChanged(int type)
 {
-    //settings().setValue("labelType", type);
+    settings().setValue("labelType", type);
 }
 

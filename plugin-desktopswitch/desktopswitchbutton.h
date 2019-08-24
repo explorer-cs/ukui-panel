@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://razor-qt.org
  *
  * Copyright: 2011 Razor team
  * Authors:

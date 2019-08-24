@@ -1,3 +1,31 @@
+/* BEGIN_COMMON_COPYRIGHT_HEADER
+ * (c)LGPL2+
+ *
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://razor-qt.org
+ *
+ * Copyright: 2010-2011 Razor team
+ * Authors:
+ *   Alexander Sokoloff <sokoloff.a@gmail.com>
+ *
+ * This program or library is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA
+ *
+ * END_COMMON_COPYRIGHT_HEADER */
+
+
 #ifndef UKUIPANELLAYOUT_H
 #define UKUIPANELLAYOUT_H
 
@@ -5,9 +33,8 @@
 #include <QList>
 #include <QWidget>
 #include <QLayoutItem>
-#include "ilxqtpanel.h"
-#include "lxqtpanelglobals.h"
-
+#include "iukuipanel.h"
+#include "ukuipanelglobals.h"
 
 class MoveInfo;
 class QMouseEvent;
@@ -16,12 +43,12 @@ class QEvent;
 class Plugin;
 class LayoutItemGrid;
 
-class UkuiPanelLayout : public QLayout
+class UKUI_PANEL_API UKUIPanelLayout : public QLayout
 {
     Q_OBJECT
 public:
-    explicit UkuiPanelLayout(QWidget *parent);
-    ~UkuiPanelLayout();
+    explicit UKUIPanelLayout(QWidget *parent);
+    ~UKUIPanelLayout();
 
     void addItem(QLayoutItem *item);
     QLayoutItem *itemAt(int index) const;
@@ -43,12 +70,8 @@ public:
     int lineSize() const;
     void setLineSize(int value);
 
-    ILXQtPanel::Position position() const { return mPosition; }
-    void setPosition(ILXQtPanel::Position value);
-
-    /*! \brief Force the layout to re-read items/plugins "static" configuration
-     */
-    void rebuild();
+    IUKUIPanel::Position position() const { return mPosition; }
+    void setPosition(IUKUIPanel::Position value);
 
     static bool itemIsSeparate(QLayoutItem *item);
 signals:
@@ -64,7 +87,7 @@ private:
     mutable QSize mMinPluginSize;
     LayoutItemGrid *mLeftGrid;
     LayoutItemGrid *mRightGrid;
-    ILXQtPanel::Position mPosition;
+    IUKUIPanel::Position mPosition;
     bool mAnimate;
 
 

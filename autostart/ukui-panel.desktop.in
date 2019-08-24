@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Panel
+TryExec=ukui-panel
+Exec=ukui-panel
+OnlyShowIn=UKUI;
+#TRANSLATIONS_DIR=translations

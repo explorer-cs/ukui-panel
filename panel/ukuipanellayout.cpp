@@ -1,5 +1,32 @@
-#include "ukuipanellayout.h"
+/* BEGIN_COMMON_COPYRIGHT_HEADER
+ * (c)LGPL2+
+ *
+ * LXDE-Qt - a lightweight, Qt based, desktop toolset
+ * http://razor-qt.org
+ *
+ * Copyright: 2010-2011 Razor team
+ * Authors:
+ *   Alexander Sokoloff <sokoloff.a@gmail.com>
+ *
+ * This program or library is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
 
+ * You should have received a copy of the GNU Lesser General
+ * Public License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301 USA
+ *
+ * END_COMMON_COPYRIGHT_HEADER */
+
+
+#include "ukuipanellayout.h"
 #include <QSize>
 #include <QWidget>
 #include <QEvent>
@@ -13,13 +40,13 @@
 #include <QMouseEvent>
 #include <QPropertyAnimation>
 #include "plugin.h"
-#include "lxqtpanellimits.h"
-#include "ilxqtpanelplugin.h"
+#include "ukuipanellimits.h"
+#include "iukuipanelplugin.h"
 #include "ukuipanel.h"
-#include "ukuipluginmoveprocessor.h"
+#include "pluginmoveprocessor.h"
 #include <QToolButton>
 #include <QStyle>
-#include <QLabel>
+
 #define ANIMATION_DURATION 250
 
 class ItemMoveAnimation : public QVariantAnimation
@@ -193,7 +220,7 @@ void LayoutItemGrid::rebuild()
 {
     clear();
 
-    for(QLayoutItem *item : qAsConst(mItems))
+    foreach(QLayoutItem *item, mItems)
     {
         doAddToGrid(item);
     }
@@ -388,11 +415,11 @@ void LayoutItemGrid::setHoriz(bool value)
 /************************************************
 
  ************************************************/
-UkuiPanelLayout::UkuiPanelLayout(QWidget *parent) :
+UKUIPanelLayout::UKUIPanelLayout(QWidget *parent) :
     QLayout(parent),
     mLeftGrid(new LayoutItemGrid()),
     mRightGrid(new LayoutItemGrid()),
-    mPosition(ILXQtPanel::PositionBottom),
+    mPosition(IUKUIPanel::PositionBottom),
     mAnimate(false)
 {
     setContentsMargins(0, 0, 0, 0);
@@ -402,7 +429,7 @@ UkuiPanelLayout::UkuiPanelLayout(QWidget *parent) :
 /************************************************
 
  ************************************************/
-UkuiPanelLayout::~UkuiPanelLayout()
+UKUIPanelLayout::~UKUIPanelLayout()
 {
     delete mLeftGrid;
     delete mRightGrid;
@@ -412,7 +439,7 @@ UkuiPanelLayout::~UkuiPanelLayout()
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::addItem(QLayoutItem *item)
+void UKUIPanelLayout::addItem(QLayoutItem *item)
 {
     LayoutItemGrid *grid = mRightGrid;
 
@@ -427,7 +454,7 @@ void UkuiPanelLayout::addItem(QLayoutItem *item)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *gridIndex)
+void UKUIPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *gridIndex)
 {
     if (index < mLeftGrid->count())
     {
@@ -443,7 +470,7 @@ void UkuiPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *gridIndex) const
+void UKUIPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *gridIndex) const
 {
     if (index < mLeftGrid->count())
     {
@@ -460,7 +487,7 @@ void UkuiPanelLayout::globalIndexToLocal(int index, LayoutItemGrid **grid, int *
 /************************************************
 
  ************************************************/
-QLayoutItem *UkuiPanelLayout::itemAt(int index) const
+QLayoutItem *UKUIPanelLayout::itemAt(int index) const
 {
     if (index < 0 || index >= count())
         return 0;
@@ -476,7 +503,7 @@ QLayoutItem *UkuiPanelLayout::itemAt(int index) const
 /************************************************
 
  ************************************************/
-QLayoutItem *UkuiPanelLayout::takeAt(int index)
+QLayoutItem *UKUIPanelLayout::takeAt(int index)
 {
     if (index < 0 || index >= count())
         return 0;
@@ -492,7 +519,7 @@ QLayoutItem *UkuiPanelLayout::takeAt(int index)
 /************************************************
 
  ************************************************/
-int UkuiPanelLayout::count() const
+int UKUIPanelLayout::count() const
 {
     return mLeftGrid->count() + mRightGrid->count();
 }
@@ -501,7 +528,7 @@ int UkuiPanelLayout::count() const
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::moveItem(int from, int to, bool withAnimation)
+void UKUIPanelLayout::moveItem(int from, int to, bool withAnimation)
 {
     if (from != to)
     {
@@ -537,7 +564,7 @@ void UkuiPanelLayout::moveItem(int from, int to, bool withAnimation)
 /************************************************
 
  ************************************************/
-QSize UkuiPanelLayout::sizeHint() const
+QSize UKUIPanelLayout::sizeHint() const
 {
     if (!mLeftGrid->isValid())
         mLeftGrid->update();
@@ -564,7 +591,7 @@ QSize UkuiPanelLayout::sizeHint() const
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setGeometry(const QRect &geometry)
+void UKUIPanelLayout::setGeometry(const QRect &geometry)
 {
     if (!mLeftGrid->isValid())
         mLeftGrid->update();
@@ -590,7 +617,7 @@ void UkuiPanelLayout::setGeometry(const QRect &geometry)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setItemGeometry(QLayoutItem *item, const QRect &geometry, bool withAnimation)
+void UKUIPanelLayout::setItemGeometry(QLayoutItem *item, const QRect &geometry, bool withAnimation)
 {
     Plugin *plugin = qobject_cast<Plugin*>(item->widget());
     if (withAnimation && plugin)
@@ -610,7 +637,7 @@ void UkuiPanelLayout::setItemGeometry(QLayoutItem *item, const QRect &geometry, 
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setGeometryHoriz(const QRect &geometry)
+void UKUIPanelLayout::setGeometryHoriz(const QRect &geometry)
 {
     const bool visual_h_reversed = parentWidget() && parentWidget()->isRightToLeft();
     // Calc expFactor for expandable plugins like TaskBar.
@@ -636,7 +663,7 @@ void UkuiPanelLayout::setGeometryHoriz(const QRect &geometry)
     }
 
 #if 0
-    qDebug() << "** UkuiPanelLayout::setGeometryHoriz **************";
+    qDebug() << "** UKUIPanelLayout::setGeometryHoriz **************";
     qDebug() << "geometry: " << geometry;
 
     qDebug() << "Left grid";
@@ -749,7 +776,7 @@ void UkuiPanelLayout::setGeometryHoriz(const QRect &geometry)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setGeometryVert(const QRect &geometry)
+void UKUIPanelLayout::setGeometryVert(const QRect &geometry)
 {
     const bool visual_h_reversed = parentWidget() && parentWidget()->isRightToLeft();
     // Calc expFactor for expandable plugins like TaskBar.
@@ -775,7 +802,7 @@ void UkuiPanelLayout::setGeometryVert(const QRect &geometry)
     }
 
 #if 0
-    qDebug() << "** UkuiPanelLayout::setGeometryVert **************";
+    qDebug() << "** UKUIPanelLayout::setGeometryVert **************";
     qDebug() << "geometry: " << geometry;
 
     qDebug() << "Left grid";
@@ -887,7 +914,7 @@ void UkuiPanelLayout::setGeometryVert(const QRect &geometry)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::invalidate()
+void UKUIPanelLayout::invalidate()
 {
     mLeftGrid->invalidate();
     mRightGrid->invalidate();
@@ -899,7 +926,7 @@ void UkuiPanelLayout::invalidate()
 /************************************************
 
  ************************************************/
-int UkuiPanelLayout::lineCount() const
+int UKUIPanelLayout::lineCount() const
 {
     return mLeftGrid->colCount();
 }
@@ -908,7 +935,7 @@ int UkuiPanelLayout::lineCount() const
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setLineCount(int value)
+void UKUIPanelLayout::setLineCount(int value)
 {
     mLeftGrid->setColCount(value);
     mRightGrid->setColCount(value);
@@ -919,17 +946,7 @@ void UkuiPanelLayout::setLineCount(int value)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::rebuild()
-{
-    mLeftGrid->rebuild();
-    mRightGrid->rebuild();
-}
-
-
-/************************************************
-
- ************************************************/
-int UkuiPanelLayout::lineSize() const
+int UKUIPanelLayout::lineSize() const
 {
     return mLeftGrid->lineSize();
 }
@@ -938,7 +955,7 @@ int UkuiPanelLayout::lineSize() const
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setLineSize(int value)
+void UKUIPanelLayout::setLineSize(int value)
 {
     mLeftGrid->setLineSize(value);
     mRightGrid->setLineSize(value);
@@ -949,7 +966,7 @@ void UkuiPanelLayout::setLineSize(int value)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::setPosition(ILXQtPanel::Position value)
+void UKUIPanelLayout::setPosition(IUKUIPanel::Position value)
 {
     mPosition = value;
     mLeftGrid->setHoriz(isHorizontal());
@@ -960,17 +977,17 @@ void UkuiPanelLayout::setPosition(ILXQtPanel::Position value)
 /************************************************
 
  ************************************************/
-bool UkuiPanelLayout::isHorizontal() const
+bool UKUIPanelLayout::isHorizontal() const
 {
-    return mPosition == ILXQtPanel::PositionTop ||
-            mPosition == ILXQtPanel::PositionBottom;
+    return mPosition == IUKUIPanel::PositionTop ||
+            mPosition == IUKUIPanel::PositionBottom;
 }
 
 
 /************************************************
 
  ************************************************/
-bool UkuiPanelLayout::itemIsSeparate(QLayoutItem *item)
+bool UKUIPanelLayout::itemIsSeparate(QLayoutItem *item)
 {
     if (!item)
         return true;
@@ -986,15 +1003,14 @@ bool UkuiPanelLayout::itemIsSeparate(QLayoutItem *item)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::startMovePlugin()
+void UKUIPanelLayout::startMovePlugin()
 {
-
     Plugin *plugin = qobject_cast<Plugin*>(sender());
     if (plugin)
     {
         // We have not memoryleaks there.
         // The processor will be automatically deleted when stopped.
-        UkuiPluginMoveProcessor *moveProcessor = new UkuiPluginMoveProcessor(this, plugin);
+        PluginMoveProcessor *moveProcessor = new PluginMoveProcessor(this, plugin);
         moveProcessor->start();
         connect(moveProcessor, SIGNAL(finished()), this, SLOT(finishMovePlugin()));
     }
@@ -1004,10 +1020,9 @@ void UkuiPanelLayout::startMovePlugin()
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::finishMovePlugin()
+void UKUIPanelLayout::finishMovePlugin()
 {
-
-    UkuiPluginMoveProcessor *moveProcessor = qobject_cast<UkuiPluginMoveProcessor*>(sender());
+    PluginMoveProcessor *moveProcessor = qobject_cast<PluginMoveProcessor*>(sender());
     if (moveProcessor)
     {
         Plugin *plugin = moveProcessor->plugin();
@@ -1020,7 +1035,7 @@ void UkuiPanelLayout::finishMovePlugin()
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::moveUpPlugin(Plugin * plugin)
+void UKUIPanelLayout::moveUpPlugin(Plugin * plugin)
 {
     const int i = indexOf(plugin);
     if (0 < i)
@@ -1030,10 +1045,14 @@ void UkuiPanelLayout::moveUpPlugin(Plugin * plugin)
 /************************************************
 
  ************************************************/
-void UkuiPanelLayout::addPlugin(Plugin * plugin)
+void UKUIPanelLayout::addPlugin(Plugin * plugin)
 {
+<<<<<<< HEAD
+    connect(plugin, &Plugin::startMove, this, &UKUIPanelLayout::startMovePlugin);
+=======
 
     connect(plugin, &Plugin::startMove, this, &UkuiPanelLayout::startMovePlugin);
+>>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890
 
     const int prev_count = count();
     addWidget(plugin);

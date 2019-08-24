@@ -1,14 +1,61 @@
-Source: ukui-panel
+Source: lxqt-panel
+Maintainer: Lubuntu Developers <lubuntu-devel@lists.ubuntu.com>
+XSBC-Original-Maintainer: LXQt Packaging Team <pkg-lxqt-devel@lists.alioth.debian.org>
+Uploaders: Alf Gaida <agaida@siduction.org>,
+           ChangZhuo Chen (陳昌倬) <czchen@debian.org>,
+           Andrew Lee (李健秋) <ajqlee@debian.org>
 Section: x11
 Priority: optional
-Maintainer: hepuyao <hepuyao@kylinos.cn>
-Build-Depends: debhelper (>= 10)
+Build-Depends: debhelper (>= 10),
+               libasound2-dev,
+               libdbusmenu-qt5-dev,
+               libglib2.0-dev,
+               libicu-dev,
+               libkf5windowsystem-dev,
+               libkf5solid-dev,
+               liblxqt0-dev (>= 0.12.0),
+               liblxqt-globalkeys0-dev (>= 0.12.0),
+               liblxqt-globalkeys-ui0-dev (>= 0.12.0),
+               libmenu-cache-dev,
+               libpulse-dev,
+               libqt5svg5-dev,
+               libqt5x11extras5-dev,
+               libsensors4-dev [!hurd-any],
+               libstatgrab-dev [linux-any],
+               libsysstat-qt5-0-dev (>= 0.4.0),
+               libx11-dev,
+               libxcomposite-dev,
+               libxcb-util0-dev,
+               libxcb-xkb-dev,
+               libxcb-damage0-dev,
+               libxdamage-dev,
+               libxkbcommon-dev,
+               libxkbcommon-x11-dev,
+               libxrender-dev
 Standards-Version: 4.1.2
-#Vcs-Git: https://anonscm.debian.org/git/collab-maint/ukui-panel.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/ukui-panel.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-lxqt/lxqt-panel.git
+Vcs-Git: https://anonscm.debian.org/git/pkg-lxqt/lxqt-panel.git
+Homepage: https://github.com/lxde/lxqt-panel
 
-Package: ukui-panel-2.0
+Package: lxqt-panel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         lxmenu-data,
+         lxqt-about,
+         lxqt-policykit
+Recommends: lxqt-config,
+            lxqt-notificationd,
+            lxqt-panel-l10n,
+            lxqt-qtplugin,
+            lxqt-runner,
+            lxqt-session,
+            pavucontrol-qt | pavucontrol,
+            qlipper
+Suggests: lxqt | lxqt-core
+Breaks: lxqt-common (<< 0.12.0)
+Replaces: lxqt-common (<< 0.12.0)
+Description: LXQt desktop panel
+ The LXQt desktop panel
+ .
+ This package contain the LXQt panel.
