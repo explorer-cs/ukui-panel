@@ -39,7 +39,7 @@
 #include "../panel/iukuipanel.h"
 #include "../panel/iukuipanelplugin.h"
 
-VolumeButton::VolumeButton(ILXQtPanelPlugin *plugin, QWidget* parent):
+VolumeButton::VolumeButton(IUKUIPanelPlugin *plugin, QWidget* parent):
         QToolButton(parent),
         mPlugin(plugin),
         m_panel(plugin->panel()),

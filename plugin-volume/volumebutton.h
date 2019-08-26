@@ -32,15 +32,15 @@
 #include <QTimer>
 
 class VolumePopup;
-class ILXQtPanel;
+class IUKUIPanel;
 class LXQtVolume;
-class ILXQtPanelPlugin;
+class IUKUIPanelPlugin;
 
 class VolumeButton : public QToolButton
 {
     Q_OBJECT
 public:
-    VolumeButton(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
+    VolumeButton(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
     ~VolumeButton();
 
     void setShowOnClicked(bool state);
@@ -67,8 +67,8 @@ private slots:
 
 private:
     VolumePopup *m_volumePopup;
-    ILXQtPanelPlugin *mPlugin;
-    ILXQtPanel *m_panel;
+    IUKUIPanelPlugin *mPlugin;
+    IUKUIPanel *m_panel;
     QTimer m_popupHideTimer;
     bool m_showOnClick;
     bool m_muteOnMiddleClick;
