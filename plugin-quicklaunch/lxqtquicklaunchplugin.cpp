@@ -29,9 +29,9 @@
 #include "lxqtquicklaunch.h"
 
 
-LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
+LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     mWidget(new LXQtQuickLaunch(this))
 {
 }

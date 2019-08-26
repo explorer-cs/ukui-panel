@@ -45,7 +45,7 @@
 #include "../panel/pluginsettings.h"
 
 
-LXQtQuickLaunch::LXQtQuickLaunch(ILXQtPanelPlugin *plugin, QWidget* parent) :
+LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
     QFrame(parent),
     mPlugin(plugin),
     mPlaceHolder(0)
@@ -125,7 +125,7 @@ int LXQtQuickLaunch::countOfButtons() const
 void LXQtQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
-    ILXQtPanel *panel = mPlugin->panel();
+    IUKUIPanel *panel = mPlugin->panel();
 
     if (mPlaceHolder)
     {

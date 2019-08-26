@@ -42,7 +42,7 @@
 #include <QFrame>
 #include <QBoxLayout>
 #include <QMap>
-//#include <lxqt-globalkeys.h>
+#include <lxqt-globalkeys.h>
 #include "../panel/iukuipanel.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/KWindowInfo>
@@ -61,7 +61,7 @@ class LXQtTaskBar : public QFrame
     Q_OBJECT
 
 public:
-    explicit LXQtTaskBar(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
+    explicit LXQtTaskBar(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
     virtual ~LXQtTaskBar();
 
     void realign();
@@ -78,14 +78,14 @@ public:
     bool isGroupingEnabled() const { return mGroupingEnabled; }
     bool isShowGroupOnHover() const { return mShowGroupOnHover; }
     bool isIconByClass() const { return mIconByClass; }
-    inline ILXQtPanel * panel() const { return mPlugin->panel(); }
-    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
+    inline IUKUIPanel * panel() const { return mPlugin->panel(); }
+    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
 
 public slots:
     void settingsChanged();
 
 signals:
-    void buttonRotationRefreshed(bool autoRotate, ILXQtPanel::Position position);
+    void buttonRotationRefreshed(bool autoRotate, IUKUIPanel::Position position);
     void buttonStyleRefreshed(Qt::ToolButtonStyle buttonStyle);
     void refreshIconGeometry();
     void showOnlySettingChanged();
@@ -145,7 +145,7 @@ private:
     void changeEvent(QEvent* event);
     void resizeEvent(QResizeEvent *event);
 
-    ILXQtPanelPlugin *mPlugin;
+    IUKUIPanelPlugin *mPlugin;
     QWidget *mPlaceHolder;
     LeftAlignedTextStyle *mStyle;
 };

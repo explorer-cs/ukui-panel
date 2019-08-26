@@ -271,12 +271,12 @@ void LXQtTaskButton::mouseMoveEvent(QMouseEvent* event)
     drag->setPixmap(img);
     switch (parentTaskBar()->panel()->position())
     {
-        case ILXQtPanel::PositionLeft:
-        case ILXQtPanel::PositionTop:
+        case IUKUIPanel::PositionLeft:
+        case IUKUIPanel::PositionTop:
             drag->setHotSpot({0, 0});
             break;
-        case ILXQtPanel::PositionRight:
-        case ILXQtPanel::PositionBottom:
+        case IUKUIPanel::PositionRight:
+        case IUKUIPanel::PositionBottom:
             drag->setHotSpot(img.rect().bottomRight());
             break;
     }
@@ -701,22 +701,22 @@ void LXQtTaskButton::setOrigin(Qt::Corner newOrigin)
     }
 }
 
-void LXQtTaskButton::setAutoRotation(bool value, ILXQtPanel::Position position)
+void LXQtTaskButton::setAutoRotation(bool value, IUKUIPanel::Position position)
 {
     if (value)
     {
         switch (position)
         {
-        case ILXQtPanel::PositionTop:
-        case ILXQtPanel::PositionBottom:
+        case IUKUIPanel::PositionTop:
+        case IUKUIPanel::PositionBottom:
             setOrigin(Qt::TopLeftCorner);
             break;
 
-        case ILXQtPanel::PositionLeft:
+        case IUKUIPanel::PositionLeft:
             setOrigin(Qt::BottomLeftCorner);
             break;
 
-        case ILXQtPanel::PositionRight:
+        case IUKUIPanel::PositionRight:
             setOrigin(Qt::TopRightCorner);
             break;
         }

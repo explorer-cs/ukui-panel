@@ -34,11 +34,11 @@
 
 class LXQtQuickLaunch;
 
-class LXQtQuickLaunchPlugin: public QObject, public ILXQtPanelPlugin
+class LXQtQuickLaunchPlugin: public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    explicit LXQtQuickLaunchPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
+    explicit LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtQuickLaunchPlugin();
 
     virtual QWidget *widget();
@@ -54,13 +54,13 @@ private:
 };
 
 
-class LXQtQuickLaunchPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtQuickLaunchPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         return new LXQtQuickLaunchPlugin(startupInfo);
     }

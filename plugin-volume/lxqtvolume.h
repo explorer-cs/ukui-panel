@@ -46,16 +46,16 @@ class Action;
 
 class LXQtVolumeConfiguration;
 
-class LXQtVolume : public QObject, public ILXQtPanelPlugin
+class LXQtVolume : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtVolume(const ILXQtPanelPluginStartupInfo &startupInfo);
+    LXQtVolume(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtVolume();
 
     virtual QWidget *widget();
     virtual QString themeId() const { return "Volume"; }
-    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
+    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     void realign();
     QDialog *configureDialog();
 
@@ -83,13 +83,13 @@ private:
 };
 
 
-class LXQtVolumePluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtVolumePluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         return new LXQtVolume(startupInfo);
     }

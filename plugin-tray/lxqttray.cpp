@@ -66,7 +66,7 @@
 /************************************************
 
  ************************************************/
-LXQtTray::LXQtTray(ILXQtPanelPlugin *plugin, QWidget *parent):
+LXQtTray::LXQtTray(IUKUIPanelPlugin *plugin, QWidget *parent):
     QFrame(parent),
     mValid(false),
     mTrayId(0),
@@ -152,7 +152,7 @@ bool LXQtTray::nativeEventFilter(const QByteArray &eventType, void *message, lon
 void LXQtTray::realign()
 {
     mLayout->setEnabled(false);
-    ILXQtPanel *panel = mPlugin->panel();
+    IUKUIPanel *panel = mPlugin->panel();
 
     if (panel->isHorizontal())
     {

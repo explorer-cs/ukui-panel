@@ -23,4 +23,4 @@ include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/../panel"
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})

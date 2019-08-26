@@ -54,7 +54,7 @@ using namespace LXQt;
 /************************************************
 
 ************************************************/
-LXQtTaskBar::LXQtTaskBar(ILXQtPanelPlugin *plugin, QWidget *parent) :
+LXQtTaskBar::LXQtTaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     QFrame(parent),
     mSignalMapper(new QSignalMapper(this)),
     mButtonStyle(Qt::ToolButtonTextBesideIcon),
@@ -391,7 +391,7 @@ void LXQtTaskBar::refreshButtonRotation()
 {
     bool autoRotate = mAutoRotate && (mButtonStyle != Qt::ToolButtonIconOnly);
 
-    ILXQtPanel::Position panelPosition = mPlugin->panel()->position();
+    IUKUIPanel::Position panelPosition = mPlugin->panel()->position();
     emit buttonRotationRefreshed(autoRotate, panelPosition);
 }
 
@@ -502,7 +502,7 @@ void LXQtTaskBar::realign()
     mLayout->setEnabled(false);
     refreshButtonRotation();
 
-    ILXQtPanel *panel = mPlugin->panel();
+    IUKUIPanel *panel = mPlugin->panel();
     QSize maxSize = QSize(mButtonWidth, mButtonHeight);
     QSize minSize = QSize(0, 0);
 
@@ -524,7 +524,7 @@ void LXQtTaskBar::realign()
         }
         else
         {
-            rotated = mAutoRotate && (panel->position() == ILXQtPanel::PositionLeft || panel->position() == ILXQtPanel::PositionRight);
+            rotated = mAutoRotate && (panel->position() == IUKUIPanel::PositionLeft || panel->position() == IUKUIPanel::PositionRight);
 
             // Vertical + Text
             if (rotated)

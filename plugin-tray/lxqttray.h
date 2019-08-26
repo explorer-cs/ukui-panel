@@ -46,14 +46,14 @@ class GridLayout;
 /**
  * @brief This makes our trayplugin
  */
-class ILXQtPanelPlugin;
+class IUKUIPanelPlugin;
 
 class LXQtTray: public QFrame, QAbstractNativeEventFilter
 {
     Q_OBJECT
     Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
 public:
-    LXQtTray(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
+    LXQtTray(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
     ~LXQtTray();
 
 
@@ -94,7 +94,7 @@ private:
     int mDamageError;
     QSize mIconSize;
     LXQt::GridLayout *mLayout;
-    ILXQtPanelPlugin *mPlugin;
+    IUKUIPanelPlugin *mPlugin;
     Atom _NET_SYSTEM_TRAY_OPCODE;
     Display* mDisplay;
 };

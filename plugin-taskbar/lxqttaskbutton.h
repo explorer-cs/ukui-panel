@@ -76,7 +76,7 @@ public:
     void updateText();
 
     Qt::Corner origin() const;
-    virtual void setAutoRotation(bool value, ILXQtPanel::Position position);
+    virtual void setAutoRotation(bool value, IUKUIPanel::Position position);
 
     LXQtTaskBar * parentTaskBar() const {return mParentTaskBar;}
 
@@ -118,7 +118,7 @@ protected:
     virtual QMimeData * mimeData();
     static bool sDraggging;
 
-    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
+    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
 
 private:
     WId mWindow;
@@ -128,7 +128,7 @@ private:
     QPixmap mPixmap;
     bool mDrawPixmap;
     LXQtTaskBar * mParentTaskBar;
-    ILXQtPanelPlugin * mPlugin;
+    IUKUIPanelPlugin * mPlugin;
 
     // Timer for when draggind something into a button (the button's window
     // must be activated so that the use can continue dragging to the window

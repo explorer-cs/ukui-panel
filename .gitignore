@@ -1,4 +1,4 @@
-ukui-panel.pro.*
+*.pro*
 plugin.cpp.*
 ukui-panel
 *.o

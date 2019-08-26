@@ -359,7 +359,7 @@ void LXQtTaskGroup::recalculateFrameIfVisible()
     if (mPopup->isVisible())
     {
         recalculateFrameSize();
-        if (plugin()->panel()->position() == ILXQtPanel::PositionBottom)
+        if (plugin()->panel()->position() == IUKUIPanel::PositionBottom)
             recalculateFramePosition();
     }
 }
@@ -367,7 +367,7 @@ void LXQtTaskGroup::recalculateFrameIfVisible()
 /************************************************
 
  ************************************************/
-void LXQtTaskGroup::setAutoRotation(bool value, ILXQtPanel::Position position)
+void LXQtTaskGroup::setAutoRotation(bool value, IUKUIPanel::Position position)
 {
     foreach (LXQtTaskButton *button, mButtonHash.values())
         button->setAutoRotation(false, position);
@@ -507,16 +507,16 @@ QPoint LXQtTaskGroup::recalculateFramePosition()
     int x_offset = 0, y_offset = 0;
     switch (plugin()->panel()->position())
     {
-    case ILXQtPanel::PositionTop:
+    case IUKUIPanel::PositionTop:
         y_offset += height();
         break;
-    case ILXQtPanel::PositionBottom:
+    case IUKUIPanel::PositionBottom:
         y_offset = -recalculateFrameHeight();
         break;
-    case ILXQtPanel::PositionLeft:
+    case IUKUIPanel::PositionLeft:
         x_offset += width();
         break;
-    case ILXQtPanel::PositionRight:
+    case IUKUIPanel::PositionRight:
         x_offset = -recalculateFrameWidth();
         break;
     }

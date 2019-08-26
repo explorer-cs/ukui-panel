@@ -36,7 +36,7 @@ namespace Ui {
     class LXQtTaskbarConfiguration;
 }
 
-class LXQtTaskbarConfiguration : public LXQtPanelPluginConfigDialog
+class LXQtTaskbarConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

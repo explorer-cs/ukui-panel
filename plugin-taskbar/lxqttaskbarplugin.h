@@ -35,11 +35,11 @@
 #include <QDebug>
 class LXQtTaskBar;
 
-class LXQtTaskBarPlugin : public QObject, public ILXQtPanelPlugin
+class LXQtTaskBarPlugin : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtTaskBarPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
+    LXQtTaskBarPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtTaskBarPlugin();
 
     QString themeId() const { return "TaskBar"; }
@@ -57,13 +57,13 @@ private:
     LXQtTaskBar *mTaskBar;
 };
 
-class LXQtTaskBarPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtTaskBarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new LXQtTaskBarPlugin(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const { return new LXQtTaskBarPlugin(startupInfo);}
 };
 
 #endif // LXQTTASKBARPLUGIN_H

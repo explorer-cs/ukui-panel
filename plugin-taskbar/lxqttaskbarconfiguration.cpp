@@ -33,7 +33,7 @@
 #include <KWindowSystem/KWindowSystem>
 
 LXQtTaskbarConfiguration::LXQtTaskbarConfiguration(PluginSettings *settings, QWidget *parent):
-    LXQtPanelPluginConfigDialog(settings, parent),
+    UKUIPanelPluginConfigDialog(settings, parent),
     ui(new Ui::LXQtTaskbarConfiguration)
 {
     setAttribute(Qt::WA_DeleteOnClose);

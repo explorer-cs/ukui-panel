@@ -40,7 +40,7 @@
 #define MIMETYPE "x-lxqt/quicklaunch-button"
 
 
-QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, ILXQtPanelPlugin * plugin, QWidget * parent)
+QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin * plugin, QWidget * parent)
     : QToolButton(parent),
       mAct(act),
       mPlugin(plugin)

@@ -34,7 +34,7 @@
 #include <QDebug>
 
 LXQtVolumeConfiguration::LXQtVolumeConfiguration(PluginSettings *settings, bool ossAvailable, QWidget *parent) :
-    LXQtPanelPluginConfigDialog(settings, parent),
+    UKUIPanelPluginConfigDialog(settings, parent),
     ui(new Ui::LXQtVolumeConfiguration)
 {
     ui->setupUi(this);

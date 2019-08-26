@@ -66,7 +66,7 @@ namespace Ui {
     class LXQtVolumeConfiguration;
 }
 
-class LXQtVolumeConfiguration : public LXQtPanelPluginConfigDialog
+class LXQtVolumeConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

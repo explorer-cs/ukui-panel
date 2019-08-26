@@ -48,9 +48,9 @@
 #define DEFAULT_DOWN_SHORTCUT "XF86AudioLowerVolume"
 #define DEFAULT_MUTE_SHORTCUT "XF86AudioMute"
 
-LXQtVolume::LXQtVolume(const ILXQtPanelPluginStartupInfo &startupInfo):
+LXQtVolume::LXQtVolume(const IUKUIPanelPluginStartupInfo &startupInfo):
         QObject(),
-        ILXQtPanelPlugin(startupInfo),
+        IUKUIPanelPlugin(startupInfo),
         m_engine(0),
         m_defaultSinkIndex(0),
         m_defaultSink(0),

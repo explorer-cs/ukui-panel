@@ -35,11 +35,11 @@
 #include <QX11Info>
 
 class LXQtTray;
-class LXQtTrayPlugin : public QObject, public ILXQtPanelPlugin
+class LXQtTrayPlugin : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    explicit LXQtTrayPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
+    explicit LXQtTrayPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtTrayPlugin();
 
     virtual QWidget *widget();
@@ -54,13 +54,13 @@ private:
 
 };
 
-class LXQtTrayPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtTrayPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         // Currently only X11 supported
         if (!QX11Info::connection()) {

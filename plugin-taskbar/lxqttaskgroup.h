@@ -40,7 +40,7 @@
 #include <KF5/KWindowSystem/kwindowsystem.h>
 
 class QVBoxLayout;
-class ILXQtPanelPlugin;
+class IUKUIPanelPlugin;
 
 class LXQtGroupPopup;
 class LXQtMasterPopup;
@@ -65,7 +65,7 @@ public:
     LXQtTaskButton * getNextPrevChildButton(bool next, bool circular);
 
     bool onWindowChanged(WId window, NET::Properties prop, NET::Properties2 prop2);
-    void setAutoRotation(bool value, ILXQtPanel::Position position);
+    void setAutoRotation(bool value, IUKUIPanel::Position position);
     Qt::ToolButtonStyle popupButtonStyle() const;
     void setToolButtonsStyle(Qt::ToolButtonStyle style);
 
