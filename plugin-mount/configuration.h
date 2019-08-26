@@ -39,7 +39,7 @@ namespace Ui {
     class Configuration;
 }
 
-class Configuration : public LXQtPanelPluginConfigDialog
+class Configuration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

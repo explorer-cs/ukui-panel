@@ -52,7 +52,7 @@ static bool hasRemovableParent(Solid::Device device)
     return false;
 }
 
-Popup::Popup(ILXQtPanelPlugin * plugin, QWidget* parent):
+Popup::Popup(IUKUIPanelPlugin * plugin, QWidget* parent):
     QDialog(parent,  Qt::Window | Qt::WindowStaysOnTopHint | Qt::CustomizeWindowHint | Qt::Popup | Qt::X11BypassWindowManagerHint),
     mPlugin(plugin),
     mPlaceholder(nullptr),

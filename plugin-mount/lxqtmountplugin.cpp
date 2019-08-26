@@ -30,9 +30,9 @@
 
 #include <Solid/DeviceNotifier>
 
-LXQtMountPlugin::LXQtMountPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
+LXQtMountPlugin::LXQtMountPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     mPopup(nullptr),
     mDeviceAction(nullptr)
 {

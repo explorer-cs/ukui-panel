@@ -148,7 +148,7 @@ if(MAINMENU_PLUGIN)
     add_subdirectory(plugin-mainmenu)
 endif()
 
-#setByDefault(MOUNT_PLUGIN Yes)
+setByDefault(MOUNT_PLUGIN Yes)
 if(MOUNT_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Mount")
     add_subdirectory(plugin-mount)
