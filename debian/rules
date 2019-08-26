@@ -22,6 +22,6 @@ override_dh_auto_configure:
 	dh_auto_configure --\
 		-DPULL_TRANSLATIONS=OFF \
 		-DUPDATE_TRANSLATIONS=OFF \
-		-DDOM_PLUGIN=YES \
+		-DDOM_PLUGIN=OFF \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		$(NOT_LINUX)
