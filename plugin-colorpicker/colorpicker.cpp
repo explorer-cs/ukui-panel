@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -59,6 +59,8 @@ ColorPickerWidget::ColorPickerWidget(QWidget *parent):
     mLineEdit.setFixedWidth ( 10*fm.width ("a") );
 
     QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->setContentsMargins (0, 0, 0, 0);
+    layout->setSpacing (1);
     setLayout(layout);
     layout->addWidget (&mButton);
     layout->addWidget (&mLineEdit);

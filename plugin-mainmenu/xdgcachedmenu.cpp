@@ -29,7 +29,6 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <XdgDesktopFile>
-#include <XdgIcon>
 #include <QHelpEvent>
 #include <QMimeData>
 #include <QDebug>
@@ -59,8 +58,14 @@ void XdgCachedMenuAction::updateIcon()
 {
     if(icon().isNull())
     {
-        QIcon icon = XdgIcon::fromTheme(iconName_, QIcon::fromTheme("unknown"));
-        // Some themes may lack the "unknown" icon; checking null prevents
+        // Note: We don't use the QIcon::fromTheme(const QString &name
+        // , const QIcon &fallback) overload because of "availableSizes()"
+        // check in it, see https://bugreports.qt.io/browse/QTBUG-63187
+        QIcon icon = QIcon::fromTheme(iconName_);
+
+        if (icon.isNull())
+            icon = QIcon::fromTheme("unknown");
+        // Some themes may lack the "unknown" icon; checking null prevents 
         // infinite recursion (setIcon->dataChanged->updateIcon->setIcon)
         if (icon.isNull())
             return;
@@ -70,7 +75,7 @@ void XdgCachedMenuAction::updateIcon()
 
 XdgCachedMenu::XdgCachedMenu(QWidget* parent): QMenu(parent)
 {
-    connect(this, SIGNAL(aboutToShow()), SLOT(onAboutToShow()));
+    connect(this, &QMenu::aboutToShow, this, &XdgCachedMenu::onAboutToShow);
 }
 
 XdgCachedMenu::XdgCachedMenu(MenuCache* menuCache, QWidget* parent): QMenu(parent)
@@ -85,7 +90,7 @@ XdgCachedMenu::XdgCachedMenu(MenuCache* menuCache, QWidget* parent): QMenu(paren
 
     addMenuItems(this, dir);
     menu_cache_item_unref(MENU_CACHE_ITEM(dir));
-    connect(this, SIGNAL(aboutToShow()), SLOT(onAboutToShow()));
+    connect(this, &QMenu::aboutToShow, this, &XdgCachedMenu::onAboutToShow);
 }
 
 XdgCachedMenu::~XdgCachedMenu()
@@ -123,7 +128,7 @@ void XdgCachedMenu::addMenuItems(QMenu* menu, MenuCacheDir* dir)
       menu->addAction(action);
 
       if(type == MENU_CACHE_TYPE_APP)
-        connect(action, SIGNAL(triggered(bool)), SLOT(onItemTrigerred()));
+        connect(action, &QAction::triggered, this, &XdgCachedMenu::onItemTrigerred);
       else if(type == MENU_CACHE_TYPE_DIR)
       {
         XdgCachedMenu* submenu = new XdgCachedMenu(menu);
@@ -197,7 +202,8 @@ void XdgCachedMenu::handleMouseMoveEvent(QMouseEvent *event)
 
 void XdgCachedMenu::onAboutToShow()
 {
-    Q_FOREACH(QAction* action, actions())
+    const auto actionList = actions();
+    for(QAction* action : actionList)
     {
         if(action->inherits("XdgCachedMenuAction"))
         {

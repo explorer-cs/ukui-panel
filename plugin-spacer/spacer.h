@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -28,7 +28,7 @@
 #ifndef SPACER_H
 #define SPACER_H
 
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include <QFrame>
 
 
@@ -57,18 +57,19 @@ class Spacer :  public QObject, public ILXQtPanelPlugin
 public:
     Spacer(const ILXQtPanelPluginStartupInfo &startupInfo);
 
-    virtual QWidget *widget() { return &mSpacer; }
-    virtual QString themeId() const { return "Spacer"; }
+    virtual QWidget *widget() override { return &mSpacer; }
+    virtual QString themeId() const override { return QStringLiteral("Spacer"); }
 
-    bool isSeparate() const { return true; }
+    bool isSeparate() const override { return true; }
+    bool isExpandable() const override { return mExpandable; }
 
-    virtual ILXQtPanelPlugin::Flags flags() const { return HaveConfigDialog; }
-    QDialog *configureDialog();
+    virtual ILXQtPanelPlugin::Flags flags() const override { return HaveConfigDialog; }
+    QDialog *configureDialog() override;
 
-    virtual void realign();
+    virtual void realign() override;
 
 private slots:
-    virtual void settingsChanged();
+    virtual void settingsChanged() override;
 
 private:
     void setSizes();
@@ -76,12 +77,13 @@ private:
 private:
     SpacerWidget mSpacer;
     int mSize;
+    bool mExpandable;
 };
 
 class SpacerPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-    // Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
+    // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(ILXQtPanelPluginLibrary)
 public:
     ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new Spacer(startupInfo);}

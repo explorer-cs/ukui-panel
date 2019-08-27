@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -29,7 +29,6 @@
 #include "ukuipanelapplication.h"
 #include "ukuipanelapplication_p.h"
 #include "ukuipanel.h"
-#include "comm_func.h"
 #include "config/configpaneldialog.h"
 #include <LXQt/Settings>
 #include <QtDebug>
@@ -37,7 +36,6 @@
 #include <QScreen>
 #include <QWindow>
 #include <QCommandLineParser>
-#include <QFile>
 
 UKUIPanelApplicationPrivate::UKUIPanelApplicationPrivate(UKUIPanelApplication *q)
     : mSettings(0),
@@ -88,7 +86,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     QCoreApplication::setApplicationVersion(VERINFO);
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(QLatin1String("UKUI Panel"));
+    parser.setApplicationDescription(QLatin1String("LXQt Panel"));
     parser.addHelpOption();
     parser.addVersionOption();
 
@@ -103,19 +101,13 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     const QString configFile = parser.value(configFileOption);
 
     if (configFile.isEmpty())
-    {
-        QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
-        QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
-        QFile file(loaclCong+"panel.conf");
-        if(!file.exists())
-            copyFileToPath(defaultConf,loaclCong,"panel.conf",false);
         d->mSettings = new LXQt::Settings(QLatin1String("panel"), this);
-    }
     else
         d->mSettings = new LXQt::Settings(configFile, QSettings::IniFormat, this);
 
     // This is a workaround for Qt 5 bug #40681.
-    Q_FOREACH(QScreen* screen, screens())
+    const auto allScreens = screens();
+    for(QScreen* screen : allScreens)
     {
         connect(screen, &QScreen::destroyed, this, &UKUIPanelApplication::screenDestroyed);
     }
@@ -125,12 +117,21 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     QStringList panels = d->mSettings->value("panels").toStringList();
 
+    // WARNING: Giving a separate icon theme to the panel is wrong and has side effects.
+    // However, it is optional and can be used as the last resort for avoiding a low
+    // contrast in the case of symbolic SVG icons. (The correct way of doing that is
+    // using a Qt widget style that can assign a separate theme/QPalette to the panel.)
+    mGlobalIconTheme = QIcon::themeName();
+    const QString iconTheme = d->mSettings->value("iconTheme").toString();
+    if (!iconTheme.isEmpty())
+        QIcon::setThemeName(iconTheme);
+
     if (panels.isEmpty())
     {
         panels << "panel1";
     }
 
-    Q_FOREACH(QString i, panels)
+    for(const QString& i : qAsConst(panels))
     {
         addPanel(i);
     }
@@ -194,11 +195,11 @@ void UKUIPanelApplication::reloadPanelsAsNeeded()
     // UKUIPanelApplication::screenDestroyed().
 
     // qDebug() << "UKUIPanelApplication::reloadPanelsAsNeeded()";
-    QStringList names = d->mSettings->value("panels").toStringList();
-    Q_FOREACH(const QString& name, names)
+    const QStringList names = d->mSettings->value("panels").toStringList();
+    for(const QString& name : names)
     {
         bool found = false;
-        Q_FOREACH(UKUIPanel* panel, mPanels)
+        for(UKUIPanel* panel : qAsConst(mPanels))
         {
             if(panel->name() == name)
             {
@@ -219,7 +220,7 @@ void UKUIPanelApplication::reloadPanelsAsNeeded()
 void UKUIPanelApplication::screenDestroyed(QObject* screenObj)
 {
     // NOTE by PCMan: This is a workaround for Qt 5 bug #40681.
-    // With this very dirty workaround, we can fix lxde/lxde-qt bug #204, #205, and #206.
+    // With this very dirty workaround, we can fix lxqt/lxqt bug #204, #205, and #206.
     // Qt 5 has two new regression bugs which breaks lxqt-panel in a multihead environment.
     // #40681: Regression bug: QWidget::winId() returns old value and QEvent::WinIdChange event is not emitted sometimes. (multihead setup)
     // #40791: Regression: QPlatformWindow, QWindow, and QWidget::winId() are out of sync.
@@ -245,7 +246,7 @@ void UKUIPanelApplication::screenDestroyed(QObject* screenObj)
     QScreen* screen = static_cast<QScreen*>(screenObj);
     bool reloadNeeded = false;
     qApp->setQuitOnLastWindowClosed(false);
-    Q_FOREACH(UKUIPanel* panel, mPanels)
+    for(UKUIPanel* panel : qAsConst(mPanels))
     {
         QWindow* panelWindow = panel->windowHandle();
         if(panelWindow && panelWindow->screen() == screen)
@@ -287,4 +288,22 @@ bool UKUIPanelApplication::isPluginSingletonAndRunnig(QString const & pluginId) 
             return true;
 
     return false;
+}
+
+// See UKUIPanelApplication::UKUIPanelApplication for why this isn't good.
+void UKUIPanelApplication::setIconTheme(const QString &iconTheme)
+{
+    Q_D(UKUIPanelApplication);
+
+    d->mSettings->setValue("iconTheme", iconTheme == mGlobalIconTheme ? QString() : iconTheme);
+    QString newTheme = iconTheme.isEmpty() ? mGlobalIconTheme : iconTheme;
+    if (newTheme != QIcon::themeName())
+    {
+        QIcon::setThemeName(newTheme);
+        for(UKUIPanel* panel : qAsConst(mPanels))
+        {
+            panel->update();
+            panel->updateConfigDialog();
+        }
+    }
 }

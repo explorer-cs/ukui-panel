@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -61,7 +61,7 @@ private:
 class ShowDesktopLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    // Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
+    // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const

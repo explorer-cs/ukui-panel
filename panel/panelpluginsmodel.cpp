@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  *
@@ -252,14 +252,14 @@ void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
             settings->endGroup();
         }
 #endif
-        //desktopDirs插件目录找到type插件的desktop文件列表
+
         LXQt::PluginInfoList list = LXQt::PluginInfo::search(desktopDirs, "LXQtPanel/Plugin", QString("%1.desktop").arg(type));
         if( !list.count())
         {
             qWarning() << QString("Plugin \"%1\" not found.").arg(type);
             continue;
         }
-        //加载列表中的第一个插件
+
         i->second = loadPlugin(list.first(), name);
 #ifdef DEBUG_PLUGIN_LOADTIME
         qDebug() << "load plugin" << type << "takes" << (timer.elapsed() - lastTime) << "ms";

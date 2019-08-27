@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -26,7 +26,7 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "lxqtcpuload.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include "../panel/pluginsettings.h"
 #include <QtCore>
 #include <QPainter>
@@ -51,6 +51,7 @@ extern "C" {
 LXQtCpuLoad::LXQtCpuLoad(ILXQtPanelPlugin* plugin, QWidget* parent):
     QFrame(parent),
     mPlugin(plugin),
+    m_avg(0),
     m_showText(false),
     m_barWidth(20),
     m_barOrientation(TopDownBar),
@@ -82,6 +83,7 @@ LXQtCpuLoad::LXQtCpuLoad(ILXQtPanelPlugin* plugin, QWidget* parent):
 
 LXQtCpuLoad::~LXQtCpuLoad()
 {
+  sg_shutdown();
 }
 
 void LXQtCpuLoad::setSizes()

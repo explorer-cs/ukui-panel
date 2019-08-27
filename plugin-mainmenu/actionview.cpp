@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * https://lxqt.org
  *
  * Copyright: 2016 LXQt team
  * Authors:
@@ -28,17 +28,51 @@
 #include "actionview.h"
 #ifdef HAVE_MENU_CACHE
     #include "xdgcachedmenu.h"
+#else
+    #include <XdgAction>
 #endif
 
 #include <QAction>
 #include <QWidgetAction>
 #include <QMenu>
 #include <QStandardItemModel>
-#include <QSortFilterProxyModel>
 #include <QScrollBar>
 #include <QProxyStyle>
 #include <QStyledItemDelegate>
+//==============================
+#ifdef HAVE_MENU_CACHE
+#include <QSortFilterProxyModel>
+#else
+FilterProxyModel::FilterProxyModel(QObject* parent) :
+    QSortFilterProxyModel(parent) {
+}
 
+FilterProxyModel::~FilterProxyModel() {
+}
+
+bool FilterProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
+    if (filterStr_.isEmpty())
+        return true;
+    if (QStandardItemModel* srcModel = static_cast<QStandardItemModel*>(sourceModel())) {
+        QModelIndex index = srcModel->index(source_row, 0, source_parent);
+        if (QStandardItem * item = srcModel->itemFromIndex(index)) {
+            XdgAction * action = qobject_cast<XdgAction *>(qvariant_cast<QAction *>(item->data(ActionView::ActionRole)));
+            if (action) {
+                const XdgDesktopFile& df = action->desktopFile();
+                if (df.name().contains(filterStr_, filterCaseSensitivity()))
+                    return true;
+                QStringList list = df.expandExecString();
+                if (!list.isEmpty()) {
+                    if (list.at(0).contains(filterStr_, filterCaseSensitivity()))
+                        return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+#endif
+//==============================
 namespace
 {
     class SingleActivateStyle : public QProxyStyle
@@ -70,15 +104,25 @@ namespace
 
         virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override
         {
-            //the XdgCachedMenuAction does load the icon upon showing its menu
-#ifdef HAVE_MENU_CACHE
             QIcon icon = index.data(Qt::DecorationRole).value<QIcon>();
+            //the XdgCachedMenuAction/XdgAction does load the icon upon showing its menu
+#ifdef HAVE_MENU_CACHE
             if (icon.isNull())
             {
                 XdgCachedMenuAction * cached_action = qobject_cast<XdgCachedMenuAction *>(qvariant_cast<QAction *>(index.data(ActionView::ActionRole)));
                 Q_ASSERT(nullptr != cached_action);
                 cached_action->updateIcon();
                 const_cast<QAbstractItemModel *>(index.model())->setData(index, cached_action->icon(), Qt::DecorationRole);
+            }
+#else
+            if (icon.isNull())
+            {
+                XdgAction * action = qobject_cast<XdgAction *>(qvariant_cast<QAction *>(index.data(ActionView::ActionRole)));
+                if (action != nullptr)
+                {
+                  action->updateIcon();
+                  const_cast<QAbstractItemModel *>(index.model())->setData(index, action->icon(), Qt::DecorationRole);
+                }
             }
 #endif
             QSize s = QStyledItemDelegate::sizeHint(option, index);
@@ -90,11 +134,15 @@ namespace
     };
 
 }
-
+//==============================
 ActionView::ActionView(QWidget * parent /*= nullptr*/)
     : QListView(parent)
     , mModel{new QStandardItemModel{this}}
+#ifdef HAVE_MENU_CACHE
     , mProxy{new QSortFilterProxyModel{this}}
+#else
+    , mProxy{new FilterProxyModel{this}}
+#endif
     , mMaxItemsToShow(10)
 {
     setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -175,7 +223,11 @@ void ActionView::fillActions(QMenu * menu)
 
 void ActionView::setFilter(QString const & filter)
 {
+#ifdef HAVE_MENU_CACHE
     mProxy->setFilterFixedString(filter);
+#else
+    mProxy->setfilerString(filter);
+#endif
     const int count = mProxy->rowCount();
     if (0 < count)
     {
@@ -249,7 +301,8 @@ void ActionView::onActionDestroyed()
 
 void ActionView::fillActionsRecursive(QMenu * menu)
 {
-    for (auto const & action : menu->actions())
+    const auto actions = menu->actions();
+    for (auto const & action : actions)
     {
         if (QMenu * sub_menu = action->menu())
         {

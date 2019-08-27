@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -48,7 +48,8 @@ public:
     ~ConfigPanelWidget();
 
     int screenNum() const { return mScreenNum; }
-    UKUIPanel::Position position() const { return mPosition; }
+    IUKUIPanel::Position position() const { return mPosition; }
+    void updateIconThemeSettings();
 
 signals:
     void changed();
@@ -68,12 +69,13 @@ private:
     Ui::ConfigPanelWidget *ui;
     UKUIPanel *mPanel;
     int mScreenNum;
-    UKUIPanel::Position mPosition;
+    IUKUIPanel::Position mPosition;
 
     void addPosition(const QString& name, int screen, UKUIPanel::Position position);
     void fillComboBox_position();
     void fillComboBox_alignment();
-    int indexForPosition(int screen, UKUIPanel::Position position);
+    void fillComboBox_icon();
+    int indexForPosition(int screen, IUKUIPanel::Position position);
     int getMaxLength();
 
     // new values
@@ -87,8 +89,9 @@ private:
     int mOldLength;
     bool mOldLengthInPercents;
     UKUIPanel::Alignment mOldAlignment;
-    UKUIPanel::Position mOldPosition;
+    IUKUIPanel::Position mOldPosition;
     bool mOldHidable;
+    bool mOldVisibleMargin;
     int mOldAnimation;
     int mOldShowDelay;
     int mOldScreenNum;

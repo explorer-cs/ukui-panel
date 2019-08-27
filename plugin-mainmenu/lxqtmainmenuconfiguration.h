@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -29,7 +29,7 @@
 #ifndef LXQTMAINMENUCONFIGURATION_H
 #define LXQTMAINMENUCONFIGURATION_H
 
-#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/lxqtpanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 class QAbstractButton;

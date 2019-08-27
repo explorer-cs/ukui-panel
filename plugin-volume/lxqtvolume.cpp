@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -48,9 +48,9 @@
 #define DEFAULT_DOWN_SHORTCUT "XF86AudioLowerVolume"
 #define DEFAULT_MUTE_SHORTCUT "XF86AudioMute"
 
-LXQtVolume::LXQtVolume(const IUKUIPanelPluginStartupInfo &startupInfo):
+LXQtVolume::LXQtVolume(const ILXQtPanelPluginStartupInfo &startupInfo):
         QObject(),
-        IUKUIPanelPlugin(startupInfo),
+        ILXQtPanelPlugin(startupInfo),
         m_engine(0),
         m_defaultSinkIndex(0),
         m_defaultSink(0),
@@ -283,10 +283,7 @@ void LXQtVolume::showNotification(bool forceShow) const
     {
         if (Q_LIKELY(m_defaultSink))
         {
-            if (m_defaultSink->mute())
-                m_notification->setSummary(tr("Volume: muted"));
-            else
-                m_notification->setSummary(tr("Volume: %1%").arg(QString::number(m_defaultSink->volume())));
+            m_notification->setSummary(tr("Volume: %1%%2").arg(QString::number(m_defaultSink->volume())).arg(m_defaultSink->mute() ? tr("(muted)") : ""));
             m_notification->update();
         }
     }

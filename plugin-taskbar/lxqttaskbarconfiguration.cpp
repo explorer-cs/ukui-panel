@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -33,7 +32,7 @@
 #include <KWindowSystem/KWindowSystem>
 
 LXQtTaskbarConfiguration::LXQtTaskbarConfiguration(PluginSettings *settings, QWidget *parent):
-    UKUIPanelPluginConfigDialog(settings, parent),
+    LXQtPanelPluginConfigDialog(settings, parent),
     ui(new Ui::LXQtTaskbarConfiguration)
 {
     setAttribute(Qt::WA_DeleteOnClose);

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -75,6 +75,7 @@
 #define CFG_KEY_RESERVESPACE       "reserve-space"
 #define CFG_KEY_PLUGINS            "plugins"
 #define CFG_KEY_HIDABLE            "hidable"
+#define CFG_KEY_VISIBLE_MARGIN     "visible-margin"
 #define CFG_KEY_ANIMATION          "animation-duration"
 #define CFG_KEY_SHOW_DELAY         "show-delay"
 #define CFG_KEY_LOCKPANEL          "lockPanel"
@@ -133,6 +134,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
     mScreenNum(0), //whatever (avoid conditional on uninitialized value)
     mActualScreenNum(0),
     mHidable(false),
+    mVisibleMargin(true),
     mHidden(false),
     mAnimationTime(0),
     mReserveSpace(true),
@@ -140,7 +142,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
     mLockPanel(false)
 {
     //You can find information about the flags and widget attributes in your
-    //Qt documentation or at http://doc.qt.io/qt-5/qt.html
+    //Qt documentation or at https://doc.qt.io/qt-5/qt.html
     //Qt::FramelessWindowHint = Produces a borderless window. The user cannot
     //move or resize a borderless window via the window system. On X11, ...
     //Qt::WindowStaysOnTopHint = Informs the window system that the window
@@ -160,7 +162,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
     flags |= Qt::WindowDoesNotAcceptFocus;
 
     setWindowFlags(flags);
-    //Adds _NET_WM_WINDOW_TYPE_DOCK to the window's _NET_WM_WINDOW_TYPE X11 window property. See http://standards.freedesktop.org/wm-spec/ for more details.
+    //Adds _NET_WM_WINDOW_TYPE_DOCK to the window's _NET_WM_WINDOW_TYPE X11 window property. See https://standards.freedesktop.org/wm-spec/ for more details.
     setAttribute(Qt::WA_X11NetWmWindowTypeDock);
     //Enables tooltips for inactive windows.
     setAttribute(Qt::WA_AlwaysShowToolTips);
@@ -169,7 +171,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
     //Allows data from drag and drop operations to be dropped onto the widget (see QWidget::setAcceptDrops()).
     setAttribute(Qt::WA_AcceptDrops);
 
-    setWindowTitle("LXQt Panel");
+    setWindowTitle("UKUI Panel");
     setObjectName(QString("UKUIPanel %1").arg(configGroup));
 
     //UKUIPanel (inherits QFrame) -> lav (QGridLayout) -> UKUIPanelWidget (QFrame) -> UKUIPanelLayout
@@ -202,7 +204,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
 
     // connecting to QDesktopWidget::workAreaResized shouldn't be necessary,
     // as we've already connceted to QDesktopWidget::resized, but it actually
-    // is. Read mode on https://github.com/lxde/lxqt-panel/pull/310
+    // is. Read mode on https://github.com/lxqt/lxqt-panel/pull/310
     connect(QApplication::desktop(), &QDesktopWidget::workAreaResized,
             this, &UKUIPanel::ensureVisible);
 
@@ -240,6 +242,8 @@ void UKUIPanel::readSettings()
     // so that every call to realign() is without side-effect
     mHidable = mSettings->value(CFG_KEY_HIDABLE, mHidable).toBool();
     mHidden = mHidable;
+
+    mVisibleMargin = mSettings->value(CFG_KEY_VISIBLE_MARGIN, mVisibleMargin).toBool();
 
     mAnimationTime = mSettings->value(CFG_KEY_ANIMATION, mAnimationTime).toInt();
     mShowDelayTimer.setInterval(mSettings->value(CFG_KEY_SHOW_DELAY, mShowDelayTimer.interval()).toInt());
@@ -316,6 +320,7 @@ void UKUIPanel::saveSettings(bool later)
     mSettings->setValue(CFG_KEY_RESERVESPACE, mReserveSpace);
 
     mSettings->setValue(CFG_KEY_HIDABLE, mHidable);
+    mSettings->setValue(CFG_KEY_VISIBLE_MARGIN, mVisibleMargin);
     mSettings->setValue(CFG_KEY_ANIMATION, mAnimationTime);
     mSettings->setValue(CFG_KEY_SHOW_DELAY, mShowDelayTimer.interval());
 
@@ -368,7 +373,7 @@ void UKUIPanel::show()
 QStringList pluginDesktopDirs()
 {
     QStringList dirs;
-    dirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
+    dirs << QString(getenv("UKUI_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     dirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/ukui/ukui-panel");
     dirs << PLUGIN_DESKTOPS_DIR;
     return dirs;
@@ -391,7 +396,8 @@ void UKUIPanel::loadPlugins()
     connect(mPlugins.data(), &PanelPluginsModel::pluginAdded, this, &UKUIPanel::pluginAdded);
     connect(mPlugins.data(), &PanelPluginsModel::pluginRemoved, this, &UKUIPanel::pluginRemoved);
 
-    for (auto const & plugin : mPlugins->plugins())
+    const auto plugins = mPlugins->plugins();
+    for (auto const & plugin : plugins)
     {
         mLayout->addPlugin(plugin);
         connect(plugin, &Plugin::dragLeft, [this] { mShowDelayTimer.stop(); hidePanel(); });
@@ -553,9 +559,14 @@ void UKUIPanel::setMargins()
             else
                 mLayout->setContentsMargins(PANEL_HIDE_SIZE, 0, 0, 0);
         }
+        if (!mVisibleMargin)
+            setWindowOpacity(0.0);
     }
-    else
+    else {
         mLayout->setContentsMargins(0, 0, 0, 0);
+        if (!mVisibleMargin)
+            setWindowOpacity(1.0);
+    }
 }
 
 void UKUIPanel::realign()
@@ -593,7 +604,7 @@ void UKUIPanel::updateWmStrut()
     {
         const QRect wholeScreen = QApplication::desktop()->geometry();
         const QRect rect = geometry();
-        // NOTE: http://standards.freedesktop.org/wm-spec/wm-spec-latest.html
+        // NOTE: https://standards.freedesktop.org/wm-spec/wm-spec-latest.html
         // Quote from the EWMH spec: " Note that the strut is relative to the screen edge, and not the edge of the xinerama monitor."
         // So, we use the geometry of the whole screen to calculate the strut rather than using the geometry of individual monitors.
         // Though the spec only mention Xinerama and did not mention XRandR, the rule should still be applied.
@@ -985,7 +996,7 @@ void UKUIPanel::setReserveSpace(bool reserveSpace, bool save)
 /************************************************
 
  ************************************************/
-QRect UKUIPanel::globalGometry() const
+QRect UKUIPanel::globalGeometry() const
 {
     // panel is the the top-most widget/window, no calculation needed
     return geometry();
@@ -1077,7 +1088,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
         if (m)
         {
             menu->addTitle(plugin->windowTitle());
-            for (auto const & action : m->actions())
+            const auto actions = m->actions();
+            for (auto const & action : actions)
             {
                 action->setParent(menu);
                 action->setDisabled(mLockPanel);
@@ -1136,7 +1148,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
 Plugin* UKUIPanel::findPlugin(const IUKUIPanelPlugin* iPlugin) const
 {
-    for (auto const & plug : mPlugins->plugins())
+    const auto plugins = mPlugins->plugins();
+    for (auto const & plug : plugins)
         if (plug->iPlugin() == iPlugin)
             return plug;
     return nullptr;
@@ -1152,19 +1165,19 @@ QRect UKUIPanel::calculatePopupWindowPos(QPoint const & absolutePos, QSize const
     switch (position())
     {
     case IUKUIPanel::PositionTop:
-        y = globalGometry().bottom();
+        y = globalGeometry().bottom();
         break;
 
     case IUKUIPanel::PositionBottom:
-        y = globalGometry().top() - windowSize.height();
+        y = globalGeometry().top() - windowSize.height();
         break;
 
     case IUKUIPanel::PositionLeft:
-        x = globalGometry().right();
+        x = globalGeometry().right();
         break;
 
     case IUKUIPanel::PositionRight:
-        x = globalGometry().left() - windowSize.width();
+        x = globalGeometry().left() - windowSize.width();
         break;
     }
 
@@ -1199,14 +1212,15 @@ QRect UKUIPanel::calculatePopupWindowPos(const IUKUIPanelPlugin *plugin, const Q
     if (nullptr == panel_plugin)
     {
         qWarning() << Q_FUNC_INFO << "Wrong logic? Unable to find Plugin* for" << plugin << "known plugins follow...";
-        for (auto const & plug : mPlugins->plugins())
+        const auto plugins = mPlugins->plugins();
+        for (auto const & plug : plugins)
             qWarning() << plug->iPlugin() << plug;
 
         return QRect();
     }
 
     // Note: assuming there are not contentMargins around the "BackgroundWidget" (UKUIPanelWidget)
-    return calculatePopupWindowPos(globalGometry().topLeft() + panel_plugin->geometry().topLeft(), windowSize);
+    return calculatePopupWindowPos(globalGeometry().topLeft() + panel_plugin->geometry().topLeft(), windowSize);
 }
 
 
@@ -1216,6 +1230,14 @@ QRect UKUIPanel::calculatePopupWindowPos(const IUKUIPanelPlugin *plugin, const Q
 void UKUIPanel::willShowWindow(QWidget * w)
 {
     mStandaloneWindows->observeWindow(w);
+}
+
+/************************************************
+
+ ************************************************/
+void UKUIPanel::pluginFlagsChanged(const IUKUIPanelPlugin * /*plugin*/)
+{
+    mLayout->rebuild();
 }
 
 /************************************************
@@ -1267,10 +1289,10 @@ void UKUIPanel::userRequestForDeletion()
     }
 
     mSettings->beginGroup(mConfigGroup);
-    QStringList plugins = mSettings->value("plugins").toStringList();
+    const QStringList plugins = mSettings->value("plugins").toStringList();
     mSettings->endGroup();
 
-    Q_FOREACH(QString i, plugins)
+    for(const QString& i : plugins)
         if (!i.isEmpty())
             mSettings->remove(i);
 
@@ -1328,6 +1350,19 @@ void UKUIPanel::setHidable(bool hidable, bool save)
     realign();
 }
 
+void UKUIPanel::setVisibleMargin(bool visibleMargin, bool save)
+{
+    if (mVisibleMargin == visibleMargin)
+        return;
+
+    mVisibleMargin = visibleMargin;
+
+    if (save)
+        saveSettings(true);
+
+    realign();
+}
+
 void UKUIPanel::setAnimationTime(int animationTime, bool save)
 {
     if (mAnimationTime == animationTime)
@@ -1348,6 +1383,28 @@ void UKUIPanel::setShowDelay(int showDelay, bool save)
 
     if (save)
         saveSettings(true);
+}
+
+QString UKUIPanel::iconTheme() const
+{
+    return mSettings->value("iconTheme").toString();
+}
+
+void UKUIPanel::setIconTheme(const QString& iconTheme)
+{
+    UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
+    a->setIconTheme(iconTheme);
+}
+
+void UKUIPanel::updateConfigDialog() const
+{
+    if (!mConfigDialog.isNull() && mConfigDialog->isVisible())
+    {
+        mConfigDialog->updateIconThemeSettings();
+        const QList<QWidget*> widgets = mConfigDialog->findChildren<QWidget*>();
+        for (QWidget *widget : widgets)
+            widget->update();
+    }
 }
 
 bool UKUIPanel::isPluginSingletonAndRunnig(QString const & pluginId) const

@@ -29,8 +29,9 @@ set(UIS
 set(LIBRARIES
 )
 
-find_package(XCB REQUIRED COMPONENTS xkbcommon-x11 xkbcommon xcb xcb-xkb)
-find_package(Qt5 REQUIRED COMPONENTS X11Extras Xml)
+find_package(XCB REQUIRED COMPONENTS xcb xcb-xkb)
+find_package(XKBCommon REQUIRED COMPONENTS XKBCommon X11)
+find_package(Qt5 ${QT_MINIMUM_VERSION} REQUIRED COMPONENTS X11Extras Xml)
 
 include_directories(${XCB_INCLUDE_DIRS})
 
@@ -47,6 +48,8 @@ set(SOURCES
 set(LIBRARIES
     ${LIBRARIES}
     ${XCB_LIBRARIES}
+    XKBCommon::XKBCommon
+    XKBCommon::X11
     Qt5::Xml
 )
 

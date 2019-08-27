@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -32,15 +31,15 @@
 #ifndef LXQTTASKGROUP_H
 #define LXQTTASKGROUP_H
 
-#include "../panel/iukuipanel.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanel.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include "lxqttaskbar.h"
 #include "lxqtgrouppopup.h"
 #include "lxqttaskbutton.h"
 #include <KF5/KWindowSystem/kwindowsystem.h>
 
 class QVBoxLayout;
-class IUKUIPanelPlugin;
+class ILXQtPanelPlugin;
 
 class LXQtGroupPopup;
 class LXQtMasterPopup;
@@ -65,7 +64,7 @@ public:
     LXQtTaskButton * getNextPrevChildButton(bool next, bool circular);
 
     bool onWindowChanged(WId window, NET::Properties prop, NET::Properties2 prop2);
-    void setAutoRotation(bool value, IUKUIPanel::Position position);
+    void setAutoRotation(bool value, ILXQtPanel::Position position);
     Qt::ToolButtonStyle popupButtonStyle() const;
     void setToolButtonsStyle(Qt::ToolButtonStyle style);
 

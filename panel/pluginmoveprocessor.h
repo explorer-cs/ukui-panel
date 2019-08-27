@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -39,7 +39,7 @@ class UKUIPanelLayout;
 class QLayoutItem;
 
 
-class UKUI_PANEL_API PluginMoveProcessor : public QWidget
+class LXQT_PANEL_API PluginMoveProcessor : public QWidget
 {
     Q_OBJECT
 public:
@@ -80,7 +80,7 @@ private:
         bool after;
     };
 
-    UKUIPanelLayout *mLayout;
+   UKUIPanelLayout *mLayout;
     Plugin *mPlugin;
     int mDestIndex;
 
@@ -89,7 +89,7 @@ private:
 };
 
 
-class UKUI_PANEL_API CursorAnimation: public QVariantAnimation
+class LXQT_PANEL_API CursorAnimation: public QVariantAnimation
 {
     Q_OBJECT
 public:

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -28,8 +28,8 @@
 #ifndef LXQTMOUNTPLUGIN_H
 #define LXQTMOUNTPLUGIN_H
 
-#include "../panel/iukuipanelplugin.h"
-#include "../panel/ukuipanel.h"
+#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/lxqtpanel.h"
 #include "button.h"
 #include "popup.h"
 #include "actions/deviceaction.h"
@@ -40,17 +40,17 @@
 \author Petr Vanek <petr@scribus.info>
 */
 
-class LXQtMountPlugin : public QObject, public IUKUIPanelPlugin
+class LXQtMountPlugin : public QObject, public ILXQtPanelPlugin
 {
     Q_OBJECT
 
 public:
-    LXQtMountPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
+    LXQtMountPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
     ~LXQtMountPlugin();
 
     virtual QWidget *widget() { return mButton; }
     virtual QString themeId() const { return QLatin1String("LXQtMount"); }
-    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog; }
+    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog; }
 
     Popup *popup() { return mPopup; }
     QIcon icon() { return mButton->icon(); };
@@ -68,14 +68,14 @@ private:
     DeviceAction *mDeviceAction;
 };
 
-class LXQtMountPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
+class LXQtMountPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(IUKUIPanelPluginLibrary)
+    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_INTERFACES(ILXQtPanelPluginLibrary)
 
 public:
-    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
+    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
     {
         return new LXQtMountPlugin(startupInfo);
     }

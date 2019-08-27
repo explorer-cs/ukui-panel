@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2013 Razor team
  * Authors:
@@ -42,7 +42,7 @@ void DeviceActionInfo::doDeviceAdded(Solid::Device device)
 
 void DeviceActionInfo::doDeviceRemoved(Solid::Device device)
 {
-    showMessage(tr("The device <b><nobr>\"%1\"</nobr></b> is removed.").arg(device.description()));
+    showMessage(tr("The device <b><nobr>\"%1\"</nobr></b> is removed.").arg(device.description().isEmpty() ? mKnownDeviceDescriptions[device.udi()] : device.description()));
 }
 
 void DeviceActionInfo::showMessage(const QString &text)

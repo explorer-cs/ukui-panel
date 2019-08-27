@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -55,6 +55,7 @@ Spacer::Spacer(const ILXQtPanelPluginStartupInfo &startupInfo) :
     QObject()
     , ILXQtPanelPlugin(startupInfo)
     , mSize(8)
+    , mExpandable(false)
 {
     settingsChanged();
 }
@@ -64,9 +65,13 @@ Spacer::Spacer(const ILXQtPanelPluginStartupInfo &startupInfo) :
  ************************************************/
 void Spacer::settingsChanged()
 {
-    mSize = settings()->value("size", 8).toInt();
-    mSpacer.setType(settings()->value("spaceType", SpacerConfiguration::msTypes[0]).toString());
+    mSize = settings()->value(QStringLiteral("size"), 8).toInt();
+    const bool old_expandable = mExpandable;
+    mExpandable = settings()->value(QStringLiteral("expandable"), false).toBool();
+    mSpacer.setType(settings()->value(QStringLiteral("spaceType"), SpacerConfiguration::msTypes[0]).toString());
     setSizes();
+    if (old_expandable != mExpandable)
+        pluginFlagsChanged();
 }
 
 /************************************************
@@ -82,21 +87,30 @@ QDialog *Spacer::configureDialog()
  ************************************************/
 void Spacer::setSizes()
 {
-    if (panel()->isHorizontal())
+    if (mExpandable)
     {
-        mSpacer.setOrientation("horizontal");
-        mSpacer.setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-        mSpacer.setFixedWidth(mSize);
-        mSpacer.setMinimumHeight(0);
-        mSpacer.setMaximumHeight(QWIDGETSIZE_MAX);
-    }
-    else
+        mSpacer.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        mSpacer.setMinimumSize({1, 1});
+        mSpacer.setMaximumSize({QWIDGETSIZE_MAX, QWIDGETSIZE_MAX});
+        mSpacer.setOrientation(panel()->isHorizontal() ? QStringLiteral("horizontal") : QStringLiteral("vertical"));
+    } else
     {
-        mSpacer.setOrientation("vertical");
-        mSpacer.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        mSpacer.setFixedHeight(mSize);
-        mSpacer.setMinimumWidth(0);
-        mSpacer.setMaximumWidth(QWIDGETSIZE_MAX);
+        if (panel()->isHorizontal())
+        {
+            mSpacer.setOrientation(QStringLiteral("horizontal"));
+            mSpacer.setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+            mSpacer.setFixedWidth(mSize);
+            mSpacer.setMinimumHeight(0);
+            mSpacer.setMaximumHeight(QWIDGETSIZE_MAX);
+        }
+        else
+        {
+            mSpacer.setOrientation(QStringLiteral("vertical"));
+            mSpacer.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+            mSpacer.setFixedHeight(mSize);
+            mSpacer.setMinimumWidth(0);
+            mSpacer.setMaximumWidth(QWIDGETSIZE_MAX);
+        }
     }
 }
 

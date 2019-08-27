@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -29,7 +29,7 @@
 #include "lxqtquicklaunch.h"
 #include "quicklaunchbutton.h"
 #include "quicklaunchaction.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include <QDesktopServices>
 #include <QDragEnterEvent>
 #include <QFileIconProvider>
@@ -45,7 +45,7 @@
 #include "../panel/pluginsettings.h"
 
 
-LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
+LXQtQuickLaunch::LXQtQuickLaunch(ILXQtPanelPlugin *plugin, QWidget* parent) :
     QFrame(parent),
     mPlugin(plugin),
     mPlaceHolder(0)
@@ -60,7 +60,9 @@ LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
     QString execname;
     QString exec;
     QString icon;
-    for (const QMap<QString, QVariant> &app : mPlugin->settings()->readArray("apps"))
+
+    const auto apps = mPlugin->settings()->readArray("apps");
+    for (const QMap<QString, QVariant> &app : apps)
     {
         desktop = app.value("desktop", "").toString();
         file = app.value("file", "").toString();
@@ -125,7 +127,7 @@ int LXQtQuickLaunch::countOfButtons() const
 void LXQtQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
-    IUKUIPanel *panel = mPlugin->panel();
+    ILXQtPanel *panel = mPlugin->panel();
 
     if (mPlaceHolder)
     {
@@ -186,9 +188,8 @@ void LXQtQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 
 void LXQtQuickLaunch::dropEvent(QDropEvent *e)
 {
-    const QMimeData *mime = e->mimeData();
-
-    foreach (const QUrl &url, mime->urls().toSet())
+    const auto urls = e->mimeData()->urls().toSet();
+    for (const QUrl &url : urls)
     {
         QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
         QFileInfo fi(fileName);

@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -54,7 +53,7 @@ using namespace LXQt;
 /************************************************
 
 ************************************************/
-LXQtTaskBar::LXQtTaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
+LXQtTaskBar::LXQtTaskBar(ILXQtPanelPlugin *plugin, QWidget *parent) :
     QFrame(parent),
     mSignalMapper(new QSignalMapper(this)),
     mButtonStyle(Qt::ToolButtonTextBesideIcon),
@@ -333,7 +332,8 @@ void LXQtTaskBar::refreshTaskList()
 {
     QList<WId> new_list;
     // Just add new windows to groups, deleting is up to the groups
-    for (auto const wnd: KWindowSystem::stackingOrder())
+    const auto wnds = KWindowSystem::stackingOrder();
+    for (auto const wnd: wnds)
     {
         if (acceptWindow(wnd))
         {
@@ -362,7 +362,12 @@ void LXQtTaskBar::onWindowChanged(WId window, NET::Properties prop, NET::Propert
 {
     auto i = mKnownWindows.find(window);
     if (mKnownWindows.end() != i)
-        (*i)->onWindowChanged(window, prop, prop2);
+    {
+        if (!(*i)->onWindowChanged(window, prop, prop2) && acceptWindow(window))
+        { // window is removed from a group because of class change, so we should add it again
+            addWindow(window);
+        }
+    }
 }
 
 void LXQtTaskBar::onWindowAdded(WId window)
@@ -391,7 +396,7 @@ void LXQtTaskBar::refreshButtonRotation()
 {
     bool autoRotate = mAutoRotate && (mButtonStyle != Qt::ToolButtonIconOnly);
 
-    IUKUIPanel::Position panelPosition = mPlugin->panel()->position();
+    ILXQtPanel::Position panelPosition = mPlugin->panel()->position();
     emit buttonRotationRefreshed(autoRotate, panelPosition);
 }
 
@@ -502,7 +507,7 @@ void LXQtTaskBar::realign()
     mLayout->setEnabled(false);
     refreshButtonRotation();
 
-    IUKUIPanel *panel = mPlugin->panel();
+    ILXQtPanel *panel = mPlugin->panel();
     QSize maxSize = QSize(mButtonWidth, mButtonHeight);
     QSize minSize = QSize(0, 0);
 
@@ -524,7 +529,7 @@ void LXQtTaskBar::realign()
         }
         else
         {
-            rotated = mAutoRotate && (panel->position() == IUKUIPanel::PositionLeft || panel->position() == IUKUIPanel::PositionRight);
+            rotated = mAutoRotate && (panel->position() == ILXQtPanel::PositionLeft || panel->position() == ILXQtPanel::PositionRight);
 
             // Vertical + Text
             if (rotated)

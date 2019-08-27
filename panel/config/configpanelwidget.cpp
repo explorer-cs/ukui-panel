@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -57,6 +57,7 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
 
     fillComboBox_position();
     fillComboBox_alignment();
+    fillComboBox_icon();
 
     mOldPanelSize = mPanel->panelSize();
     mOldIconSize = mPanel->iconSize();
@@ -74,6 +75,8 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
     mPosition = mOldPosition;
 
     mOldHidable = mPanel->hidable();
+
+    mOldVisibleMargin = mPanel->visibleMargin();
 
     mOldAnimation = mPanel->animationTime();
     mOldShowDelay = mPanel->showDelay();
@@ -102,6 +105,7 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
     connect(ui->comboBox_alignment,         SIGNAL(activated(int)),         this, SLOT(editChanged()));
     connect(ui->comboBox_position,          SIGNAL(activated(int)),         this, SLOT(positionChanged()));
     connect(ui->checkBox_hidable,           SIGNAL(toggled(bool)),          this, SLOT(editChanged()));
+    connect(ui->checkBox_visibleMargin,     SIGNAL(toggled(bool)),          this, SLOT(editChanged()));
     connect(ui->spinBox_animation,          SIGNAL(valueChanged(int)),      this, SLOT(editChanged()));
     connect(ui->spinBox_delay,              SIGNAL(valueChanged(int)),      this, SLOT(editChanged()));
 
@@ -115,6 +119,9 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
     connect(ui->slider_opacity,             &QSlider::valueChanged,         this, &ConfigPanelWidget::editChanged);
 
     connect(ui->checkBox_reserveSpace, &QAbstractButton::toggled, [this](bool checked) { mPanel->setReserveSpace(checked, true); });
+
+    connect(ui->groupBox_icon, &QGroupBox::clicked, this, &ConfigPanelWidget::editChanged);
+    connect(ui->comboBox_icon, QOverload<int>::of(&QComboBox::activated), this, &ConfigPanelWidget::editChanged);
 }
 
 
@@ -130,6 +137,8 @@ void ConfigPanelWidget::reset()
     ui->comboBox_position->setCurrentIndex(indexForPosition(mOldScreenNum, mOldPosition));
 
     ui->checkBox_hidable->setChecked(mOldHidable);
+
+    ui->checkBox_visibleMargin->setChecked(mOldVisibleMargin);
 
     ui->spinBox_animation->setValue(mOldAnimation);
     ui->spinBox_delay->setValue(mOldShowDelay);
@@ -211,6 +220,59 @@ void ConfigPanelWidget::fillComboBox_alignment()
     };
 }
 
+/************************************************
+ *
+ ************************************************/
+void ConfigPanelWidget::fillComboBox_icon()
+{
+    ui->groupBox_icon->setChecked(!mPanel->iconTheme().isEmpty());
+
+    QStringList themeList;
+    QStringList processed;
+    const QStringList baseDirs = QIcon::themeSearchPaths();
+    for (const QString &baseDirName : baseDirs)
+    {
+        QDir baseDir(baseDirName);
+        if (!baseDir.exists())
+            continue;
+        const QFileInfoList dirs = baseDir.entryInfoList(QDir::AllDirs | QDir::NoDotAndDotDot, QDir::Name);
+        for (const QFileInfo &dir : dirs)
+        {
+            if (!processed.contains(dir.canonicalFilePath()))
+            {
+                processed << dir.canonicalFilePath();
+                QDir Dir(dir.canonicalFilePath());
+                QSettings file(Dir.absoluteFilePath(QStringLiteral("index.theme")), QSettings::IniFormat);
+                if (file.status() == QSettings::NoError
+                    && !file.value(QStringLiteral("Icon Theme/Directories")).toStringList().join(QLatin1Char(' ')).isEmpty()
+                    && !file.value(QStringLiteral("Icon Theme/Hidden"), false).toBool())
+                {
+                    themeList << Dir.dirName();
+                }
+            }
+        }
+    }
+    if (!themeList.isEmpty())
+    {
+        themeList.sort();
+        ui->comboBox_icon->insertItems(0, themeList);
+        QString curTheme = QIcon::themeName();
+        if (!curTheme.isEmpty())
+            ui->comboBox_icon->setCurrentText(curTheme);
+    }
+}
+
+
+/************************************************
+ *
+ ************************************************/
+void ConfigPanelWidget::updateIconThemeSettings()
+{
+    ui->groupBox_icon->setChecked(!mPanel->iconTheme().isEmpty());
+    QString curTheme = QIcon::themeName();
+    if (!curTheme.isEmpty())
+        ui->comboBox_icon->setCurrentText(curTheme);
+}
 
 /************************************************
  *
@@ -267,6 +329,7 @@ void ConfigPanelWidget::editChanged()
     mPanel->setAlignment(align, true);
     mPanel->setPosition(mScreenNum, mPosition, true);
     mPanel->setHidable(ui->checkBox_hidable->isChecked(), true);
+    mPanel->setVisibleMargin(ui->checkBox_visibleMargin->isChecked(), true);
     mPanel->setAnimationTime(ui->spinBox_animation->value(), true);
     mPanel->setShowDelay(ui->spinBox_delay->value(), true);
 
@@ -284,6 +347,11 @@ void ConfigPanelWidget::editChanged()
 
     QString image = ui->checkBox_customBgImage->isChecked() ? ui->lineEdit_customBgImage->text() : QString();
     mPanel->setBackgroundImage(image, true);
+
+    if (!ui->groupBox_icon->isChecked())
+        mPanel->setIconTheme(QString());
+    else if (!ui->comboBox_icon->currentText().isEmpty())
+        mPanel->setIconTheme(ui->comboBox_icon->currentText());
 }
 
 

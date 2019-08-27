@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -70,7 +70,7 @@ int AlsaEngine::volumeMax(AudioDevice *device) const
 
 AlsaDevice *AlsaEngine::getDeviceByAlsaElem(snd_mixer_elem_t *elem) const
 {
-    foreach (AudioDevice *device, m_sinks) {
+    for (AudioDevice *device : qAsConst(m_sinks)) {
         AlsaDevice *dev = qobject_cast<AlsaDevice*>(device);
         if (!dev || !dev->element())
             continue;

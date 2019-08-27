@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -30,7 +29,7 @@
 #ifndef DIRECTORYMENU_H
 #define DIRECTORYMENU_H
 
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
  #include "directorymenuconfiguration.h"
 
 #include <QLabel>
@@ -59,6 +58,7 @@ public:
 private slots:
     void showMenu();
     void openDirectory(const QString& path);
+    void openInTerminal(const QString &path);
     void addMenu(QString path);
 
 protected slots:
@@ -70,17 +70,19 @@ private:
     QToolButton mButton;
     QMenu *mMenu;
     QSignalMapper *mOpenDirectorySignalMapper;
+    QSignalMapper *mOpenTerminalSignalMapper; // New singal mapper to opening direcotry in term
     QSignalMapper *mMenuSignalMapper;
 
     QDir mBaseDirectory;
     QIcon mDefaultIcon;
     std::vector<QString> mPathStrings;
+    QString mDefaultTerminal;
 };
 
 class DirectoryMenuLibrary: public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
+    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(ILXQtPanelPluginLibrary)
 public:
     ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const

@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -34,7 +33,7 @@
 
 #include <QToolButton>
 #include <QProxyStyle>
-#include "../panel/iukuipanel.h"
+#include "../panel/ilxqtpanel.h"
 
 class QPainter;
 class QPalette;
@@ -76,7 +75,7 @@ public:
     void updateText();
 
     Qt::Corner origin() const;
-    virtual void setAutoRotation(bool value, IUKUIPanel::Position position);
+    virtual void setAutoRotation(bool value, ILXQtPanel::Position position);
 
     LXQtTaskBar * parentTaskBar() const {return mParentTaskBar;}
 
@@ -118,7 +117,7 @@ protected:
     virtual QMimeData * mimeData();
     static bool sDraggging;
 
-    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
+    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
 
 private:
     WId mWindow;
@@ -128,7 +127,7 @@ private:
     QPixmap mPixmap;
     bool mDrawPixmap;
     LXQtTaskBar * mParentTaskBar;
-    IUKUIPanelPlugin * mPlugin;
+    ILXQtPanelPlugin * mPlugin;
 
     // Timer for when draggind something into a button (the button's window
     // must be activated so that the use can continue dragging to the window

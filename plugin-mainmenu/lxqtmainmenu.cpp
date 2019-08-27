@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -46,7 +46,9 @@
 #include <XdgMenuWidget>
 
 #ifdef HAVE_MENU_CACHE
-#include "xdgcachedmenu.h"
+    #include "xdgcachedmenu.h"
+#else
+    #include <XdgAction>
 #endif
 
 #define DEFAULT_SHORTCUT "Alt+F1"
@@ -110,8 +112,8 @@ LXQtMainMenu::LXQtMainMenu(const ILXQtPanelPluginStartupInfo &startupInfo):
             if (!mHideTimer.isActive())
                 // Delay this a little -- if we don't do this, search field
                 // won't be able to capture focus
-                // See <https://github.com/lxde/lxqt-panel/pull/131> and
-                // <https://github.com/lxde/lxqt-panel/pull/312>
+                // See <https://github.com/lxqt/lxqt-panel/pull/131> and
+                // <https://github.com/lxqt/lxqt-panel/pull/312>
                 mDelayedPopup.start();
         });
     }
@@ -230,10 +232,10 @@ void LXQtMainMenu::settingsChanged()
         mXdgMenu.setLogDir(mLogDir);
 
         bool res = mXdgMenu.read(mMenuFile);
-        connect(&mXdgMenu, SIGNAL(changed()), this, SLOT(buildMenu()));
+        connect(&mXdgMenu, &XdgMenu::changed, this, &LXQtMainMenu::buildMenu);
         if (res)
         {
-            QTimer::singleShot(1000, this, SLOT(buildMenu()));
+            QTimer::singleShot(1000, this, &LXQtMainMenu::buildMenu);
         }
         else
         {
@@ -265,7 +267,8 @@ void LXQtMainMenu::settingsChanged()
 static bool filterMenu(QMenu * menu, QString const & filter)
 {
     bool has_visible = false;
-    for (auto const & action : menu->actions())
+    const auto actions = menu->actions();
+    for (auto const & action : actions)
     {
         if (QMenu * sub_menu = action->menu())
         {
@@ -278,7 +281,23 @@ static bool filterMenu(QMenu * menu, QString const & filter)
         } else if (!action->isSeparator())
         {
             //real menu action -> app
-            action->setVisible(filter.isEmpty() || action->text().contains(filter, Qt::CaseInsensitive) || action->toolTip().contains(filter, Qt::CaseInsensitive));
+            bool visible(filter.isEmpty() || action->text().contains(filter, Qt::CaseInsensitive) || action->toolTip().contains(filter, Qt::CaseInsensitive));
+#ifndef HAVE_MENU_CACHE
+            if(!visible)
+            {
+                if (XdgAction * xdgAction = qobject_cast<XdgAction *>(action))
+                {
+                    const XdgDesktopFile& df = xdgAction->desktopFile();
+                    QStringList list = df.expandExecString();
+                    if (!list.isEmpty())
+                    {
+                        if (list.at(0).contains(filter, Qt::CaseInsensitive))
+                            visible = true;
+                    }
+                }
+            }
+#endif
+            action->setVisible(visible);
             has_visible |= action->isVisible();
         }
     }
@@ -288,7 +307,8 @@ static bool filterMenu(QMenu * menu, QString const & filter)
 static void showHideMenuEntries(QMenu * menu, bool show)
 {
     //show/hide the top menu entries
-    for (auto const & action : menu->actions())
+    const auto actions = menu->actions();
+    for (auto const & action : actions)
     {
         if (nullptr == qobject_cast<QWidgetAction *>(action))
         {
@@ -300,7 +320,8 @@ static void showHideMenuEntries(QMenu * menu, bool show)
 static void setTranslucentMenus(QMenu * menu)
 {
     menu->setAttribute(Qt::WA_TranslucentBackground);
-    for (auto const & action : menu->actions())
+    const auto actions = menu->actions();
+    for (auto const & action : actions)
     {
         if (QMenu * sub_menu = action->menu())
         {
@@ -423,8 +444,8 @@ void LXQtMainMenu::setMenuFontSize()
     if (mMenu->font() != menuFont)
     {
         mMenu->setFont(menuFont);
-        QList<QMenu*> subMenuList = mMenu->findChildren<QMenu*>();
-        foreach (QMenu* subMenu, subMenuList)
+        const QList<QMenu*> subMenuList = mMenu->findChildren<QMenu*>();
+        for (QMenu* const subMenu : subMenuList)
         {
             subMenu->setFont(menuFont);
         }

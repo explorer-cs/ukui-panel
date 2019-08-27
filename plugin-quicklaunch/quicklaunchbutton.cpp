@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -27,7 +27,7 @@
 
 #include "quicklaunchbutton.h"
 #include "lxqtquicklaunch.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include <QAction>
 #include <QDrag>
 #include <QMenu>
@@ -40,7 +40,7 @@
 #define MIMETYPE "x-lxqt/quicklaunch-button"
 
 
-QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin * plugin, QWidget * parent)
+QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, ILXQtPanelPlugin * plugin, QWidget * parent)
     : QToolButton(parent),
       mAct(act),
       mPlugin(plugin)

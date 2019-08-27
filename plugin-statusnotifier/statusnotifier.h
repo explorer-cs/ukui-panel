@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -29,7 +29,7 @@
 #ifndef STATUSNOTIFIER_PLUGIN_H
 #define STATUSNOTIFIER_PLUGIN_H
 
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include "statusnotifierwidget.h"
 
 class StatusNotifier : public QObject, public ILXQtPanelPlugin
@@ -51,7 +51,7 @@ private:
 class StatusNotifierLibrary : public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-//     Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
+//     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(ILXQtPanelPluginLibrary)
 public:
     ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const

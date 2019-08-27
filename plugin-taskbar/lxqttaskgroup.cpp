@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -97,7 +96,7 @@ void LXQtTaskGroup::contextMenuEvent(QContextMenuEvent *event)
  ************************************************/
 void LXQtTaskGroup::closeGroup()
 {
-    foreach (LXQtTaskButton * button, mButtonHash.values())
+    for (LXQtTaskButton *button : qAsConst(mButtonHash) )
         if (button->isOnDesktop(KWindowSystem::currentDesktop()))
             button->closeApplication();
 }
@@ -133,7 +132,7 @@ LXQtTaskButton * LXQtTaskGroup::addWindow(WId id)
  ************************************************/
 LXQtTaskButton * LXQtTaskGroup::checkedButton() const
 {
-    foreach (LXQtTaskButton* button, mButtonHash.values())
+    for (LXQtTaskButton* button : qAsConst(mButtonHash))
         if (button->isChecked())
             return button;
 
@@ -192,7 +191,7 @@ LXQtTaskButton * LXQtTaskGroup::getNextPrevChildButton(bool next, bool circular)
 void LXQtTaskGroup::onActiveWindowChanged(WId window)
 {
     LXQtTaskButton *button = mButtonHash.value(window, nullptr);
-    foreach (LXQtTaskButton *btn, mButtonHash.values())
+    for (LXQtTaskButton *btn : qAsConst(mButtonHash))
         btn->setChecked(false);
 
     if (button)
@@ -284,7 +283,7 @@ int LXQtTaskGroup::buttonsCount() const
 int LXQtTaskGroup::visibleButtonsCount() const
 {
     int i = 0;
-    foreach (LXQtTaskButton *btn, mButtonHash.values())
+    for (LXQtTaskButton *btn : qAsConst(mButtonHash))
         if (btn->isVisibleTo(mPopup))
             i++;
     return i;
@@ -324,7 +323,7 @@ void LXQtTaskGroup::regroup()
         mSingleButton = true;
         // Get first visible button
         LXQtTaskButton * button = NULL;
-        foreach (LXQtTaskButton *btn, mButtonHash.values())
+        for (LXQtTaskButton *btn : qAsConst(mButtonHash))
         {
             if (btn->isVisibleTo(mPopup))
             {
@@ -359,7 +358,7 @@ void LXQtTaskGroup::recalculateFrameIfVisible()
     if (mPopup->isVisible())
     {
         recalculateFrameSize();
-        if (plugin()->panel()->position() == IUKUIPanel::PositionBottom)
+        if (plugin()->panel()->position() == ILXQtPanel::PositionBottom)
             recalculateFramePosition();
     }
 }
@@ -367,9 +366,9 @@ void LXQtTaskGroup::recalculateFrameIfVisible()
 /************************************************
 
  ************************************************/
-void LXQtTaskGroup::setAutoRotation(bool value, IUKUIPanel::Position position)
+void LXQtTaskGroup::setAutoRotation(bool value, ILXQtPanel::Position position)
 {
-    foreach (LXQtTaskButton *button, mButtonHash.values())
+    for (LXQtTaskButton *button : qAsConst(mButtonHash))
         button->setAutoRotation(false, position);
 
     LXQtTaskButton::setAutoRotation(value, position);
@@ -383,7 +382,7 @@ void LXQtTaskGroup::refreshVisibility()
     bool will = false;
     LXQtTaskBar const * taskbar = parentTaskBar();
     const int showDesktop = taskbar->showDesktopNum();
-    foreach(LXQtTaskButton * btn, mButtonHash.values())
+    for(LXQtTaskButton * btn : qAsConst(mButtonHash))
     {
         bool visible = taskbar->isShowOnlyOneDesktopTasks() ? btn->isOnDesktop(0 == showDesktop ? KWindowSystem::currentDesktop() : showDesktop) : true;
         visible &= taskbar->isShowOnlyCurrentScreenTasks() ? btn->isOnCurrentScreen() : true;
@@ -449,7 +448,7 @@ void LXQtTaskGroup::refreshIconsGeometry()
         return;
     }
 
-    foreach(LXQtTaskButton *but, mButtonHash.values())
+    for(LXQtTaskButton *but : qAsConst(mButtonHash))
     {
         but->refreshIconGeometry(rect);
         but->setIconSize(QSize(plugin()->panel()->iconSize(), plugin()->panel()->iconSize()));
@@ -493,7 +492,7 @@ int LXQtTaskGroup::recalculateFrameWidth() const
     const QFontMetrics fm = fontMetrics();
     int max = 100 * fm.width (' '); // elide after the max width
     int txtWidth = 0;
-    foreach (LXQtTaskButton *btn, mButtonHash.values())
+    for (LXQtTaskButton *btn : qAsConst(mButtonHash))
         txtWidth = qMax(fm.width(btn->text()), txtWidth);
     return iconSize().width() + qMin(txtWidth, max) + 30/* give enough room to margins and borders*/;
 }
@@ -507,16 +506,16 @@ QPoint LXQtTaskGroup::recalculateFramePosition()
     int x_offset = 0, y_offset = 0;
     switch (plugin()->panel()->position())
     {
-    case IUKUIPanel::PositionTop:
+    case ILXQtPanel::PositionTop:
         y_offset += height();
         break;
-    case IUKUIPanel::PositionBottom:
+    case ILXQtPanel::PositionBottom:
         y_offset = -recalculateFrameHeight();
         break;
-    case IUKUIPanel::PositionLeft:
+    case ILXQtPanel::PositionLeft:
         x_offset += width();
         break;
-    case IUKUIPanel::PositionRight:
+    case ILXQtPanel::PositionRight:
         x_offset = -recalculateFrameWidth();
         break;
     }
@@ -586,8 +585,7 @@ void LXQtTaskGroup::mouseMoveEvent(QMouseEvent* event)
 
  ************************************************/
 bool LXQtTaskGroup::onWindowChanged(WId window, NET::Properties prop, NET::Properties2 prop2)
-{
-    bool consumed{false};
+{ // returns true if the class is preserved
     bool needsRefreshVisibility{false};
     QVector<LXQtTaskButton *> buttons;
     if (mButtonHash.contains(window))
@@ -599,15 +597,14 @@ bool LXQtTaskGroup::onWindowChanged(WId window, NET::Properties prop, NET::Prope
 
     if (!buttons.isEmpty())
     {
-        consumed = true;
         // if class is changed the window won't belong to our group any more
         if (parentTaskBar()->isGroupingEnabled() && prop2.testFlag(NET::WM2WindowClass))
         {
             KWindowInfo info(window, 0, NET::WM2WindowClass);
             if (info.windowClassClass() != mGroupName)
             {
-                consumed = false;
                 onWindowRemoved(window);
+                return false;
             }
         }
         // window changed virtual desktop
@@ -632,10 +629,7 @@ bool LXQtTaskGroup::onWindowChanged(WId window, NET::Properties prop, NET::Prope
         {
             KWindowInfo info{window, NET::WMState};
             if (info.hasState(NET::SkipTaskbar))
-            {
-                consumed = false;
                 onWindowRemoved(window);
-            }
             std::for_each(buttons.begin(), buttons.end(), std::bind(&LXQtTaskButton::setUrgencyHint, std::placeholders::_1, info.hasState(NET::DemandsAttention)));
 
             if (parentTaskBar()->isShowOnlyMinimizedTasks())
@@ -648,7 +642,7 @@ bool LXQtTaskGroup::onWindowChanged(WId window, NET::Properties prop, NET::Prope
     if (needsRefreshVisibility)
         refreshVisibility();
 
-    return consumed;
+    return true;
 }
 
 /************************************************

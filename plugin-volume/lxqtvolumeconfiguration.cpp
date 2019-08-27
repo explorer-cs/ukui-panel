@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -34,7 +34,7 @@
 #include <QDebug>
 
 LXQtVolumeConfiguration::LXQtVolumeConfiguration(PluginSettings *settings, bool ossAvailable, QWidget *parent) :
-    UKUIPanelPluginConfigDialog(settings, parent),
+    LXQtPanelPluginConfigDialog(settings, parent),
     ui(new Ui::LXQtVolumeConfiguration)
 {
     ui->setupUi(this);
@@ -84,7 +84,7 @@ void LXQtVolumeConfiguration::setSinkList(const QList<AudioDevice *> sinks)
     const bool old_block = ui->devAddedCombo->blockSignals(true);
     ui->devAddedCombo->clear();
 
-    foreach (const AudioDevice *dev, sinks) {
+    for (const AudioDevice *dev : qAsConst(sinks)) {
         ui->devAddedCombo->addItem(dev->description(), dev->index());
     }
 

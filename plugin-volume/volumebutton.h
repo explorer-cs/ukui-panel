@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -32,15 +32,15 @@
 #include <QTimer>
 
 class VolumePopup;
-class IUKUIPanel;
+class ILXQtPanel;
 class LXQtVolume;
-class IUKUIPanelPlugin;
+class ILXQtPanelPlugin;
 
 class VolumeButton : public QToolButton
 {
     Q_OBJECT
 public:
-    VolumeButton(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    VolumeButton(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
     ~VolumeButton();
 
     void setShowOnClicked(bool state);
@@ -67,8 +67,8 @@ private slots:
 
 private:
     VolumePopup *m_volumePopup;
-    IUKUIPanelPlugin *mPlugin;
-    IUKUIPanel *m_panel;
+    ILXQtPanelPlugin *mPlugin;
+    ILXQtPanel *m_panel;
     QTimer m_popupHideTimer;
     bool m_showOnClick;
     bool m_muteOnMiddleClick;

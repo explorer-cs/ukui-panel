@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -30,7 +29,7 @@
 #ifndef DIRECTORYMENUCONFIGURATION_H
 #define DIRECTORYMENUCONFIGURATION_H
 
-#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/lxqtpanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 #include <QAbstractButton>
@@ -56,6 +55,7 @@ private:
     QDir mBaseDirectory;
     QString mIcon;
     QIcon mDefaultIcon;
+    QString mDefaultTerminal;
 
     /*
       Read settings from conf file and put data into controls.
@@ -69,6 +69,7 @@ private slots:
     void saveSettings();
     void showDirectoryDialog();
     void showIconDialog();
+    void showTermDialog();
 
 private:
 };

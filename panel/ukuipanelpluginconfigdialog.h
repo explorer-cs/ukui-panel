@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -36,7 +36,7 @@
 
 class QComboBox;
 
-class UKUI_PANEL_API UKUIPanelPluginConfigDialog : public QDialog
+class LXQT_PANEL_API UKUIPanelPluginConfigDialog : public QDialog
 {
     Q_OBJECT
 public:

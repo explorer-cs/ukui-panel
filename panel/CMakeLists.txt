@@ -17,10 +17,9 @@ set(PRIV_HEADERS
     config/configpanelwidget.h
     config/configpluginswidget.h
     config/addplugindialog.h
-    comm_func.h
 )
 
-# using lxqt namespace in the public headers.
+# using LXQt namespace in the public headers.
 set(PUB_HEADERS
     ukuipanelglobals.h
     pluginsettings.h
@@ -44,7 +43,6 @@ set(SOURCES
     config/configpanelwidget.cpp
     config/configpluginswidget.cpp
     config/addplugindialog.cpp
-    comm_func.cpp
 )
 
 set(UI
@@ -61,17 +59,14 @@ file(GLOB CONFIG_FILES resources/*.conf)
 
 ############################################
 
-add_definitions(-DCOMPILE_ukui_PANEL)
+add_definitions(-DCOMPILE_UKUI_PANEL)
 
 set(PLUGIN_DESKTOPS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/ukui/${PROJECT}")
 add_definitions(-DPLUGIN_DESKTOPS_DIR=\"${PLUGIN_DESKTOPS_DIR}\")
 
-message("------------------")
-message(${PLUGIN_DESKTOPS_DIR})
-message("------------------")
 if (WITH_SCREENSAVER_FALLBACK)
     message(STATUS "Building with conversion of deprecated 'screensaver' plugin")
-    add_definitions(-DWITH_SCREENSAVER_FALLBACK "-Dukui_LOCK_DESKTOP=\"${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications/ukui-lockscreen.desktop\"")
+    add_definitions(-DWITH_SCREENSAVER_FALLBACK "-DUKUI_LOCK_DESKTOP=\"${CMAKE_INSTALL_FULL_DATAROOTDIR}/applications/lxqt-lockscreen.desktop\"")
 endif ()
 
 project(${PROJECT})
@@ -88,17 +83,7 @@ lxqt_translate_ts(QM_FILES SOURCES
         ${SOURCES}
         ${UI}
     INSTALL_DIR
-        "${ukui_TRANSLATIONS_DIR}/${PROJECT_NAME}"
-    PULL_TRANSLATIONS
-        ${PULL_TRANSLATIONS}
-    CLEAN_TRANSLATIONS
-        ${CLEAN_TRANSLATIONS}
-    TRANSLATIONS_REPO
-        ${TRANSLATIONS_REPO}
-    TRANSLATIONS_REFSPEC
-        ${TRANSLATIONS_REFSPEC}
-    REPO_SUBDIR
-        "${PROJECT_NAME}/panel"
+    "${UKUI_TRANSLATIONS_DIR}/${PROJECT_NAME}"
 )
 
 lxqt_app_translation_loader(SOURCES ${PROJECT_NAME})

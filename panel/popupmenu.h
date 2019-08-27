@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -32,7 +32,7 @@
 #include <QMenu>
 #include "ukuipanelglobals.h"
 
-class UKUI_PANEL_API PopupMenu: public QMenu
+class LXQT_PANEL_API PopupMenu: public QMenu
 {
 public:
     explicit PopupMenu(QWidget *parent = 0): QMenu(parent) {}

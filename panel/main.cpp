@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -28,10 +28,15 @@
 
 #include "ukuipanelapplication.h"
 
+/*! The ukui-panel is the panel of LXQt.
+  Usage: ukui-panel [CONFIG_ID]
+    CONFIG_ID      Section name in config file ~/.config/lxqt-panel/panel.conf
+                   (default main)
+ */
 
 int main(int argc, char *argv[])
 {
-    UKUIPanelApplication app(argc, argv);
+   UKUIPanelApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 
     return app.exec();

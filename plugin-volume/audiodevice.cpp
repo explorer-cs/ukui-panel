@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -114,7 +114,6 @@ void AudioDevice::setVolume(int volume)
         return;
 
     setVolumeNoCommit(volume);
-    setMute(false);
 
     if (m_engine)
         m_engine->commitDeviceVolume(this);

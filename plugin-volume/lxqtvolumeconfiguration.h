@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -28,7 +28,7 @@
 #ifndef LXQTVOLUMECONFIGURATION_H
 #define LXQTVOLUMECONFIGURATION_H
 
-#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/lxqtpanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 #include <QList>
@@ -66,7 +66,7 @@ namespace Ui {
     class LXQtVolumeConfiguration;
 }
 
-class LXQtVolumeConfiguration : public UKUIPanelPluginConfigDialog
+class LXQtVolumeConfiguration : public LXQtPanelPluginConfigDialog
 {
     Q_OBJECT
 

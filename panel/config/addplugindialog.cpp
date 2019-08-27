@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -49,7 +49,7 @@ AddPluginDialog::AddPluginDialog(QWidget *parent):
     ui->setupUi(this);
 
     QStringList desktopFilesDirs;
-    desktopFilesDirs << QString(getenv("LXQT_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
+    desktopFilesDirs << QString(getenv("UKUI_PANEL_PLUGINS_DIR")).split(':', QString::SkipEmptyParts);
     desktopFilesDirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/ukui/ukui-panel");
     desktopFilesDirs << PLUGIN_DESKTOPS_DIR;
 

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -31,7 +31,7 @@
 #include <QDir>
 #include <QFile>
 #include <dbusmenu-qt5/dbusmenuimporter.h>
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include "sniasync.h"
 #include <XdgIcon>
 
@@ -149,10 +149,10 @@ void StatusNotifierButton::refetchIcon(Status status)
                     if (themeDir.cd("hicolor") || (themeDir.cd("icons") && themeDir.cd("hicolor")))
                     {
                         const QStringList sizes = themeDir.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
-                        foreach (const QString &dir, sizes)
+                        for (const QString &dir : sizes)
                         {
                             const QStringList dirs = QDir(themeDir.filePath(dir)).entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
-                            foreach (const QString &innerDir, dirs)
+                            for (const QString &innerDir : dirs)
                             {
                                 QString file = themeDir.absolutePath() + "/" + dir + "/" + innerDir + "/" + iconName + ".png";
                                 if (QFile::exists(file))

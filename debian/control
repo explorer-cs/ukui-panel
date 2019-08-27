@@ -1,44 +1,44 @@
 Source: ukui-panel
-Maintainer: ubuntukylin Developers <ubuntukylin-devel@lists.ubuntukylin.com>
-Uploaders: xiaoyiwu <wuxiaoyi@kylinos.cn>,
+Maintainer: ubuntukylin Developers <ubuntukylin-devel@lists.ubuntukylin.com
+XSBC-Original-Maintainer: UKUI Packaging Team <ubuntukylin-devel@lists.ubuntukylin.com>
+Uploaders: xiaoyiwu <wuxiaoyi@kylinos.cn>
 Section: x11
 Priority: optional
-Build-Depends: debhelper (>= 10),
+Build-Depends: debhelper (>= 12),
                libasound2-dev,
                libdbusmenu-qt5-dev,
                libglib2.0-dev,
                libicu-dev,
-               libkf5windowsystem-dev,
                libkf5solid-dev,
-               liblxqt0-dev (>= 0.12.0),
-               liblxqt-globalkeys0-dev (>= 0.12.0),
-               liblxqt-globalkeys-ui0-dev (>= 0.12.0),
-               libmenu-cache-dev,
+               libkf5windowsystem-dev,
+               liblxqt-globalkeys-ui0-dev (>= 0.14.0),
+               liblxqt-globalkeys0-dev (>= 0.14.0),
+               liblxqt0-dev (>= 0.14.0),
                libpulse-dev,
                libqt5svg5-dev,
                libqt5x11extras5-dev,
                libsensors4-dev [!hurd-any],
                libstatgrab-dev [linux-any],
-               libsysstat-qt5-0-dev (>= 0.4.0),
+               libsysstat-qt5-0-dev (>= 0.4.2),
                libx11-dev,
-               libxcomposite-dev,
+               libxcb-damage0-dev,
                libxcb-util0-dev,
                libxcb-xkb-dev,
-               libxcb-damage0-dev,
+               libxcomposite-dev,
                libxdamage-dev,
                libxkbcommon-dev,
                libxkbcommon-x11-dev,
                libxrender-dev
-Standards-Version: 4.1.2
+Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/explorer-cs/ukui-panel
 Vcs-Git: https://github.com/explorer-cs/ukui-panel
 Homepage: https://github.com/ukui/ukui-panel
 
 Package: ukui-panel
 Architecture: any
-Depends: ${misc:Depends},
-         ${shlibs:Depends},
-Recommends: lxqt-config,
+Depends: lxmenu-data, lxqt-policykit, ${misc:Depends}, ${shlibs:Depends}
+Recommends: lxqt-about,
+            lxqt-config,
             lxqt-notificationd,
             lxqt-panel-l10n,
             lxqt-qtplugin,
@@ -50,6 +50,14 @@ Suggests: lxqt | lxqt-core
 Breaks: lxqt-common (<< 0.12.0)
 Replaces: lxqt-common (<< 0.12.0)
 Description: ukui desktop panel
- The UKUI desktop panel
+ The ukui desktop panel
  .
- This package contain the ukui panel.
+ This package contains the ukui panel.
+
+Package: ukui-panel-l10n
+Architecture: all
+Multi-Arch: foreign
+Section: localization
+Depends: qttranslations5-l10n, ${misc:Depends}
+Description: Language package for ukui-panel
+ This package contains the l10n files needed by ukui-panel.

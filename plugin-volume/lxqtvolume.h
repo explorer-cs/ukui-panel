@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -28,7 +28,7 @@
 #ifndef LXQTVOLUME_H
 #define LXQTVOLUME_H
 
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include <QToolButton>
 #include <QSlider>
 #include <QPointer>
@@ -46,16 +46,16 @@ class Action;
 
 class LXQtVolumeConfiguration;
 
-class LXQtVolume : public QObject, public IUKUIPanelPlugin
+class LXQtVolume : public QObject, public ILXQtPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtVolume(const IUKUIPanelPluginStartupInfo &startupInfo);
+    LXQtVolume(const ILXQtPanelPluginStartupInfo &startupInfo);
     ~LXQtVolume();
 
     virtual QWidget *widget();
     virtual QString themeId() const { return "Volume"; }
-    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
+    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     void realign();
     QDialog *configureDialog();
 
@@ -83,13 +83,13 @@ private:
 };
 
 
-class LXQtVolumePluginLibrary: public QObject, public IUKUIPanelPluginLibrary
+class LXQtVolumePluginLibrary: public QObject, public ILXQtPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxde-qt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(IUKUIPanelPluginLibrary)
+    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_INTERFACES(ILXQtPanelPluginLibrary)
 public:
-    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
+    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
     {
         return new LXQtVolume(startupInfo);
     }

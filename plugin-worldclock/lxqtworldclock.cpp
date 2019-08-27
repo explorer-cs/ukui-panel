@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012-2013 Razor team
  *            2014 LXQt team
@@ -138,6 +138,7 @@ void LXQtWorldClock::updateTimeText()
             mRotatedWidget->adjustContentSize();
         mRotatedWidget->update();
         updatePopupContent();
+
     }
 }
 
@@ -447,7 +448,7 @@ void LXQtWorldClock::updatePopupContent()
         QStringList allTimeZones;
         bool hasTimeZone = formatHasTimeZone(mFormat);
 
-        foreach (QString timeZoneName, mTimeZones)
+        for (QString timeZoneName : qAsConst(mTimeZones))
         {
             if (timeZoneName == QLatin1String("local"))
                 timeZoneName = QString::fromLatin1(QTimeZone::systemTimeZoneId());

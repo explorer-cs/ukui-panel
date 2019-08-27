@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -35,7 +35,7 @@
 #include <QTimer>
 #include <QX11Info>
 #include "trayicon.h"
-#include "../panel/iukuipanel.h"
+#include "../panel/ilxqtpanel.h"
 #include <LXQt/GridLayout>
 #include "lxqttray.h"
 #include "xfitman.h"
@@ -50,7 +50,7 @@
 
 #undef Bool // defined as int in X11/Xlib.h
 
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 
 #define _NET_SYSTEM_TRAY_ORIENTATION_HORZ 0
 #define _NET_SYSTEM_TRAY_ORIENTATION_VERT 1
@@ -66,7 +66,7 @@
 /************************************************
 
  ************************************************/
-LXQtTray::LXQtTray(IUKUIPanelPlugin *plugin, QWidget *parent):
+LXQtTray::LXQtTray(ILXQtPanelPlugin *plugin, QWidget *parent):
     QFrame(parent),
     mValid(false),
     mTrayId(0),
@@ -152,7 +152,7 @@ bool LXQtTray::nativeEventFilter(const QByteArray &eventType, void *message, lon
 void LXQtTray::realign()
 {
     mLayout->setEnabled(false);
-    IUKUIPanel *panel = mPlugin->panel();
+    ILXQtPanel *panel = mPlugin->panel();
 
     if (panel->isHorizontal())
     {
@@ -212,7 +212,7 @@ void LXQtTray::clientMessageEvent(xcb_generic_event_t *e)
  ************************************************/
 TrayIcon* LXQtTray::findIcon(Window id)
 {
-    foreach(TrayIcon* icon, mIcons)
+    for(TrayIcon* icon : qAsConst(mIcons))
     {
         if (icon->iconId() == id || icon->windowId() == id)
             return icon;

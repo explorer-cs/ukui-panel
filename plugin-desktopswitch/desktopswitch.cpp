@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -56,12 +56,7 @@ DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
 
     mLayout = new LXQt::GridLayout(&mWidget);
     mWidget.setLayout(mLayout);
-<<<<<<< HEAD
 
-=======
-//    QLabel *label = new QLabel("桌面切換");
-//    mWidget.layout()->addWidget(label);
->>>>>>> e7794ba03e78464d6d5d76eb0cee48f9f90e0890
     settingsChanged();
 
     onCurrentDesktopChanged(KWindowSystem::currentDesktop());

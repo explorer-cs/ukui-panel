@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011-2013 Razor team
  * Authors:
@@ -27,7 +27,7 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "popup.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanelplugin.h"
 
 #include <QDesktopWidget>
 #include <QVBoxLayout>
@@ -52,7 +52,7 @@ static bool hasRemovableParent(Solid::Device device)
     return false;
 }
 
-Popup::Popup(IUKUIPanelPlugin * plugin, QWidget* parent):
+Popup::Popup(ILXQtPanelPlugin * plugin, QWidget* parent):
     QDialog(parent,  Qt::Window | Qt::WindowStaysOnTopHint | Qt::CustomizeWindowHint | Qt::Popup | Qt::X11BypassWindowManagerHint),
     mPlugin(plugin),
     mPlaceholder(nullptr),
@@ -75,7 +75,8 @@ Popup::Popup(IUKUIPanelPlugin * plugin, QWidget* parent):
     connect(aux_timer, &QTimer::timeout, [this, aux_timer]
         {
             delete aux_timer; //cleanup
-            for (Solid::Device device : Solid::Device::listFromType(Solid::DeviceInterface::StorageAccess))
+            const auto devices = Solid::Device::listFromType(Solid::DeviceInterface::StorageAccess);
+            for (const Solid::Device& device : Solid::Device::listFromType(Solid::DeviceInterface::StorageAccess))
                 if (hasRemovableParent(device))
                     addItem(device);
         });

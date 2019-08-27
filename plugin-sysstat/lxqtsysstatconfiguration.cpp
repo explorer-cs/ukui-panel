@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -188,7 +188,8 @@ void LXQtSysStatConfiguration::on_typeCOB_currentIndexChanged(int index)
 
     ui->sourceCOB->blockSignals(true);
     ui->sourceCOB->clear();
-    for (auto const & s : mStat->sources())
+    const auto sources = mStat->sources();
+    for (auto const & s : sources)
         ui->sourceCOB->addItem(tr(s.toStdString().c_str()), s);
     ui->sourceCOB->blockSignals(false);
     ui->sourceCOB->setCurrentIndex(0);

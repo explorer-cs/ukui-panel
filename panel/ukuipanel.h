@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -73,7 +73,7 @@ class WindowNotifier;
  *
  * \sa UKUIPanelApplication, Plugin, PanelPluginsModel, UKUIPanelLayout.
  */
-class UKUI_PANEL_API UKUIPanel : public QFrame, public IUKUIPanel
+class LXQT_PANEL_API UKUIPanel : public QFrame, public IUKUIPanel
 {
     Q_OBJECT
 
@@ -142,10 +142,11 @@ public:
 
     // IUKUIPanel overrides ........
     IUKUIPanel::Position position() const override { return mPosition; }
-    QRect globalGometry() const override;
+    QRect globalGeometry() const override;
     QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const override;
     QRect calculatePopupWindowPos(const IUKUIPanelPlugin *plugin, const QSize &windowSize) const override;
     void willShowWindow(QWidget * w) override;
+    void pluginFlagsChanged(const IUKUIPanelPlugin * plugin) override;
     // ........ end of IUKUIPanel overrides
 
     /**
@@ -220,8 +221,10 @@ public:
     int opacity() const { return mOpacity; }
     int reserveSpace() const { return mReserveSpace; }
     bool hidable() const { return mHidable; }
+    bool visibleMargin() const { return mVisibleMargin; }
     int animationTime() const { return mAnimationTime; }
     int showDelay() const { return mShowDelayTimer.interval(); }
+    QString iconTheme() const;
 
     /*!
      * \brief Checks if a given Plugin is running and has the
@@ -232,6 +235,11 @@ public:
      * IUKUIPanelPlugin::SingleInstance flag set, false otherwise.
      */
     bool isPluginSingletonAndRunnig(QString const & pluginId) const;
+    /*!
+     * \brief Updates the config dialog. Used for updating its icons
+     * when the panel-specific icon theme changes.
+     */
+    void updateConfigDialog() const;
 
 public slots:
     /**
@@ -297,8 +305,10 @@ public slots:
     void setOpacity(int opacity, bool save); //!< \sa setPanelSize()
     void setReserveSpace(bool reserveSpace, bool save); //!< \sa setPanelSize()
     void setHidable(bool hidable, bool save); //!< \sa setPanelSize()
+    void setVisibleMargin(bool visibleMargin, bool save); //!< \sa setPanelSize()
     void setAnimationTime(int animationTime, bool save); //!< \sa setPanelSize()
     void setShowDelay(int showDelay, bool save); //!< \sa setPanelSize()
+    void setIconTheme(const QString& iconTheme);
 
     /**
      * @brief Saves the current configuration, i.e. writes the current
@@ -549,7 +559,7 @@ private:
      * @brief Stores if mLength is stored in pixels or relative to the
      * screen size in percents. If true, the length is stored in percents,
      * otherwise in pixels.
-     * 
+     *
      * \sa mLength
      */
     bool mLengthInPercents;
@@ -600,13 +610,19 @@ private:
      * @brief Stores if the panel is hidable, i.e. if the panel will be
      * hidden after the cursor has left the panel area.
      *
-     * \sa mHidden, mHideTimer, showPanel(), hidePanel(), hidePanelWork()
+     * \sa mVisibleMargin, mHidden, mHideTimer, showPanel(), hidePanel(), hidePanelWork()
      */
     bool mHidable;
     /**
+     * @brief Stores if the hidable panel should have a visible margin.
+     *
+     * \sa mHidable, mHidden, mHideTimer, showPanel(), hidePanel(), hidePanelWork()
+     */
+    bool mVisibleMargin;
+    /**
      * @brief Stores if the panel is currently hidden.
      *
-     * \sa mHidable, mHideTimer, showPanel(), hidePanel(), hidePanelWork()
+     * \sa mHidable, mVisibleMargin, mHideTimer, showPanel(), hidePanel(), hidePanelWork()
      */
     bool mHidden;
     /**
@@ -614,7 +630,7 @@ private:
      * area, this timer will be started. After this timer has timed out, the
      * panel will actually be hidden.
      *
-     * \sa mHidable, mHidden, showPanel(), hidePanel(), hidePanelWork()
+     * \sa mHidable, mVisibleMargin, mHidden, showPanel(), hidePanel(), hidePanelWork()
      */
     QTimer mHideTimer;
     /**

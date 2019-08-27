@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -28,7 +28,7 @@
 #ifndef LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 #define LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 
-#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/lxqtpanelpluginconfigdialog.h"
 
 #define CFG_KEY_ACTION  "newDeviceAction"
 #define ACT_SHOW_MENU   "showMenu"
@@ -39,7 +39,7 @@ namespace Ui {
     class Configuration;
 }
 
-class Configuration : public UKUIPanelPluginConfigDialog
+class Configuration : public LXQtPanelPluginConfigDialog
 {
     Q_OBJECT
 

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -26,8 +26,8 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef UKUIPANELAPPLICATION_H
-#define UKUIPANELAPPLICATION_H
+#ifndef UKUIPanelAPPLICATION_H
+#define UKUIPanelAPPLICATION_H
 
 #include <LXQt/Application>
 #include "iukuipanelplugin.h"
@@ -69,12 +69,14 @@ public:
     explicit UKUIPanelApplication(int& argc, char** argv);
     ~UKUIPanelApplication();
 
+    void setIconTheme(const QString &iconTheme);
+
     /*!
      * \brief Determines the number of UKUIPanel objects
      * \return the current number of UKUIPanel objects
      */
-    int count() { return mPanels.count(); }
-    
+    int count() const { return mPanels.count(); }
+
     /*!
      * \brief Checks if a given Plugin is running and has the
      * IUKUIPanelPlugin::SingleInstance flag set. As Plugins are added to
@@ -122,6 +124,10 @@ private:
      * \brief Holds all the instances of UKUIPanel.
      */
     QList<UKUIPanel*> mPanels;
+    /*!
+     * \brief The global icon theme used by all apps (except for panels perhaps).
+     */
+    QString mGlobalIconTheme;
     /*!
      * \brief Creates a new UKUIPanel with the given name and connects the
      * appropriate signals and slots.
@@ -180,4 +186,4 @@ private:
 };
 
 
-#endif // UKUIPANELAPPLICATION_H
+#endif // UKUIPanelAPPLICATION_H

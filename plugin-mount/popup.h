@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011-2013 Razor team
  * Authors:
@@ -35,14 +35,14 @@
 #include <QDialog>
 #include <Solid/Device>
 
-class IUKUIPanelPlugin;
+class ILXQtPanelPlugin;
 
 class Popup: public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Popup(IUKUIPanelPlugin * plugin, QWidget* parent = 0);
+    explicit Popup(ILXQtPanelPlugin * plugin, QWidget* parent = 0);
     void realign();
 
 public slots:
@@ -70,7 +70,7 @@ protected:
     void hideEvent(QHideEvent *event);
 
 private:
-    IUKUIPanelPlugin * mPlugin;
+    ILXQtPanelPlugin * mPlugin;
     QLabel *mPlaceholder;
     int mDisplayCount;
 

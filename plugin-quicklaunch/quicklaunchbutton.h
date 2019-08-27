@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -34,14 +34,14 @@
 #include <QMimeData>
 #include <QToolButton>
 
-class IUKUIPanelPlugin;
+class ILXQtPanelPlugin;
 
 class QuickLaunchButton : public QToolButton
 {
     Q_OBJECT
 
 public:
-    QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin * plugin, QWidget* parent = 0);
+    QuickLaunchButton(QuickLaunchAction * act, ILXQtPanelPlugin * plugin, QWidget* parent = 0);
     ~QuickLaunchButton();
 
     QHash<QString,QString> settingsMap();
@@ -62,7 +62,7 @@ protected:
 
 private:
     QuickLaunchAction *mAct;
-    IUKUIPanelPlugin * mPlugin;
+    ILXQtPanelPlugin * mPlugin;
     QAction *mDeleteAct;
     QAction *mMoveLeftAct;
     QAction *mMoveRightAct;

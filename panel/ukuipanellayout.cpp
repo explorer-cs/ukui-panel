@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -220,7 +220,7 @@ void LayoutItemGrid::rebuild()
 {
     clear();
 
-    foreach(QLayoutItem *item, mItems)
+    for(QLayoutItem *item : qAsConst(mItems))
     {
         doAddToGrid(item);
     }
@@ -940,6 +940,16 @@ void UKUIPanelLayout::setLineCount(int value)
     mLeftGrid->setColCount(value);
     mRightGrid->setColCount(value);
     invalidate();
+}
+
+
+/************************************************
+
+ ************************************************/
+void UKUIPanelLayout::rebuild()
+{
+    mLeftGrid->rebuild();
+    mRightGrid->rebuild();
 }
 
 

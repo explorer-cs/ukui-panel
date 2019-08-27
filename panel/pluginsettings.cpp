@@ -2,7 +2,7 @@
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
- * http://lxqt.org
+ * https://lxqt.org
  *
  * Copyright: 2015 LXQt team
  * Authors:
@@ -122,7 +122,8 @@ QList<QMap<QString, QVariant> > PluginSettings::readArray(const QString& prefix)
     {
         d->mSettings->setArrayIndex(i);
         QMap<QString, QVariant> hash;
-        for (const QString &key : d->mSettings->childKeys())
+        const auto keys = d->mSettings->childKeys();
+        for (const QString &key : keys)
             hash[key] = d->mSettings->value(key);
         array << hash;
     }

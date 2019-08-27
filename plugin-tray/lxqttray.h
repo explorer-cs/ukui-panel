@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -30,7 +30,7 @@
 
 #include <QFrame>
 #include <QAbstractNativeEventFilter>
-#include "../panel/iukuipanel.h"
+#include "../panel/ilxqtpanel.h"
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <xcb/xcb_event.h>
@@ -46,14 +46,14 @@ class GridLayout;
 /**
  * @brief This makes our trayplugin
  */
-class IUKUIPanelPlugin;
+class ILXQtPanelPlugin;
 
 class LXQtTray: public QFrame, QAbstractNativeEventFilter
 {
     Q_OBJECT
     Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
 public:
-    LXQtTray(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    LXQtTray(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
     ~LXQtTray();
 
 
@@ -94,7 +94,7 @@ private:
     int mDamageError;
     QSize mIconSize;
     LXQt::GridLayout *mLayout;
-    IUKUIPanelPlugin *mPlugin;
+    ILXQtPanelPlugin *mPlugin;
     Atom _NET_SYSTEM_TRAY_OPCODE;
     Display* mDisplay;
 };

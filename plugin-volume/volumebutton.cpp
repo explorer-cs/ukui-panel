@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -36,10 +36,10 @@
 #include <QToolTip>
 
 #include <XdgIcon>
-#include "../panel/iukuipanel.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanel.h"
+#include "../panel/ilxqtpanelplugin.h"
 
-VolumeButton::VolumeButton(IUKUIPanelPlugin *plugin, QWidget* parent):
+VolumeButton::VolumeButton(ILXQtPanelPlugin *plugin, QWidget* parent):
         QToolButton(parent),
         mPlugin(plugin),
         m_panel(plugin->panel()),

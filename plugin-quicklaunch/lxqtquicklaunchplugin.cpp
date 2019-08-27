@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2013 Razor team
  * Authors:
@@ -29,9 +29,9 @@
 #include "lxqtquicklaunch.h"
 
 
-LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
+LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
     QObject(),
-    IUKUIPanelPlugin(startupInfo),
+    ILXQtPanelPlugin(startupInfo),
     mWidget(new LXQtQuickLaunch(this))
 {
 }

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -55,4 +55,9 @@ void ConfigPanelDialog::showConfigPanelPage()
 void ConfigPanelDialog::showConfigPluginsPage()
 {
     showPage(mPluginsPage);
+}
+
+void ConfigPanelDialog::updateIconThemeSettings()
+{
+    mPanelPage->updateIconThemeSettings();
 }

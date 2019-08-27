@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -35,7 +35,7 @@
 #include <QStyle>
 #include <QScreen>
 
-#include "../panel/ukuipanel.h"
+#include "../panel/lxqtpanel.h"
 #include "trayicon.h"
 #include "xfitman.h"
 
@@ -88,7 +88,7 @@ TrayIcon::TrayIcon(Window iconId, QSize const & iconSize, QWidget* parent):
     setObjectName("TrayIcon");
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     // NOTE:
-    // see https://github.com/lxde/lxqt/issues/945
+    // see https://github.com/lxqt/lxqt/issues/945
     // workaround: delayed init because of weird behaviour of some icons/windows (claws-mail)
     // (upon starting the app the window for receiving clicks wasn't correctly sized
     //  no matter what we've done)
@@ -111,11 +111,11 @@ void TrayIcon::init()
         return;
     }
 
-    qDebug() << "New tray icon ***********************************";
-    qDebug() << "  * window id:  " << hex << mIconId;
-    qDebug() << "  * window name:" << xfitMan().getApplicationName(mIconId);
-    qDebug() << "  * size (WxH): " << attr.width << "x" << attr.height;
-    qDebug() << "  * color depth:" << attr.depth;
+//    qDebug() << "New tray icon ***********************************";
+//    qDebug() << "  * window id:  " << hex << mIconId;
+//    qDebug() << "  * window name:" << xfitMan().getName(mIconId);
+//    qDebug() << "  * size (WxH): " << attr.width << "x" << attr.height;
+//    qDebug() << "  * color depth:" << attr.depth;
 
     unsigned long mask = 0;
     XSetWindowAttributes set_attr;

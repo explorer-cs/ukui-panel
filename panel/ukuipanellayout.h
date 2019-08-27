@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -26,8 +26,8 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef UKUIPANELLAYOUT_H
-#define UKUIPANELLAYOUT_H
+#ifndef UKUIPanelLAYOUT_H
+#define UKUIPanelLAYOUT_H
 
 #include <QLayout>
 #include <QList>
@@ -43,7 +43,7 @@ class QEvent;
 class Plugin;
 class LayoutItemGrid;
 
-class UKUI_PANEL_API UKUIPanelLayout : public QLayout
+class LXQT_PANEL_API UKUIPanelLayout : public QLayout
 {
     Q_OBJECT
 public:
@@ -73,6 +73,10 @@ public:
     IUKUIPanel::Position position() const { return mPosition; }
     void setPosition(IUKUIPanel::Position value);
 
+    /*! \brief Force the layout to re-read items/plugins "static" configuration
+     */
+    void rebuild();
+
     static bool itemIsSeparate(QLayoutItem *item);
 signals:
     void pluginMoved(Plugin * plugin);
@@ -99,4 +103,4 @@ private:
     void setItemGeometry(QLayoutItem *item, const QRect &geometry, bool withAnimation);
 };
 
-#endif // UKUIPANELLAYOUT_H
+#endif // UKUIPanelLAYOUT_H

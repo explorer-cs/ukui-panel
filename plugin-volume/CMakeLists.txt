@@ -10,7 +10,7 @@ set(HEADERS
 )
 
 set(SOURCES
-    ${PROJECT_SOURCE_DIR}/panel/ukuipanelpluginconfigdialog.cpp
+    ${PROJECT_SOURCE_DIR}/panel/lxqtpanelpluginconfigdialog.cpp
     lxqtvolume.cpp
     volumebutton.cpp
     volumepopup.cpp
@@ -46,5 +46,5 @@ if(ALSA_FOUND)
     set(MOCS ${MOCS} alsaengine.h alsadevice.h)
     set(LIBRARIES ${LIBRARIES} ${ALSA_LIBRARIES})
 endif()
-message(${PLUGIN})
-BUILD_UKUI_PLUGIN(${PLUGIN})
+
+BUILD_LXQT_PLUGIN(${PLUGIN})

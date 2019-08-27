@@ -18,8 +18,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef UKUIPANELAPPLICATION_P_H
-#define UKUIPANELAPPLICATION_P_H
+#ifndef UKUIPanelAPPLICATION_P_H
+#define UKUIPanelAPPLICATION_P_H
 
 #include "ukuipanelapplication.h"
 
@@ -42,4 +42,4 @@ private:
     UKUIPanelApplication *const q_ptr;
 };
 
-#endif // UKUIPANELAPPLICATION_P_H
+#endif // UKUIPanelAPPLICATION_P_H

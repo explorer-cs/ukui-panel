@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -108,8 +108,8 @@ void PluginMoveProcessor::mouseMoveEvent(QMouseEvent *event)
     }
 
     bool plugSep = mPlugin->isSeparate();
-    bool prevSep = UKUIPanelLayout::itemIsSeparate(prevItem);
-    bool nextSep = UKUIPanelLayout::itemIsSeparate(nextItem);
+    bool prevSep =UKUIPanelLayout::itemIsSeparate(prevItem);
+    bool nextSep =UKUIPanelLayout::itemIsSeparate(nextItem);
 
     if (!nextItem)
     {
@@ -178,13 +178,13 @@ PluginMoveProcessor::MousePosInfo PluginMoveProcessor::itemByMousePos(const QPoi
             ret.item = item;
             if (mLayout->isHorizontal())
             {
-                ret.after = UKUIPanelLayout::itemIsSeparate(item) ?
+                ret.after =UKUIPanelLayout::itemIsSeparate(item) ?
                         mouse.x() > itemRect.center().x() :
                         mouse.y() > itemRect.center().y() ;
             }
             else
             {
-                ret.after = UKUIPanelLayout::itemIsSeparate(item) ?
+                ret.after =UKUIPanelLayout::itemIsSeparate(item) ?
                         mouse.y() > itemRect.center().y() :
                         mouse.x() > itemRect.center().x() ;
             }

@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -271,12 +270,12 @@ void LXQtTaskButton::mouseMoveEvent(QMouseEvent* event)
     drag->setPixmap(img);
     switch (parentTaskBar()->panel()->position())
     {
-        case IUKUIPanel::PositionLeft:
-        case IUKUIPanel::PositionTop:
+        case ILXQtPanel::PositionLeft:
+        case ILXQtPanel::PositionTop:
             drag->setHotSpot({0, 0});
             break;
-        case IUKUIPanel::PositionRight:
-        case IUKUIPanel::PositionBottom:
+        case ILXQtPanel::PositionRight:
+        case ILXQtPanel::PositionBottom:
             drag->setHotSpot(img.rect().bottomRight());
             break;
     }
@@ -701,22 +700,22 @@ void LXQtTaskButton::setOrigin(Qt::Corner newOrigin)
     }
 }
 
-void LXQtTaskButton::setAutoRotation(bool value, IUKUIPanel::Position position)
+void LXQtTaskButton::setAutoRotation(bool value, ILXQtPanel::Position position)
 {
     if (value)
     {
         switch (position)
         {
-        case IUKUIPanel::PositionTop:
-        case IUKUIPanel::PositionBottom:
+        case ILXQtPanel::PositionTop:
+        case ILXQtPanel::PositionBottom:
             setOrigin(Qt::TopLeftCorner);
             break;
 
-        case IUKUIPanel::PositionLeft:
+        case ILXQtPanel::PositionLeft:
             setOrigin(Qt::BottomLeftCorner);
             break;
 
-        case IUKUIPanel::PositionRight:
+        case ILXQtPanel::PositionRight:
             setOrigin(Qt::TopRightCorner);
             break;
         }

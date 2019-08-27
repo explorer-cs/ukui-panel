@@ -1,8 +1,112 @@
-ukui-panel (3.0.0-0ubuntukylin) bionic; urgency=medium
+ukui-panel (3.14.1-0ubuntukylin1) disco; urgency=medium
 
-  * fork lxqt-panel
+  * forck lxqt-panel 0.14.1
 
- -- wuxiaoyi <wuxiaoyi@kylinos.cn>  Mon, 26 Aug 2019 15:09:40 +0800
+ -- xiaoyi wu <wuxiaoyi@kylinos.cn>  Tue, 27 Aug 2019 10:41:05 +0800
+
+lxqt-panel (0.14.1-0ubuntu1) disco; urgency=medium
+
+  * New upstream release.
+  * Run wrap-and-sort.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 09 Mar 2019 13:27:32 -0600
+
+lxqt-panel (0.14.0-0ubuntu1) disco; urgency=medium
+
+  * New upstream release.
+    - Bump build dependencies.
+    - Remove reverse-applicable patches.
+  * Bump Standards-version to 4.3.0, no changes needed.
+  * Bump debhelper compat to 12, no changes needed.
+  * Add a new lxqt-panel-l10n package.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 26 Jan 2019 01:19:25 -0600
+
+lxqt-panel (0.13.0-0ubuntu5) cosmic; urgency=medium
+
+  * Add optional overriding of icon theme.
+  * Run wrap-and-sort.
+
+ -- Walter Lapchynski <wxl@ubuntu.com>  Tue, 21 Aug 2018 23:37:22 -0700
+
+lxqt-panel (0.13.0-0ubuntu4) cosmic; urgency=medium
+
+  * Change the Uploaders to Ubuntu uploaders.
+  * Update Standards-version to 4.2.0, no changes needed.
+  * Add an autoexpansion feature to the spacer plugin.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Thu, 16 Aug 2018 16:17:17 -0500
+
+lxqt-panel (0.13.0-0ubuntu3) cosmic; urgency=medium
+
+  * Add a DEP-3 header for the patch completely removing the clock plugin.
+  * Don't auto-unmute the volume when it's changed.
+  * Bump Standards-version to 4.1.5, no changes needed.
+  * Run wrap-and-sort.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Mon, 16 Jul 2018 21:58:19 -0500
+
+lxqt-panel (0.13.0-0ubuntu2) cosmic; urgency=medium
+
+  * Completely remove plugin-clock.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Thu, 24 May 2018 22:51:05 -0500
+
+lxqt-panel (0.13.0-0ubuntu1) cosmic; urgency=medium
+
+  * New upstream release.
+  * Update build dependencies.
+  * Update copyright.
+  * Remove patches applied upstream.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 23 May 2018 22:38:37 -0500
+
+lxqt-panel (0.12.0-9ubuntu1) cosmic; urgency=medium
+
+  * Merge from Debian Sid. Remaining changes:
+    - Cherry-pick some upstream commits:
+      + Fix wrongly positioned popups (LP: #1527013).
+        * fix-wrongly-positioned-popups.patch
+        * Upstream commit 7391172.
+      + plugin-volume: Use a specific icon for the panel.
+        * use-specific-panel-icon.patch
+        * Upstream commit eaa65e5.
+      + Fix various memory leaks.
+        * fix-memory-leaks.patch
+        * mainmenu: Fix possible leaks in menu-cache usage.
+          - Upstream commit 04630d4.
+        * mount: Fix leak by correctly assigning the QObject parent.
+          - Upstream commit d1bd23f.
+        * taskbar: Avoid conditionals on unintialized values by proper
+          initialization of data members
+          - Upstream commit 1cb5778.
+      + Avoid infinite recursion when no icon is available.
+        * avoid-infinite-recursion-icons.patch
+        * Upstream commit b9b4133.
+      + Add Move and Resize items in the task-button context menu.
+        * add-move-resize-items.patch
+        * Upstream commit b69fe72.
+      + Set the initial task button text (and icon) correctly.
+        * set-initial-task-button-correctly.patch
+        * Upstream commit 563d6bf.
+  * Change the Vcs entries to be Lubuntu-specific.
+  * Fix typo in the patch description of fix-memory-leaks.patch.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Mon, 21 May 2018 00:43:10 -0500
+
+lxqt-panel (0.12.0-9) unstable; urgency=medium
+
+  * Ported back USE_MENU_CACHE handling
+  * Removed build dependency on libmenu-cache-dev (Closes: #896512)
+  * Ported back USE_MENU_CACHE handling
+  * Moved lxqt-about from dependencies to recommends (Closes: #894640)
+  * Bumped debhelper version to 11~
+  * Bumped compat to 11
+  * Bumped Standards to 4.1.4, no changes needed
+  * Fixed VCS fields for salsa
+  * Removed trailing whitespaces
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 23 Apr 2018 19:47:29 +0200
 
 lxqt-panel (0.12.0-8ubuntu1) bionic; urgency=medium
 
@@ -43,7 +147,7 @@ lxqt-panel (0.12.0-8build1) bionic; urgency=medium
 
 lxqt-panel (0.12.0-8) unstable; urgency=medium
 
-  * Fix plugin-volume, use pavucontrol-qt (Closes: #884547) 
+  * Fix plugin-volume, use pavucontrol-qt (Closes: #884547)
 
  -- Alf Gaida <agaida@siduction.org>  Sat, 16 Dec 2017 18:36:45 +0100
 
@@ -63,7 +167,7 @@ lxqt-panel (0.12.0-6) unstable; urgency=medium
 
 lxqt-panel (0.12.0-5) experimental; urgency=medium
 
-  * Ported back the config move to /usr/share/xdg (Closes: #883034) 
+  * Ported back the config move to /usr/share/xdg (Closes: #883034)
 
  -- Alf Gaida <agaida@siduction.org>  Sat, 02 Dec 2017 03:23:04 +0100
 

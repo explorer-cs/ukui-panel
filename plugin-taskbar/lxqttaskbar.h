@@ -1,9 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
- * http://lxqt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2011 Razor team
  *            2014 LXQt team
@@ -33,8 +32,8 @@
 #ifndef LXQTTASKBAR_H
 #define LXQTTASKBAR_H
 
-#include "../panel/iukuipanel.h"
-#include "../panel/iukuipanelplugin.h"
+#include "../panel/ilxqtpanel.h"
+#include "../panel/ilxqtpanelplugin.h"
 #include "lxqttaskbarconfiguration.h"
 #include "lxqttaskgroup.h"
 #include "lxqttaskbutton.h"
@@ -43,7 +42,7 @@
 #include <QBoxLayout>
 #include <QMap>
 #include <lxqt-globalkeys.h>
-#include "../panel/iukuipanel.h"
+#include "../panel/ilxqtpanel.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/KWindowInfo>
 #include <KWindowSystem/NETWM>
@@ -61,7 +60,7 @@ class LXQtTaskBar : public QFrame
     Q_OBJECT
 
 public:
-    explicit LXQtTaskBar(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    explicit LXQtTaskBar(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
     virtual ~LXQtTaskBar();
 
     void realign();
@@ -78,14 +77,14 @@ public:
     bool isGroupingEnabled() const { return mGroupingEnabled; }
     bool isShowGroupOnHover() const { return mShowGroupOnHover; }
     bool isIconByClass() const { return mIconByClass; }
-    inline IUKUIPanel * panel() const { return mPlugin->panel(); }
-    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
+    inline ILXQtPanel * panel() const { return mPlugin->panel(); }
+    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
 
 public slots:
     void settingsChanged();
 
 signals:
-    void buttonRotationRefreshed(bool autoRotate, IUKUIPanel::Position position);
+    void buttonRotationRefreshed(bool autoRotate, ILXQtPanel::Position position);
     void buttonStyleRefreshed(Qt::ToolButtonStyle buttonStyle);
     void refreshIconGeometry();
     void showOnlySettingChanged();
@@ -145,7 +144,7 @@ private:
     void changeEvent(QEvent* event);
     void resizeEvent(QResizeEvent *event);
 
-    IUKUIPanelPlugin *mPlugin;
+    ILXQtPanelPlugin *mPlugin;
     QWidget *mPlaceHolder;
     LeftAlignedTextStyle *mStyle;
 };

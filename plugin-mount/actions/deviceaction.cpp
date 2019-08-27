@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXDE-Qt - a lightweight, Qt based, desktop toolset
- * http://razor-qt.org
+ * LXQt - a lightweight, Qt based, desktop toolset
+ * https://lxqt.org
  *
  * Copyright: 2013 Razor team
  * Authors:
@@ -83,12 +83,14 @@ QString DeviceAction::actionIdToString(DeviceAction::ActionId id)
 
 void DeviceAction::onDeviceAdded(Solid::Device device)
 {
+    mKnownDeviceDescriptions[device.udi()] = device.description();
     doDeviceAdded(device);
 }
 
 void DeviceAction::onDeviceRemoved(Solid::Device device)
 {
     doDeviceRemoved(device);
+    mKnownDeviceDescriptions.remove(device.udi());
 }
 
 DeviceAction::ActionId DeviceAction::stringToActionId(const QString &string, ActionId defaultValue)
