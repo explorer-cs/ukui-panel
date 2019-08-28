@@ -4,7 +4,7 @@
  * LXQt - a lightweight, Qt based, desktop toolset
  * https://lxqt.org
  *
- * Copyright: 2012 Razor team
+ * Copyright: 2013 Razor team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *
@@ -25,45 +25,44 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
+#ifndef UKUIQUICKLAUNCHPLUGIN_H
+#define UKUIQUICKLAUNCHPLUGIN_H
 
-#ifndef LXQTTASKBARPLUGIN_H
-#define LXQTTASKBARPLUGIN_H
+#include "../panel/iukuipanelplugin.h"
+#include <QObject>
 
-#include "../panel/ilxqtpanel.h"
-#include "../panel/ilxqtpanelplugin.h"
-#include "lxqttaskbar.h"
-#include <QDebug>
-class LXQtTaskBar;
 
-class LXQtTaskBarPlugin : public QObject, public ILXQtPanelPlugin
+class LXQtQuickLaunch;
+
+class LXQtQuickLaunchPlugin: public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtTaskBarPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
-    ~LXQtTaskBarPlugin();
+    explicit LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~LXQtQuickLaunchPlugin();
 
-    QString themeId() const { return "TaskBar"; }
-    virtual Flags flags() const { return HaveConfigDialog | NeedsHandle; }
+    virtual QWidget *widget();
+    virtual QString themeId() const { return "QuickLaunch"; }
+    virtual Flags flags() const { return NeedsHandle; }
 
-    QWidget *widget() { return mTaskBar; }
-    QDialog *configureDialog();
-
-    void settingsChanged() { mTaskBar->settingsChanged(); }
     void realign();
 
     bool isSeparate() const { return true; }
-    bool isExpandable() const { return true; }
+
 private:
-    LXQtTaskBar *mTaskBar;
+    LXQtQuickLaunch *mWidget;
 };
 
-class LXQtTaskBarPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+
+class LXQtQuickLaunchPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new LXQtTaskBarPlugin(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
+    {
+        return new LXQtQuickLaunchPlugin(startupInfo);
+    }
 };
-
-#endif // LXQTTASKBARPLUGIN_H
+#endif // UKUIQUICKLAUNCHPLUGIN_H

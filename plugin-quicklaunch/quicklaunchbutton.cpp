@@ -26,8 +26,8 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "quicklaunchbutton.h"
-#include "lxqtquicklaunch.h"
-#include "../panel/ilxqtpanelplugin.h"
+#include "ukuiquicklaunch.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QAction>
 #include <QDrag>
 #include <QMenu>
@@ -40,7 +40,7 @@
 #define MIMETYPE "x-lxqt/quicklaunch-button"
 
 
-QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, ILXQtPanelPlugin * plugin, QWidget * parent)
+QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin * plugin, QWidget * parent)
     : QToolButton(parent),
       mAct(act),
       mPlugin(plugin)

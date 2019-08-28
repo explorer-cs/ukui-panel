@@ -53,7 +53,7 @@ AddPluginDialog::AddPluginDialog(QWidget *parent):
     desktopFilesDirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/ukui/ukui-panel");
     desktopFilesDirs << PLUGIN_DESKTOPS_DIR;
 
-    mPlugins = LXQt::PluginInfo::search(desktopFilesDirs, QLatin1String("LXQtPanel/Plugin"), QLatin1String("*"));
+    mPlugins = LXQt::PluginInfo::search(desktopFilesDirs, QLatin1String("UKUIPanel/Plugin"), QLatin1String("*"));
     std::sort(mPlugins.begin(), mPlugins.end(), [](const LXQt::PluginInfo &p1, const LXQt::PluginInfo &p2) {
         return p1.name() < p2.name() || (p1.name() == p2.name() && p1.comment() < p2.comment());
     });

@@ -28,43 +28,43 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQTTASKGROUP_H
-#define LXQTTASKGROUP_H
+#ifndef UKUITASKGROUP_H
+#define UKUITASKGROUP_H
 
-#include "../panel/ilxqtpanel.h"
-#include "../panel/ilxqtpanelplugin.h"
-#include "lxqttaskbar.h"
-#include "lxqtgrouppopup.h"
-#include "lxqttaskbutton.h"
+#include "../panel/iukuipanel.h"
+#include "../panel/iukuipanelplugin.h"
+#include "ukuitaskbar.h"
+#include "ukuigrouppopup.h"
+#include "ukuitaskbutton.h"
 #include <KF5/KWindowSystem/kwindowsystem.h>
 
 class QVBoxLayout;
-class ILXQtPanelPlugin;
+class IUKUIPanelPlugin;
 
-class LXQtGroupPopup;
+class UKUIGroupPopup;
 class LXQtMasterPopup;
 
-class LXQtTaskGroup: public LXQtTaskButton
+class UKUITaskGroup: public UKUITaskButton
 {
     Q_OBJECT
 
 public:
-    LXQtTaskGroup(const QString & groupName, WId window, LXQtTaskBar * parent);
+    UKUITaskGroup(const QString & groupName, WId window, UKUITaskBar * parent);
 
     QString groupName() const { return mGroupName; }
 
     int buttonsCount() const;
     int visibleButtonsCount() const;
 
-    LXQtTaskButton * addWindow(WId id);
-    LXQtTaskButton * checkedButton() const;
+    UKUITaskButton * addWindow(WId id);
+    UKUITaskButton * checkedButton() const;
 
     // Returns the next or the previous button in the popup
     // if circular is true, then it will go around the list of buttons
-    LXQtTaskButton * getNextPrevChildButton(bool next, bool circular);
+    UKUITaskButton * getNextPrevChildButton(bool next, bool circular);
 
     bool onWindowChanged(WId window, NET::Properties prop, NET::Properties2 prop2);
-    void setAutoRotation(bool value, ILXQtPanel::Position position);
+    void setAutoRotation(bool value, IUKUIPanel::Position position);
     Qt::ToolButtonStyle popupButtonStyle() const;
     void setToolButtonsStyle(Qt::ToolButtonStyle style);
 
@@ -96,17 +96,17 @@ private slots:
     void closeGroup();
     void refreshIconsGeometry();
     void refreshVisibility();
-    void groupPopupShown(LXQtTaskGroup* sender);
+    void groupPopupShown(UKUITaskGroup* sender);
 
 signals:
     void groupBecomeEmpty(QString name);
     void visibilityChanged(bool visible);
-    void popupShown(LXQtTaskGroup* sender);
+    void popupShown(UKUITaskGroup* sender);
 
 private:
     QString mGroupName;
-    LXQtGroupPopup * mPopup;
-    LXQtTaskButtonHash mButtonHash;
+    UKUIGroupPopup * mPopup;
+    UKUITaskButtonHash mButtonHash;
     bool mPreventPopup;
     bool mSingleButton; //!< flag if this group should act as a "standard" button (no groupping or only one "shown" window in group)
 
@@ -116,4 +116,4 @@ private:
     void regroup();
 };
 
-#endif // LXQTTASKGROUP_H
+#endif // UKUITASKGROUP_H

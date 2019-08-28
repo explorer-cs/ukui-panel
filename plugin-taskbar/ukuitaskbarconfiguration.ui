@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LXQtTaskbarConfiguration</class>
- <widget class="QDialog" name="LXQtTaskbarConfiguration">
+ <class>UKUITaskbarConfiguration</class>
+ <widget class="QDialog" name="UKUITaskbarConfiguration">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -224,7 +224,7 @@
   <connection>
    <sender>buttons</sender>
    <signal>accepted()</signal>
-   <receiver>LXQtTaskbarConfiguration</receiver>
+   <receiver>UKUITaskbarConfiguration</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -240,7 +240,7 @@
   <connection>
    <sender>buttons</sender>
    <signal>rejected()</signal>
-   <receiver>LXQtTaskbarConfiguration</receiver>
+   <receiver>UKUITaskbarConfiguration</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

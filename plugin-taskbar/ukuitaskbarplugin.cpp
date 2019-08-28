@@ -26,29 +26,29 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#include "lxqttaskbarplugin.h"
+#include "ukuitaskbarplugin.h"
 
-LXQtTaskBarPlugin::LXQtTaskBarPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
+UKUITaskBarPlugin::UKUITaskBarPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo)
+    IUKUIPanelPlugin(startupInfo)
 
 {
-    mTaskBar = new LXQtTaskBar(this);
+    mTaskBar = new UKUITaskBar(this);
 
 }
 
 
-LXQtTaskBarPlugin::~LXQtTaskBarPlugin()
+UKUITaskBarPlugin::~UKUITaskBarPlugin()
 {
     delete mTaskBar;
 }
 
-QDialog *LXQtTaskBarPlugin::configureDialog()
+QDialog *UKUITaskBarPlugin::configureDialog()
 {
-    return new LXQtTaskbarConfiguration(settings());
+    return new UKUITaskbarConfiguration(settings());
 }
 
-void LXQtTaskBarPlugin::realign()
+void UKUITaskBarPlugin::realign()
 {
     mTaskBar->realign();
 }

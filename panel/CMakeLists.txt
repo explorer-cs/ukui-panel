@@ -25,6 +25,7 @@ set(PUB_HEADERS
     pluginsettings.h
     iukuipanelplugin.h
     iukuipanel.h
+    comm_func.h
 )
 
 set(SOURCES
@@ -43,6 +44,7 @@ set(SOURCES
     config/configpanelwidget.cpp
     config/configpluginswidget.cpp
     config/addplugindialog.cpp
+    comm_func.cpp
 )
 
 set(UI

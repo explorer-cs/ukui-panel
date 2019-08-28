@@ -61,7 +61,7 @@ extern void * loadPluginTranslation_desktopswitch_helper;
 extern void * loadPluginTranslation_mainmenu_helper;
 #endif
 #if defined(WITH_QUICKLAUNCH_PLUGIN)
-#include "../plugin-quicklaunch/lxqtquicklaunchplugin.h" // quicklaunch
+#include "../plugin-quicklaunch/ukuiquicklaunchplugin.h" // quicklaunch
 extern void * loadPluginTranslation_quicklaunch_helper;
 #endif
 #if defined(WITH_SHOWDESKTOP_PLUGIN)
@@ -77,7 +77,7 @@ extern void * loadPluginTranslation_spacer_helper;
 extern void * loadPluginTranslation_statusnotifier_helper;
 #endif
 #if defined(WITH_TASKBAR_PLUGIN)
-#include "../plugin-taskbar/lxqttaskbarplugin.h" // taskbar
+#include "../plugin-taskbar/ukuitaskbarplugin.h" // taskbar
 extern void * loadPluginTranslation_taskbar_helper;
 #endif
 #if defined(WITH_TRAY_PLUGIN)
@@ -232,7 +232,7 @@ namespace
         std::make_tuple(QLatin1String("statusnotifier"), plugin_ptr_t{new StatusNotifierLibrary}, loadPluginTranslation_statusnotifier_helper),// statusnotifier
 #endif
 #if defined(WITH_TASKBAR_PLUGIN)
-        std::make_tuple(QLatin1String("taskbar"), plugin_ptr_t{new LXQtTaskBarPluginLibrary}, loadPluginTranslation_taskbar_helper),// taskbar
+        std::make_tuple(QLatin1String("taskbar"), plugin_ptr_t{new UKUITaskBarPluginLibrary}, loadPluginTranslation_taskbar_helper),// taskbar
 #endif
 #if defined(WITH_TRAY_PLUGIN)
         std::make_tuple(QLatin1String("tray"), plugin_ptr_t{new LXQtTrayPluginLibrary}, loadPluginTranslation_tray_helper),// tray

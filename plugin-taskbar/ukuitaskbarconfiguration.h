@@ -4,9 +4,9 @@
  * LXQt - a lightweight, Qt based, desktop toolset
  * https://lxqt.org
  *
- * Copyright: 2013 Razor team
+ * Copyright: 2011 Razor team
  * Authors:
- *   Alexander Sokoloff <sokoloff.a@gmail.com>
+ *   Maciej Płaza <plaza.maciej@gmail.com>
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -25,28 +25,35 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "lxqtquicklaunchplugin.h"
-#include "lxqtquicklaunch.h"
+#ifndef UKUITaskbarCONFIGURATION_H
+#define UKUITaskbarCONFIGURATION_H
 
+#include "../panel/ukuipanelpluginconfigdialog.h"
+#include "../panel/pluginsettings.h"
+#include <QAbstractButton>
 
-LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
-    QObject(),
-    ILXQtPanelPlugin(startupInfo),
-    mWidget(new LXQtQuickLaunch(this))
-{
+namespace Ui {
+    class UKUITaskbarConfiguration;
 }
 
-LXQtQuickLaunchPlugin::~LXQtQuickLaunchPlugin()
+class UKUITaskbarConfiguration : public UKUIPanelPluginConfigDialog
 {
-    delete mWidget;
-}
+    Q_OBJECT
 
-QWidget *LXQtQuickLaunchPlugin::widget()
-{
-    return mWidget;
-}
+public:
+    explicit UKUITaskbarConfiguration(PluginSettings *settings, QWidget *parent = nullptr);
+    ~UKUITaskbarConfiguration();
 
-void LXQtQuickLaunchPlugin::realign()
-{
-    mWidget->realign();
-}
+private:
+    Ui::UKUITaskbarConfiguration *ui;
+
+    /*
+      Read settings from conf file and put data into controls.
+    */
+    void loadSettings();
+
+private slots:
+    void saveSettings();
+};
+
+#endif // UKUITaskbarCONFIGURATION_H

@@ -27,10 +27,10 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef LXQTQUICKLAUNCH_H
-#define LXQTQUICKLAUNCH_H
+#ifndef UKUIQUICKLAUNCH_H
+#define UKUIQUICKLAUNCH_H
 
-#include "../panel/lxqtpanel.h"
+#include "../panel/ukuipanel.h"
 #include <QHash>
 #include <QString>
 
@@ -55,7 +55,7 @@ class LXQtQuickLaunch : public QFrame
     Q_OBJECT
 
 public:
-    LXQtQuickLaunch(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
+    LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
     ~LXQtQuickLaunch();
 
     int indexOfButton(QuickLaunchButton* button) const;
@@ -65,7 +65,7 @@ public:
 
 private:
     LXQt::GridLayout *mLayout;
-    ILXQtPanelPlugin *mPlugin;
+    IUKUIPanelPlugin *mPlugin;
     QLabel *mPlaceHolder;
 
     void dragEnterEvent(QDragEnterEvent *e);

@@ -28,18 +28,18 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef LXQTTASKBUTTON_H
-#define LXQTTASKBUTTON_H
+#ifndef UKUITASKBUTTON_H
+#define UKUITASKBUTTON_H
 
 #include <QToolButton>
 #include <QProxyStyle>
-#include "../panel/ilxqtpanel.h"
+#include "../panel/iukuipanel.h"
 
 class QPainter;
 class QPalette;
 class QMimeData;
-class LXQtTaskGroup;
-class LXQtTaskBar;
+class UKUITaskGroup;
+class UKUITaskBar;
 
 class LeftAlignedTextStyle : public QProxyStyle
 {
@@ -52,15 +52,15 @@ public:
 };
 
 
-class LXQtTaskButton : public QToolButton
+class UKUITaskButton : public QToolButton
 {
     Q_OBJECT
 
     Q_PROPERTY(Qt::Corner origin READ origin WRITE setOrigin)
 
 public:
-    explicit LXQtTaskButton(const WId window, LXQtTaskBar * taskBar, QWidget *parent = 0);
-    virtual ~LXQtTaskButton();
+    explicit UKUITaskButton(const WId window, UKUITaskBar * taskBar, QWidget *parent = 0);
+    virtual ~UKUITaskButton();
 
     bool isApplicationHidden() const;
     bool isApplicationActive() const;
@@ -75,12 +75,12 @@ public:
     void updateText();
 
     Qt::Corner origin() const;
-    virtual void setAutoRotation(bool value, ILXQtPanel::Position position);
+    virtual void setAutoRotation(bool value, IUKUIPanel::Position position);
 
-    LXQtTaskBar * parentTaskBar() const {return mParentTaskBar;}
+    UKUITaskBar * parentTaskBar() const {return mParentTaskBar;}
 
     void refreshIconGeometry(QRect const & geom);
-    static QString mimeDataFormat() { return QLatin1String("lxqt/lxqttaskbutton"); }
+    static QString mimeDataFormat() { return QLatin1String("lxqt/UKUITaskButton"); }
     /*! \return true if this buttom received DragEnter event (and no DragLeave event yet)
      * */
     bool hasDragAndDropHover() const;
@@ -117,7 +117,7 @@ protected:
     virtual QMimeData * mimeData();
     static bool sDraggging;
 
-    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
+    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
 
 private:
     WId mWindow;
@@ -126,8 +126,8 @@ private:
     Qt::Corner mOrigin;
     QPixmap mPixmap;
     bool mDrawPixmap;
-    LXQtTaskBar * mParentTaskBar;
-    ILXQtPanelPlugin * mPlugin;
+    UKUITaskBar * mParentTaskBar;
+    IUKUIPanelPlugin * mPlugin;
 
     // Timer for when draggind something into a button (the button's window
     // must be activated so that the use can continue dragging to the window
@@ -141,6 +141,6 @@ signals:
     void dragging(QObject * dragSource, QPoint const & pos);
 };
 
-typedef QHash<WId,LXQtTaskButton*> LXQtTaskButtonHash;
+typedef QHash<WId,UKUITaskButton*> UKUITaskButtonHash;
 
-#endif // LXQTTASKBUTTON_H
+#endif // UKUITASKBUTTON_H

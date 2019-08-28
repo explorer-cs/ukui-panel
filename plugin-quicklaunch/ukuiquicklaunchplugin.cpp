@@ -4,9 +4,9 @@
  * LXQt - a lightweight, Qt based, desktop toolset
  * https://lxqt.org
  *
- * Copyright: 2011 Razor team
+ * Copyright: 2013 Razor team
  * Authors:
- *   Maciej Płaza <plaza.maciej@gmail.com>
+ *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -25,35 +25,28 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQTTASKBARCONFIGURATION_H
-#define LXQTTASKBARCONFIGURATION_H
+#include "ukuiquicklaunchplugin.h"
+#include "ukuiquicklaunch.h"
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
-#include "../panel/pluginsettings.h"
-#include <QAbstractButton>
 
-namespace Ui {
-    class LXQtTaskbarConfiguration;
+LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
+    QObject(),
+    IUKUIPanelPlugin(startupInfo),
+    mWidget(new LXQtQuickLaunch(this))
+{
 }
 
-class LXQtTaskbarConfiguration : public LXQtPanelPluginConfigDialog
+LXQtQuickLaunchPlugin::~LXQtQuickLaunchPlugin()
 {
-    Q_OBJECT
+    delete mWidget;
+}
 
-public:
-    explicit LXQtTaskbarConfiguration(PluginSettings *settings, QWidget *parent = nullptr);
-    ~LXQtTaskbarConfiguration();
+QWidget *LXQtQuickLaunchPlugin::widget()
+{
+    return mWidget;
+}
 
-private:
-    Ui::LXQtTaskbarConfiguration *ui;
-
-    /*
-      Read settings from conf file and put data into controls.
-    */
-    void loadSettings();
-
-private slots:
-    void saveSettings();
-};
-
-#endif // LXQTTASKBARCONFIGURATION_H
+void LXQtQuickLaunchPlugin::realign()
+{
+    mWidget->realign();
+}

@@ -26,10 +26,10 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "lxqtquicklaunch.h"
+#include "ukuiquicklaunch.h"
 #include "quicklaunchbutton.h"
 #include "quicklaunchaction.h"
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QDesktopServices>
 #include <QDragEnterEvent>
 #include <QFileIconProvider>
@@ -45,7 +45,7 @@
 #include "../panel/pluginsettings.h"
 
 
-LXQtQuickLaunch::LXQtQuickLaunch(ILXQtPanelPlugin *plugin, QWidget* parent) :
+LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
     QFrame(parent),
     mPlugin(plugin),
     mPlaceHolder(0)
@@ -127,7 +127,7 @@ int LXQtQuickLaunch::countOfButtons() const
 void LXQtQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
-    ILXQtPanel *panel = mPlugin->panel();
+    IUKUIPanel *panel = mPlugin->panel();
 
     if (mPlaceHolder)
     {

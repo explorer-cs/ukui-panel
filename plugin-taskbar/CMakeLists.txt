@@ -1,25 +1,25 @@
 set(PLUGIN "taskbar")
 
 set(HEADERS
-    lxqttaskbar.h
-    lxqttaskbutton.h
-    lxqttaskbarconfiguration.h
-    lxqttaskbarplugin.h
-    lxqttaskgroup.h
-    lxqtgrouppopup.h
+    ukuitaskbar.h
+    ukuitaskbutton.h
+    ukuitaskbarconfiguration.h
+    ukuitaskbarplugin.h
+    ukuitaskgroup.h
+    ukuigrouppopup.h
 )
 
 set(SOURCES
-    lxqttaskbar.cpp
-    lxqttaskbutton.cpp
-    lxqttaskbarconfiguration.cpp
-    lxqttaskbarplugin.cpp
-    lxqttaskgroup.cpp
-    lxqtgrouppopup.cpp
+    ukuitaskbar.cpp
+    ukuitaskbutton.cpp
+    ukuitaskbarconfiguration.cpp
+    ukuitaskbarplugin.cpp
+    ukuitaskgroup.cpp
+    ukuigrouppopup.cpp
 )
 
 set(UIS
-    lxqttaskbarconfiguration.ui
+    ukuitaskbarconfiguration.ui
 )
 
 set(LIBRARIES
@@ -28,4 +28,4 @@ set(LIBRARIES
     Qt5Xdg
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})

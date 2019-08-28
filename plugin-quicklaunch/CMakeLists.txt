@@ -1,15 +1,15 @@
 set(PLUGIN "quicklaunch")
 
 set(HEADERS
-    lxqtquicklaunchplugin.h
-    lxqtquicklaunch.h
+    ukuiquicklaunchplugin.h
+    ukuiquicklaunch.h
     quicklaunchbutton.h
     quicklaunchaction.h
 )
 
 set(SOURCES
-    lxqtquicklaunchplugin.cpp
-    lxqtquicklaunch.cpp
+    ukuiquicklaunchplugin.cpp
+    ukuiquicklaunch.cpp
     quicklaunchbutton.cpp
     quicklaunchaction.cpp
 )
@@ -23,4 +23,4 @@ include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/../panel"
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})

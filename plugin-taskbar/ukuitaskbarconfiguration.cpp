@@ -27,13 +27,13 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "lxqttaskbarconfiguration.h"
-#include "ui_lxqttaskbarconfiguration.h"
+#include "ukuitaskbarconfiguration.h"
+#include "ui_ukuitaskbarconfiguration.h"
 #include <KWindowSystem/KWindowSystem>
 
-LXQtTaskbarConfiguration::LXQtTaskbarConfiguration(PluginSettings *settings, QWidget *parent):
-    LXQtPanelPluginConfigDialog(settings, parent),
-    ui(new Ui::LXQtTaskbarConfiguration)
+UKUITaskbarConfiguration::UKUITaskbarConfiguration(PluginSettings *settings, QWidget *parent):
+    UKUIPanelPluginConfigDialog(settings, parent),
+    ui(new Ui::UKUITaskbarConfiguration)
 {
     setAttribute(Qt::WA_DeleteOnClose);
     setObjectName("TaskbarConfigurationWindow");
@@ -68,16 +68,16 @@ LXQtTaskbarConfiguration::LXQtTaskbarConfiguration(PluginSettings *settings, QWi
     connect(ui->middleClickCB, SIGNAL(clicked()), this, SLOT(saveSettings()));
     connect(ui->groupingGB, SIGNAL(clicked()), this, SLOT(saveSettings()));
     connect(ui->showGroupOnHoverCB, SIGNAL(clicked()), this, SLOT(saveSettings()));
-    connect(ui->iconByClassCB, &QCheckBox::clicked, this, &LXQtTaskbarConfiguration::saveSettings);
-    connect(ui->cycleOnWheelScroll, &QCheckBox::clicked, this, &LXQtTaskbarConfiguration::saveSettings);
+    connect(ui->iconByClassCB, &QCheckBox::clicked, this, &UKUITaskbarConfiguration::saveSettings);
+    connect(ui->cycleOnWheelScroll, &QCheckBox::clicked, this, &UKUITaskbarConfiguration::saveSettings);
 }
 
-LXQtTaskbarConfiguration::~LXQtTaskbarConfiguration()
+UKUITaskbarConfiguration::~UKUITaskbarConfiguration()
 {
     delete ui;
 }
 
-void LXQtTaskbarConfiguration::loadSettings()
+void UKUITaskbarConfiguration::loadSettings()
 {
     const bool showOnlyOneDesktopTasks = settings().value("showOnlyOneDesktopTasks", false).toBool();
     ui->limitByDesktopCB->setChecked(showOnlyOneDesktopTasks);
@@ -98,7 +98,7 @@ void LXQtTaskbarConfiguration::loadSettings()
     ui->cycleOnWheelScroll->setChecked(settings().value("cycleOnWheelScroll", true).toBool());
 }
 
-void LXQtTaskbarConfiguration::saveSettings()
+void UKUITaskbarConfiguration::saveSettings()
 {
     settings().setValue("showOnlyOneDesktopTasks", ui->limitByDesktopCB->isChecked());
     settings().setValue("showDesktopNum", ui->showDesktopNumCB->itemData(ui->showDesktopNumCB->currentIndex()));

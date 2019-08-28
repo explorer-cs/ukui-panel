@@ -28,8 +28,8 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQTTASKPOPUP_H
-#define LXQTTASKPOPUP_H
+#ifndef UKUITASKPOPUP_H
+#define UKUITASKPOPUP_H
 
 #include <QHash>
 #include <QFrame>
@@ -37,27 +37,27 @@
 #include <QTimer>
 #include <QEvent>
 
-#include "lxqttaskbutton.h"
-#include "lxqttaskgroup.h"
-#include "lxqttaskbar.h"
+#include "ukuitaskbutton.h"
+#include "ukuitaskgroup.h"
+#include "ukuitaskbar.h"
 
-class LXQtGroupPopup: public QFrame
+class UKUIGroupPopup: public QFrame
 {
     Q_OBJECT
 
 public:
-    LXQtGroupPopup(LXQtTaskGroup *group);
-    ~LXQtGroupPopup();
+    UKUIGroupPopup(UKUITaskGroup *group);
+    ~UKUIGroupPopup();
 
     void hide(bool fast = false);
     void show();
 
     // Layout
-    int indexOf(LXQtTaskButton *button) { return layout()->indexOf(button); }
+    int indexOf(UKUITaskButton *button) { return layout()->indexOf(button); }
     int count() { return layout()->count(); }
     QLayoutItem * itemAt(int i) { return layout()->itemAt(i); }
     int spacing() { return layout()->spacing(); }
-    void addButton(LXQtTaskButton* button) { layout()->addWidget(button); }
+    void addButton(UKUITaskButton* button) { layout()->addWidget(button); }
     void removeWidget(QWidget *button) { layout()->removeWidget(button); }
 
 protected:
@@ -71,8 +71,8 @@ protected:
     void closeTimerSlot();
 
 private:
-    LXQtTaskGroup *mGroup;
+    UKUITaskGroup *mGroup;
     QTimer mCloseTimer;
 };
 
-#endif // LXQTTASKPOPUP_H
+#endif // UKUITASKPOPUP_H

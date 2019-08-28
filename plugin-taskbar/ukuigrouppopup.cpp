@@ -28,7 +28,7 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "lxqtgrouppopup.h"
+#include "ukuigrouppopup.h"
 #include <QEnterEvent>
 #include <QDrag>
 #include <QMimeData>
@@ -43,7 +43,7 @@
     vertical layout and drag&drop feature inside
     group
  ************************************************/
-LXQtGroupPopup::LXQtGroupPopup(LXQtTaskGroup *group):
+UKUIGroupPopup::UKUIGroupPopup(UKUITaskGroup *group):
     QFrame(group),
     mGroup(group)
 {
@@ -57,28 +57,28 @@ LXQtGroupPopup::LXQtGroupPopup(LXQtTaskGroup *group):
     layout()->setSpacing(3);
     layout()->setMargin(3);
 
-    connect(&mCloseTimer, &QTimer::timeout, this, &LXQtGroupPopup::closeTimerSlot);
+    connect(&mCloseTimer, &QTimer::timeout, this, &UKUIGroupPopup::closeTimerSlot);
     mCloseTimer.setSingleShot(true);
     mCloseTimer.setInterval(400);
 }
 
-LXQtGroupPopup::~LXQtGroupPopup()
+UKUIGroupPopup::~UKUIGroupPopup()
 {
 }
 
-void LXQtGroupPopup::dropEvent(QDropEvent *event)
+void UKUIGroupPopup::dropEvent(QDropEvent *event)
 {
     qlonglong temp;
-    QDataStream stream(event->mimeData()->data(LXQtTaskButton::mimeDataFormat()));
+    QDataStream stream(event->mimeData()->data(UKUITaskButton::mimeDataFormat()));
     stream >> temp;
     WId window = (WId) temp;
 
-    LXQtTaskButton *button = nullptr;
+    UKUITaskButton *button = nullptr;
     int oldIndex(0);
     // get current position of the button being dragged
     for (int i = 0; i < layout()->count(); i++)
     {
-        LXQtTaskButton *b = qobject_cast<LXQtTaskButton*>(layout()->itemAt(i)->widget());
+        UKUITaskButton *b = qobject_cast<UKUITaskButton*>(layout()->itemAt(i)->widget());
         if (b && b->windowId() == window)
         {
             button = b;
@@ -116,13 +116,13 @@ void LXQtGroupPopup::dropEvent(QDropEvent *event)
 
 }
 
-void LXQtGroupPopup::dragEnterEvent(QDragEnterEvent *event)
+void UKUIGroupPopup::dragEnterEvent(QDragEnterEvent *event)
 {
     event->accept();
     QWidget::dragEnterEvent(event);
 }
 
-void LXQtGroupPopup::dragLeaveEvent(QDragLeaveEvent *event)
+void UKUIGroupPopup::dragLeaveEvent(QDragLeaveEvent *event)
 {
     hide(false/*not fast*/);
     QFrame::dragLeaveEvent(event);
@@ -131,7 +131,7 @@ void LXQtGroupPopup::dragLeaveEvent(QDragLeaveEvent *event)
 /************************************************
  *
  ************************************************/
-void LXQtGroupPopup::leaveEvent(QEvent *event)
+void UKUIGroupPopup::leaveEvent(QEvent *event)
 {
     mCloseTimer.start();
 }
@@ -139,12 +139,12 @@ void LXQtGroupPopup::leaveEvent(QEvent *event)
 /************************************************
  *
  ************************************************/
-void LXQtGroupPopup::enterEvent(QEvent *event)
+void UKUIGroupPopup::enterEvent(QEvent *event)
 {
     mCloseTimer.stop();
 }
 
-void LXQtGroupPopup::paintEvent(QPaintEvent *event)
+void UKUIGroupPopup::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
     QStyleOption opt;
@@ -152,7 +152,7 @@ void LXQtGroupPopup::paintEvent(QPaintEvent *event)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
-void LXQtGroupPopup::hide(bool fast)
+void UKUIGroupPopup::hide(bool fast)
 {
     if (fast)
         close();
@@ -160,19 +160,19 @@ void LXQtGroupPopup::hide(bool fast)
         mCloseTimer.start();
 }
 
-void LXQtGroupPopup::show()
+void UKUIGroupPopup::show()
 {
     mCloseTimer.stop();
     QFrame::show();
 }
 
-void LXQtGroupPopup::closeTimerSlot()
+void UKUIGroupPopup::closeTimerSlot()
 {
     bool button_has_dnd_hover = false;
     QLayout* l = layout();
     for (int i = 0; l->count() > i; ++i)
     {
-        LXQtTaskButton const * const button = dynamic_cast<LXQtTaskButton const *>(l->itemAt(i)->widget());
+        UKUITaskButton const * const button = dynamic_cast<UKUITaskButton const *>(l->itemAt(i)->widget());
         if (0 != button && button->hasDragAndDropHover())
         {
             button_has_dnd_hover = true;

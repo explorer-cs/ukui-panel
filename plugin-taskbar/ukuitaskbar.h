@@ -29,39 +29,39 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef LXQTTASKBAR_H
-#define LXQTTASKBAR_H
+#ifndef UKUITASKBAR_H
+#define UKUITASKBAR_H
 
-#include "../panel/ilxqtpanel.h"
-#include "../panel/ilxqtpanelplugin.h"
-#include "lxqttaskbarconfiguration.h"
-#include "lxqttaskgroup.h"
-#include "lxqttaskbutton.h"
+#include "../panel/iukuipanel.h"
+#include "../panel/iukuipanelplugin.h"
+#include "ukuitaskbarconfiguration.h"
+#include "ukuitaskgroup.h"
+#include "ukuitaskbutton.h"
 
 #include <QFrame>
 #include <QBoxLayout>
 #include <QMap>
 #include <lxqt-globalkeys.h>
-#include "../panel/ilxqtpanel.h"
+#include "../panel/iukuipanel.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/KWindowInfo>
 #include <KWindowSystem/NETWM>
 
 class QSignalMapper;
-class LXQtTaskButton;
+class UKUITaskButton;
 class ElidedButtonStyle;
 
 namespace LXQt {
 class GridLayout;
 }
 
-class LXQtTaskBar : public QFrame
+class UKUITaskBar : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit LXQtTaskBar(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
-    virtual ~LXQtTaskBar();
+    explicit UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    virtual ~UKUITaskBar();
 
     void realign();
 
@@ -77,19 +77,19 @@ public:
     bool isGroupingEnabled() const { return mGroupingEnabled; }
     bool isShowGroupOnHover() const { return mShowGroupOnHover; }
     bool isIconByClass() const { return mIconByClass; }
-    inline ILXQtPanel * panel() const { return mPlugin->panel(); }
-    inline ILXQtPanelPlugin * plugin() const { return mPlugin; }
+    inline IUKUIPanel * panel() const { return mPlugin->panel(); }
+    inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
 
 public slots:
     void settingsChanged();
 
 signals:
-    void buttonRotationRefreshed(bool autoRotate, ILXQtPanel::Position position);
+    void buttonRotationRefreshed(bool autoRotate, IUKUIPanel::Position position);
     void buttonStyleRefreshed(Qt::ToolButtonStyle buttonStyle);
     void refreshIconGeometry();
     void showOnlySettingChanged();
     void iconByClassChanged();
-    void popupShown(LXQtTaskGroup* sender);
+    void popupShown(UKUITaskGroup* sender);
 
 protected:
     virtual void dragEnterEvent(QDragEnterEvent * event);
@@ -108,15 +108,15 @@ private slots:
     void activateTask(int pos);
 
 private:
-    typedef QMap<WId, LXQtTaskGroup*> windowMap_t;
+    typedef QMap<WId, UKUITaskGroup*> windowMap_t;
 
 private:
     void addWindow(WId window);
     windowMap_t::iterator removeWindow(windowMap_t::iterator pos);
-    void buttonMove(LXQtTaskGroup * dst, LXQtTaskGroup * src, QPoint const & pos);
+    void buttonMove(UKUITaskGroup * dst, UKUITaskGroup * src, QPoint const & pos);
 
 private:
-    QMap<WId, LXQtTaskGroup*> mKnownWindows; //!< Ids of known windows (mapping to buttons/groups)
+    QMap<WId, UKUITaskGroup*> mKnownWindows; //!< Ids of known windows (mapping to buttons/groups)
     LXQt::GridLayout *mLayout;
     QList<GlobalKeyShortcut::Action*> mKeys;
     QSignalMapper *mSignalMapper;
@@ -144,9 +144,9 @@ private:
     void changeEvent(QEvent* event);
     void resizeEvent(QResizeEvent *event);
 
-    ILXQtPanelPlugin *mPlugin;
+    IUKUIPanelPlugin *mPlugin;
     QWidget *mPlaceHolder;
     LeftAlignedTextStyle *mStyle;
 };
 
-#endif // LXQTTASKBAR_H
+#endif // UKUITASKBAR_H

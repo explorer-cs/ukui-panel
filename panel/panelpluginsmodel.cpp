@@ -253,7 +253,7 @@ void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
         }
 #endif
 
-        LXQt::PluginInfoList list = LXQt::PluginInfo::search(desktopDirs, "LXQtPanel/Plugin", QString("%1.desktop").arg(type));
+        LXQt::PluginInfoList list = LXQt::PluginInfo::search(desktopDirs, "UKUIPanel/Plugin", QString("%1.desktop").arg(type));
         if( !list.count())
         {
             qWarning() << QString("Plugin \"%1\" not found.").arg(type);

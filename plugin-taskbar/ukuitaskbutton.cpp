@@ -27,9 +27,9 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "lxqttaskbutton.h"
-#include "lxqttaskgroup.h"
-#include "lxqttaskbar.h"
+#include "ukuitaskbutton.h"
+#include "ukuitaskgroup.h"
+#include "ukuitaskbar.h"
 
 #include <LXQt/Settings>
 
@@ -49,16 +49,15 @@
 #include <QStyleOptionToolButton>
 #include <QDesktopWidget>
 
-#include "lxqttaskbutton.h"
-#include "lxqttaskgroup.h"
-#include "lxqttaskbar.h"
+#include "ukuitaskgroup.h"
+#include "ukuitaskbar.h"
 
 #include <KWindowSystem/KWindowSystem>
 // Necessary for closeApplication()
 #include <KWindowSystem/NETWM>
 #include <QX11Info>
 
-bool LXQtTaskButton::sDraggging = false;
+bool UKUITaskButton::sDraggging = false;
 
 /************************************************
 
@@ -75,7 +74,7 @@ void LeftAlignedTextStyle::drawItemText(QPainter * painter, const QRect & rect, 
 /************************************************
 
 ************************************************/
-LXQtTaskButton::LXQtTaskButton(const WId window, LXQtTaskBar * taskbar, QWidget *parent) :
+UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget *parent) :
     QToolButton(parent),
     mWindow(window),
     mUrgencyHint(false),
@@ -102,20 +101,20 @@ LXQtTaskButton::LXQtTaskButton(const WId window, LXQtTaskBar * taskbar, QWidget 
     mDNDTimer->setInterval(700);
     connect(mDNDTimer, SIGNAL(timeout()), this, SLOT(activateWithDraggable()));
     connect(LXQt::Settings::globalSettings(), SIGNAL(iconThemeChanged()), this, SLOT(updateIcon()));
-    connect(mParentTaskBar, &LXQtTaskBar::iconByClassChanged, this, &LXQtTaskButton::updateIcon);
+    connect(mParentTaskBar, &UKUITaskBar::iconByClassChanged, this, &UKUITaskButton::updateIcon);
 }
 
 /************************************************
 
 ************************************************/
-LXQtTaskButton::~LXQtTaskButton()
+UKUITaskButton::~UKUITaskButton()
 {
 }
 
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::updateText()
+void UKUITaskButton::updateText()
 {
     KWindowInfo info(mWindow, NET::WMVisibleName | NET::WMName);
     QString title = info.visibleName().isEmpty() ? info.name() : info.visibleName();
@@ -126,7 +125,7 @@ void LXQtTaskButton::updateText()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::updateIcon()
+void UKUITaskButton::updateIcon()
 {
     QIcon ico;
     if (mParentTaskBar->isIconByClass())
@@ -143,7 +142,7 @@ void LXQtTaskButton::updateIcon()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::refreshIconGeometry(QRect const & geom)
+void UKUITaskButton::refreshIconGeometry(QRect const & geom)
 {
     NETWinInfo info(QX11Info::connection(),
                     windowId(),
@@ -166,7 +165,7 @@ void LXQtTaskButton::refreshIconGeometry(QRect const & geom)
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::dragEnterEvent(QDragEnterEvent *event)
+void UKUITaskButton::dragEnterEvent(QDragEnterEvent *event)
 {
     // It must be here otherwise dragLeaveEvent and dragMoveEvent won't be called
     // on the other hand drop and dragmove events of parent widget won't be called
@@ -183,7 +182,7 @@ void LXQtTaskButton::dragEnterEvent(QDragEnterEvent *event)
     QToolButton::dragEnterEvent(event);
 }
 
-void LXQtTaskButton::dragMoveEvent(QDragMoveEvent * event)
+void UKUITaskButton::dragMoveEvent(QDragMoveEvent * event)
 {
     if (event->mimeData()->hasFormat(mimeDataFormat()))
     {
@@ -192,13 +191,13 @@ void LXQtTaskButton::dragMoveEvent(QDragMoveEvent * event)
     }
 }
 
-void LXQtTaskButton::dragLeaveEvent(QDragLeaveEvent *event)
+void UKUITaskButton::dragLeaveEvent(QDragLeaveEvent *event)
 {
     mDNDTimer->stop();
     QToolButton::dragLeaveEvent(event);
 }
 
-void LXQtTaskButton::dropEvent(QDropEvent *event)
+void UKUITaskButton::dropEvent(QDropEvent *event)
 {
     mDNDTimer->stop();
     if (event->mimeData()->hasFormat(mimeDataFormat()))
@@ -212,7 +211,7 @@ void LXQtTaskButton::dropEvent(QDropEvent *event)
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::mousePressEvent(QMouseEvent* event)
+void UKUITaskButton::mousePressEvent(QMouseEvent* event)
 {
     const Qt::MouseButton b = event->button();
 
@@ -227,7 +226,7 @@ void LXQtTaskButton::mousePressEvent(QMouseEvent* event)
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::mouseReleaseEvent(QMouseEvent* event)
+void UKUITaskButton::mouseReleaseEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton)
     {
@@ -242,7 +241,7 @@ void LXQtTaskButton::mouseReleaseEvent(QMouseEvent* event)
 /************************************************
 
  ************************************************/
-QMimeData * LXQtTaskButton::mimeData()
+QMimeData * UKUITaskButton::mimeData()
 {
     QMimeData *mimedata = new QMimeData;
     QByteArray ba;
@@ -255,7 +254,7 @@ QMimeData * LXQtTaskButton::mimeData()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::mouseMoveEvent(QMouseEvent* event)
+void UKUITaskButton::mouseMoveEvent(QMouseEvent* event)
 {
     if (!(event->buttons() & Qt::LeftButton))
         return;
@@ -270,12 +269,12 @@ void LXQtTaskButton::mouseMoveEvent(QMouseEvent* event)
     drag->setPixmap(img);
     switch (parentTaskBar()->panel()->position())
     {
-        case ILXQtPanel::PositionLeft:
-        case ILXQtPanel::PositionTop:
+        case IUKUIPanel::PositionLeft:
+        case IUKUIPanel::PositionTop:
             drag->setHotSpot({0, 0});
             break;
-        case ILXQtPanel::PositionRight:
-        case ILXQtPanel::PositionBottom:
+        case IUKUIPanel::PositionRight:
+        case IUKUIPanel::PositionBottom:
             drag->setHotSpot(img.rect().bottomRight());
             break;
     }
@@ -294,7 +293,7 @@ void LXQtTaskButton::mouseMoveEvent(QMouseEvent* event)
 /************************************************
 
  ************************************************/
-bool LXQtTaskButton::isApplicationHidden() const
+bool UKUITaskButton::isApplicationHidden() const
 {
     KWindowInfo info(mWindow, NET::WMState);
     return (info.state() & NET::Hidden);
@@ -303,7 +302,7 @@ bool LXQtTaskButton::isApplicationHidden() const
 /************************************************
 
  ************************************************/
-bool LXQtTaskButton::isApplicationActive() const
+bool UKUITaskButton::isApplicationActive() const
 {
     return KWindowSystem::activeWindow() == mWindow;
 }
@@ -311,7 +310,7 @@ bool LXQtTaskButton::isApplicationActive() const
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::activateWithDraggable()
+void UKUITaskButton::activateWithDraggable()
 {
     // raise app in any time when there is a drag
     // in progress to allow drop it into an app
@@ -322,7 +321,7 @@ void LXQtTaskButton::activateWithDraggable()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::raiseApplication()
+void UKUITaskButton::raiseApplication()
 {
     KWindowInfo info(mWindow, NET::WMDesktop | NET::WMState | NET::XAWMState);
     if (parentTaskBar()->raiseOnCurrentDesktop() && info.isMinimized())
@@ -343,7 +342,7 @@ void LXQtTaskButton::raiseApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::minimizeApplication()
+void UKUITaskButton::minimizeApplication()
 {
     KWindowSystem::minimizeWindow(mWindow);
 }
@@ -351,7 +350,7 @@ void LXQtTaskButton::minimizeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::maximizeApplication()
+void UKUITaskButton::maximizeApplication()
 {
     QAction* act = qobject_cast<QAction*>(sender());
     if (!act)
@@ -380,7 +379,7 @@ void LXQtTaskButton::maximizeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::deMaximizeApplication()
+void UKUITaskButton::deMaximizeApplication()
 {
     KWindowSystem::clearState(mWindow, NET::Max);
 
@@ -391,7 +390,7 @@ void LXQtTaskButton::deMaximizeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::shadeApplication()
+void UKUITaskButton::shadeApplication()
 {
     KWindowSystem::setState(mWindow, NET::Shaded);
 }
@@ -399,7 +398,7 @@ void LXQtTaskButton::shadeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::unShadeApplication()
+void UKUITaskButton::unShadeApplication()
 {
     KWindowSystem::clearState(mWindow, NET::Shaded);
 }
@@ -407,7 +406,7 @@ void LXQtTaskButton::unShadeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::closeApplication()
+void UKUITaskButton::closeApplication()
 {
     // FIXME: Why there is no such thing in KWindowSystem??
     NETRootInfo(QX11Info::connection(), NET::CloseWindow).closeWindowRequest(mWindow);
@@ -416,7 +415,7 @@ void LXQtTaskButton::closeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::setApplicationLayer()
+void UKUITaskButton::setApplicationLayer()
 {
     QAction* act = qobject_cast<QAction*>(sender());
     if (!act)
@@ -445,7 +444,7 @@ void LXQtTaskButton::setApplicationLayer()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::moveApplicationToDesktop()
+void UKUITaskButton::moveApplicationToDesktop()
 {
     QAction* act = qobject_cast<QAction*>(sender());
     if (!act)
@@ -463,7 +462,7 @@ void LXQtTaskButton::moveApplicationToDesktop()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::moveApplication()
+void UKUITaskButton::moveApplication()
 {
     KWindowInfo info(mWindow, NET::WMDesktop);
     if (!info.isOnCurrentDesktop())
@@ -481,7 +480,7 @@ void LXQtTaskButton::moveApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::resizeApplication()
+void UKUITaskButton::resizeApplication()
 {
     KWindowInfo info(mWindow, NET::WMDesktop);
     if (!info.isOnCurrentDesktop())
@@ -499,7 +498,7 @@ void LXQtTaskButton::resizeApplication()
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::contextMenuEvent(QContextMenuEvent* event)
+void UKUITaskButton::contextMenuEvent(QContextMenuEvent* event)
 {
     if (event->modifiers().testFlag(Qt::ControlModifier))
     {
@@ -571,10 +570,10 @@ void LXQtTaskButton::contextMenuEvent(QContextMenuEvent* event)
     menu->addSeparator();
     a = menu->addAction(tr("&Move"));
     a->setEnabled(info.actionSupported(NET::ActionMove) && !(state & NET::Max) && !(state & NET::FullScreen));
-    connect(a, &QAction::triggered, this, &LXQtTaskButton::moveApplication);
+    connect(a, &QAction::triggered, this, &UKUITaskButton::moveApplication);
     a = menu->addAction(tr("Resi&ze"));
     a->setEnabled(info.actionSupported(NET::ActionResize) && !(state & NET::Max) && !(state & NET::FullScreen));
-    connect(a, &QAction::triggered, this, &LXQtTaskButton::resizeApplication);
+    connect(a, &QAction::triggered, this, &UKUITaskButton::resizeApplication);
 
     /********** State menu **********/
     menu->addSeparator();
@@ -653,7 +652,7 @@ void LXQtTaskButton::contextMenuEvent(QContextMenuEvent* event)
 /************************************************
 
  ************************************************/
-void LXQtTaskButton::setUrgencyHint(bool set)
+void UKUITaskButton::setUrgencyHint(bool set)
 {
     if (mUrgencyHint == set)
         return;
@@ -671,27 +670,27 @@ void LXQtTaskButton::setUrgencyHint(bool set)
 /************************************************
 
  ************************************************/
-bool LXQtTaskButton::isOnDesktop(int desktop) const
+bool UKUITaskButton::isOnDesktop(int desktop) const
 {
     return KWindowInfo(mWindow, NET::WMDesktop).isOnDesktop(desktop);
 }
 
-bool LXQtTaskButton::isOnCurrentScreen() const
+bool UKUITaskButton::isOnCurrentScreen() const
 {
     return QApplication::desktop()->screenGeometry(parentTaskBar()).intersects(KWindowInfo(mWindow, NET::WMFrameExtents).frameGeometry());
 }
 
-bool LXQtTaskButton::isMinimized() const
+bool UKUITaskButton::isMinimized() const
 {
     return KWindowInfo(mWindow,NET::WMState | NET::XAWMState).isMinimized();
 }
 
-Qt::Corner LXQtTaskButton::origin() const
+Qt::Corner UKUITaskButton::origin() const
 {
     return mOrigin;
 }
 
-void LXQtTaskButton::setOrigin(Qt::Corner newOrigin)
+void UKUITaskButton::setOrigin(Qt::Corner newOrigin)
 {
     if (mOrigin != newOrigin)
     {
@@ -700,22 +699,22 @@ void LXQtTaskButton::setOrigin(Qt::Corner newOrigin)
     }
 }
 
-void LXQtTaskButton::setAutoRotation(bool value, ILXQtPanel::Position position)
+void UKUITaskButton::setAutoRotation(bool value, IUKUIPanel::Position position)
 {
     if (value)
     {
         switch (position)
         {
-        case ILXQtPanel::PositionTop:
-        case ILXQtPanel::PositionBottom:
+        case IUKUIPanel::PositionTop:
+        case IUKUIPanel::PositionBottom:
             setOrigin(Qt::TopLeftCorner);
             break;
 
-        case ILXQtPanel::PositionLeft:
+        case IUKUIPanel::PositionLeft:
             setOrigin(Qt::BottomLeftCorner);
             break;
 
-        case ILXQtPanel::PositionRight:
+        case IUKUIPanel::PositionRight:
             setOrigin(Qt::TopRightCorner);
             break;
         }
@@ -724,7 +723,7 @@ void LXQtTaskButton::setAutoRotation(bool value, ILXQtPanel::Position position)
         setOrigin(Qt::TopLeftCorner);
 }
 
-void LXQtTaskButton::paintEvent(QPaintEvent *event)
+void UKUITaskButton::paintEvent(QPaintEvent *event)
 {
     if (mOrigin == Qt::TopLeftCorner)
     {
@@ -799,7 +798,7 @@ void LXQtTaskButton::paintEvent(QPaintEvent *event)
     mDrawPixmap = drawPixmapNextTime;
 }
 
-bool LXQtTaskButton::hasDragAndDropHover() const
+bool UKUITaskButton::hasDragAndDropHover() const
 {
     return mDNDTimer->isActive();
 }
