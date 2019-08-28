@@ -249,4 +249,4 @@ public:
 Q_DECLARE_INTERFACE(IUKUIPanelPluginLibrary,
                     "lxqt.org/Panel/PluginInterface/3.0")
 
-#endif // IUKUIPanelPLUGIN_H
+#endif // IUKUIPANELPLUGIN_H
