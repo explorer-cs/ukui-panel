@@ -26,8 +26,8 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQTXFITMAN_H
-#define LXQTXFITMAN_H
+#ifndef UKUIXFITMAN_H
+#define UKUIXFITMAN_H
 
 #include <X11/Xlib.h>
 
@@ -93,4 +93,4 @@ private:
 
 const XfitMan& xfitMan();
 
-#endif // LXQTXFITMAN_H
+#endif // UKUIXFITMAN_H

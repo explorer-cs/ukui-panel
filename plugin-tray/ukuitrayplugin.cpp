@@ -26,27 +26,27 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#include "lxqttrayplugin.h"
-#include "lxqttray.h"
+#include "ukuitrayplugin.h"
+#include "ukuitray.h"
 
-LXQtTrayPlugin::LXQtTrayPlugin(const ILXQtPanelPluginStartupInfo &startupInfo) :
+UKUITrayPlugin::UKUITrayPlugin(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
-    mWidget(new LXQtTray(this))
+    IUKUIPanelPlugin(startupInfo),
+    mWidget(new UKUITray(this))
 {
 }
 
-LXQtTrayPlugin::~LXQtTrayPlugin()
+UKUITrayPlugin::~UKUITrayPlugin()
 {
     delete mWidget;
 }
 
-QWidget *LXQtTrayPlugin::widget()
+QWidget *UKUITrayPlugin::widget()
 {
     return mWidget;
 }
 
-void LXQtTrayPlugin::realign()
+void UKUITrayPlugin::realign()
 {
     mWidget->realign();
 }

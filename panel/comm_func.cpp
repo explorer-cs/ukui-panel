@@ -367,7 +367,7 @@ void removefilesindir(const QString& path)
 {
   QDir dir(path);
   QFileInfoList info_list = dir.entryInfoList(QDir::Files | QDir::Hidden | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::AllDirs);
-  for(QFileInfo file_info:info_list)
+  for(QFileInfo file_info:qAsConst(info_list))
   {
     if (file_info.isDir())
     {
@@ -385,13 +385,16 @@ void removefilesindir(const QString& path)
 //  qDebug() << "remove empty dir : " << path;
 }
 
+//https://www.devbean.net/2016/08/goodbye-q_foreach/
+//fileInfoList 不让被修改，转换成const
 bool removeDir(const QString & dirName)
 {
     bool result = true;
     QDir dir(dirName);
 
     if (dir.exists(dirName)) {
-        for(QFileInfo info:dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
+        QFileInfoList fileInfoList = dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst);
+        for(QFileInfo info:qAsConst(fileInfoList)) {
             if (info.isDir()) {
                 result = removeDir(info.absoluteFilePath());
             }
@@ -494,7 +497,7 @@ bool qCopyDirectory(const QDir& fromDir, const QDir& toDir, bool bCoverIfFileExi
     }
 
     QFileInfoList fileInfoList = formDir_.entryInfoList();
-    for(QFileInfo fileInfo:fileInfoList)
+    for(QFileInfo fileInfo:qAsConst(fileInfoList))
     {
         if(fileInfo.fileName() == "." || fileInfo.fileName() == "..")
             continue;
@@ -545,7 +548,7 @@ pid_t getPidByName(const char* processName)
     int pid = 0;
     bool findPid = false;
     QStringList dirLists = procDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-    for(auto & dir : dirLists) {
+    for(auto & dir : qAsConst(dirLists)) {
         bool ok;
         pid = dir.toInt(&ok, 10);
         if(ok == false)

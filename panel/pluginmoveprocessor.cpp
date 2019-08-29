@@ -89,7 +89,7 @@ void PluginMoveProcessor::doStart()
 void PluginMoveProcessor::mouseMoveEvent(QMouseEvent *event)
 {
     QPoint mouse = mLayout->parentWidget()->mapFromGlobal(event->globalPos());
-
+    qDebug()<<"mouse:"<<mouse;
     MousePosInfo pos = itemByMousePos(mouse);
 
     QLayoutItem *prevItem = 0;

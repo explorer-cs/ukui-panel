@@ -11,15 +11,15 @@ pkg_check_modules(XDAMAGE REQUIRED xdamage)
 pkg_check_modules(XRENDER REQUIRED xrender)
 
 set(HEADERS
-    lxqttrayplugin.h
-    lxqttray.h
+    ukuitrayplugin.h
+    ukuitray.h
     trayicon.h
     xfitman.h
 )
 
 set(SOURCES
-    lxqttrayplugin.cpp
-    lxqttray.cpp
+    ukuitrayplugin.cpp
+    ukuitray.cpp
     trayicon.cpp
     xfitman.cpp
 )
@@ -32,4 +32,4 @@ set(LIBRARIES
     ${XCB_LIBRARIES}
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})

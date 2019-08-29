@@ -48,6 +48,8 @@ UKUIPanelApplicationPrivate::UKUIPanelApplicationPrivate(UKUIPanelApplication *q
 
 IUKUIPanel::Position UKUIPanelApplicationPrivate::computeNewPanelPosition(const UKUIPanel *p, const int screenNum)
 {
+//#define Q_D(Class) Class##Private * const d = d_func()
+//#define Q_Q(Class) Class * const q = q_func()
     Q_Q(UKUIPanelApplication);
     QVector<bool> screenPositions(4, false); // false means not occupied
 

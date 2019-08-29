@@ -35,7 +35,7 @@
 #include <QStyle>
 #include <QScreen>
 
-#include "../panel/lxqtpanel.h"
+#include "../panel/ukuipanel.h"
 #include "trayicon.h"
 #include "xfitman.h"
 

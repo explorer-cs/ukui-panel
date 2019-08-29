@@ -35,9 +35,9 @@
 #include <QTimer>
 #include <QX11Info>
 #include "trayicon.h"
-#include "../panel/ilxqtpanel.h"
+#include "../panel/iukuipanel.h"
 #include <LXQt/GridLayout>
-#include "lxqttray.h"
+#include "ukuitray.h"
 #include "xfitman.h"
 
 #include <X11/Xlib.h>
@@ -50,7 +50,7 @@
 
 #undef Bool // defined as int in X11/Xlib.h
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 
 #define _NET_SYSTEM_TRAY_ORIENTATION_HORZ 0
 #define _NET_SYSTEM_TRAY_ORIENTATION_VERT 1
@@ -66,7 +66,7 @@
 /************************************************
 
  ************************************************/
-LXQtTray::LXQtTray(ILXQtPanelPlugin *plugin, QWidget *parent):
+UKUITray::UKUITray(IUKUIPanelPlugin *plugin, QWidget *parent):
     QFrame(parent),
     mValid(false),
     mTrayId(0),
@@ -88,7 +88,7 @@ LXQtTray::LXQtTray(ILXQtPanelPlugin *plugin, QWidget *parent):
 /************************************************
 
  ************************************************/
-LXQtTray::~LXQtTray()
+UKUITray::~UKUITray()
 {
     stopTray();
 }
@@ -97,7 +97,7 @@ LXQtTray::~LXQtTray()
 /************************************************
 
  ************************************************/
-bool LXQtTray::nativeEventFilter(const QByteArray &eventType, void *message, long *)
+bool UKUITray::nativeEventFilter(const QByteArray &eventType, void *message, long *)
 {
     if (eventType != "xcb_generic_event_t")
         return false;
@@ -149,10 +149,10 @@ bool LXQtTray::nativeEventFilter(const QByteArray &eventType, void *message, lon
 /************************************************
 
  ************************************************/
-void LXQtTray::realign()
+void UKUITray::realign()
 {
     mLayout->setEnabled(false);
-    ILXQtPanel *panel = mPlugin->panel();
+    IUKUIPanel *panel = mPlugin->panel();
 
     if (panel->isHorizontal())
     {
@@ -171,7 +171,7 @@ void LXQtTray::realign()
 /************************************************
 
  ************************************************/
-void LXQtTray::clientMessageEvent(xcb_generic_event_t *e)
+void UKUITray::clientMessageEvent(xcb_generic_event_t *e)
 {
     unsigned long opcode;
     unsigned long message_type;
@@ -210,7 +210,7 @@ void LXQtTray::clientMessageEvent(xcb_generic_event_t *e)
 /************************************************
 
  ************************************************/
-TrayIcon* LXQtTray::findIcon(Window id)
+TrayIcon* UKUITray::findIcon(Window id)
 {
     for(TrayIcon* icon : qAsConst(mIcons))
     {
@@ -224,7 +224,7 @@ TrayIcon* LXQtTray::findIcon(Window id)
 /************************************************
 
 ************************************************/
-void LXQtTray::setIconSize(QSize iconSize)
+void UKUITray::setIconSize(QSize iconSize)
 {
     mIconSize = iconSize;
     unsigned long size = qMin(mIconSize.width(), mIconSize.height());
@@ -242,7 +242,7 @@ void LXQtTray::setIconSize(QSize iconSize)
 /************************************************
 
 ************************************************/
-VisualID LXQtTray::getVisual()
+VisualID UKUITray::getVisual()
 {
     VisualID visualId = 0;
     Display* dsp = mDisplay;
@@ -280,7 +280,7 @@ VisualID LXQtTray::getVisual()
 /************************************************
    freedesktop systray specification
  ************************************************/
-void LXQtTray::startTray()
+void UKUITray::startTray()
 {
     Display* dsp = mDisplay;
     Window root = QX11Info::appRootWindow();
@@ -358,10 +358,10 @@ void LXQtTray::startTray()
 /************************************************
 
  ************************************************/
-void LXQtTray::stopTray()
+void UKUITray::stopTray()
 {
     for (auto & icon : mIcons)
-        disconnect(icon, &QObject::destroyed, this, &LXQtTray::onIconDestroyed);
+        disconnect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
     qDeleteAll(mIcons);
     if (mTrayId)
     {
@@ -375,7 +375,7 @@ void LXQtTray::stopTray()
 /************************************************
 
  ************************************************/
-void LXQtTray::onIconDestroyed(QObject * icon)
+void UKUITray::onIconDestroyed(QObject * icon)
 {
     //in the time QOjbect::destroyed is emitted, the child destructor
     //is already finished, so the qobject_cast to child will return nullptr in all cases
@@ -385,7 +385,7 @@ void LXQtTray::onIconDestroyed(QObject * icon)
 /************************************************
 
  ************************************************/
-void LXQtTray::addIcon(Window winId)
+void UKUITray::addIcon(Window winId)
 {
     // decline to add an icon for a window we already manage
     TrayIcon *icon = findIcon(winId);
@@ -395,6 +395,6 @@ void LXQtTray::addIcon(Window winId)
     icon = new TrayIcon(winId, mIconSize, this);
     mIcons.append(icon);
     mLayout->addWidget(icon);
-    connect(icon, &QObject::destroyed, this, &LXQtTray::onIconDestroyed);
+    connect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
 }
 

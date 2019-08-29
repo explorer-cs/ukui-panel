@@ -25,12 +25,12 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQTTRAY_H
-#define LXQTTRAY_H
+#ifndef UKUITRAY_H
+#define UKUITRAY_H
 
 #include <QFrame>
 #include <QAbstractNativeEventFilter>
-#include "../panel/ilxqtpanel.h"
+#include "../panel/iukuipanel.h"
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <xcb/xcb_event.h>
@@ -46,15 +46,15 @@ class GridLayout;
 /**
  * @brief This makes our trayplugin
  */
-class ILXQtPanelPlugin;
+class IUKUIPanelPlugin;
 
-class LXQtTray: public QFrame, QAbstractNativeEventFilter
+class UKUITray: public QFrame, QAbstractNativeEventFilter
 {
     Q_OBJECT
     Q_PROPERTY(QSize iconSize READ iconSize WRITE setIconSize)
 public:
-    LXQtTray(ILXQtPanelPlugin *plugin, QWidget* parent = 0);
-    ~LXQtTray();
+    UKUITray(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    ~UKUITray();
 
 
     QSize iconSize() const { return mIconSize; }
@@ -94,7 +94,7 @@ private:
     int mDamageError;
     QSize mIconSize;
     LXQt::GridLayout *mLayout;
-    ILXQtPanelPlugin *mPlugin;
+    IUKUIPanelPlugin *mPlugin;
     Atom _NET_SYSTEM_TRAY_OPCODE;
     Display* mDisplay;
 };

@@ -39,7 +39,7 @@
 #define TRAY_ICON_SIZE_DEFAULT 24
 
 class QWidget;
-class LXQtPanel;
+class UKUIPanel;
 
 class TrayIcon: public QFrame
 {

@@ -26,21 +26,21 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef LXQTTRAYPLUGIN_H
-#define LXQTTRAYPLUGIN_H
+#ifndef UKUITRAYPLUGIN_H
+#define UKUITRAYPLUGIN_H
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QDebug>
 #include <QObject>
 #include <QX11Info>
 
-class LXQtTray;
-class LXQtTrayPlugin : public QObject, public ILXQtPanelPlugin
+class UKUITray;
+class UKUITrayPlugin : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    explicit LXQtTrayPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
-    ~LXQtTrayPlugin();
+    explicit UKUITrayPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~UKUITrayPlugin();
 
     virtual QWidget *widget();
     virtual QString themeId() const { return "Tray"; }
@@ -50,25 +50,25 @@ public:
     bool isSeparate() const { return true; }
 
 private:
-    LXQtTray *mWidget;
+    UKUITray *mWidget;
 
 };
 
-class LXQtTrayPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class UKUITrayPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         // Currently only X11 supported
         if (!QX11Info::connection()) {
             qWarning() << "Currently tray plugin supports X11 only. Skipping.";
             return nullptr;
         }
-        return new LXQtTrayPlugin(startupInfo);
+        return new UKUITrayPlugin(startupInfo);
     }
 };
 
-#endif // LXQTTRAYPLUGIN_H
+#endif // UKUITRAYPLUGIN_H

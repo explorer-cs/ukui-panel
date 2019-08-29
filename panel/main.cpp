@@ -28,7 +28,7 @@
 
 #include "ukuipanelapplication.h"
 
-/*! The ukui-panel is the panel of LXQt.
+/*! The ukui-panel is the panel of UKUI.
   Usage: ukui-panel [CONFIG_ID]
     CONFIG_ID      Section name in config file ~/.config/lxqt-panel/panel.conf
                    (default main)

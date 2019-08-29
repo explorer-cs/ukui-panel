@@ -202,7 +202,7 @@ if(STATUSNOTIFIER_PLUGIN)
     add_subdirectory(plugin-statusnotifier)
 endif()
 
-#setByDefault(TRAY_PLUGIN Yes)
+setByDefault(TRAY_PLUGIN Yes)
 if(TRAY_PLUGIN)
     list(APPEND STATIC_PLUGINS "tray")
     add_definitions(-DWITH_TRAY_PLUGIN)

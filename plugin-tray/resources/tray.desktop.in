@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Service
-ServiceTypes=LXQtPanel/Plugin
+ServiceTypes=UKUIPanel/Plugin
 Name=System tray
 Comment=Display applications minimized to the system tray.
 Icon=go-bottom
