@@ -220,7 +220,7 @@ namespace
         std::make_tuple(QLatin1String("mainmenu"), plugin_ptr_t{new LXQtMainMenuPluginLibrary}, loadPluginTranslation_mainmenu_helper),// mainmenu
 #endif
 #if defined(WITH_QUICKLAUNCH_PLUGIN)
-        std::make_tuple(QLatin1String("quicklaunch"), plugin_ptr_t{new LXQtQuickLaunchPluginLibrary}, loadPluginTranslation_quicklaunch_helper),// quicklaunch
+        std::make_tuple(QLatin1String("quicklaunch"), plugin_ptr_t{new UKUIQuickLaunchPluginLibrary}, loadPluginTranslation_quicklaunch_helper),// quicklaunch
 #endif
 #if defined(WITH_SHOWDESKTOP_PLUGIN)
         std::make_tuple(QLatin1String("showdesktop"), plugin_ptr_t{new ShowDesktopLibrary}, loadPluginTranslation_showdesktop_helper),// showdesktop

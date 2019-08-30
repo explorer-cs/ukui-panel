@@ -29,24 +29,24 @@
 #include "ukuiquicklaunch.h"
 
 
-LXQtQuickLaunchPlugin::LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
+UKUIQuickLaunchPlugin::UKUIQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
     IUKUIPanelPlugin(startupInfo),
-    mWidget(new LXQtQuickLaunch(this))
+    mWidget(new UKUIQuickLaunch(this))
 {
 }
 
-LXQtQuickLaunchPlugin::~LXQtQuickLaunchPlugin()
+UKUIQuickLaunchPlugin::~UKUIQuickLaunchPlugin()
 {
     delete mWidget;
 }
 
-QWidget *LXQtQuickLaunchPlugin::widget()
+QWidget *UKUIQuickLaunchPlugin::widget()
 {
     return mWidget;
 }
 
-void LXQtQuickLaunchPlugin::realign()
+void UKUIQuickLaunchPlugin::realign()
 {
     mWidget->realign();
 }

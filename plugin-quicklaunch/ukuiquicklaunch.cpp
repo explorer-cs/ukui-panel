@@ -45,7 +45,7 @@
 #include "../panel/pluginsettings.h"
 
 
-LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
+UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
     QFrame(parent),
     mPlugin(plugin),
     mPlaceHolder(0)
@@ -107,24 +107,24 @@ LXQtQuickLaunch::LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
 }
 
 
-LXQtQuickLaunch::~LXQtQuickLaunch()
+UKUIQuickLaunch::~UKUIQuickLaunch()
 {
 }
 
 
-int LXQtQuickLaunch::indexOfButton(QuickLaunchButton* button) const
+int UKUIQuickLaunch::indexOfButton(QuickLaunchButton* button) const
 {
     return mLayout->indexOf(button);
 }
 
 
-int LXQtQuickLaunch::countOfButtons() const
+int UKUIQuickLaunch::countOfButtons() const
 {
     return mLayout->count();
 }
 
 
-void LXQtQuickLaunch::realign()
+void UKUIQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
     IUKUIPanel *panel = mPlugin->panel();
@@ -151,7 +151,7 @@ void LXQtQuickLaunch::realign()
 }
 
 
-void LXQtQuickLaunch::addButton(QuickLaunchAction* action)
+void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
@@ -170,7 +170,7 @@ void LXQtQuickLaunch::addButton(QuickLaunchAction* action)
 }
 
 
-void LXQtQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
+void UKUIQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 {
     // Getting URL from mainmenu...
     if (e->mimeData()->hasUrls())
@@ -186,7 +186,7 @@ void LXQtQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 }
 
 
-void LXQtQuickLaunch::dropEvent(QDropEvent *e)
+void UKUIQuickLaunch::dropEvent(QDropEvent *e)
 {
     const auto urls = e->mimeData()->urls().toSet();
     for (const QUrl &url : urls)
@@ -219,7 +219,7 @@ void LXQtQuickLaunch::dropEvent(QDropEvent *e)
     saveSettings();
 }
 
-void LXQtQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
+void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
 {
     if (button1 == button2)
         return;
@@ -236,7 +236,7 @@ void LXQtQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButto
 }
 
 
-void LXQtQuickLaunch::buttonDeleted()
+void UKUIQuickLaunch::buttonDeleted()
 {
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn)
@@ -253,7 +253,7 @@ void LXQtQuickLaunch::buttonDeleted()
 }
 
 
-void LXQtQuickLaunch::buttonMoveLeft()
+void UKUIQuickLaunch::buttonMoveLeft()
 {
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn)
@@ -268,7 +268,7 @@ void LXQtQuickLaunch::buttonMoveLeft()
 }
 
 
-void LXQtQuickLaunch::buttonMoveRight()
+void UKUIQuickLaunch::buttonMoveRight()
 {
     QuickLaunchButton *btn1 = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn1)
@@ -283,7 +283,7 @@ void LXQtQuickLaunch::buttonMoveRight()
 }
 
 
-void LXQtQuickLaunch::saveSettings()
+void UKUIQuickLaunch::saveSettings()
 {
     PluginSettings *settings = mPlugin->settings();
     settings->remove("apps");
@@ -311,7 +311,7 @@ void LXQtQuickLaunch::saveSettings()
 }
 
 
-void LXQtQuickLaunch::showPlaceHolder()
+void UKUIQuickLaunch::showPlaceHolder()
 {
     if (!mPlaceHolder)
     {

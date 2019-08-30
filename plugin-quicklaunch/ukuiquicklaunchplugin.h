@@ -32,14 +32,14 @@
 #include <QObject>
 
 
-class LXQtQuickLaunch;
+class UKUIQuickLaunch;
 
-class LXQtQuickLaunchPlugin: public QObject, public IUKUIPanelPlugin
+class UKUIQuickLaunchPlugin: public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    explicit LXQtQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
-    ~LXQtQuickLaunchPlugin();
+    explicit UKUIQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~UKUIQuickLaunchPlugin();
 
     virtual QWidget *widget();
     virtual QString themeId() const { return "QuickLaunch"; }
@@ -50,11 +50,11 @@ public:
     bool isSeparate() const { return true; }
 
 private:
-    LXQtQuickLaunch *mWidget;
+    UKUIQuickLaunch *mWidget;
 };
 
 
-class LXQtQuickLaunchPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
+class UKUIQuickLaunchPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
@@ -62,7 +62,7 @@ class LXQtQuickLaunchPluginLibrary: public QObject, public IUKUIPanelPluginLibra
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new LXQtQuickLaunchPlugin(startupInfo);
+        return new UKUIQuickLaunchPlugin(startupInfo);
     }
 };
 #endif // UKUIQUICKLAUNCHPLUGIN_H

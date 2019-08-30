@@ -50,13 +50,13 @@ class GridLayout;
 /*! \brief Loader for "quick launcher" icons in the panel.
 \author Petr Vanek <petr@scribus.info>
 */
-class LXQtQuickLaunch : public QFrame
+class UKUIQuickLaunch : public QFrame
 {
     Q_OBJECT
 
 public:
-    LXQtQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
-    ~LXQtQuickLaunch();
+   UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
+    ~UKUIQuickLaunch();
 
     int indexOfButton(QuickLaunchButton* button) const;
     int countOfButtons() const;
