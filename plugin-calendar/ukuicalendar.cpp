@@ -112,7 +112,7 @@ void IndicatorCalendar::setupMainWindow()
     qDebug() << html_file_path;
     if(!mWebView)
     {
-         mWebView = new LXQtIndicatorCalendarWebView;
+         mWebView = new UkuiCalendarWebView;
          connect(mWebView, SIGNAL(deactivated()), SLOT(deletePopup()));
     }
     else
@@ -593,20 +593,20 @@ void CalendarActiveLabel::mouseReleaseEvent(QMouseEvent* event)
     QLabel::mouseReleaseEvent(event);
 }
 
-LXQtIndicatorCalendarWebView::LXQtIndicatorCalendarWebView(QWidget *parent) :
+UkuiCalendarWebView::UkuiCalendarWebView(QWidget *parent) :
     QWebView(parent)
 {
 //    setLayout(new QHBoxLayout(this));
 //    layout()->setMargin(1);
 }
 
-void LXQtIndicatorCalendarWebView::show()
+void UkuiCalendarWebView::show()
 {
     QWebView::show();
     activateWindow();
 }
 
-bool LXQtIndicatorCalendarWebView::event(QEvent *event)
+bool UkuiCalendarWebView::event(QEvent *event)
 {
     if (event->type() == QEvent::Close)
         emit deactivated();

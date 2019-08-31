@@ -1,4 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
+﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
@@ -28,7 +28,7 @@
 #ifndef LXQT_COLORPICKER_H
 #define LXQT_COLORPICKER_H
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QFrame>
@@ -62,11 +62,11 @@ private:
 };
 
 
-class ColorPicker : public QObject, public ILXQtPanelPlugin
+class ColorPicker : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    ColorPicker(const ILXQtPanelPluginStartupInfo &startupInfo);
+    ColorPicker(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~ColorPicker();
 
     virtual QWidget *widget() { return &mWidget; }
@@ -80,13 +80,13 @@ private:
     ColorPickerWidget mWidget;
 };
 
-class ColorPickerLibrary: public QObject, public ILXQtPanelPluginLibrary
+class ColorPickerLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         return new ColorPicker(startupInfo);
     }

@@ -1,4 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
+﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
@@ -31,9 +31,9 @@
 #include <QScreen>
 
 
-ColorPicker::ColorPicker(const ILXQtPanelPluginStartupInfo &startupInfo) :
+ColorPicker::ColorPicker(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
-    ILXQtPanelPlugin(startupInfo)
+    IUKUIPanelPlugin(startupInfo)
 {
     realign();
 }

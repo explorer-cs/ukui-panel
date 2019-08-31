@@ -85,7 +85,7 @@ include("cmake/BuildPlugin.cmake")
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
-#setByDefault(COLORPICKER_PLUGIN Yes)
+setByDefault(COLORPICKER_PLUGIN Yes)
 if(COLORPICKER_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Color Picker")
     add_subdirectory(plugin-colorpicker)
@@ -255,8 +255,8 @@ endif()
 
 setByDefault(CALENDAR_PLUGIN Yes)
 if(CALENDAR_PLUGIN)
-   list(APPEND STATIC_PLUGINS "calendar")
-    add_definitions(-DWITH_CALENDAR_PLUGIN)
+#   list(APPEND STATIC_PLUGINS "calendar")
+#    add_definitions(-DWITH_CALENDAR_PLUGIN)
     list(APPEND ENABLED_PLUGINS "calendar")
     add_subdirectory(plugin-calendar)
 endif(CALENDAR_PLUGIN)

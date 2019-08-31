@@ -39,7 +39,7 @@
 
 class QTimer;
 class CalendarActiveLabel;
-class LXQtIndicatorCalendarWebView;
+class UkuiCalendarWebView;
 
 class IndicatorCalendar : public QObject, public IUKUIPanelPlugin
 {
@@ -67,7 +67,7 @@ private slots:
 
 private:
     QWidget *mMainWidget;
-    LXQtIndicatorCalendarWebView *mWebView;
+    UkuiCalendarWebView *mWebView;
     LXQt::RotatedWidget* mRotatedWidget;
 
     //LXQtIndicatorCalendarPop* mPopup;
@@ -115,12 +115,12 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
 };
 
-class LXQtIndicatorCalendarWebView : public QWebView
+class UkuiCalendarWebView : public QWebView
 {
     Q_OBJECT
 
 public:
-    LXQtIndicatorCalendarWebView(QWidget *parent = 0);
+    UkuiCalendarWebView(QWidget *parent = 0);
 
     void show();
 
