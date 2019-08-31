@@ -1,4 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
+﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
@@ -29,7 +29,7 @@
 #ifndef LXQT_PANEL_WORLDCLOCK_CONFIGURATION_H
 #define LXQT_PANEL_WORLDCLOCK_CONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 #include <QAbstractButton>
 #include <QFont>
@@ -43,7 +43,7 @@ class LXQtWorldClockConfigurationTimeZones;
 class LXQtWorldClockConfigurationManualFormat;
 class QTableWidgetItem;
 
-class LXQtWorldClockConfiguration : public LXQtPanelPluginConfigDialog
+class LXQtWorldClockConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

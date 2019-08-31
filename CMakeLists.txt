@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
+﻿cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 # CMP0000: Call the cmake_minimum_required() command at the beginning of the top-level
 # CMakeLists.txt file even before calling the project() command.
 # The cmake_minimum_required(VERSION) command implicitly invokes the cmake_policy(VERSION)
@@ -252,6 +252,16 @@ if(SPACER_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Spacer")
     add_subdirectory(plugin-spacer)
 endif()
+
+setByDefault(CALENDAR_PLUGIN Yes)
+if(CALENDAR_PLUGIN)
+   list(APPEND STATIC_PLUGINS "calendar")
+    add_definitions(-DWITH_CALENDAR_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "calendar")
+    add_subdirectory(plugin-calendar)
+endif(CALENDAR_PLUGIN)
+
+
 
 #########################################################################
 

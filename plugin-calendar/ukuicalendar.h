@@ -26,41 +26,38 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef LXQT_PANEL_WORLDCLOCK_H
-#define LXQT_PANEL_WORLDCLOCK_H
 
 #include <QTimeZone>
 
 #include <QDialog>
 #include <QLabel>
-
+#include <QtWebKitWidgets/QWebView>
 #include <LXQt/RotatedWidget>
+#include "lxqtpanelglobals.h"
+#include "../panel/iukuipanelplugin.h"
 
-#include "ilxqtpanelplugin.h"
-#include "lxqtworldclockconfiguration.h"
 
-
-class ActiveLabel;
 class QTimer;
-class LXQtWorldClockPopup;
+class CalendarActiveLabel;
+class LXQtIndicatorCalendarWebView;
 
-
-class LXQtWorldClock : public QObject, public ILXQtPanelPlugin
+class IndicatorCalendar : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtWorldClock(const ILXQtPanelPluginStartupInfo &startupInfo);
-    ~LXQtWorldClock();
+    IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~IndicatorCalendar();
 
     virtual QWidget *widget() { return mMainWidget; }
-    virtual QString themeId() const { return QLatin1String("WorldClock"); }
-    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
+    virtual QString themeId() const { return QLatin1String("Calendar"); }
+    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     bool isSeparate() const { return true; }
     void activated(ActivationReason reason);
 
     virtual void settingsChanged();
     virtual void realign();
-    QDialog *configureDialog();
+    //QDialog *configureDialog();
+    void setupMainWindow();
 
 private slots:
     void timeout();
@@ -70,9 +67,12 @@ private slots:
 
 private:
     QWidget *mMainWidget;
+    LXQtIndicatorCalendarWebView *mWebView;
     LXQt::RotatedWidget* mRotatedWidget;
-    ActiveLabel *mContent;
-    LXQtWorldClockPopup* mPopup;
+
+    //LXQtIndicatorCalendarPop* mPopup;
+
+    CalendarActiveLabel *mContent;
 
     QTimer *mTimer;
     int mUpdateInterval;
@@ -98,12 +98,12 @@ private:
 };
 
 
-class ActiveLabel : public QLabel
+class CalendarActiveLabel : public QLabel
 {
 Q_OBJECT
 
 public:
-    explicit ActiveLabel(QWidget * = NULL);
+    explicit CalendarActiveLabel(QWidget * = NULL);
 
 signals:
     void wheelScrolled(int);
@@ -115,12 +115,12 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
 };
 
-class LXQtWorldClockPopup : public QDialog
+class LXQtIndicatorCalendarWebView : public QWebView
 {
     Q_OBJECT
 
 public:
-    LXQtWorldClockPopup(QWidget *parent = 0);
+    LXQtIndicatorCalendarWebView(QWidget *parent = 0);
 
     void show();
 
@@ -132,16 +132,14 @@ protected:
 
 };
 
-class LXQtWorldClockLibrary: public QObject, public ILXQtPanelPluginLibrary
+class IndicatorCalendarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new LXQtWorldClock(startupInfo);
+        return new IndicatorCalendar(startupInfo);
     }
 };
-
-#endif // LXQT_PANEL_WORLDCLOCK_H

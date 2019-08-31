@@ -20,4 +20,4 @@ set(UIS
     lxqtworldclockconfigurationmanualformat.ui
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})
