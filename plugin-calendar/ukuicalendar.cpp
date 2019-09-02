@@ -94,8 +94,8 @@ void IndicatorCalendar::setupMainWindow()
     if(mWebView != NULL)
     {
         QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
-        htmlFilePath = QLatin1String("file:/") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
-
+        htmlFilePath = QLatin1String("file://") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
+        qDebug()<<"htmlFilePath is:"<<htmlFilePath;
         /*set window no margins*/
         mWebView->setWindowFlag(Qt::FramelessWindowHint);
         /*set window size*/
