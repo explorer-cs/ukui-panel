@@ -255,7 +255,9 @@ namespace
         std::make_tuple(QLatin1String("worldclock"), plugin_ptr_t{new LXQtWorldClockLibrary}, loadPluginTranslation_worldclock_helper),// worldclock
 #endif
 
-        std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new StartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
+#if defined(WITH_STARTMENU_PLUGIN)
+        std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new UKUIStartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
+#endif
     };
     static constexpr plugin_tuple_t const * const plugins_begin = static_plugins;
     static constexpr plugin_tuple_t const * const plugins_end = static_plugins + sizeof (static_plugins) / sizeof (static_plugins[0]);

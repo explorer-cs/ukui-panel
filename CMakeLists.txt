@@ -91,7 +91,7 @@ include("cmake/BuildPlugin.cmake")
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
-#setByDefault(COLORPICKER_PLUGIN Yes)
+setByDefault(COLORPICKER_PLUGIN Yes)
 if(COLORPICKER_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Color Picker")
     add_subdirectory(plugin-colorpicker)
