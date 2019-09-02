@@ -39,6 +39,8 @@
 #include <QTimer>
 #include <QWheelEvent>
 #include "pluginsettings.h"
+#include <QDebug>
+#include <QApplication>
 
 IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
@@ -80,36 +82,16 @@ IndicatorCalendar::~IndicatorCalendar()
 
 void IndicatorCalendar::setupMainWindow()
 {
-    QString html_file_path = QLatin1String("file:///home/minglequn/work/ukui3.0/ukui-panel/plugin-calendar/html/ukui.html");
-
-//    if (ischinese)
-//    {
-//        html_file_path += "ukui.html";
-//    }
-//    else if(isru)
-//    {
-//        html_file_path += "ukui-ru.html";
-//    }
-//    else if(isfr)
-//    {
-//        html_file_path += "ukui-fr.html";
-//    }
-//    else if(ispt)
-//    {
-//        html_file_path += "ukui-pt.html";
-//    }
-//    else if(ises)
-//    {
-//        html_file_path += "ukui-es.html";
-//    }
-//    else
-//    {
-//        html_file_path += "ukui-en.html";
-//    }
+    //QString applicationDirPathStr = QCoreApplication::applicationDirPath();
+    qDebug()<<"1111111111111111"<<PLUGIN_DIR;
+    qDebug()<<"1111111111111111"<<PACKAGE_DATA_DIR;
+    QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
+    htmlFilePath = QLatin1String("file:/") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
+    //QString html_file_path = QLatin1String("file:///home/minglequn/work/ukui3.0/ukui-panel/plugin-calendar/html/ukui.html");
 
 //    QString html_file_uri = QLatin1String("file://");
     //html_file_uri += html_file_path;
-    qDebug() << html_file_path;
+    qDebug() << htmlFilePath;
     if(!mWebView)
     {
          mWebView = new UkuiCalendarWebView;
@@ -129,7 +111,7 @@ void IndicatorCalendar::setupMainWindow()
            else gtk_widget_set_size_request(d->main_window, 500, 280);*/
         /*set webview's position*/
         mWebView->setGeometry(calculatePopupWindowPos(mWebView->size()));
-        mWebView->load(QUrl(html_file_path));
+        mWebView->load(QUrl(htmlFilePath));
         mWebView->show();
     }
 }
