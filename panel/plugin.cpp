@@ -89,9 +89,14 @@ extern void * loadPluginTranslation_tray_helper;
 extern void * loadPluginTranslation_worldclock_helper;
 #endif
 
-#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
-extern void * loadPluginTranslation_calendar_helper;
+//#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
+//extern void * loadPluginTranslation_calendar_helper;
 
+
+#if defined(WITH_STARTMENU_PLUGIN)
+#include "../plugin-startmenu/startmenu.h" // startmenu
+extern void * loadPluginTranslation_startmenu_helper;
+#endif
 
 
 QColor Plugin::mMoveMarkerColor= QColor(255, 0, 0, 255);
@@ -249,6 +254,8 @@ namespace
 #if defined(WITH_WORLDCLOCK_PLUGIN)
         std::make_tuple(QLatin1String("worldclock"), plugin_ptr_t{new LXQtWorldClockLibrary}, loadPluginTranslation_worldclock_helper),// worldclock
 #endif
+
+        std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new StartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
     };
     static constexpr plugin_tuple_t const * const plugins_begin = static_plugins;
     static constexpr plugin_tuple_t const * const plugins_end = static_plugins + sizeof (static_plugins) / sizeof (static_plugins[0]);
