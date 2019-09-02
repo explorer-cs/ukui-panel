@@ -57,6 +57,8 @@ public:
     virtual void realign();
     //QDialog *configureDialog();
     void setupMainWindow();
+signals:
+    void deactivated();
 
 private slots:
     void timeout();

@@ -38,7 +38,7 @@
 #include <QScopedArrayPointer>
 #include <QTimer>
 #include <QWheelEvent>
-#include "pluginsettings.h"
+#include "../panel/pluginsettings.h"
 #include <QDebug>
 #include <QApplication>
 
@@ -82,16 +82,6 @@ IndicatorCalendar::~IndicatorCalendar()
 
 void IndicatorCalendar::setupMainWindow()
 {
-    //QString applicationDirPathStr = QCoreApplication::applicationDirPath();
-    qDebug()<<"1111111111111111"<<PLUGIN_DIR;
-    qDebug()<<"1111111111111111"<<PACKAGE_DATA_DIR;
-    QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
-    htmlFilePath = QLatin1String("file:/") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
-    //QString html_file_path = QLatin1String("file:///home/minglequn/work/ukui3.0/ukui-panel/plugin-calendar/html/ukui.html");
-
-//    QString html_file_uri = QLatin1String("file://");
-    //html_file_uri += html_file_path;
-    qDebug() << htmlFilePath;
     if(!mWebView)
     {
          mWebView = new UkuiCalendarWebView;
@@ -103,6 +93,9 @@ void IndicatorCalendar::setupMainWindow()
     }
     if(mWebView != NULL)
     {
+        QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
+        htmlFilePath = QLatin1String("file:/") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
+
         /*set window no margins*/
         mWebView->setWindowFlag(Qt::FramelessWindowHint);
         /*set window size*/
