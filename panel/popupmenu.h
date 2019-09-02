@@ -32,7 +32,7 @@
 #include <QMenu>
 #include "ukuipanelglobals.h"
 
-class LXQT_PANEL_API PopupMenu: public QMenu
+class UKUI_PANEL_API PopupMenu: public QMenu
 {
 public:
     explicit PopupMenu(QWidget *parent = 0): QMenu(parent) {}

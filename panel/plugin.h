@@ -46,7 +46,7 @@ class UKUIPanel;
 class QMenu;
 
 
-class LXQT_PANEL_API Plugin : public QFrame
+class UKUI_PANEL_API Plugin : public QFrame
 {
     Q_OBJECT
 

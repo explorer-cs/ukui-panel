@@ -43,7 +43,7 @@ class QEvent;
 class Plugin;
 class LayoutItemGrid;
 
-class LXQT_PANEL_API UKUIPanelLayout : public QLayout
+class UKUI_PANEL_API UKUIPanelLayout : public QLayout
 {
     Q_OBJECT
 public:

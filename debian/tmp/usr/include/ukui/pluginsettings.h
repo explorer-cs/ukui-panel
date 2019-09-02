@@ -50,7 +50,7 @@ class PluginSettingsPrivate;
  * We are relying here on so called "back linking" (calling a function defined in executable
  * back from an external library)...
  */
-class LXQT_PANEL_API PluginSettings : public QObject
+class UKUI_PANEL_API PluginSettings : public QObject
 {
     Q_OBJECT
 

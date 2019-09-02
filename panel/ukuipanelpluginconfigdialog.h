@@ -36,7 +36,7 @@
 
 class QComboBox;
 
-class LXQT_PANEL_API UKUIPanelPluginConfigDialog : public QDialog
+class UKUI_PANEL_API UKUIPanelPluginConfigDialog : public QDialog
 {
     Q_OBJECT
 public:

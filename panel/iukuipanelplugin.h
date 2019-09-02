@@ -53,7 +53,7 @@ namespace LXQt
     class PluginInfo;
 }
 
-struct LXQT_PANEL_API IUKUIPanelPluginStartupInfo
+struct UKUI_PANEL_API IUKUIPanelPluginStartupInfo
 {
     IUKUIPanel *ukuiPanel;
     PluginSettings *settings;
@@ -68,7 +68,7 @@ This class provides some basic API and inherited/implemented
 plugins GUIs will be responsible on the functionality itself.
 **/
 
-class LXQT_PANEL_API IUKUIPanelPlugin
+class UKUI_PANEL_API IUKUIPanelPlugin
 {
 public:
     /**
@@ -231,7 +231,7 @@ public:
 };
 @endcode
 **/
-class LXQT_PANEL_API IUKUIPanelPluginLibrary
+class UKUI_PANEL_API IUKUIPanelPluginLibrary
 {
 public:
     /**
