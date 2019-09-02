@@ -33,7 +33,7 @@
 #include <QLabel>
 #include <QtWebKitWidgets/QWebView>
 #include <LXQt/RotatedWidget>
-#include "lxqtpanelglobals.h"
+#include "../panel/ukuipanelglobals.h"
 #include "../panel/iukuipanelplugin.h"
 
 

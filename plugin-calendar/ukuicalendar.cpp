@@ -38,7 +38,7 @@
 #include <QScopedArrayPointer>
 #include <QTimer>
 #include <QWheelEvent>
-#include "pluginsettings.h"
+#include "../panel/pluginsettings.h"
 
 IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),

@@ -39,7 +39,7 @@ class UKUIPanelLayout;
 class QLayoutItem;
 
 
-class LXQT_PANEL_API PluginMoveProcessor : public QWidget
+class UKUI_PANEL_API PluginMoveProcessor : public QWidget
 {
     Q_OBJECT
 public:
@@ -89,7 +89,7 @@ private:
 };
 
 
-class LXQT_PANEL_API CursorAnimation: public QVariantAnimation
+class UKUI_PANEL_API CursorAnimation: public QVariantAnimation
 {
     Q_OBJECT
 public:

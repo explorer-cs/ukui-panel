@@ -36,7 +36,7 @@ class QWidget;
 
 /**
  **/
-class LXQT_PANEL_API IUKUIPanel
+class UKUI_PANEL_API IUKUIPanel
 {
 public:
     /**

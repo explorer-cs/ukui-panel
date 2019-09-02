@@ -31,9 +31,9 @@
 #include <QtGlobal>
 
 #ifdef COMPILE_LXQT_PANEL
-#define LXQT_PANEL_API Q_DECL_EXPORT
+#define UKUI_PANEL_API Q_DECL_EXPORT
 #else
-#define LXQT_PANEL_API Q_DECL_IMPORT
+#define UKUI_PANEL_API Q_DECL_IMPORT
 #endif
 
 #endif // __LXQT_PANEL_GLOBALS_H__

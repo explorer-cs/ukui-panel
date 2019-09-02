@@ -73,7 +73,7 @@ class WindowNotifier;
  *
  * \sa UKUIPanelApplication, Plugin, PanelPluginsModel, UKUIPanelLayout.
  */
-class LXQT_PANEL_API UKUIPanel : public QFrame, public IUKUIPanel
+class UKUI_PANEL_API UKUIPanel : public QFrame, public IUKUIPanel
 {
     Q_OBJECT
 
