@@ -30,8 +30,6 @@ var div_range = {
 
 function update_yiji_area() {
     "use strict";
-
-    alter("yiji select");
     var year = parseInt(year_selector.value, 10);
     var month = parseInt(month_selector.value, 10);
 
