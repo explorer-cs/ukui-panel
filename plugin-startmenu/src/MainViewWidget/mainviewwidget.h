@@ -10,14 +10,14 @@
 #include <QDesktopWidget>
 #include <QKeyEvent>
 #include <QScrollBar>
-#include "../CommonUseWidget/commonusewidget.h"
-#include "../LetterWidget/letterwidget.h"
-#include "../FunctionWidget/functionwidget.h"
-#include "../CommonUseWidget/fullcommonusewidget.h"
-#include "../FunctionWidget/fullfunctionwidget.h"
-#include "../LetterWidget/fullletterwidget.h"
-#include "../SearchResultWidget/fullsearchresultwidget.h"
-#include "../SearchResultWidget/searchresultwidget.h"
+#include "src/CommonUseWidget/commonusewidget.h"
+#include "src/LetterWidget/letterwidget.h"
+#include "src/FunctionWidget/functionwidget.h"
+#include "src/CommonUseWidget/fullcommonusewidget.h"
+#include "src/FunctionWidget/fullfunctionwidget.h"
+#include "src/LetterWidget/fullletterwidget.h"
+#include "src/SearchResultWidget/fullsearchresultwidget.h"
+#include "src/SearchResultWidget/searchresultwidget.h"
 
 namespace Ui {
 class MainViewWidget;

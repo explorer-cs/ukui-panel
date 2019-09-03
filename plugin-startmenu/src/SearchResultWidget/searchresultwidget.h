@@ -8,7 +8,7 @@
 #include <QLabel>
 #include <QToolButton>
 #include <QScrollBar>
-
+#include <QHeaderView>
 namespace Ui {
 class SearchResultWidget;
 }

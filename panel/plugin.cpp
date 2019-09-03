@@ -89,8 +89,8 @@ extern void * loadPluginTranslation_tray_helper;
 extern void * loadPluginTranslation_worldclock_helper;
 #endif
 
-//#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
-//extern void * loadPluginTranslation_calendar_helper;
+#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
+extern void * loadPluginTranslation_calendar_helper;
 
 
 #if defined(WITH_STARTMENU_PLUGIN)
@@ -255,7 +255,9 @@ namespace
         std::make_tuple(QLatin1String("worldclock"), plugin_ptr_t{new LXQtWorldClockLibrary}, loadPluginTranslation_worldclock_helper),// worldclock
 #endif
 
-        std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new StartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
+#if defined(WITH_STARTMENU_PLUGIN)
+        std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new UKUIStartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
+#endif
     };
     static constexpr plugin_tuple_t const * const plugins_begin = static_plugins;
     static constexpr plugin_tuple_t const * const plugins_end = static_plugins + sizeof (static_plugins) / sizeof (static_plugins[0]);
@@ -263,6 +265,7 @@ namespace
     struct assert_helper
     {
         assert_helper()
+
         {
             Q_ASSERT(std::is_sorted(plugins_begin, plugins_end
                         , [] (plugin_tuple_t const & p1, plugin_tuple_t const & p2) -> bool { return std::get<0>(p1) < std::get<0>(p2); }));

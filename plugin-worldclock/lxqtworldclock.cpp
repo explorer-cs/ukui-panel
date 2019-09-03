@@ -1,4 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
+﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
@@ -40,9 +40,9 @@
 #include <QWheelEvent>
 
 
-LXQtWorldClock::LXQtWorldClock(const ILXQtPanelPluginStartupInfo &startupInfo):
+LXQtWorldClock::LXQtWorldClock(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     mPopup(NULL),
     mTimer(new QTimer(this)),
     mUpdateInterval(1),
@@ -374,8 +374,8 @@ void LXQtWorldClock::activated(ActivationReason reason)
 {
     switch (reason)
     {
-    case ILXQtPanelPlugin::Trigger:
-    case ILXQtPanelPlugin::MiddleClick:
+    case IUKUIPanelPlugin::Trigger:
+    case IUKUIPanelPlugin::MiddleClick:
         break;
 
     default:
@@ -387,7 +387,7 @@ void LXQtWorldClock::activated(ActivationReason reason)
         mPopup = new LXQtWorldClockPopup(mContent);
         connect(mPopup, SIGNAL(deactivated()), SLOT(deletePopup()));
 
-        if (reason == ILXQtPanelPlugin::Trigger)
+        if (reason == IUKUIPanelPlugin::Trigger)
         {
             mPopup->setObjectName(QLatin1String("WorldClockCalendar"));
 
@@ -556,16 +556,16 @@ void LXQtWorldClock::realign()
     if (mAutoRotate)
         switch (panel()->position())
         {
-        case ILXQtPanel::PositionTop:
-        case ILXQtPanel::PositionBottom:
+        case IUKUIPanel::PositionTop:
+        case IUKUIPanel::PositionBottom:
             mRotatedWidget->setOrigin(Qt::TopLeftCorner);
             break;
 
-        case ILXQtPanel::PositionLeft:
+        case IUKUIPanel::PositionLeft:
             mRotatedWidget->setOrigin(Qt::BottomLeftCorner);
             break;
 
-        case ILXQtPanel::PositionRight:
+        case IUKUIPanel::PositionRight:
             mRotatedWidget->setOrigin(Qt::TopRightCorner);
             break;
         }

@@ -3,7 +3,6 @@
 #include <QDesktopWidget>
 #include "src/color.h"
 #include <QDebug>
-#include <QHeaderView>
 
 FullLetterWidget::FullLetterWidget(QWidget *parent) :
     QWidget(parent),
