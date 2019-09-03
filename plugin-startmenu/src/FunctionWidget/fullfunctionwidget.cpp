@@ -3,7 +3,6 @@
 #include <QDesktopWidget>
 #include "src/color.h"
 #include <QDebug>
-#include <QHeaderView>
 
 FullFunctionWidget::FullFunctionWidget(QWidget *parent) :
     QWidget(parent),

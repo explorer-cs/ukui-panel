@@ -2,7 +2,6 @@
 #include "ui_fullsearchresultwidget.h"
 #include "src/color.h"
 #include <QDebug>
-#include <QHeaderView>
 
 FullSearchResultWidget::FullSearchResultWidget(QWidget *parent) :
     QWidget(parent),

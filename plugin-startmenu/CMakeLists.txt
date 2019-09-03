@@ -17,6 +17,7 @@ set(HEADERS
     src/SearchResultWidget/fullsearchresultwidget.h
     src/SearchResultWidget/searchresultwidget.h
     src/SideBarWidget/sidebarwidget.h
+    src/MainWindow/mainwindow.h
 
 
 )
@@ -37,6 +38,7 @@ set(SOURCES
     src/SearchResultWidget/fullsearchresultwidget.cpp
     src/SearchResultWidget/searchresultwidget.cpp
     src/SideBarWidget/sidebarwidget.cpp
+    src/MainWindow/mainwindow.cpp
 
 
 
@@ -58,6 +60,7 @@ set(UIS
     src/SearchResultWidget/fullsearchresultwidget.ui
     src/SearchResultWidget/searchresultwidget.ui
     src/SideBarWidget/sidebarwidget.ui
+    src/MainWindow/mainwindow.ui
 
 
 

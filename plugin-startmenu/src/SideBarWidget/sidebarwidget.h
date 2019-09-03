@@ -5,7 +5,7 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <QSpacerItem>
-#include "../MainViewWidget/mainviewwidget.h"
+#include "src/MainViewWidget/mainviewwidget.h"
 #include <QLabel>
 
 namespace Ui {

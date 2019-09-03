@@ -89,8 +89,8 @@ extern void * loadPluginTranslation_tray_helper;
 extern void * loadPluginTranslation_worldclock_helper;
 #endif
 
-//#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
-//extern void * loadPluginTranslation_calendar_helper;
+#include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
+extern void * loadPluginTranslation_calendar_helper;
 
 
 #if defined(WITH_STARTMENU_PLUGIN)
@@ -265,6 +265,7 @@ namespace
     struct assert_helper
     {
         assert_helper()
+
         {
             Q_ASSERT(std::is_sorted(plugins_begin, plugins_end
                         , [] (plugin_tuple_t const & p1, plugin_tuple_t const & p2) -> bool { return std::get<0>(p1) < std::get<0>(p2); }));

@@ -10,6 +10,7 @@
 #include <QSpacerItem>
 #include <QLabel>
 #include "fullfunctionbuttonwidget.h"
+#include <QHeaderView>
 
 namespace Ui {
 class FullFunctionWidget;
