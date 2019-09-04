@@ -57,7 +57,7 @@ set(LIBRARIES
     lxqt
 )
 
-file(GLOB CONFIG_FILES resources/*.conf)
+file(GLOB CONFIG_FILES resources/*.conf resources/*.qss)
 
 ############################################
 

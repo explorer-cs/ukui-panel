@@ -84,7 +84,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     QCoreApplication::setApplicationName(QLatin1String("ukui-panel"));
     const QString VERINFO = QStringLiteral(UKUI_PANEL_VERSION
-                                           "\nliblxqt   " LXQT_VERSION
+                                           "\nlibukui   " UKUI_VERSION
                                            "\nQt        " QT_VERSION_STR);
 
     QCoreApplication::setApplicationVersion(VERINFO);
@@ -146,6 +146,18 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     {
         addPanel(i);
     }
+//    updateStylesheet("default");
+}
+
+void UKUIPanelApplication::updateStylesheet(QString themeName)
+{
+    QFile file(QString(PLUGIN_DESKTOPS_DIR)+"/../panel.qss");
+    file.open(QFile::ReadOnly);
+    QTextStream filetext(&file);
+    QString stylesheet = filetext.readAll();
+    this->setStyleSheet(stylesheet);
+    file.close();
+    qDebug()<<"updateStylesheet:"<<themeName;
 }
 
 UKUIPanelApplication::~UKUIPanelApplication()
