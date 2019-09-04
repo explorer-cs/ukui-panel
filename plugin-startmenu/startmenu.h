@@ -1,30 +1,74 @@
 #ifndef STARTMENU_H
 #define STARTMENU_H
 
-#include <QWidget>
 #include "../panel/iukuipanelplugin.h"
-#include <QMainWindow>
-#include <QHBoxLayout>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QFrame>
+#include <QFontMetrics>
+#include <QLineEdit>
+#include <QToolButton>
+#include <XdgIcon>
+
+
 #include "src/SideBarWidget/sidebarwidget.h"
 #include "src/MainViewWidget/mainviewwidget.h"
 #include "src/MainWindow/mainwindow.h"
+
+
+
+
+#include <QMainWindow>
+#include <QHBoxLayout>
 #include <QDebug>
+
+class StartMenuWidget: public QFrame
+{
+    Q_OBJECT
+public:
+    StartMenuWidget(QWidget* parent = nullptr);
+    ~StartMenuWidget();
+
+    QLineEdit *lineEdit() { return &mLineEdit; }
+    QToolButton *button() { return &mButton; }
+
+
+protected:
+    void mouseReleaseEvent(QMouseEvent *event);
+
+private slots:
+    void captureMouse();
+
+private:
+    QLineEdit mLineEdit;
+    QToolButton mButton;
+    bool mCapturing;
+    MainWindow      *mMainWindow;
+};
+
+
 
 class StartMenu : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
-
 public:
-    explicit StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
+    StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~StartMenu();
-    QString themeId() const;
-    QWidget *widget();
-private:
 
-    MainWindow      *mMainWindow;
+    virtual QWidget *widget() { return &mWidget; }
+
+    virtual QString themeId() const { return QStringLiteral("startmenu"); }
+
+    bool isSeparate() const { return true; }
+
+    void realign();
+
+private:
+    StartMenuWidget mWidget;
+
 };
 
-class UKUIStartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
+class ColorPickerLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
@@ -35,4 +79,5 @@ public:
         return new StartMenu(startupInfo);
     }
 };
-#endif // STARTMENU_H
+
+#endif

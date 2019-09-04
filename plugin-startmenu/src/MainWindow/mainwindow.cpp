@@ -92,7 +92,6 @@ void MainWindow::show_default_widget(int arg)
     mainviewwid->load_min_mainview();
     mainviewwid->load_classification_widget(arg);
     sidebarwid->set_sidebarbtn_state(arg);
-
 }
 
 /**
