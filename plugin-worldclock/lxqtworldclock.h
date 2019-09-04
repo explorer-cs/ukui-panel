@@ -36,7 +36,7 @@
 
 #include <LXQt/RotatedWidget>
 
-#include "ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include "lxqtworldclockconfiguration.h"
 
 
@@ -45,16 +45,16 @@ class QTimer;
 class LXQtWorldClockPopup;
 
 
-class LXQtWorldClock : public QObject, public ILXQtPanelPlugin
+class LXQtWorldClock : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtWorldClock(const ILXQtPanelPluginStartupInfo &startupInfo);
+    LXQtWorldClock(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtWorldClock();
 
     virtual QWidget *widget() { return mMainWidget; }
     virtual QString themeId() const { return QLatin1String("WorldClock"); }
-    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
+    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     bool isSeparate() const { return true; }
     void activated(ActivationReason reason);
 
@@ -132,13 +132,13 @@ protected:
 
 };
 
-class LXQtWorldClockLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtWorldClockLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         return new LXQtWorldClock(startupInfo);
     }

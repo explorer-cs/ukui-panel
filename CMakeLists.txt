@@ -12,6 +12,7 @@ option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 
 option(USE_MENU_CACHE "Use menu-cached (no noticable penalty even on a 2004 single core pentium if not used)" OFF)
 
 
+
 # additional cmake files
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
@@ -69,6 +70,11 @@ set(CMAKE_MODULE_LINKER_FLAGS "${OLD_CMAKE_MODULE_LINKER_FLAGS} ${SYMBOLIC_FLAGS
 set(PLUGIN_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/ukui-panel")
 add_definitions(
     -DPLUGIN_DIR=\"${PLUGIN_DIR}\"
+)
+#Add PACKAGE_DATA_DIR
+set(PACKAGE_DATA_DIR "/usr/share/ukui-panel")
+add_definitions(
+    -DPACKAGE_DATA_DIR=\"${PACKAGE_DATA_DIR}\"
 )
 
 message(STATUS "CMAKE Module linker flags: ${CMAKE_MODULE_LINKER_FLAGS}")
@@ -261,7 +267,13 @@ if(CALENDAR_PLUGIN)
     add_subdirectory(plugin-calendar)
 endif(CALENDAR_PLUGIN)
 
-
+setByDefault(STARTMENU_PLUGIN Yes)
+if(STARTMENU_PLUGIN)
+#    list(APPEND STATIC_PLUGINS "startmenu")
+#    add_definitions(-DWITH_STARTMENU_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "startmenu")
+    add_subdirectory(plugin-startmenu)
+endif(STARTMENU_PLUGIN)
 
 #########################################################################
 

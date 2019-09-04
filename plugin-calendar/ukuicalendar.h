@@ -33,7 +33,6 @@
 #include <QLabel>
 #include <QtWebKitWidgets/QWebView>
 #include <LXQt/RotatedWidget>
-#include "../panel/ukuipanelglobals.h"
 #include "../panel/iukuipanelplugin.h"
 
 
@@ -58,6 +57,8 @@ public:
     virtual void realign();
     //QDialog *configureDialog();
     void setupMainWindow();
+signals:
+    void deactivated();
 
 private slots:
     void timeout();

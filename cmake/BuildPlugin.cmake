@@ -1,4 +1,4 @@
-MACRO (BUILD_UKUI_PLUGIN NAME)
+﻿MACRO (BUILD_UKUI_PLUGIN NAME)
     set(PROGRAM "ukui-panel")
     project(${PROGRAM}_${NAME})
 
