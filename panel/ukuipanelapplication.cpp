@@ -84,7 +84,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     QCoreApplication::setApplicationName(QLatin1String("ukui-panel"));
     const QString VERINFO = QStringLiteral(UKUI_PANEL_VERSION
-                                           "\nlibukui   " UKUI_VERSION
+                                           "\nlibukui   " ""
                                            "\nQt        " QT_VERSION_STR);
 
     QCoreApplication::setApplicationVersion(VERINFO);
