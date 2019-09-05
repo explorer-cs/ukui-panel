@@ -70,4 +70,6 @@ set(LIBRARIES
     lxqt
 )
 
+install(DIRECTORY img/
+        DESTINATION ${PACKAGE_DATA_DIR}/plugin-startmenu/img)
 BUILD_UKUI_PLUGIN(${PLUGIN})
