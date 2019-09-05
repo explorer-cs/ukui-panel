@@ -34,6 +34,7 @@
 #include <QtWebKitWidgets/QWebView>
 #include <LXQt/RotatedWidget>
 #include "../panel/iukuipanelplugin.h"
+#include "ukuiwebviewdialog.h"
 
 
 class QTimer;
@@ -55,7 +56,6 @@ public:
 
     virtual void settingsChanged();
     virtual void realign();
-    void setupMainWindow();
 signals:
     void deactivated();
 
@@ -68,7 +68,7 @@ private slots:
 
 private:
     QWidget *mMainWidget;
-    UkuiCalendarWebView *mWebView;
+    UkuiWebviewDialog   *mWebViewDiag;
     LXQt::RotatedWidget* mRotatedWidget;
     bool mbActived;
     bool mbHasCreatedWebView;
@@ -113,23 +113,6 @@ signals:
 protected:
     void wheelEvent(QWheelEvent *);
     void mouseReleaseEvent(QMouseEvent* event);
-};
-
-class UkuiCalendarWebView : public QWebView
-{
-    Q_OBJECT
-
-public:
-    UkuiCalendarWebView(QWidget *parent = 0);
-
-    void show();
-
-signals:
-    void deactivated();
-
-protected:
-    virtual void focusOutEvent(QFocusEvent *event);
-
 };
 
 class IndicatorCalendarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary

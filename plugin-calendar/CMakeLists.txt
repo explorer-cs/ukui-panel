@@ -2,10 +2,16 @@
 
 set(HEADERS
     ukuicalendar.h
+    ukuiwebviewdialog.h
 )
 
 set(SOURCES
     ukuicalendar.cpp
+    ukuiwebviewdialog.cpp
+)
+
+set(UIS
+    ukuiwebviewdialog.ui
 )
 
 find_package(Qt5WebKit)

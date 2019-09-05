@@ -52,11 +52,12 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mbActived(false),
     mbHasCreatedWebView(false),
     mPopupContent(NULL),
-    mWebView(NULL)
+    mWebViewDiag(NULL)
 {
 
     mMainWidget = new QWidget();
     mContent = new CalendarActiveLabel;
+    mWebViewDiag = new UkuiWebviewDialog;
 
     mRotatedWidget = new LXQt::RotatedWidget(*mContent, mMainWidget);
 
@@ -75,46 +76,41 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mTimer->setTimerType(Qt::PreciseTimer);
     connect(mTimer, SIGNAL(timeout()), SLOT(timeout()));
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
+    connect(mWebViewDiag, SIGNAL(deactivated()), SLOT(hidewebview()));
 }
 
 IndicatorCalendar::~IndicatorCalendar()
 {
-    delete mMainWidget;
-    if(mWebView != NULL)
+    if(mMainWidget != NULL)
     {
-     delete mWebView;
-     mWebView = NULL;
+     delete mMainWidget;
+     mMainWidget = NULL;
     }
 
-}
+    if(mWebViewDiag != NULL)
+    {
+     delete mWebViewDiag;
+     mWebViewDiag = NULL;
+    }
 
-void IndicatorCalendar::setupMainWindow()
-{
-    if(!mWebView)
+    if(mRotatedWidget != NULL)
     {
-         mWebView = new UkuiCalendarWebView;
-         connect(mWebView, SIGNAL(deactivated()), SLOT(hidewebview()));
+     delete mRotatedWidget;
+     mRotatedWidget = NULL;
     }
-    else
+
+    if(mContent != NULL)
     {
-        deletePopup();
+     delete mContent;
+     mContent = NULL;
     }
-    if(mWebView != NULL)
+
+    if(mPopupContent != NULL)
     {
-        QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
-        htmlFilePath = QLatin1String("file://") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
-        /*set window no margins*/
-        mWebView->setWindowFlag(Qt::FramelessWindowHint);
-        /*set window size*/
-        mWebView->resize(480,400);
-        /* if (ischinese)   gtk_widget_set_size_request(d->main_window, 480, 400);
-           else gtk_widget_set_size_request(d->main_window, 500, 280);*/
-        /*set webview's position*/
-        mWebView->settings()->setAttribute(QWebSettings::WebAttribute::LocalStorageEnabled, true);
-        mWebView->setGeometry(calculatePopupWindowPos(mWebView->size()));
-        mWebView->load(QUrl(htmlFilePath));
-        mWebView->show();
+     delete mPopupContent;
+     mPopupContent = NULL;
     }
+
 }
 
 void IndicatorCalendar::timeout()
@@ -394,33 +390,36 @@ void IndicatorCalendar::wheelScrolled(int delta)
 
 void IndicatorCalendar::activated(ActivationReason reason)
 {
-    if(!mbHasCreatedWebView)
+    if(mWebViewDiag != NULL )
     {
-        setupMainWindow();
-        mbHasCreatedWebView = true;
-    }
-    if(!mbActived)
-    {
-        mWebView->setHidden(false);
-        mbActived = true;
-    }
-    else
-    {
-        mWebView->setHidden(true);
-        mbActived = false;
+        if(!mbHasCreatedWebView)
+        {
+            mWebViewDiag->setGeometry(calculatePopupWindowPos(QSize(480,400)));
+            mWebViewDiag->creatwebview();
+            mbHasCreatedWebView = true;
+            mWebViewDiag->show();
+        }
+        if(!mbActived)
+        {
+            mWebViewDiag->setHidden(false);
+            mbActived = true;
+        }
+        else
+        {
+            mWebViewDiag->setHidden(true);
+            mbActived = false;
+        }
     }
 }
 
 void IndicatorCalendar::deletePopup()
 {
     mPopupContent = NULL;
-    mWebView->deleteLater();
-    mWebView = NULL;
 }
 
 void IndicatorCalendar::hidewebview()
 {
-    mWebView->setHidden(true);
+    mWebViewDiag->setHidden(true);
     mbActived = false;
 }
 
@@ -591,25 +590,4 @@ void CalendarActiveLabel::mouseReleaseEvent(QMouseEvent* event)
     }
 
     QLabel::mouseReleaseEvent(event);
-}
-
-UkuiCalendarWebView::UkuiCalendarWebView(QWidget *parent) :
-    QWebView(parent)
-{
-    setLayout(new QHBoxLayout(this));
-    layout()->setMargin(1);
-}
-
-void UkuiCalendarWebView::show()
-{
-    QWebView::show();
-    activateWindow();
-}
-
-void UkuiCalendarWebView::focusOutEvent(QFocusEvent *event)
-{
-    if (event->type() == QEvent::FocusOut)
-    {
-        emit deactivated();
-    }
 }
