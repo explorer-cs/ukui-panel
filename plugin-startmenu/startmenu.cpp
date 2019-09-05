@@ -10,6 +10,7 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     IUKUIPanelPlugin(startupInfo)
 {
     realign();
+
 }
 
 
@@ -50,6 +51,10 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
+    mButton.setObjectName("mButton");
+    //gn-游戏娱乐-灰色.svg图标在 ukui-panel/plugin-startmenu/data/img/mainviewwidget 文件目录下，png格式等也可以加载
+    mButton.setStyleSheet("#mButton{border-image:url(/home/hepuyao/work/ukui-panel/tempukui/ukui-panel/plugin-startmenu/data/img/mainviewwidget/gn-游戏娱乐-灰色.svg);}");
+
 
 }
 
@@ -89,9 +94,8 @@ void StartMenuWidget::captureMouse()
            mMainWindow->show();
            mMainWindow->raise();
            mMainWindow->activateWindow();
+
        }
-
-
 
 }
 
