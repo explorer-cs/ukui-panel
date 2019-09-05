@@ -40,7 +40,7 @@ class QTimer;
 class CalendarActiveLabel;
 class UkuiCalendarWebView;
 
-class IndicatorCalendar : public QObject, public IUKUIPanelPlugin
+class IndicatorCalendar : public QWidget, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
@@ -55,7 +55,6 @@ public:
 
     virtual void settingsChanged();
     virtual void realign();
-    //QDialog *configureDialog();
     void setupMainWindow();
 signals:
     void deactivated();
@@ -65,14 +64,14 @@ private slots:
     void wheelScrolled(int);
     void deletePopup();
     void updateTimeText();
+    void hidewebview();
 
 private:
     QWidget *mMainWidget;
     UkuiCalendarWebView *mWebView;
     LXQt::RotatedWidget* mRotatedWidget;
-
-    //LXQtIndicatorCalendarPop* mPopup;
-
+    bool mbActived;
+    bool mbHasCreatedWebView;
     CalendarActiveLabel *mContent;
 
     QTimer *mTimer;
@@ -129,7 +128,7 @@ signals:
     void deactivated();
 
 protected:
-    virtual bool event(QEvent* );
+    virtual void focusOutEvent(QFocusEvent *event);
 
 };
 

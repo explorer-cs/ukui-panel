@@ -41,19 +41,23 @@
 #include "../panel/pluginsettings.h"
 #include <QDebug>
 #include <QApplication>
+#include <QtWebKit/qwebsettings.h>
 
 IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo):
-    QObject(),
+    QWidget(),
     IUKUIPanelPlugin(startupInfo),
     mTimer(new QTimer(this)),
     mUpdateInterval(1),
     mAutoRotate(true),
+    mbActived(false),
+    mbHasCreatedWebView(false),
     mPopupContent(NULL),
     mWebView(NULL)
 {
 
     mMainWidget = new QWidget();
     mContent = new CalendarActiveLabel;
+
     mRotatedWidget = new LXQt::RotatedWidget(*mContent, mMainWidget);
 
     mRotatedWidget->setTransferWheelEvent(true);
@@ -68,16 +72,20 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mContent->setAlignment(Qt::AlignCenter);
 
     settingsChanged();
-
     mTimer->setTimerType(Qt::PreciseTimer);
     connect(mTimer, SIGNAL(timeout()), SLOT(timeout()));
-
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
 }
 
 IndicatorCalendar::~IndicatorCalendar()
 {
     delete mMainWidget;
+    if(mWebView != NULL)
+    {
+     delete mWebView;
+     mWebView = NULL;
+    }
+
 }
 
 void IndicatorCalendar::setupMainWindow()
@@ -85,7 +93,7 @@ void IndicatorCalendar::setupMainWindow()
     if(!mWebView)
     {
          mWebView = new UkuiCalendarWebView;
-         connect(mWebView, SIGNAL(deactivated()), SLOT(deletePopup()));
+         connect(mWebView, SIGNAL(deactivated()), SLOT(hidewebview()));
     }
     else
     {
@@ -95,7 +103,6 @@ void IndicatorCalendar::setupMainWindow()
     {
         QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
         htmlFilePath = QLatin1String("file://") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
-        qDebug()<<"htmlFilePath is:"<<htmlFilePath;
         /*set window no margins*/
         mWebView->setWindowFlag(Qt::FramelessWindowHint);
         /*set window size*/
@@ -103,6 +110,7 @@ void IndicatorCalendar::setupMainWindow()
         /* if (ischinese)   gtk_widget_set_size_request(d->main_window, 480, 400);
            else gtk_widget_set_size_request(d->main_window, 500, 280);*/
         /*set webview's position*/
+        mWebView->settings()->setAttribute(QWebSettings::WebAttribute::LocalStorageEnabled, true);
         mWebView->setGeometry(calculatePopupWindowPos(mWebView->size()));
         mWebView->load(QUrl(htmlFilePath));
         mWebView->show();
@@ -195,7 +203,6 @@ void IndicatorCalendar::restartTimer()
 
 void IndicatorCalendar::settingsChanged()
 {
-   #if 1
     PluginSettings *_settings = settings();
 
     QString oldFormat = mFormat;
@@ -373,7 +380,6 @@ void IndicatorCalendar::settingsChanged()
     }
 
     setTimeText();
-#endif
 }
 
 
@@ -388,7 +394,21 @@ void IndicatorCalendar::wheelScrolled(int delta)
 
 void IndicatorCalendar::activated(ActivationReason reason)
 {
-    setupMainWindow();
+    if(!mbHasCreatedWebView)
+    {
+        setupMainWindow();
+        mbHasCreatedWebView = true;
+    }
+    if(!mbActived)
+    {
+        mWebView->setHidden(false);
+        mbActived = true;
+    }
+    else
+    {
+        mWebView->setHidden(true);
+        mbActived = false;
+    }
 }
 
 void IndicatorCalendar::deletePopup()
@@ -396,6 +416,12 @@ void IndicatorCalendar::deletePopup()
     mPopupContent = NULL;
     mWebView->deleteLater();
     mWebView = NULL;
+}
+
+void IndicatorCalendar::hidewebview()
+{
+    mWebView->setHidden(true);
+    mbActived = false;
 }
 
 QString IndicatorCalendar::formatDateTime(const QDateTime &datetime, const QString &timeZoneName)
@@ -506,7 +532,6 @@ QString IndicatorCalendar::preformat(const QString &format, const QTimeZone &tim
                 ++length;
             else
                 replacement.append(QLatin1Char('\''));
-
             result.replace(tz, length, replacement);
             from = tz + replacement.length();
         }
@@ -571,8 +596,8 @@ void CalendarActiveLabel::mouseReleaseEvent(QMouseEvent* event)
 UkuiCalendarWebView::UkuiCalendarWebView(QWidget *parent) :
     QWebView(parent)
 {
-//    setLayout(new QHBoxLayout(this));
-//    layout()->setMargin(1);
+    setLayout(new QHBoxLayout(this));
+    layout()->setMargin(1);
 }
 
 void UkuiCalendarWebView::show()
@@ -581,10 +606,10 @@ void UkuiCalendarWebView::show()
     activateWindow();
 }
 
-bool UkuiCalendarWebView::event(QEvent *event)
+void UkuiCalendarWebView::focusOutEvent(QFocusEvent *event)
 {
-    if (event->type() == QEvent::Close)
+    if (event->type() == QEvent::FocusOut)
+    {
         emit deactivated();
-
-    return QWebView::event(event);
+    }
 }
