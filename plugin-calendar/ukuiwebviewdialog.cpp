@@ -32,6 +32,8 @@ void UkuiWebviewDialog::creatwebview()
         mWebView->setWindowFlags(Qt::FramelessWindowHint);
         /*set window size*/
          mWebView->resize(480,400);
+         mWebView->setStyleSheet("background-color:#0e1316;");
+         mWebView->setWindowOpacity(0.95);
         /* if (ischinese)   gtk_widget_set_size_request(d->main_window, 480, 400);
            else gtk_widget_set_size_request(d->main_window, 500, 280);*/
         /*set webview's position*/
