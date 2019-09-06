@@ -2,6 +2,9 @@ set(PLUGIN "startmenu")
 
 set(HEADERS
     startmenu.h
+    actionview.h
+    lxqtmainmenuconfiguration.h
+    menustyle.h
     src/color.h
     src/CommonUseWidget/commonusewidget.h
     src/CommonUseWidget/fullcommonusewidget.h
@@ -24,6 +27,9 @@ set(HEADERS
 
 set(SOURCES
     startmenu.cpp
+    actionview.cpp
+    lxqtmainmenuconfiguration.cpp
+    menustyle.cpp
     src/CommonUseWidget/commonusewidget.cpp
     src/CommonUseWidget/fullcommonusewidget.cpp
     src/FunctionWidget/fullfunctionbuttonwidget.cpp
@@ -46,6 +52,7 @@ set(SOURCES
 
 set(UIS
     startmenu.ui
+    lxqtmainmenuconfiguration.ui
     src/CommonUseWidget/commonusewidget.ui
     src/CommonUseWidget/fullcommonusewidget.ui
     src/FunctionWidget/fullfunctionbuttonwidget.ui
@@ -68,6 +75,9 @@ set(UIS
 
 set(LIBRARIES
     lxqt
+    lxqt-globalkeys
+    lxqt-globalkeys-ui
+
 )
 
 install(DIRECTORY img/

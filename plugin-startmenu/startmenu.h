@@ -14,13 +14,19 @@
 #include "src/SideBarWidget/sidebarwidget.h"
 #include "src/MainViewWidget/mainviewwidget.h"
 #include "src/MainWindow/mainwindow.h"
-
+#include "lxqtmainmenuconfiguration.h"
 
 
 
 #include <QMainWindow>
 #include <QHBoxLayout>
 #include <QDebug>
+
+
+#include "../panel/plugin.h"
+#include "../panel/ukuipanel.h"
+#define DEFAULT_SHORTCUT "Alt+F1"
+
 
 class StartMenuWidget: public QFrame
 {
@@ -62,13 +68,17 @@ public:
     bool isSeparate() const { return true; }
 
     void realign();
-
+    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
+    QDialog *configureDialog();
 private:
     StartMenuWidget mWidget;
+    GlobalKeyShortcut::Action *mShortcut;
+    QTimer mDelayedPopup;
+    QTimer mHideTimer;
 
 };
 
-class ColorPickerLibrary: public QObject, public IUKUIPanelPluginLibrary
+class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")

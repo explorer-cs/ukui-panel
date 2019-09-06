@@ -1102,17 +1102,14 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     // Panel menu ...............................
 
     menu->addTitle(QIcon(), tr("Panel"));
-
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("Configure Panel"),
                    this, SLOT(showConfigDialog())
                   )->setDisabled(mLockPanel);
-
     menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
                    tr("Manage Widgets"),
                    this, SLOT(showAddPluginDialog())
                   )->setDisabled(mLockPanel);
-
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
                    tr("Add New Panel"),

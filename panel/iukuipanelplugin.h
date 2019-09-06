@@ -32,7 +32,7 @@
 #include <QtPlugin>
 #include "iukuipanel.h"
 #include "ukuipanelglobals.h"
-
+#include <QDebug>
 /**
 LXQt panel plugins are standalone sharedlibraries
 (*.so) located in PLUGIN_DIR (define provided by CMakeLists.txt).

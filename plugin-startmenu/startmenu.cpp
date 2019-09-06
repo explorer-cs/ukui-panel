@@ -1,15 +1,35 @@
 #include "startmenu.h"
 //#include "ui_startmenu.h"
+#include "lxqtmainmenuconfiguration.h"
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QScreen>
 #include <QDebug>
 
+#include <lxqt-globalkeys.h>
+
 StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
+    mShortcut(0),
     IUKUIPanelPlugin(startupInfo)
 {
     realign();
+    mShortcut = GlobalKeyShortcut::Client::instance()->addAction(QString{}, QStringLiteral("/panel/%1/show_hide").arg(settings()->group()), StartMenu::tr("Show/hide main menu"), this);
+    if (mShortcut)
+    {
+        connect(mShortcut, &GlobalKeyShortcut::Action::registrationFinished, [this] {
+            if (mShortcut->shortcut().isEmpty())
+                mShortcut->changeShortcut(QStringLiteral(DEFAULT_SHORTCUT));
+        });
+        connect(mShortcut, &GlobalKeyShortcut::Action::activated, [this] {
+            if (!mHideTimer.isActive())
+                // Delay this a little -- if we don't do this, search field
+                // won't be able to capture focus
+                // See <https://github.com/lxqt/lxqt-panel/pull/131> and
+                // <https://github.com/lxqt/lxqt-panel/pull/312>
+                mDelayedPopup.start();
+        });
+    }
 
 }
 
@@ -51,9 +71,8 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
-    mButton.setObjectName("mButton");
-    mButton.setStyleSheet("#mButton{border-image:url(/usr/share/ukui-panel/plugin-startmenu/img/3.svg);}");
-    qDebug()<<PACKAGE_DATA_DIR<<endl;
+    //mButton.setObjectName("mButton");
+    //mButton.setStyleSheet("#mButton{border-image:url(/usr/share/ukui-panel/plugin-startmenu/img/3.svg);}");
 
 
 }
@@ -70,14 +89,9 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
     if (!mCapturing)
         return;
     WId id = QApplication::desktop()->winId();
-    //QPixmap pixmap = qApp->primaryScreen()->grabWindow(id, event->globalX(), event->globalY(), 1, 1);
+    qDebug()<<id<<endl;
 
-    //QImage img = pixmap.toImage();
-   // QColor col = QColor(img.pixel(0,0));
-
-    //mLineEdit.setText (col.name());
-
-    mCapturing = false;
+    //mCapturing = false;
     //releaseMouse();
 
 }
@@ -86,7 +100,8 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
 void StartMenuWidget::captureMouse()
 {
    //grabMouse(Qt::CrossCursor);
-   mCapturing = true;
+   //mCapturing = true;
+
    mMainWindow = new MainWindow;
        if(mMainWindow != NULL)
        {
@@ -98,6 +113,11 @@ void StartMenuWidget::captureMouse()
        }
 
 }
-
+QDialog *StartMenu::configureDialog()
+{
+    qDebug()<<mShortcut<<endl;
+    qDebug( )<<DEFAULT_SHORTCUT<<endl;
+    return new LXQtMainMenuConfiguration(settings(), mShortcut, QStringLiteral(DEFAULT_SHORTCUT));
+}
 
 
