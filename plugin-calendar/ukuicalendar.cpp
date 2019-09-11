@@ -73,6 +73,8 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mContent->setAlignment(Qt::AlignCenter);
 
     settingsChanged();
+    qDebug()<<"create webview";
+    initializeCalendar();
     mTimer->setTimerType(Qt::PreciseTimer);
     connect(mTimer, SIGNAL(timeout()), SLOT(timeout()));
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
@@ -204,7 +206,6 @@ void IndicatorCalendar::settingsChanged()
     QString oldFormat = mFormat;
 
     mTimeZones.clear();
-
     QList<QMap<QString, QVariant> > array = _settings->readArray(QLatin1String("timeZones"));
     for (const auto &map : array)
     {
@@ -388,17 +389,26 @@ void IndicatorCalendar::wheelScrolled(int delta)
     }
 }
 
-void IndicatorCalendar::activated(ActivationReason reason)
+/*when widget is loading need initialize here*/
+void IndicatorCalendar::initializeCalendar()
 {
     if(mWebViewDiag != NULL )
     {
         if(!mbHasCreatedWebView)
         {
-            mWebViewDiag->setGeometry(calculatePopupWindowPos(QSize(480,400)));
             mWebViewDiag->creatwebview();
             mbHasCreatedWebView = true;
-            mWebViewDiag->show();
         }
+    }
+}
+
+void IndicatorCalendar::activated(ActivationReason reason)
+{
+    if(mWebViewDiag != NULL )
+    {
+        mWebViewDiag->setGeometry(calculatePopupWindowPos(QSize(480,400)));
+        mWebViewDiag->show();
+        setbackground();
         if(!mbActived)
         {
             mWebViewDiag->setHidden(false);
@@ -411,6 +421,7 @@ void IndicatorCalendar::activated(ActivationReason reason)
         }
     }
 }
+
 
 void IndicatorCalendar::deletePopup()
 {
@@ -561,6 +572,158 @@ void IndicatorCalendar::realign()
     else
         mRotatedWidget->setOrigin(Qt::TopLeftCorner);
 }
+
+
+void IndicatorCalendar::setbackground()
+{
+    //QColor color = this->palette().background().color();
+    QColor color = QColor(Qt::GlobalColor::black);
+    char color_hex[10]={0};
+    char color_hex_red[4]={0};
+    char color_hex_green[4]={0};
+    char color_hex_blue[4]={0};
+
+    if((color.red()/257/16)==0){
+        sprintf(color_hex_red,"0%x",color.red()/257);
+    } else {
+        sprintf(color_hex_red,"%x",color.red()/257);
+    }
+    if((color.green()/257)/16==0){
+        sprintf(color_hex_green,"0%x",color.green()/257);
+    } else {
+        sprintf(color_hex_green,"%x",color.green()/257);
+    }
+    if((color.blue()/257)/16==0){
+        sprintf(color_hex_blue,"0%x",color.blue()/257);
+    } else {
+        sprintf(color_hex_blue,"%x",color.blue()/257);
+    }
+    sprintf(color_hex,"\#%s%s%s",color_hex_red,color_hex_green,color_hex_blue);
+    QString str;/*("document.getElementById('header').style.background='red';");*/
+
+    if (!strcmp (color_hex, "#000000")){
+        str=QString::asprintf("\
+                      var zodiac_icon = document.getElementById('zodiac_icon');\
+                      zodiac_icon.setAttribute('src', '/usr/share/ukui-indicators/indicator-calendar/html/images/zodiac/black/black-pig.png');\
+                      zodiac_icon.setAttribute('style', 'padding-top: 33px');\
+                      var checkbox = document.getElementById('checkbox');\
+                      if (checkbox.checked){\
+                          zodiac_icon.setAttribute('style', 'display:none');\
+                      }\
+                      document.getElementById('container').style.background='%s';\
+                      document.getElementById('header').style.background='%s';\
+                      document.getElementById('day').style.color='%s';\
+                      document.getElementById('left_pane').style.background='%s';\
+                      document.getElementById('right_pane').style.background='%s';\
+                      var css1 = 'td {position: relative;left: 0;top: 0;border: 1px solid transparent;border-top: 1px solid #262e34;padding: 2px 12px;text-align: center;}';var style1 = document.createElement('style');\
+                      if (style1.styleSheet) {\
+                          style1.styleSheet.cssText = css1;\
+                      } else {\
+                                          style1.appendChild(document.createTextNode(css1));\
+                                      }\
+                      document.getElementsByTagName('td')[0].appendChild(style1);\
+                      var css1 = 'td:active {background: #2b87a8;}';var style1 = document.createElement('style');\
+                      if (style1.styleSheet) {\
+                          style1.styleSheet.cssText = css1;\
+                      } else {\
+                                          style1.appendChild(document.createTextNode(css1));\
+                                      }\
+                      document.getElementsByTagName('td')[0].appendChild(style1);\
+                      var css1 = 'td:hover {border: 1px solid #3593b5}';var style1 = document.createElement('style');\
+                      if (style1.styleSheet) {\
+                          style1.styleSheet.cssText = css1;\
+                      } else {\
+                                          style1.appendChild(document.createTextNode(css1));\
+                                      }\
+                      document.getElementsByTagName('td')[0].appendChild(style1);\
+                      var day_highlight_len=document.getElementsByClassName('day_highlight').length;\
+                      for (var i=0; i<day_today_len; i++){\
+                          document.getElementsByClassName('day_highlight')[i].getElementsByClassName('solar_part')[0].style.color='#ffffff';\
+                          document.getElementsByClassName('day_highlight')[i].getElementsByClassName('lunar_part ')[0].style.color='#ffffff';\
+                          }\
+                      var day_today_len=document.getElementsByClassName('day_today').length;\
+                      for (var i=0; i<day_today_len; i++){\
+                          document.getElementsByClassName('day_today')[i].getElementsByClassName('solar_part')[0].style.color='#ffffff';\
+                          document.getElementsByClassName('day_today')[i].getElementsByClassName('lunar_part ')[0].style.color='#ffffff';\
+                          }\
+                      var day_this_month_len=document.getElementsByClassName('day_this_month').length;\
+                      for (var i=0; i<day_this_month_len; i++){\
+                          document.getElementsByClassName('day_this_month')[i].getElementsByClassName('solar_part')[0].style.color='#ffffff';\
+                          document.getElementsByClassName('day_this_month')[i].getElementsByClassName('lunar_part ')[0].style.color='#aaaaaa';\
+                          }\
+                      var day_other_month_len=document.getElementsByClassName('day_other_month').length;\
+                      for (var i=0; i<day_other_month_len; i++){\
+                          document.getElementsByClassName('day_other_month')[i].getElementsByClassName('solar_part')[0].style.color='#777777';\
+                          document.getElementsByClassName('day_other_month')[i].getElementsByClassName('lunar_part ')[0].style.color='#777777';\
+                          }\
+                      document.getElementsByClassName('effect_button')[0].style.backgroundColor='%s';\
+                      document.getElementsByClassName('effect_button')[1].style.background='%s';\
+                      document.getElementsByClassName('effect_button')[2].style.background='%s';\
+                      document.getElementsByClassName('effect_button')[3].style.backgroundColor='%s';\
+                      document.getElementsByClassName('effect_button')[4].style.background='%s';\
+                      document.getElementsByClassName('effect_button')[5].style.background='%s';\
+                      document.getElementById('general_datetime_list').style.padding='5px 6px 20px 5px';\
+                      document.getElementById('general_datetime_list').style.borderBottom ='1px solid #343d45';\
+                      var li_length=document.getElementById('general_datetime_list').getElementsByTagName('li').length;\
+                      for (var i=0;i<li_length; i++){\
+                          document.getElementById('general_datetime_list').getElementsByTagName('li')[i].style.color='#aaaaaa';\
+                      }\
+                      document.getElementById('general_datetime_list').getElementsByTagName('li')[1].style.color='#3593b5';\
+                      var td_length=document.getElementById('hl_table').getElementsByTagName('td').length;\
+                      for (var i=0;i<td_length; i++){\
+                          document.getElementById('hl_table').getElementsByTagName('td')[i].style.color='#aaaaaa';\
+                      }\
+                      document.getElementsByClassName('worktime1')[1].style.height='15px';\
+                      document.getElementsByClassName('worktime2')[1].style.width='15px';\
+                      document.getElementsByClassName('worktime2')[1].style.height='15px';\
+                      ",\
+                      "#151a1e",color_hex,color_hex,"#151a1e","#1f2428",color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
+    }
+    else{
+        str=QString::asprintf("\
+                      var zodiac_icon = document.getElementById('zodiac_icon');\
+                      zodiac_icon.setAttribute('src', '/usr/share/ukui-indicators/indicator-calendar/html/images/zodiac/blue/blue-pig.png');\
+                      zodiac_icon.setAttribute('style', 'padding-top: 33px');\
+                      var checkbox = document.getElementById('checkbox');\
+                      if (checkbox.checked){\
+                          zodiac_icon.setAttribute('style', 'display:none');\
+                      }\
+                                      document.getElementById('container').style.background='%s';\
+                                      document.getElementById('header').style.background='%s';\
+                                      document.getElementById('day').style.color='%s';\
+                                      document.getElementsByClassName('effect_button')[0].style.backgroundColor='%s';\
+                                      document.getElementsByClassName('effect_button')[1].style.background='%s';\
+                                      document.getElementsByClassName('effect_button')[2].style.background='%s';\
+                                      document.getElementsByClassName('effect_button')[3].style.backgroundColor='%s';\
+                                      document.getElementsByClassName('effect_button')[4].style.background='%s';\
+                                      document.getElementsByClassName('effect_button')[5].style.background='%s';\
+                                      var css = 'table td:hover{border: 1px solid %s;}';var style = document.createElement('style');\
+                                      if (style.styleSheet) {\
+                                          style.styleSheet.cssText = css;\
+                                      } else {\
+                                          style.appendChild(document.createTextNode(css));\
+                                      }\
+                                      document.getElementsByTagName('head')[0].appendChild(style);\
+                                      var css = '.day_today{border: 1px solid %s;}';var style = document.createElement('style');\
+                                      if (style.styleSheet) {\
+                                          style.styleSheet.cssText = css;\
+                                      } else {\
+                                          style.appendChild(document.createTextNode(css));\
+                                      }\
+                                      document.getElementsByTagName('head')[0].appendChild(style);\
+                                      var css = '.day_today:hover{border: 1px solid %s;}';var style = document.createElement('style');\
+                                      if (style.styleSheet) {\
+                                          style.styleSheet.cssText = css;\
+                                      } else {\
+                                          style.appendChild(document.createTextNode(css));\
+                                      }\
+                                      document.getElementsByTagName('head')[0].appendChild(style);\
+                                      ",\
+                                      color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
+    }
+    mWebViewDiag->mWebView->page()->mainFrame()->evaluateJavaScript(str);
+}
+
 
 CalendarActiveLabel::CalendarActiveLabel(QWidget *parent) :
     QLabel(parent)

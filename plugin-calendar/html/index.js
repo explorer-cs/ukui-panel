@@ -125,7 +125,6 @@ function load_hl_script(year) {
 window.onload = function () {
 
     var checkbox = document.getElementById('checkbox');
-
     if (localStorage.getItem('hl_table') == "display"){
             checkbox.setAttribute("checked", true);    
 	    hl_table.setAttribute("style", "visibility:display");
@@ -155,7 +154,6 @@ window.onload = function () {
     "use strict";
     
     load_hl_script(today.getFullYear());
-
     var year_list = document.getElementById('year_list');
     var month_list = document.getElementById('month_list');
 

@@ -56,6 +56,8 @@ public:
 
     virtual void settingsChanged();
     virtual void realign();
+    void initializeCalendar();
+    void setbackground();
 signals:
     void deactivated();
 

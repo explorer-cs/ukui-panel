@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebFrame>
 #include "../panel/iukuipanelplugin.h"
 namespace Ui {
 class UkuiWebviewDialog;
@@ -16,12 +17,13 @@ public:
     explicit UkuiWebviewDialog(QWidget *parent = nullptr);
     ~UkuiWebviewDialog();
     void creatwebview();
+    void showinfo(QString string);
+    QWebView   *mWebView;
 signals:
     void deactivated();
 
 private:
     Ui::UkuiWebviewDialog *ui;
-    QWebView   *mWebView;
     QSize      mQsize;
 protected:
     virtual bool event(QEvent *event);
