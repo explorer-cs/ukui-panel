@@ -577,7 +577,10 @@ void IndicatorCalendar::realign()
 void IndicatorCalendar::setbackground()
 {
     //QColor color = this->palette().background().color();
-    QColor color = QColor(Qt::GlobalColor::black);
+    QColor color = QColor(Qt::GlobalColor::blue);
+    qDebug()<<"Red:"<<color.red();
+    qDebug()<<"Green:"<<color.green();
+    qDebug()<<"Blue:"<<color.blue();
     char color_hex[10]={0};
     char color_hex_red[4]={0};
     char color_hex_green[4]={0};
