@@ -45,7 +45,6 @@ void UkuiWebviewDialog::creatwebview()
     }
 }
 
-
 bool UkuiWebviewDialog::event(QEvent *event)
 {
     if (event->type() == QEvent::Close)

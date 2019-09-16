@@ -724,7 +724,7 @@ void IndicatorCalendar::setbackground()
                                       ",\
                                       color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
     }
-    mWebViewDiag->mWebView->page()->mainFrame()->evaluateJavaScript(str);
+    mWebViewDiag->webview()->page()->mainFrame()->evaluateJavaScript(str);
 }
 
 

@@ -18,12 +18,13 @@ public:
     ~UkuiWebviewDialog();
     void creatwebview();
     void showinfo(QString string);
-    QWebView   *mWebView;
+    QWebView *webview(){return mWebView;}
 signals:
     void deactivated();
 
 private:
     Ui::UkuiWebviewDialog *ui;
+    QWebView   *mWebView;
     QSize      mQsize;
 protected:
     virtual bool event(QEvent *event);
