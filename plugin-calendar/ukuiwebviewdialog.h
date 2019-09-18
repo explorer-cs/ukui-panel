@@ -19,7 +19,7 @@ public:
     void creatwebview();
     void showinfo(QString string);
     QWebView *webview(){return mWebView;}
-signals:
+Q_SIGNALS:
     void deactivated();
 
 private:

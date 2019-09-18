@@ -42,6 +42,8 @@
 #include <QDebug>
 #include <QApplication>
 #include <QtWebKit/qwebsettings.h>
+#include <glib.h>
+#include <gio/gio.h>
 
 IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo):
     QWidget(),
@@ -406,6 +408,9 @@ void IndicatorCalendar::activated(ActivationReason reason)
 {
     if(mWebViewDiag != NULL )
     {
+//        QString  htmlFilePath = QLatin1String(PACKAGE_DATA_DIR);
+//        htmlFilePath = QLatin1String("file://") + htmlFilePath + QLatin1String("/plugin-calendar/html/ukui.html");
+
         mWebViewDiag->setGeometry(calculatePopupWindowPos(QSize(480,400)));
         mWebViewDiag->show();
         setbackground();
@@ -417,6 +422,7 @@ void IndicatorCalendar::activated(ActivationReason reason)
         else
         {
             mWebViewDiag->setHidden(true);
+            mWebViewDiag->webview()->reload();
             mbActived = false;
         }
     }
@@ -432,6 +438,7 @@ void IndicatorCalendar::hidewebview()
 {
     mWebViewDiag->setHidden(true);
     mbActived = false;
+    mWebViewDiag->webview()->reload();
 }
 
 QString IndicatorCalendar::formatDateTime(const QDateTime &datetime, const QString &timeZoneName)
@@ -576,34 +583,20 @@ void IndicatorCalendar::realign()
 
 void IndicatorCalendar::setbackground()
 {
-    //QColor color = this->palette().background().color();
-    QColor color = QColor(Qt::GlobalColor::blue);
-    qDebug()<<"Red:"<<color.red();
-    qDebug()<<"Green:"<<color.green();
-    qDebug()<<"Blue:"<<color.blue();
-    char color_hex[10]={0};
-    char color_hex_red[4]={0};
-    char color_hex_green[4]={0};
-    char color_hex_blue[4]={0};
-
-    if((color.red()/257/16)==0){
-        sprintf(color_hex_red,"0%x",color.red()/257);
-    } else {
-        sprintf(color_hex_red,"%x",color.red()/257);
+    GSettings *settings = NULL;
+    QString str;
+    char *path;
+    char color_hex[10];
+    path = g_strdup_printf ("%s/","/org/mate/desktop/interface");
+    settings = g_settings_new_with_path ("org.mate.interface",path);
+    if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-blue"))
+    {
+        strcpy(color_hex,"#326898");
     }
-    if((color.green()/257)/16==0){
-        sprintf(color_hex_green,"0%x",color.green()/257);
-    } else {
-        sprintf(color_hex_green,"%x",color.green()/257);
+    else if (!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-black"))
+    {
+        strcpy(color_hex,"#000000");
     }
-    if((color.blue()/257)/16==0){
-        sprintf(color_hex_blue,"0%x",color.blue()/257);
-    } else {
-        sprintf(color_hex_blue,"%x",color.blue()/257);
-    }
-    sprintf(color_hex,"\#%s%s%s",color_hex_red,color_hex_green,color_hex_blue);
-    QString str;/*("document.getElementById('header').style.background='red';");*/
-
     if (!strcmp (color_hex, "#000000")){
         str=QString::asprintf("\
                       var zodiac_icon = document.getElementById('zodiac_icon');\
@@ -680,7 +673,7 @@ void IndicatorCalendar::setbackground()
                       document.getElementsByClassName('worktime2')[1].style.width='15px';\
                       document.getElementsByClassName('worktime2')[1].style.height='15px';\
                       ",\
-                      "#151a1e",color_hex,color_hex,"#151a1e","#1f2428",color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
+                     "#151a1e",color_hex,color_hex,"#151a1e","#1f2428",color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
     }
     else{
         str=QString::asprintf("\
@@ -722,7 +715,7 @@ void IndicatorCalendar::setbackground()
                                       }\
                                       document.getElementsByTagName('head')[0].appendChild(style);\
                                       ",\
-                                      color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
+                                      "#FFF",color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex,color_hex);
     }
     mWebViewDiag->webview()->page()->mainFrame()->evaluateJavaScript(str);
 }
@@ -735,7 +728,7 @@ CalendarActiveLabel::CalendarActiveLabel(QWidget *parent) :
 
 void CalendarActiveLabel::wheelEvent(QWheelEvent *event)
 {
-    emit wheelScrolled(event->delta());
+    Q_EMIT wheelScrolled(event->delta());
 
     QLabel::wheelEvent(event);
 }
@@ -745,11 +738,11 @@ void CalendarActiveLabel::mouseReleaseEvent(QMouseEvent* event)
     switch (event->button())
     {
     case Qt::LeftButton:
-        emit leftMouseButtonClicked();
+        Q_EMIT leftMouseButtonClicked();
         break;
 
     case Qt::MidButton:
-        emit middleMouseButtonClicked();
+        Q_EMIT middleMouseButtonClicked();
         break;
 
     default:;

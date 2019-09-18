@@ -123,7 +123,6 @@ function load_hl_script(year) {
 }
 
 window.onload = function () {
-
     var checkbox = document.getElementById('checkbox');
     if (localStorage.getItem('hl_table') == "display"){
             checkbox.setAttribute("checked", true);    
@@ -283,6 +282,7 @@ window.onload = function () {
 	var header_color=header_id.style.background;
 	var x=document.getElementsByClassName("day_today");
 	var i;
+    alert(header_color);
 	if (header_color == "rgb(0, 0, 0)"){
 	    for (i = 0; i < x.length; i++) {
 		x[i].style.backgroundColor = "#3593b5";

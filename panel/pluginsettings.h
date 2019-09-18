@@ -1,4 +1,4 @@
-/* BEGIN_COMMON_COPYRIGHT_HEADER
+﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
  * LXQt - a lightweight, Qt based, desktop toolset
@@ -82,7 +82,7 @@ public:
 
     void loadFromCache();
 
-signals:
+Q_SIGNALS:
     void settingsChanged();
 
 private:

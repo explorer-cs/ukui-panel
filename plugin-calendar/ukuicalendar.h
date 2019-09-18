@@ -58,10 +58,11 @@ public:
     virtual void realign();
     void initializeCalendar();
     void setbackground();
-signals:
+//signals:
+Q_SIGNALS:
     void deactivated();
 
-private slots:
+private Q_SLOTS:
     void timeout();
     void wheelScrolled(int);
     void deletePopup();
@@ -107,7 +108,7 @@ Q_OBJECT
 public:
     explicit CalendarActiveLabel(QWidget * = NULL);
 
-signals:
+Q_SIGNALS:
     void wheelScrolled(int);
     void leftMouseButtonClicked();
     void middleMouseButtonClicked();

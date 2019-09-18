@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QColor>
 #include <QTime>
-#include <QDir>
+
 UkuiWebviewDialog::UkuiWebviewDialog(QWidget *parent) :
     QDialog(parent, Qt::Popup),
     mWebView(NULL),
@@ -17,6 +17,11 @@ UkuiWebviewDialog::UkuiWebviewDialog(QWidget *parent) :
 UkuiWebviewDialog::~UkuiWebviewDialog()
 {
     delete ui;
+    if(mWebView != NULL)
+    {
+        mWebView->deleteLater();
+        mWebView = NULL;
+    }
 }
 
 void UkuiWebviewDialog::creatwebview()
@@ -49,7 +54,7 @@ bool UkuiWebviewDialog::event(QEvent *event)
 {
     if (event->type() == QEvent::Close)
     {
-        emit deactivated();
+        Q_EMIT deactivated();
     }
 
     return QDialog::event(event);
