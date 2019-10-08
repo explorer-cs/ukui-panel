@@ -1,0 +1,14 @@
+Package: ukui-panel-l10n
+Source: ukui-panel
+Version: 3.14.1-0ubuntukylin1
+Architecture: all
+Maintainer: ubuntukylin Developers <ubuntukylin-devel@lists.ubuntukylin.com
+Installed-Size: 538
+Depends: qttranslations5-l10n
+Section: localization
+Priority: optional
+Multi-Arch: foreign
+Homepage: https://github.com/ukui/ukui-panel
+Description: Language package for ukui-panel
+ This package contains the l10n files needed by ukui-panel.
+Original-Maintainer: UKUI Packaging Team <ubuntukylin-devel@lists.ubuntukylin.com>

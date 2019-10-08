@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="da">
 <context>
-    <name>LXQtWorldClock</name>
+    <name>UKUIWorldClock</name>
     <message>
         <location filename="../lxqtworldclock.cpp" line="241"/>
         <source>&apos;&lt;b&gt;&apos;HH:mm:ss&apos;&lt;/b&gt;&lt;br/&gt;&lt;font size=&quot;-2&quot;&gt;&apos;ddd, d MMM yyyy&apos;&lt;br/&gt;&apos;TT&apos;&lt;/font&gt;&apos;</source>
@@ -10,7 +10,7 @@
     </message>
 </context>
 <context>
-    <name>LXQtWorldClockConfiguration</name>
+    <name>UKUIWorldClockConfiguration</name>
     <message>
         <location filename="../lxqtworldclockconfiguration.ui" line="14"/>
         <source>World Clock Settings</source>
@@ -239,7 +239,7 @@
     </message>
 </context>
 <context>
-    <name>LXQtWorldClockConfigurationManualFormat</name>
+    <name>UKUIWorldClockConfigurationManualFormat</name>
     <message>
         <location filename="../lxqtworldclockconfigurationmanualformat.ui" line="14"/>
         <source>World Clock Manual Format Configuration</source>
@@ -324,7 +324,7 @@
     </message>
 </context>
 <context>
-    <name>LXQtWorldClockConfigurationTimeZones</name>
+    <name>UKUIWorldClockConfigurationTimeZones</name>
     <message>
         <location filename="../lxqtworldclockconfigurationtimezones.ui" line="14"/>
         <source>World Clock Time Zones</source>
