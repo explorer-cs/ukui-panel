@@ -344,7 +344,7 @@ Colorize icons based on widget style (palette)</source>
     </message>
 </context>
 <context>
-    <name>LXQtPanel</name>
+    <name>UKUIPanel</name>
     <message>
         <location filename="../lxqtpanel.cpp" line="1068"/>
         <location filename="../lxqtpanel.cpp" line="1094"/>
