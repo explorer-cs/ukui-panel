@@ -188,13 +188,14 @@ void UKUIQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 
 void UKUIQuickLaunch::dropEvent(QDropEvent *e)
 {
+    QString filepath="file:///usr/share/applications/firefox.desktop";
+    getDesktopFile(&filepath);
     const auto urls = e->mimeData()->urls().toSet();
     for (const QUrl &url : urls)
     {
         QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
         QFileInfo fi(fileName);
         XdgDesktopFile xdg;
-
         if (xdg.load(fileName))
         {
             if (xdg.isSuitable())
@@ -215,6 +216,37 @@ void UKUIQuickLaunch::dropEvent(QDropEvent *e)
                               tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
                             );
         }
+    }
+    saveSettings();
+}
+
+
+void UKUIQuickLaunch::getDesktopFile(QString *filepath)
+{
+    QString *mfilepath=filepath;
+    const auto url=QUrl(*mfilepath);
+    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+    QFileInfo fi(fileName);
+    XdgDesktopFile xdg;
+    if (xdg.load(fileName))
+    {
+        if (xdg.isSuitable())
+            addButton(new QuickLaunchAction(&xdg, this));
+    }
+    else if (fi.exists() && fi.isExecutable() && !fi.isDir())
+    {
+        addButton(new QuickLaunchAction(fileName, fileName, "", this));
+    }
+    else if (fi.exists())
+    {
+        addButton(new QuickLaunchAction(fileName, this));
+    }
+    else
+    {
+        qWarning() << "XdgDesktopFile" << fileName << "is not valid";
+        QMessageBox::information(this, tr("Drop Error"),
+                          tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
+                        );
     }
     saveSettings();
 }

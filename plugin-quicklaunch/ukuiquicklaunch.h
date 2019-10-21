@@ -73,6 +73,7 @@ private:
 
     void saveSettings();
     void showPlaceHolder();
+    void getDesktopFile(QString *filepath);
 
 private slots:
     void addButton(QuickLaunchAction* action);
