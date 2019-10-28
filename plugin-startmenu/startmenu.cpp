@@ -1,5 +1,4 @@
 #include "startmenu.h"
-//#include "ui_startmenu.h"
 #include "lxqtmainmenuconfiguration.h"
 #include <QMouseEvent>
 #include <QHBoxLayout>
@@ -51,27 +50,19 @@ void StartMenu::realign()
 StartMenuWidget::StartMenuWidget(QWidget *parent):
     QFrame(parent)
 {
-    //QFontMetrics fm (mLineEdit.font());
-    //mLineEdit.setFixedWidth ( 10*fm.width (QStringLiteral("a")) );
-
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins (0, 0, 0, 0);
     layout->setSpacing (1);
     setLayout(layout);
     layout->addWidget (&mButton);
 
-    //layout->addWidget (&mLineEdit);
-
 
     mButton.setAutoRaise(true);
-    //mButton.setIcon(XdgIcon::fromTheme(QStringLiteral("color-picker"), QStringLiteral("kcolorchooser")));
 
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
     mButton.setObjectName("mButton");
     mButton.setStyleSheet("#mButton{border-image:url(/usr/share/ukui-panel/plugin-startmenu/img/3.svg);}");
-
-
 }
 
 
@@ -87,21 +78,19 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
         return;
     WId id = QApplication::desktop()->winId();
     qDebug()<<id<<endl;
-
-    //mCapturing = false;
-    //releaseMouse();
-
 }
 
 
 void StartMenuWidget::captureMouse()
 {
-   //grabMouse(Qt::CrossCursor);
-   //mCapturing = true;
-    qDebug()<<"start-menu is here"<<endl;
+    if(QFileInfo::exists(QString("/usr/bin/ukui-start-menu")))
+    {
     QProcess *process =new QProcess(this);
     process->startDetached("/usr/bin/ukui-start-menu/ukui-start-menu");
+    }
+    else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
+
 QDialog *StartMenu::configureDialog()
 {
     qDebug()<<mShortcut<<endl;
