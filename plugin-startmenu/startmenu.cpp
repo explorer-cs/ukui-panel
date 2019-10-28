@@ -49,14 +49,11 @@ void StartMenu::realign()
 }
 
 StartMenuWidget::StartMenuWidget(QWidget *parent):
-    QFrame(parent),
-    mMainWindow(NULL)
+    QFrame(parent)
 {
     //QFontMetrics fm (mLineEdit.font());
     //mLineEdit.setFixedWidth ( 10*fm.width (QStringLiteral("a")) );
 
-
-    //mMainWindow = new MainWindow;
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins (0, 0, 0, 0);
     layout->setSpacing (1);
@@ -101,17 +98,9 @@ void StartMenuWidget::captureMouse()
 {
    //grabMouse(Qt::CrossCursor);
    //mCapturing = true;
-//old code
-//   mMainWindow = new MainWindow;
-//       if(mMainWindow != NULL)
-//       {
-//           mMainWindow->setGeometry(QRect(0,QApplication::desktop()->availableGeometry().height()-532,390,532));
-//           mMainWindow->show();
-//           mMainWindow->raise();
-//           mMainWindow->activateWindow();
-
-//       }
-
+    qDebug()<<"start-menu is here"<<endl;
+    QProcess *process =new QProcess(this);
+    process->startDetached("/usr/bin/ukui-start-menu/ukui-start-menu");
 }
 QDialog *StartMenu::configureDialog()
 {

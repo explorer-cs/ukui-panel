@@ -10,10 +10,6 @@
 #include <QToolButton>
 #include <XdgIcon>
 
-
-#include "src/SideBarWidget/sidebarwidget.h"
-#include "src/MainViewWidget/mainviewwidget.h"
-#include "src/MainWindow/mainwindow.h"
 #include "lxqtmainmenuconfiguration.h"
 
 
@@ -21,7 +17,7 @@
 #include <QMainWindow>
 #include <QHBoxLayout>
 #include <QDebug>
-
+#include <QProcess>
 
 #include "../panel/plugin.h"
 #include "../panel/ukuipanel.h"
@@ -49,7 +45,6 @@ private:
     QLineEdit mLineEdit;
     QToolButton mButton;
     bool mCapturing;
-    MainWindow      *mMainWindow;
 };
 
 
