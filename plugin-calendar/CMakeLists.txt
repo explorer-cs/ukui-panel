@@ -21,7 +21,7 @@ find_package(PkgConfig)
 
 #configure_file(no_keywords link_pkgconfig)
 
-include_directories(/usr/include/glib-2.0/ /usr/lib/x86_64-linux-gnu/glib-2.0/include/)
+include_directories(${CALENDER_DATA_DIR} ${CALENDER2_DATA_DIR})
 
 ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 link_libraries(libQt5WebKitWidgets.so.5 libQt5WebKit.so.5 glib-2.0.so)
