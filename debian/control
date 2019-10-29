@@ -29,11 +29,12 @@ Build-Depends: debhelper (>= 12),
                libxkbcommon-dev,
                libxkbcommon-x11-dev,
                libxrender-dev
+			   libqt5webkit5-dev
+	       
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/explorer-cs/ukui-panel
 Vcs-Git: https://github.com/explorer-cs/ukui-panel
 Homepage: https://github.com/ukui/ukui-panel
-
 Package: ukui-panel
 Architecture: any
 Depends: lxmenu-data, lxqt-policykit, ${misc:Depends}, ${shlibs:Depends}
