@@ -27,6 +27,6 @@ set(LIBRARIES
 
 install(DIRECTORY img/
         DESTINATION ${PACKAGE_DATA_DIR}/plugin-startmenu/img)
-#install(DIRECTORY /usr/local/share/ukui/translations/ukui-panel
-#    DESTINATION /usr/local/share/lxqt/translations)
+install(DIRECTORY /usr/local/share/ukui/translations/ukui-panel
+    DESTINATION /usr/local/share/lxqt/translations)
 BUILD_UKUI_PLUGIN(${PLUGIN})

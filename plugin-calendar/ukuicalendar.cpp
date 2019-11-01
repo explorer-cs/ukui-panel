@@ -75,7 +75,6 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mContent->setAlignment(Qt::AlignCenter);
 
     settingsChanged();
-    qDebug()<<"create webview";
     initializeCalendar();
     mTimer->setTimerType(Qt::PreciseTimer);
     connect(mTimer, SIGNAL(timeout()), SLOT(timeout()));

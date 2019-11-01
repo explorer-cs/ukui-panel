@@ -26,6 +26,7 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "configpaneldialog.h"
+#include <QDebug>
 
 ConfigPanelDialog::ConfigPanelDialog(UKUIPanel *panel, QWidget *parent):
     LXQt::ConfigDialog(tr("Configure Panel"), panel->settings(), parent),

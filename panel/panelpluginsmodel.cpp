@@ -131,13 +131,11 @@ void PanelPluginsModel::addPlugin(const LXQt::PluginInfo &desktopFile)
 {
     if (dynamic_cast<UKUIPanelApplication const *>(qApp)->isPluginSingletonAndRunnig(desktopFile.id()))
         return;
-
     QString name = findNewPluginSettingsGroup(desktopFile.id());
-
     QPointer<Plugin> plugin = loadPlugin(desktopFile, name);
     if (plugin.isNull())
         return;
-
+    qDebug()<< plugin->name()<<endl;
     beginInsertRows(QModelIndex(), mPlugins.size(), mPlugins.size());
     mPlugins.append({name, plugin});
     endInsertRows();
@@ -218,7 +216,7 @@ void PanelPluginsModel::movePlugin(Plugin * plugin, QString const & nameAfter)
 void PanelPluginsModel::loadPlugins(QStringList const & desktopDirs)
 {
     QStringList plugin_names = mPanel->settings()->value(mNamesKey).toStringList();
-
+qDebug()<<"desktopDirs  =  "<<desktopDirs<<endl;
 #ifdef DEBUG_PLUGIN_LOADTIME
     QElapsedTimer timer;
     timer.start();
@@ -351,7 +349,6 @@ void PanelPluginsModel::onMovePluginDown(QModelIndex const & index)
     //emit signal for layout only in case both plugins are loaded/displayed
     if (!moved_plugin.second.isNull() && !next_plugin.second.isNull())
         emit pluginMovedUp(next_plugin.second.data());
-
     mPanel->settings()->setValue(mNamesKey, pluginNames());
 }
 

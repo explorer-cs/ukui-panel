@@ -74,8 +74,6 @@ add_definitions(
 )
 #Add PACKAGE_DATA_DIR
 set(PACKAGE_DATA_DIR "/usr/share/ukui-panel")
-set(CALENDER_DATA_DIR "/usr/include/glib-2.0/")
-set(CALENDER2_DATA_DIR "/usr/lib/x86_64-linux-gnu/glib-2.0/include/")
 add_definitions(
     -DPACKAGE_DATA_DIR=\"${PACKAGE_DATA_DIR}\"
 )

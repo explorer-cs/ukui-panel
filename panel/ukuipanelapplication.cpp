@@ -106,6 +106,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     if (configFile.isEmpty())
     {
+        qDebug()<<"configFile.is not Empty"<<endl;
         QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
         QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
         QFile file(loaclCong+"panel.conf");
@@ -114,8 +115,10 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
         d->mSettings = new LXQt::Settings(QLatin1String("panel"), this);
     }
     else
+    {
+        qDebug()<<"configFile.is not Empty"<<endl;
         d->mSettings = new LXQt::Settings(configFile, QSettings::IniFormat, this);
-
+    }
     // This is a workaround for Qt 5 bug #40681.
     const auto allScreens = screens();
     for(QScreen* screen : allScreens)

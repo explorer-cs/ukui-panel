@@ -452,7 +452,6 @@ QMenu *Plugin::popupMenu() const
             tr("Configure \"%1\"").arg(name), menu);
         menu->addAction(configAction);
         connect(configAction, SIGNAL(triggered()), this, SLOT(showConfigureDialog()));
-        qDebug()<<"^_^"<<configAction<<endl;
     }
 
     QAction* moveAction = new QAction(XdgIcon::fromTheme("transform-move"), tr("Move \"%1\"").arg(name), menu);

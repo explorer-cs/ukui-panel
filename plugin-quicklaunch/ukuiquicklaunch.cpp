@@ -188,8 +188,6 @@ void UKUIQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 
 void UKUIQuickLaunch::dropEvent(QDropEvent *e)
 {
-    QString filepath="file:///usr/share/applications/firefox.desktop";
-    getDesktopFile(&filepath);
     const auto urls = e->mimeData()->urls().toSet();
     for (const QUrl &url : urls)
     {

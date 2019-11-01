@@ -92,6 +92,9 @@ void ConfigPluginsWidget::showAddPluginDialog()
     mAddPluginDialog->show();
     mAddPluginDialog->raise();
     mAddPluginDialog->activateWindow();
+    qDebug()<<"showAddPluginDialog  here"<<endl;
+    qDebug()<<ui->listView_plugins->currentIndex()<<endl;
+
 }
 
 void ConfigPluginsWidget::resetButtons()

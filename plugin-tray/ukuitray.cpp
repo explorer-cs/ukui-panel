@@ -360,15 +360,15 @@ void UKUITray::startTray()
  ************************************************/
 void UKUITray::stopTray()
 {
-    for (auto & icon : mIcons)
-        disconnect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
-    qDeleteAll(mIcons);
-    if (mTrayId)
-    {
-        XDestroyWindow(mDisplay, mTrayId);
-        mTrayId = 0;
-    }
-    mValid = false;
+//    for (auto & icon : mIcons)
+//        disconnect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
+//    qDeleteAll(mIcons);
+//    if (mTrayId)
+//    {
+//        XDestroyWindow(mDisplay, mTrayId);
+//        mTrayId = 0;
+//    }
+//    mValid = false;
 }
 
 
