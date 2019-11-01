@@ -62,7 +62,7 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
     mButton.setObjectName("mButton");
-    mButton.setStyleSheet("#mButton{border-image:url(/usr/share/ukui-panel/plugin-startmenu/img/3.svg);}");
+    mButton.setStyleSheet("#mButton{border-image:url(/usr/share/ukui-panel/plugin-startmenu/img/startmenu.svg);}");
 }
 
 
