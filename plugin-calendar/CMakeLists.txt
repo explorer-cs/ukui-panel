@@ -27,6 +27,8 @@ ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 link_libraries(libQt5WebKitWidgets.so.5 libQt5WebKit.so.5 glib-2.0.so)
 install(DIRECTORY html/
         DESTINATION ${PACKAGE_DATA_DIR}/plugin-calendar/html)
+#file(GLOB HTML_FILES html/*)
+#install(FILES HTML_FILES DESTINATION ${PACKAGE_DATA_DIR}/plugin/html)
 
 install(DIRECTORY style/
         DESTINATION ${PACKAGE_DATA_DIR}/plugin-calendar/style)

@@ -19,3 +19,5 @@ install(FILES
     DESTINATION "${LXQT_ETC_XDG_DIR}/menus"
     COMPONENT Runtime
 )
+
+

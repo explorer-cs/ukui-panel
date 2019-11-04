@@ -25,8 +25,16 @@ set(LIBRARIES
     lxqt-globalkeys-ui
 )
 
-install(DIRECTORY img/
-        DESTINATION ${PACKAGE_DATA_DIR}/plugin-startmenu/img)
-install(DIRECTORY /usr/local/share/ukui/translations/ukui-panel
-    DESTINATION /usr/local/share/lxqt/translations)
+install(FILES
+    img/startmenu.svg
+    DESTINATION "${LXQT_DATA_DIR}/plugin-startmenu/img"
+    COMPONENT Runtime
+)
+set(UKUI_TRANSLATIONS_DAT "/usr/local/share/")
+file(GLOB UKUI_TRANSLATIONS_SOURCE ${UKUI_TRANSLATIONS_DAT}ukui/translations/ukui-panel/ukui-panel_zh_CN.qm )
+#install (FILES ${UKUI_TRANSLATIONS_SOURCE}
+#    DESTINATION "${UKUI_TRANSLATIONS_DAT}lxqt/translations/ukui-panel"
+#    )
+#install(DIRECTORY "${UKUI_TRANSLATIONS_DAT}ukui/translations/ukui-panel"
+#    DESTINATION "${UKUI_TRANSLATIONS_DAT}lxqt/translations")
 BUILD_UKUI_PLUGIN(${PLUGIN})

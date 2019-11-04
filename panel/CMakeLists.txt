@@ -58,7 +58,6 @@ set(LIBRARIES
 )
 
 file(GLOB CONFIG_FILES resources/*.conf resources/*.qss)
-
 ############################################
 
 add_definitions(-DCOMPILE_UKUI_PANEL)

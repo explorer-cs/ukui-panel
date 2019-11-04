@@ -51,7 +51,6 @@ set(UKUI_PANEL_PATCH_VERSION 0)
 set(UKUI_MAJOR_VERSION 3)
 set(UKUI_MINOR_VERSION 0)
 set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/ukui/translations/")
-
 set(UKUI_PANEL_VERSION ${UKUI_MAJOR_VERSION}.${UKUI_MINOR_VERSION}.${UKUI_PANEL_PATCH_VERSION})
 add_definitions("-DUKUI_PANEL_VERSION=\"${UKUI_PANEL_VERSION}\"")
 
@@ -289,3 +288,5 @@ add_subdirectory(panel)
 # merged from lxqt-common
 add_subdirectory(autostart)
 add_subdirectory(menu)
+add_subdirectory(dbus-server)
+

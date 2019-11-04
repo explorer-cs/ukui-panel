@@ -7,7 +7,7 @@ Priority: optional
 Build-Depends: debhelper (>= 12),
                libasound2-dev,
                libdbusmenu-qt5-dev,
-               libglib2.0-dev,
+               libglib2.0-dev(>=2.36),
                libicu-dev,
                libkf5solid-dev,
                libkf5windowsystem-dev,
