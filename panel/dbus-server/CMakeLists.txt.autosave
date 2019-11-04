@@ -1,0 +1,13 @@
+##cmake_minimum_required(VERSION 2.8)
+#set(project_name server)
+#project(${project_name})
+#set(CMAKE_AUTOMOC ON)
+#set(CMAKE_AUTOUIC ON)
+#set(target_name serv)
+#find_package(Qt5 REQUIRED Widgets Core DBus X11Extras)
+#add_executable(${target_name} dbus-adaptor.cpp dbus.h widget.h dbus-adaptor.h  main  widget.ui dbus.cpp  widget.cpp)
+#target_link_libraries(${target_name} Qt5::Widgets Qt5::Core  Qt5::DBus)
+
+aux_source_directory(. LIB_SRCS)			# 添加当前目录下所有的源文件
+add_library (dbus-server ${LIB_SRCS})				# 当前目录下的文件生成一个链接库
+target_link_libraries(dbus-server Qt5::Widgets Qt5::Core  Qt5::DBus)

@@ -3,9 +3,6 @@
 #include <QDebug>
 DBus::DBus(QObject *parent) : QObject(parent)
 {
-    Widget w;
-    w.show();
-    qDebug()<<" d-bus-server"<<endl;
 
 }
 

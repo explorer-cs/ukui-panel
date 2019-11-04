@@ -1,8 +1,26 @@
+ukui-panel (3.14.1-0ubuntukylin1~201911011117) disco; urgency=medium
+
+  * 
+
+ -- hepuyao <hepuyao@kylinos.cn>  Fri, 01 Nov 2019 10:43:29 +0800
+
+ukui-panel (3.14.1-0ubuntukylin1~201911011036) disco; urgency=medium
+
+  * 
+
+ -- hepuyao <hepuyao@H>  Fri, 01 Nov 2019 10:37:43 +0800
+
+ukui-panel (3.14.1-0ubuntukylin1~201911011007) disco; urgency=medium
+
+  * ukui-panel-3.0
+
+ -- hepuyao <hepuyao@kylinos.cn>  Fri, 01 Nov 2019 10:06:30 +0800
+
 ukui-panel (3.14.1-0ubuntukylin1) disco; urgency=medium
 
   * forck lxqt-panel 0.14.1
 
- -- xiaoyi wu <wuxiaoyi@kylinos.cn>  Tue, 27 Aug 2019 10:41:05 +0800
+ -- hepuyao <hepuyao@kylinos.cn>  Tue, 27 Aug 2019 10:41:05 +0800
 
 lxqt-panel (0.14.1-0ubuntu1) disco; urgency=medium
 
