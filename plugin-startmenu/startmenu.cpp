@@ -84,10 +84,10 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void StartMenuWidget::captureMouse()
 {
-    if(QFileInfo::exists(QString("/usr/bin/ukui-start-menu")))
+    if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
     {
     QProcess *process =new QProcess(this);
-    process->startDetached("/usr/bin/ukui-start-menu/ukui-start-menu");
+    process->startDetached("/usr/bin/ukui-menu");
     }
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
