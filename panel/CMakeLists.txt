@@ -113,3 +113,8 @@ install(FILES
     DESTINATION "${CMAKE_INSTALL_MANDIR}/man1"
     COMPONENT Runtime
 )
+install(FILES
+    resources/ukui-panel.desktop
+    DESTINATION "${LXQT_ETC_XDG_DIR}/autostart/"
+    COMPONENT Runtime
+)

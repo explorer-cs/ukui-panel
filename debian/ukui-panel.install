@@ -8,3 +8,4 @@ usr/share/ukui/panel.conf
 usr/share/man
 usr/share
 usr/
+#panel/resources/ukui-panel.desktop usr/share/applications
