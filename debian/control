@@ -28,8 +28,15 @@ Build-Depends: debhelper (>= 12),
                libxkbcommon-dev,
                libxkbcommon-x11-dev,
                libxrender-dev,
-               libqt5webkit5-dev
-	       
+               libqt5webkit5-dev,
+               qttools5-dev,
+               libqt5x11extras5-dev,
+               libkf5windowsystem-dev,
+               liblxqt0-dev,
+               liblxqt-globalkeys0-dev,
+               libxcb-util-dev,
+               libxcb-damage0-dev,
+               libqt5webkit5-dev	       
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/explorer-cs/ukui-panel
 Vcs-Git: https://github.com/explorer-cs/ukui-panel
