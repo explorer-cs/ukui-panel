@@ -43,7 +43,7 @@ Vcs-Git: https://github.com/explorer-cs/ukui-panel
 Homepage: https://github.com/ukui/ukui-panel
 Package: ukui-panel
 Architecture: any
-Depends: lxmenu-data, lxqt-policykit, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Recommends: lxqt-about,
             lxqt-config,
             lxqt-notificationd,
