@@ -41,21 +41,14 @@ Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/explorer-cs/ukui-panel
 Vcs-Git: https://github.com/explorer-cs/ukui-panel
 Homepage: https://github.com/ukui/ukui-panel
+
 Package: ukui-panel
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: lxqt-about,
-            lxqt-config,
-            lxqt-notificationd,
-            lxqt-panel-l10n,
-            lxqt-qtplugin,
-            lxqt-runner,
-            lxqt-session,
-            pavucontrol-qt | pavucontrol,
-            qlipper
-Suggests: lxqt | lxqt-core
-Breaks: lxqt-common (<< 0.12.0)
-Replaces: lxqt-common (<< 0.12.0)
+#Recommends:
+#Suggests:
+#Breaks: 
+#Replaces:
 Description: ukui desktop panel
  The ukui desktop panel
  .
