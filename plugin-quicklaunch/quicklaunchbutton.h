@@ -45,6 +45,8 @@ public:
     ~QuickLaunchButton();
 
     QHash<QString,QString> settingsMap();
+    //void invalidate() ;
+    QString file_name;
 
 signals:
     void buttonDeleted();
@@ -71,6 +73,7 @@ private:
 
 private slots:
     void this_customContextMenuRequested(const QPoint & pos);
+public slots:
     void selfRemove();
 };
 

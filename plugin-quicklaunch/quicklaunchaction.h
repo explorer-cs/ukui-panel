@@ -39,7 +39,7 @@ It supports XDG desktop files or "legacy" launching of specified apps.
 All process management is handled internally.
 \author Petr Vanek <petr@scribus.info>
 */
-class QuickLaunchAction : public QAction
+class  QuickLaunchAction : public QAction
 {
     Q_OBJECT
 
@@ -71,6 +71,8 @@ public:
      * (the [Desktop Action %s] in .desktop files)
      */
     QList<QAction *> addtitionalActions() const { return m_addtitionalActions; }
+    QHash<QString, QString> m_settingsMap;
+
 
 public slots:
     void execAction(QString additionalAction = QString{});
@@ -80,7 +82,6 @@ private:
     ActionType m_type;
     QString m_data;
     bool m_valid;
-    QHash<QString, QString> m_settingsMap;
     QList<QAction *> m_addtitionalActions;
 };
 

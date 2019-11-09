@@ -36,6 +36,8 @@
 #include <QStyleOptionToolButton>
 #include <QApplication>
 #include <XdgIcon>
+#include <string>
+
 
 #define MIMETYPE "x-lxqt/quicklaunch-button"
 
@@ -75,6 +77,9 @@ QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin *
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
             this, SLOT(this_customContextMenuRequested(const QPoint&)));
+    file_name=act->m_settingsMap["name"];
+//    qDebug()<<"act->m_settingsMap name>>"<<act->m_settingsMap["name"];
+//    qDebug()<<"file_name   >>"<<file_name;
 }
 
 
@@ -114,7 +119,7 @@ void QuickLaunchButton::paintEvent(QPaintEvent *)
     QStylePainter p(this);
     QStyleOptionToolButton opt;
     initStyleOption(&opt);
-    opt.features &= (~ QStyleOptionToolButton::HasMenu);
+    opt.features &= (~ QStyleOptionToolButton::Menu);
     p.drawComplexControl(QStyle::CC_ToolButton, opt);
 }
 
@@ -180,3 +185,10 @@ void QuickLaunchButton::dragEnterEvent(QDragEnterEvent *e)
         emit switchButtons(mimeData->button(), this);
     }
 }
+
+//void QuickLaunchButton::invalidate()
+//{
+//    Q_D(QLayout);
+//    d->rect = QRect();
+//    update();
+//}

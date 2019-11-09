@@ -33,6 +33,11 @@
 #include "../panel/ukuipanel.h"
 #include <QHash>
 #include <QString>
+#include <QMap>
+#include "qlayout.h"
+#include "qlayoutitem.h"
+#include "qlayoutitem.h"
+#include "qgridlayout.h"
 
 
 class XdgDesktopFile;
@@ -62,6 +67,8 @@ public:
     int countOfButtons() const;
 
     void realign();
+    //virtual QLayoutItem *takeAt(int index) = 0;
+
 
 private:
     LXQt::GridLayout *mLayout;
@@ -73,10 +80,22 @@ private:
 
     void saveSettings();
     void showPlaceHolder();
-    void getDesktopFile(QString *filepath);
+    void AddToTaskbar(QString *desktop);
+    void AddToTaskbar(QString *filename,QString *exec,QString *iconpath);
+    void CheckIfExist(QString *filename);
+    void RemoveFromTaskbar(QString *filename);
+
+
+
+
+
+
 
 private slots:
     void addButton(QuickLaunchAction* action);
+    //void addButton(QuickLaunchAction* action);
+    //void removeButton(QuickLaunchAction* action);
+    void removeButton(QString *filename);
     void switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2);
     void buttonDeleted();
     void buttonMoveLeft();
