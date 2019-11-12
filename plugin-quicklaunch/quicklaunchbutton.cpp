@@ -119,7 +119,7 @@ void QuickLaunchButton::paintEvent(QPaintEvent *)
     QStylePainter p(this);
     QStyleOptionToolButton opt;
     initStyleOption(&opt);
-    opt.features &= (~ QStyleOptionToolButton::Menu);
+    opt.features &= (~ QStyleOptionToolButton::HasMenu);
     p.drawComplexControl(QStyle::CC_ToolButton, opt);
 }
 
@@ -186,9 +186,3 @@ void QuickLaunchButton::dragEnterEvent(QDragEnterEvent *e)
     }
 }
 
-//void QuickLaunchButton::invalidate()
-//{
-//    Q_D(QLayout);
-//    d->rect = QRect();
-//    update();
-//}

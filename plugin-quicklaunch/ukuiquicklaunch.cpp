@@ -105,6 +105,7 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
         showPlaceHolder();
 
     realign();
+    mLayout->setSpacing(80);
 }
 
 
@@ -155,7 +156,30 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
+    btn->setFixedSize(45,40);
     mLayout->addWidget(btn);
+
+    //set button style
+    btn->setStyleSheet(
+                //正常状态样式
+                "QToolButton{"
+                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
+                "border-style:outset;"                  //边框样式（inset/outset）
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "border-color:rgba(255,255,255,30);"    //边框颜色
+                "font:bold 14px;"                       //字体，字体大小
+                "color:rgba(0,0,0,100);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "}"
+                //鼠标按下样式
+                "QToolButton:pressed{"
+                "background-color:rgba(190,216,239,12%);"
+                "}"
+                //鼠标悬停样式
+                "QToolButton:hover{"
+                "background-color:rgba(190,216,239,20%);"
+                "}");
 
     connect(btn, SIGNAL(switchButtons(QuickLaunchButton*,QuickLaunchButton*)), this, SLOT(switchButtons(QuickLaunchButton*,QuickLaunchButton*)));
     connect(btn, SIGNAL(buttonDeleted()), this, SLOT(buttonDeleted()));
@@ -231,69 +255,69 @@ void UKUIQuickLaunch::dragEnterEvent(QDragEnterEvent *e)
 
 void UKUIQuickLaunch::dropEvent(QDropEvent *e)
 {
-//    const auto urls = e->mimeData()->urls().toSet();
-//    for (const QUrl &url : urls)
-//    {
-//        QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-//        QFileInfo fi(fileName);
-//        XdgDesktopFile xdg;
-//        if (xdg.load(fileName))
-//        {
-//            if (xdg.isSuitable())
-//                addButton(new QuickLaunchAction(&xdg, this));
-//        }
-//        else if (fi.exists() && fi.isExecutable() && !fi.isDir())
-//        {
-//            addButton(new QuickLaunchAction(fileName, fileName, "", this));
-//        }
-//        else if (fi.exists())
-//        {
-//            addButton(new QuickLaunchAction(fileName, this));
-//        }
-//        else
-//        {
-//            qWarning() << "XdgDesktopFile" << fileName << "is not valid";
-//            QMessageBox::information(this, tr("Drop Error"),
-//                              tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
-//                            );
-//        }
-//    }
-//    saveSettings();
-//    QString filepath="/home/hepuyao/桌面/firefox.desktop";
-//    AddToTaskbar(&filepath);
+    const auto urls = e->mimeData()->urls().toSet();
+    for (const QUrl &url : urls)
+    {
+        QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+        QFileInfo fi(fileName);
+        XdgDesktopFile xdg;
+        if (xdg.load(fileName))
+        {
+            if (xdg.isSuitable())
+                addButton(new QuickLaunchAction(&xdg, this));
+        }
+        else if (fi.exists() && fi.isExecutable() && !fi.isDir())
+        {
+            addButton(new QuickLaunchAction(fileName, fileName, "", this));
+        }
+        else if (fi.exists())
+        {
+            addButton(new QuickLaunchAction(fileName, this));
+        }
+        else
+        {
+            qWarning() << "XdgDesktopFile" << fileName << "is not valid";
+            QMessageBox::information(this, tr("Drop Error"),
+                              tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
+                            );
+        }
+    }
+    saveSettings();
+    QString filepath="/home/hepuyao/桌面/firefox.desktop";
+    AddToTaskbar(&filepath);
 }
 
 
-//void UKUIQuickLaunch::AddToTaskbar(QString *desktop)
-//{
-//    QString *mdesktop=desktop;
-//    const auto url=QUrl(*mdesktop);
-//    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-//    QFileInfo fi(fileName);
-//    XdgDesktopFile xdg;
-//    //add by QuickLaunchAction(&xdg, this)
-//    if (xdg.load(fileName))
-//    {
-//        if (xdg.isSuitable())
-//            addButton(*desktop,new QuickLaunchAction(&xdg, this));
-//    }
-//    else if (fi.exists() && fi.isExecutable() && !fi.isDir())
-//    {
-//        addButton(new QuickLaunchAction(fileName, fileName, "", this));
-//    }
-//    else if (fi.exists())
-//    {
-//        addButton(new QuickLaunchAction(fileName, this));
-//    }
-//    else
-//    {
-//        qWarning() << "XdgDesktopFile" << fileName << "is not valid";
-//        QMessageBox::information(this, tr("Drop Error"),
-//                          tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
-//                        );
-//    }
-//    saveSettings();
-//}
+void UKUIQuickLaunch::AddToTaskbar(QString *desktop)
+{
+    QString *mdesktop=desktop;
+    const auto url=QUrl(*mdesktop);
+    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+    QFileInfo fi(fileName);
+    XdgDesktopFile xdg;
+    //add by QuickLaunchAction(&xdg, this)
+    if (xdg.load(fileName))
+    {
+        if (xdg.isSuitable())
+            addButton(new QuickLaunchAction(&xdg, this));
+    }
+    else if (fi.exists() && fi.isExecutable() && !fi.isDir())
+    {
+        addButton(new QuickLaunchAction(fileName, fileName, "", this));
+    }
+    else if (fi.exists())
+    {
+        addButton(new QuickLaunchAction(fileName, this));
+    }
+    else
+    {
+        qWarning() << "XdgDesktopFile" << fileName << "is not valid";
+        QMessageBox::information(this, tr("Drop Error"),
+                          tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
+                        );
+    }
+    saveSettings();
+}
 
 void UKUIQuickLaunch::AddToTaskbar(QString *filename, QString *exec, QString *iconpath)
 {

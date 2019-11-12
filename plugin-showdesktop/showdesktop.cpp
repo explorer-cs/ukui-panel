@@ -48,12 +48,14 @@ ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
         connect(m_key, SIGNAL(activated()), this, SLOT(toggleShowingDesktop()));
     }
 
-    QAction * act = new QAction(XdgIcon::fromTheme("user-desktop"), tr("Show Desktop"), this);
+    QAction * act = new QAction(XdgIcon::fromTheme("ukui-icon-theme-one"), tr(""), this);
     connect(act, SIGNAL(triggered()), this, SLOT(toggleShowingDesktop()));
 
     mButton.setDefaultAction(act);
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     mButton.setAutoRaise(true);
+    mButton.setFixedSize(12,40);
+
 }
 
 void ShowDesktop::shortcutRegistered()

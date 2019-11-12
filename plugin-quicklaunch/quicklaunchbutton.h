@@ -45,7 +45,6 @@ public:
     ~QuickLaunchButton();
 
     QHash<QString,QString> settingsMap();
-    //void invalidate() ;
     QString file_name;
 
 signals:
@@ -90,6 +89,7 @@ public:
 
     QuickLaunchButton *button() const { return mButton; }
     void setButton(QuickLaunchButton *button) { mButton = button; }
+
 private:
     QuickLaunchButton *mButton;
 };
