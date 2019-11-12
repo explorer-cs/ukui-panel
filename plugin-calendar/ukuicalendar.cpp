@@ -94,14 +94,16 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
                 "padding:0px;"                          //填衬
                 "textalignment:aligncenter"               //文本居中
                 "}"
+                //鼠标悬停样式
+                "QLabel:hover{"
+                "background-color:rgba(190,216,239,20%);"
+                "}"
                 //鼠标按下样式
                 "QLabel:pressed{"
                 "background-color:rgba(190,216,239,12%);"
                 "}"
-                //鼠标悬停样式
-                "QLabel:hover{"
-                "background-color:rgba(190,216,239,20%);"
-                "}");
+
+                );
     mContent->setWordWrap(true);
 }
 
