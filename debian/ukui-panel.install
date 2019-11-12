@@ -4,6 +4,12 @@ usr/include/ukui
 usr/lib/*/ukui-panel
 usr/share/desktop-directories
 usr/share/ukui/ukui-panel
+usr/share/ukui/translations/ukui-panel/*
+#usr/share/lxqt/translations/colorpicker/*.qm
+#usr/share/lxqt/translations/quicklaunch/quicklaunch_zh_CN.qm
+#usr/share/lxqt/translations/showdesktop
+#usr/share/lxqt/translations/taskbar
+#usr/share/lxqt/translations/tray
 usr/share/ukui/panel.conf
 usr/share/man
 usr/share

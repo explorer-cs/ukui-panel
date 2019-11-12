@@ -45,6 +45,7 @@ public:
     ~QuickLaunchButton();
 
     QHash<QString,QString> settingsMap();
+    QString file_name;
 
 signals:
     void buttonDeleted();
@@ -71,6 +72,7 @@ private:
 
 private slots:
     void this_customContextMenuRequested(const QPoint & pos);
+public slots:
     void selfRemove();
 };
 
@@ -87,6 +89,7 @@ public:
 
     QuickLaunchButton *button() const { return mButton; }
     void setButton(QuickLaunchButton *button) { mButton = button; }
+
 private:
     QuickLaunchButton *mButton;
 };

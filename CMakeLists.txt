@@ -7,7 +7,7 @@
 project(ukui-panel)
 
 
-option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
+option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" ON)
 option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 'screensaver' plugin to 'quicklaunch'. This requires the lxqt-leave (lxqt-session) to be installed in runtime." OFF)
 # plugin-mainmenu
 option(USE_MENU_CACHE "Use menu-cached (no noticable penalty even on a 2004 single core pentium if not used)" OFF)
@@ -50,7 +50,8 @@ set(UKUI_VERSION 3.0)
 set(UKUI_PANEL_PATCH_VERSION 0)
 set(UKUI_MAJOR_VERSION 3)
 set(UKUI_MINOR_VERSION 0)
-set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/ukui/translations/")
+set(UKUI_TRANSLATIONS_DIR "${LXQT_DATA_DIR}/ukui/translations/")
+#set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/translations/")
 set(UKUI_PANEL_VERSION ${UKUI_MAJOR_VERSION}.${UKUI_MINOR_VERSION}.${UKUI_PANEL_PATCH_VERSION})
 add_definitions("-DUKUI_PANEL_VERSION=\"${UKUI_PANEL_VERSION}\"")
 

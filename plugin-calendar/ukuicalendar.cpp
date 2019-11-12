@@ -80,6 +80,29 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     connect(mTimer, SIGNAL(timeout()), SLOT(timeout()));
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
     connect(mWebViewDiag, SIGNAL(deactivated()), SLOT(hidewebview()));
+
+//    mContent->adjustSize();
+//    QRect rect;
+
+//    mContent->setGeometry(rect);
+    mContent->setStyleSheet(
+                //正常状态样式
+                "QLabel{"
+                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "font:bold 14px;"                       //字体，字体大小
+                "color:rgba(255,255,255,100%);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "}"
+                //鼠标按下样式
+                "QLabel:pressed{"
+                "background-color:rgba(190,216,239,12%);"
+                "}"
+                //鼠标悬停样式
+                "QLabel:hover{"
+                "background-color:rgba(190,216,239,20%);"
+                "}");
 }
 
 IndicatorCalendar::~IndicatorCalendar()

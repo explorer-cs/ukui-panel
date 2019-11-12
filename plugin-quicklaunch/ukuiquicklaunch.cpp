@@ -43,7 +43,8 @@
 #include <XdgIcon>
 #include <LXQt/GridLayout>
 #include "../panel/pluginsettings.h"
-
+#include <QTableWidget>
+using namespace  std;
 
 UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
     QFrame(parent),
@@ -104,6 +105,7 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
         showPlaceHolder();
 
     realign();
+    mLayout->setSpacing(80);
 }
 
 
@@ -150,12 +152,34 @@ void UKUIQuickLaunch::realign()
     mLayout->setEnabled(true);
 }
 
-
 void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
+    btn->setFixedSize(45,40);
     mLayout->addWidget(btn);
+
+    //set button style
+    btn->setStyleSheet(
+                //正常状态样式
+                "QToolButton{"
+                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
+                "border-style:outset;"                  //边框样式（inset/outset）
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "border-color:rgba(255,255,255,30);"    //边框颜色
+                "font:bold 14px;"                       //字体，字体大小
+                "color:rgba(0,0,0,100);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "}"
+                //鼠标按下样式
+                "QToolButton:pressed{"
+                "background-color:rgba(190,216,239,12%);"
+                "}"
+                //鼠标悬停样式
+                "QToolButton:hover{"
+                "background-color:rgba(190,216,239,20%);"
+                "}");
 
     connect(btn, SIGNAL(switchButtons(QuickLaunchButton*,QuickLaunchButton*)), this, SLOT(switchButtons(QuickLaunchButton*,QuickLaunchButton*)));
     connect(btn, SIGNAL(buttonDeleted()), this, SLOT(buttonDeleted()));
@@ -167,6 +191,49 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
     mPlaceHolder = 0;
     mLayout->setEnabled(true);
     realign();
+}
+
+
+//void UKUIQuickLaunch::addButton(QString *filename,QuickLaunchAction* action)
+//{
+
+//    mLayout->setEnabled(false);
+//    QuickLaunchButton* btn = new QuickLaunchButton(filename,action, mPlugin, this);
+//    mLayout->addWidget(btn);
+//    mbtnmap.insert(*filename,btn);
+
+
+//    connect(btn, SIGNAL(switchButtons(QuickLaunchButton*,QuickLaunchButton*)), this, SLOT(switchButtons(QuickLaunchButton*,QuickLaunchButton*)));
+//    connect(btn, SIGNAL(buttonDeleted()), this, SLOT(buttonDeleted()));
+//    connect(btn, SIGNAL(movedLeft()), this, SLOT(buttonMoveLeft()));
+//    connect(btn, SIGNAL(movedRight()), this, SLOT(buttonMoveRight()));
+
+//    mLayout->removeWidget(mPlaceHolder);
+//    delete mPlaceHolder;
+//    mPlaceHolder = 0;
+//    mLayout->setEnabled(true);
+//    realign();
+//}
+
+void UKUIQuickLaunch::removeButton(QString *filename)
+{
+    int i = 0;
+    QLayoutItem *child;
+
+    while ((child = mLayout->layout()->itemAt(i))) {
+        qDebug()<<i;
+        QuickLaunchButton *b = qobject_cast<QuickLaunchButton*>(mLayout->itemAt(i)->widget());
+        //qDebug()<<"b->file_name   >>>"<<b->file_name;
+            if (b->file_name == filename) {
+                qDebug()<<"child   >>>"<<child;
+                //mLayout->removeItem(child);
+                mLayout->removeWidget(b);
+                b->deleteLater();
+            } else {
+                ++i;
+            }
+        }
+        saveSettings();
 }
 
 
@@ -216,16 +283,19 @@ void UKUIQuickLaunch::dropEvent(QDropEvent *e)
         }
     }
     saveSettings();
+    QString filepath="/home/hepuyao/桌面/firefox.desktop";
+    AddToTaskbar(&filepath);
 }
 
 
-void UKUIQuickLaunch::getDesktopFile(QString *filepath)
+void UKUIQuickLaunch::AddToTaskbar(QString *desktop)
 {
-    QString *mfilepath=filepath;
-    const auto url=QUrl(*mfilepath);
+    QString *mdesktop=desktop;
+    const auto url=QUrl(*mdesktop);
     QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
     QFileInfo fi(fileName);
     XdgDesktopFile xdg;
+    //add by QuickLaunchAction(&xdg, this)
     if (xdg.load(fileName))
     {
         if (xdg.isSuitable())
@@ -249,6 +319,38 @@ void UKUIQuickLaunch::getDesktopFile(QString *filepath)
     saveSettings();
 }
 
+void UKUIQuickLaunch::AddToTaskbar(QString *filename, QString *exec, QString *iconpath)
+{
+    QString *filename1=filename;
+    addButton(new QuickLaunchAction(*filename,*exec,*iconpath,this));
+    saveSettings();
+}
+
+void  UKUIQuickLaunch::CheckIfExist(QString *filename)
+{
+    int i = 0;
+    QLayoutItem *child;
+
+    while ((child = mLayout->layout()->itemAt(i))) {
+        qDebug()<<i;
+        QuickLaunchButton *b = qobject_cast<QuickLaunchButton*>(mLayout->itemAt(i)->widget());
+        if (b->file_name == filename) {
+            qDebug()<<" already  insert"<<child;
+        } else {
+            ++i;
+            qDebug()<<"don't insert";
+        }
+     }
+
+}
+
+void UKUIQuickLaunch::RemoveFromTaskbar(QString *filename)
+{
+    QString *file_name=filename;
+    removeButton(file_name);
+
+}
+
 void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
 {
     if (button1 == button2)
@@ -266,25 +368,45 @@ void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButto
 }
 
 
+//void UKUIQuickLaunch::buttonDeleted(xdg)
+//{
+
+//    QLayoutItem *child;
+//    while ((child = mLayout->layout()->itemAt(i))) {
+//            if (child->widget() == btn) {
+//                qDebug()<<"child   >>>"<<child;
+//                mLayout->removeItem(child);
+//            } else {
+//                ++i;
+//            }
+//        }
+//    mLayout->removeWidget(btn);
+//    btn->deleteLater();
+//    saveSettings();
+
+//    if (mLayout->isEmpty())
+//        showPlaceHolder();
+//    realign();
+//}
+
 void UKUIQuickLaunch::buttonDeleted()
 {
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn)
         return;
-
     mLayout->removeWidget(btn);
     btn->deleteLater();
     saveSettings();
 
     if (mLayout->isEmpty())
         showPlaceHolder();
-
     realign();
 }
 
 
 void UKUIQuickLaunch::buttonMoveLeft()
 {
+    /*old code
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn)
         return;
@@ -295,11 +417,23 @@ void UKUIQuickLaunch::buttonMoveLeft()
         mLayout->moveItem(index, index - 1);
         saveSettings();
     }
+    */
+    QString filename="firefox";
+//    QString file_name=filename;
+//    qDebug()<<"filename   >>>"<<filename;
+//    qDebug()<<"filename&   >>>"<<&filename;
+//    QString exec="firefox";
+//    QString iconpath="/usr/share/icons/hicolor/128x128/apps/chromium-browser.png";
+  // qDebug()<<CheckIfExist(&filename);
+    removeButton(&filename);
+
+
 }
 
 
 void UKUIQuickLaunch::buttonMoveRight()
 {
+    /*  old code
     QuickLaunchButton *btn1 = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn1)
         return;
@@ -310,6 +444,44 @@ void UKUIQuickLaunch::buttonMoveRight()
         mLayout->moveItem(index, index + 1);
         saveSettings();
     }
+    */
+//    QString filename2="qtcreator";
+//    QString exec2="qtcreator";
+//    QString iconpath2="/home/hepuyao/图片/001.png";
+//    AddToTaskbar(&filename2,&exec2,&iconpath2);
+//    QString filename="firefox";
+//    QString exec="firefox";
+//    QString iconpath="/home/hepuyao/图片/002.png";
+//    AddToTaskbar(&filename,&exec,&iconpath);
+
+//    QString filename="firefox";
+//    QString exec="firefox";
+//    QString iconpath="/usr/share/icons/hicolor/128x128/apps/chromium-browser.png";
+//    AddToTaskbar(&filename,&exec,&iconpath);
+
+//    filename="baidunetdisk";
+//    exec="baidunetdisk";
+//    iconpath="/usr/share/icons/hicolor/128x128/apps/baidunetdisk.png";
+//    AddToTaskbar(&filename,&exec,&iconpath);
+
+
+     QString filename="fcitx";
+     QString exec="fcitx";
+     QString iconpath="/usr/share/icons/hicolor/128x128/apps/fcitx.png";
+     AddToTaskbar(&filename,&exec,&iconpath);
+
+         filename="baidunetdisk";
+         exec="baidunetdisk";
+         iconpath="/usr/share/icons/hicolor/128x128/apps/baidunetdisk.png";
+         AddToTaskbar(&filename,&exec,&iconpath);
+
+//              filename="firefox";
+//              exec="firefox";
+//              iconpath="/usr/share/icons/hicolor/128x128/apps/chromium-browser.png";
+//             AddToTaskbar(&filename,&exec,&iconpath);
+
+    
+
 }
 
 
@@ -338,6 +510,8 @@ void UKUIQuickLaunch::saveSettings()
     }
 
     settings->setArray("apps", hashList);
+    hashList.removeLast();
+
 }
 
 

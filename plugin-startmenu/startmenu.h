@@ -24,7 +24,7 @@
 #define DEFAULT_SHORTCUT "Alt+F1"
 
 
-class StartMenuWidget: public QFrame
+class  StartMenuWidget: public QFrame
 {
     Q_OBJECT
 public:
@@ -56,7 +56,7 @@ public:
     StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~StartMenu();
 
-    virtual QWidget *widget() { return &mWidget; }
+    virtual QWidget *widget() { return &m2Widget; }
 
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
 
@@ -66,7 +66,7 @@ public:
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     QDialog *configureDialog();
 private:
-    StartMenuWidget mWidget;
+    StartMenuWidget m2Widget;
     GlobalKeyShortcut::Action *mShortcut;
     QTimer mDelayedPopup;
     QTimer mHideTimer;

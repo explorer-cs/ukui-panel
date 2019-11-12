@@ -118,7 +118,6 @@ QuickLaunchAction::QuickLaunchAction(const QString & fileName, QWidget * parent)
 void QuickLaunchAction::execAction(QString additionalAction)
 {
     QString exec(data().toString());
-    qDebug() << "execAction" << exec;
     switch (m_type)
     {
         case ActionLegacy:
