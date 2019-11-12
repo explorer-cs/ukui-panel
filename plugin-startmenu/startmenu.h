@@ -44,6 +44,7 @@ private slots:
 private:
     QLineEdit mLineEdit;
     QToolButton mButton;
+    QToolButton mButton2;
     bool mCapturing;
 };
 
@@ -56,7 +57,7 @@ public:
     StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~StartMenu();
 
-    virtual QWidget *widget() { return &m2Widget; }
+    virtual QWidget *widget() { return &mWidget; }
 
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
 
@@ -66,7 +67,7 @@ public:
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
     QDialog *configureDialog();
 private:
-    StartMenuWidget m2Widget;
+    StartMenuWidget mWidget;
     GlobalKeyShortcut::Action *mShortcut;
     QTimer mDelayedPopup;
     QTimer mHideTimer;

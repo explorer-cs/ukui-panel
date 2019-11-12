@@ -81,10 +81,8 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
     connect(mWebViewDiag, SIGNAL(deactivated()), SLOT(hidewebview()));
 
-//    mContent->adjustSize();
-//    QRect rect;
 
-//    mContent->setGeometry(rect);
+    mContent->setFixedSize(85,40);
     mContent->setStyleSheet(
                 //正常状态样式
                 "QLabel{"
@@ -94,6 +92,7 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
                 "font:bold 14px;"                       //字体，字体大小
                 "color:rgba(255,255,255,100%);"                //字体颜色
                 "padding:0px;"                          //填衬
+                "textalignment:aligncenter"               //文本居中
                 "}"
                 //鼠标按下样式
                 "QLabel:pressed{"
@@ -103,6 +102,7 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
                 "QLabel:hover{"
                 "background-color:rgba(190,216,239,20%);"
                 "}");
+    mContent->setWordWrap(true);
 }
 
 IndicatorCalendar::~IndicatorCalendar()
@@ -195,8 +195,13 @@ void IndicatorCalendar::updateTimeText()
     if (!isUpToDate)
     {
         const QSize old_size = mContent->sizeHint();
-        mContent->setText(tzNow.toString(preformat(mFormat, timeZone, tzNow)));
-        qDebug()<<"preformat"<<tzNow.toString(preformat(mFormat, timeZone, tzNow))<<endl;
+
+
+        QString str=tzNow.toString("hh:mm dddd  yyyy-MM-dd");
+        str.replace("-","/");
+        str.replace("星期","周");
+        mContent->setText(str);
+        qDebug()<<"tzNow.toString"<<str<<endl;
         if (old_size != mContent->sizeHint())
             mRotatedWidget->adjustContentSize();
         mRotatedWidget->update();
@@ -370,7 +375,8 @@ void IndicatorCalendar::settingsChanged()
             datePortion = datePortionOrder.arg(dateShowYear ? QLatin1String("yyyy") : QLatin1String("")).arg(dateShowYear ? QLatin1String(" ") : QLatin1String("")).arg(dateLongNames ? QLatin1String("MMMM") : QLatin1String("MMM")).arg(datePadDay ? QLatin1String("dd") : QLatin1String("d")).arg(dateShowDoW ? QLatin1String(", ") : QLatin1String("")).arg(dateShowDoW ? (dateLongNames ? QLatin1String("dddd") : QLatin1String("ddd")) : QLatin1String(""));
         }
 
-        mFormat = datePortion + QLatin1String(" ") + mFormat;//date show before time
+        //mFormat = datePortion + QLatin1String(" ") + mFormat;//date show before time
+        mFormat = mFormat + QLatin1String(" ") + datePortion;//date show before time
     }
 
     if ((oldFormat != mFormat))
@@ -467,7 +473,7 @@ QString IndicatorCalendar::formatDateTime(const QDateTime &datetime, const QStri
 {
     QTimeZone timeZone(timeZoneName.toLatin1());
     QDateTime tzNow = datetime.toTimeZone(timeZone);
-    return tzNow.toString(preformat(mFormat, timeZone, tzNow));
+    return tzNow.toString(preformat(tzNow,mFormat, timeZone));
 }
 
 void IndicatorCalendar::updatePopupContent()
@@ -501,7 +507,7 @@ bool IndicatorCalendar::formatHasTimeZone(QString format)
     return format.toLower().contains(QLatin1String("t"));
 }
 
-QString IndicatorCalendar::preformat(const QString &format, const QTimeZone &timeZone, const QDateTime &dateTime)
+QString IndicatorCalendar::preformat(const QDateTime &dateTime,const QString &format, const QTimeZone &timeZone )
 {
     QString result = format;
     int from = 0;
@@ -537,26 +543,35 @@ QString IndicatorCalendar::preformat(const QString &format, const QTimeZone &tim
                 replacement = timeZone.displayName(dateTime, QTimeZone::OffsetName);
                 if (replacement.startsWith(QLatin1String("UTC")))
                     replacement = replacement.mid(3);
+                    qDebug()<<"case 1 replacement = "<<replacement;
                 break;
 
             case 2:
                 replacement = QString::fromLatin1(timeZone.id());
+                 qDebug()<<"case 2 replacement = "<<replacement;
                 break;
 
             case 3:
                 replacement = timeZone.abbreviation(dateTime);
+                 qDebug()<<"case 3 replacement = "<<replacement;
                 break;
 
             case 4:
                 replacement = timeZone.displayName(dateTime, QTimeZone::ShortName);
+                 qDebug()<<"case 4 replacement = "<<replacement;
                 break;
 
             case 5:
                 replacement = timeZone.displayName(dateTime, QTimeZone::LongName);
+                 qDebug()<<"case 5 replacement = "<<replacement;
                 break;
 
             case 6:
                 replacement = mTimeZoneCustomNames[QString::fromLatin1(timeZone.id())];
+                 qDebug()<<"case 6 replacement = "<<replacement;
+                break;
+            default:
+                break;
             }
 
             if ((tz > 0) && (result[tz - 1] == QLatin1Char('\'')))
