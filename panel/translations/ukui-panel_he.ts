@@ -32,17 +32,17 @@
 <context>
     <name>ConfigPanelDialog</name>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="31"/>
+        <location filename="../config/configpaneldialog.cpp" line="32"/>
         <source>Configure Panel</source>
         <translation>הגדרת לוח</translation>
     </message>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="38"/>
+        <location filename="../config/configpaneldialog.cpp" line="39"/>
         <source>Panel</source>
         <translation>לוח</translation>
     </message>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="42"/>
+        <location filename="../config/configpaneldialog.cpp" line="43"/>
         <source>Widgets</source>
         <translation>וידג׳טים</translation>
     </message>
@@ -129,12 +129,17 @@
         <translation>הצגה עם המתנה:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="330"/>
+        <location filename="../config/configpanelwidget.ui" line="327"/>
+        <source>Visible thin margin for hidden panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config/configpanelwidget.ui" line="337"/>
         <source>Don&apos;t allow maximized windows go under the panel window</source>
         <translation>לא לאפשר לחלונות מוגדלים לחתור תחת חלון הלוח</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="333"/>
+        <location filename="../config/configpanelwidget.ui" line="340"/>
         <source>Reserve space on display</source>
         <translation>שמירת מקום בתצוגה</translation>
     </message>
@@ -160,55 +165,55 @@
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="219"/>
-        <location filename="../config/configpanelwidget.cpp" line="206"/>
+        <location filename="../config/configpanelwidget.cpp" line="211"/>
         <source>Left</source>
         <translation>שמאל</translation>
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="224"/>
-        <location filename="../config/configpanelwidget.cpp" line="207"/>
-        <location filename="../config/configpanelwidget.cpp" line="213"/>
+        <location filename="../config/configpanelwidget.cpp" line="212"/>
+        <location filename="../config/configpanelwidget.cpp" line="218"/>
         <source>Center</source>
         <translation>מרכז</translation>
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="229"/>
-        <location filename="../config/configpanelwidget.cpp" line="208"/>
+        <location filename="../config/configpanelwidget.cpp" line="213"/>
         <source>Right</source>
         <translation>ימין</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="349"/>
+        <location filename="../config/configpanelwidget.ui" line="356"/>
         <source>Custom styling</source>
         <translation>סגנון בהתאמה אישית</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="370"/>
+        <location filename="../config/configpanelwidget.ui" line="377"/>
         <source>Font color:</source>
         <translation>צבע גופן:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="410"/>
+        <location filename="../config/configpanelwidget.ui" line="417"/>
         <source>Background color:</source>
         <translation>צבע רקע:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="449"/>
+        <location filename="../config/configpanelwidget.ui" line="456"/>
         <source>Background opacity:</source>
         <translation>אטימות רקע:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="481"/>
+        <location filename="../config/configpanelwidget.ui" line="488"/>
         <source>&lt;small&gt;Compositing is required for panel transparency.&lt;/small&gt;</source>
         <translation>&lt;small&gt;נדרש ניהול חלונות להגדרת שקיפות לוח.&lt;/small&gt;</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="509"/>
+        <location filename="../config/configpanelwidget.ui" line="516"/>
         <source>Background image:</source>
         <translation>תמונת רקע:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="561"/>
+        <location filename="../config/configpanelwidget.ui" line="568"/>
         <source>A partial workaround for widget styles that
 cannot give a separate theme to the panel.
 
@@ -227,78 +232,78 @@ Colorize icons based on widget style (palette)</source>
 צביעת סמלים בסגנון וידג׳ט (ערכת צבעים)</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="571"/>
+        <location filename="../config/configpanelwidget.ui" line="578"/>
         <source>Override icon &amp;theme</source>
         <translation>שכתוב על &amp;ערכת סמלים</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="586"/>
+        <location filename="../config/configpanelwidget.ui" line="593"/>
         <source>Icon theme for panels:</source>
         <translation>ערכת סמלים ללוחות:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="172"/>
+        <location filename="../config/configpanelwidget.cpp" line="177"/>
         <source>Top of desktop</source>
         <translation>למעלה בשולחן העבודה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="173"/>
+        <location filename="../config/configpanelwidget.cpp" line="178"/>
         <source>Left of desktop</source>
         <translation>שמאל שולחן העבודה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="174"/>
+        <location filename="../config/configpanelwidget.cpp" line="179"/>
         <source>Right of desktop</source>
         <translation>ימין שולחן העבודה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="175"/>
+        <location filename="../config/configpanelwidget.cpp" line="180"/>
         <source>Bottom of desktop</source>
         <translation>תחתית שולחן העבודה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="184"/>
+        <location filename="../config/configpanelwidget.cpp" line="189"/>
         <source>Top of desktop %1</source>
         <translation>למעלה בשולחן העבודה %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="185"/>
+        <location filename="../config/configpanelwidget.cpp" line="190"/>
         <source>Left of desktop %1</source>
         <translation>שמאל שולחן העבודה %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="186"/>
+        <location filename="../config/configpanelwidget.cpp" line="191"/>
         <source>Right of desktop %1</source>
         <translation>ימין שולחן העבודה %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="187"/>
+        <location filename="../config/configpanelwidget.cpp" line="192"/>
         <source>Bottom of desktop %1</source>
         <translation>תחתית שולחן העבודה %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="212"/>
+        <location filename="../config/configpanelwidget.cpp" line="217"/>
         <source>Top</source>
         <translation>למעלה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="214"/>
+        <location filename="../config/configpanelwidget.cpp" line="219"/>
         <source>Bottom</source>
         <translation>תחתית</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="430"/>
-        <location filename="../config/configpanelwidget.cpp" line="446"/>
+        <location filename="../config/configpanelwidget.cpp" line="436"/>
+        <location filename="../config/configpanelwidget.cpp" line="452"/>
         <source>Pick color</source>
         <translation>בחירת צבע</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="464"/>
+        <location filename="../config/configpanelwidget.cpp" line="470"/>
         <source>Pick image</source>
         <translation>בחירת תמונה</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="464"/>
+        <location filename="../config/configpanelwidget.cpp" line="470"/>
         <source>Images (*.png *.gif *.jpg)</source>
         <translation>תמונות ‎(*.png *.gif *.jpg)</translation>
     </message>
@@ -353,78 +358,117 @@ Colorize icons based on widget style (palette)</source>
 <context>
     <name>LXQtPanel</name>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1068"/>
-        <location filename="../lxqtpanel.cpp" line="1094"/>
         <source>Panel</source>
-        <translation>לוח</translation>
+        <translation type="vanished">לוח</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1097"/>
         <source>Configure Panel</source>
-        <translation>הגדרת לוח</translation>
+        <translation type="vanished">הגדרת לוח</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1102"/>
         <source>Manage Widgets</source>
-        <translation>ניהול וידג׳טים</translation>
+        <translation type="vanished">ניהול וידג׳טים</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1108"/>
         <source>Add New Panel</source>
-        <translation>הוספת לוח חדש</translation>
+        <translation type="vanished">הוספת לוח חדש</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1115"/>
         <source>Remove Panel</source>
         <comment>Menu Item</comment>
-        <translation>הסרת לוח</translation>
+        <translation type="vanished">הסרת לוח</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1120"/>
         <source>Lock This Panel</source>
-        <translation>נעילת הלוח הזה</translation>
+        <translation type="vanished">נעילת הלוח הזה</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1273"/>
         <source>Remove Panel</source>
         <comment>Dialog Title</comment>
-        <translation>הסרת לוח</translation>
+        <translation type="vanished">הסרת לוח</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1274"/>
         <source>Removing a panel can not be undone.
 Do you want to remove this panel?</source>
-        <translation>לא ניתן לבטל הסרת לוח.
+        <translation type="vanished">לא ניתן לבטל הסרת לוח.
 להסיר את הלוח?</translation>
     </message>
 </context>
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../plugin.cpp" line="411"/>
+        <location filename="../plugin.cpp" line="452"/>
         <source>Configure &quot;%1&quot;</source>
         <translation>הגדרת „%1”</translation>
     </message>
     <message>
-        <location filename="../plugin.cpp" line="416"/>
+        <location filename="../plugin.cpp" line="457"/>
         <source>Move &quot;%1&quot;</source>
         <translation>העברת „%1”</translation>
     </message>
     <message>
-        <location filename="../plugin.cpp" line="424"/>
+        <location filename="../plugin.cpp" line="465"/>
         <source>Remove &quot;%1&quot;</source>
         <translation>הסרת „%1”</translation>
     </message>
 </context>
 <context>
+    <name>UKUIPanel</name>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1078"/>
+        <location filename="../ukuipanel.cpp" line="1104"/>
+        <source>Panel</source>
+        <translation type="unfinished">לוח</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1106"/>
+        <source>Configure Panel</source>
+        <translation type="unfinished">הגדרת לוח</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1110"/>
+        <source>Manage Widgets</source>
+        <translation type="unfinished">ניהול וידג׳טים</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1115"/>
+        <source>Add New Panel</source>
+        <translation type="unfinished">הוספת לוח חדש</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1122"/>
+        <source>Remove Panel</source>
+        <comment>Menu Item</comment>
+        <translation type="unfinished">הסרת לוח</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1127"/>
+        <source>Lock This Panel</source>
+        <translation type="unfinished">נעילת הלוח הזה</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1280"/>
+        <source>Remove Panel</source>
+        <comment>Dialog Title</comment>
+        <translation type="unfinished">הסרת לוח</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1281"/>
+        <source>Removing a panel can not be undone.
+Do you want to remove this panel?</source>
+        <translation type="unfinished">לא ניתן לבטל הסרת לוח.
+להסיר את הלוח?</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
-        <location filename="../lxqtpanelapplication.cpp" line="95"/>
+        <location filename="../ukuipanelapplication.cpp" line="99"/>
         <source>Use alternate configuration file.</source>
         <translation>שימוש בקובץ הגדרות חלופי.</translation>
     </message>
     <message>
-        <location filename="../lxqtpanelapplication.cpp" line="96"/>
+        <location filename="../ukuipanelapplication.cpp" line="100"/>
         <source>Configuration file</source>
         <translation>קובץ הגדרות</translation>
     </message>

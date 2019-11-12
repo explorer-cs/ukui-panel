@@ -4,229 +4,409 @@
 <context>
     <name>LXQtTaskBar</name>
     <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
         <source>Activate task %1</source>
-        <translation>Aktiv handling %1</translation>
+        <translation type="vanished">Aktiv handling %1</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>Program</translation>
+        <translation type="vanished">Program</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>Til&amp; skrivebord</translation>
+        <translation type="vanished">Til&amp; skrivebord</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;Alle skrivebord</translation>
+        <translation type="vanished">&amp;Alle skrivebord</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>Skrivebord &amp;%1</translation>
+        <translation type="vanished">Skrivebord &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>&amp;Til skrivebord i bruk</translation>
+        <translation type="vanished">&amp;Til skrivebord i bruk</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
         <source>&amp;Move</source>
-        <translation>&amp;Flytt</translation>
+        <translation type="vanished">&amp;Flytt</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
         <source>Resi&amp;ze</source>
-        <translation>Endr&amp;e størrelse</translation>
+        <translation type="vanished">Endr&amp;e størrelse</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>Ma&amp;ksimer</translation>
+        <translation type="vanished">Ma&amp;ksimer</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>Maksimer vertikalt</translation>
+        <translation type="vanished">Maksimer vertikalt</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>Maksimer horisontalt</translation>
+        <translation type="vanished">Maksimer horisontalt</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Gjenopprett</translation>
+        <translation type="vanished">&amp;Gjenopprett</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>Mi&amp;nimer</translation>
+        <translation type="vanished">Mi&amp;nimer</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>Rull ned</translation>
+        <translation type="vanished">Rull ned</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>Rull opp</translation>
+        <translation type="vanished">Rull opp</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>&amp;Lag</translation>
+        <translation type="vanished">&amp;Lag</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>Alltid på &amp;topp</translation>
+        <translation type="vanished">Alltid på &amp;topp</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
-        <source>&amp;Normal</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>Alltid på &amp;bunnen</translation>
+        <translation type="vanished">Alltid på &amp;bunnen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>&amp;Lukk</translation>
+        <translation type="vanished">&amp;Lukk</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>Gruppe</translation>
+        <translation type="vanished">Gruppe</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>Lukk gruppe</translation>
+        <translation type="vanished">Lukk gruppe</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
-        <translation>Oppgavebehandlingsinnstillinger</translation>
+        <translation type="vanished">Oppgavebehandlingsinnstillinger</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>Generelt</translation>
+        <translation type="vanished">Generelt</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>Vis bare vinduer fra skrivebord</translation>
+        <translation type="vanished">Vis bare vinduer fra skrivebord</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>Vis bare vinduer fra pa&amp;nelets skjerm</translation>
+        <translation type="vanished">Vis bare vinduer fra pa&amp;nelets skjerm</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>Vis bare minimerte vinduer</translation>
+        <translation type="vanished">Vis bare minimerte vinduer</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
-        <translation>Legg mimimerte vinduer øverst på skrivebordet i bruk</translation>
+        <translation type="vanished">Legg mimimerte vinduer øverst på skrivebordet i bruk</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
-        <translation>Lukk ved midt-klikk</translation>
+        <translation type="vanished">Lukk ved midt-klikk</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
-        <translation>Skift vindu ved skrolling med hjulet</translation>
+        <translation type="vanished">Skift vindu ved skrolling med hjulet</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
-        <translation>Vindusg&amp;rupering</translation>
+        <translation type="vanished">Vindusg&amp;rupering</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
-        <translation>Vis sprettopprute når musa er over</translation>
+        <translation type="vanished">Vis sprettopprute når musa er over</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>Utseende</translation>
+        <translation type="vanished">Utseende</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
         <source>Button style</source>
-        <translation>Knappstil</translation>
+        <translation type="vanished">Knappstil</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>Maksimal bredde på knapper</translation>
+        <translation type="vanished">Maksimal bredde på knapper</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
         <source> px</source>
-        <translation> pksl</translation>
+        <translation type="vanished"> pksl</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>Maksimal høyde på knapper</translation>
+        <translation type="vanished">Maksimal høyde på knapper</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation>Auto&amp;roter knapper når panelet er vertikalt</translation>
+        <translation type="vanished">Auto&amp;roter knapper når panelet er vertikalt</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
         <source>Use icons by WindowClass, if available</source>
-        <translation>Bruk symboler fra WindowClass, hvis tilgjengelig</translation>
+        <translation type="vanished">Bruk symboler fra WindowClass, hvis tilgjengelig</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>Symbol og tekst</translation>
+        <translation type="vanished">Symbol og tekst</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>Bare symbol</translation>
+        <translation type="vanished">Bare symbol</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>Bare tekst</translation>
+        <translation type="vanished">Bare tekst</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>Nåværende</translation>
+        <translation type="vanished">Nåværende</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished">Aktiv handling %1</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">Program</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">Til&amp; skrivebord</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;Alle skrivebord</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">Skrivebord &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">&amp;Til skrivebord i bruk</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished">&amp;Flytt</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished">Endr&amp;e størrelse</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">Ma&amp;ksimer</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">Maksimer vertikalt</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">Maksimer horisontalt</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Gjenopprett</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">Mi&amp;nimer</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">Rull ned</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">Rull opp</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">&amp;Lag</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">Alltid på &amp;topp</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">Alltid på &amp;bunnen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Lukk</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">Gruppe</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">Lukk gruppe</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
+        <source>Task Manager Settings</source>
+        <translation type="unfinished">Oppgavebehandlingsinnstillinger</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished">Generelt</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
+        <source>Show only windows from desktop</source>
+        <translation type="unfinished">Vis bare vinduer fra skrivebord</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="unfinished">Vis bare vinduer fra pa&amp;nelets skjerm</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
+        <source>Show only minimized windows</source>
+        <translation type="unfinished">Vis bare minimerte vinduer</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
+        <source>Raise minimized windows on current desktop</source>
+        <translation type="unfinished">Legg mimimerte vinduer øverst på skrivebordet i bruk</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">Lukk ved midt-klikk</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished">Skift vindu ved skrolling med hjulet</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished">Vindusg&amp;rupering</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished">Vis sprettopprute når musa er over</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Utseende</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">Knappstil</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished">Maksimal bredde på knapper</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"> pksl</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished">Maksimal høyde på knapper</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished">Auto&amp;roter knapper når panelet er vertikalt</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished">Bruk symboler fra WindowClass, hvis tilgjengelig</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
+        <source>Icon and text</source>
+        <translation type="unfinished">Symbol og tekst</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
+        <source>Only icon</source>
+        <translation type="unfinished">Bare symbol</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
+        <source>Only text</source>
+        <translation type="unfinished">Bare tekst</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
+        <source>Current</source>
+        <translation type="unfinished">Nåværende</translation>
     </message>
 </context>
 </TS>

@@ -9,14 +9,13 @@
         <translation>Montrer le bureau</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Montrer le bureau : le raccourci global &apos;%1&apos; ne peut pas être défini</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Montrer le bureau</translation>
+        <translation type="vanished">Montrer le bureau</translation>
     </message>
 </context>
 </TS>

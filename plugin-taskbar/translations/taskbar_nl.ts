@@ -4,229 +4,413 @@
 <context>
     <name>LXQtTaskBar</name>
     <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
         <source>Activate task %1</source>
-        <translation>Activeer taak %1</translation>
+        <translation type="vanished">Activeer taak %1</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>Toepassing</translation>
+        <translation type="vanished">Toepassing</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>Naar &amp;bureaublad</translation>
+        <translation type="vanished">Naar &amp;bureaublad</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;Alle bureaubladen</translation>
+        <translation type="vanished">&amp;Alle bureaubladen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>Bureaublad &amp;%1</translation>
+        <translation type="vanished">Bureaublad &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>&amp;Naar huidig bureaublad</translation>
+        <translation type="vanished">&amp;Naar huidig bureaublad</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
         <source>&amp;Move</source>
-        <translation>Verplaatsen</translation>
+        <translation type="vanished">Verplaatsen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
         <source>Resi&amp;ze</source>
-        <translation>Herschalen</translation>
+        <translation type="vanished">Herschalen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>Ma&amp;ximaliseren</translation>
+        <translation type="vanished">Ma&amp;ximaliseren</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>Verticaal maximaliseren</translation>
+        <translation type="vanished">Verticaal maximaliseren</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>Horizontaal maximaliseren</translation>
+        <translation type="vanished">Horizontaal maximaliseren</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Herstellen</translation>
+        <translation type="vanished">&amp;Herstellen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>Mi&amp;nimaliseren</translation>
+        <translation type="vanished">Mi&amp;nimaliseren</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>Uitrollen</translation>
+        <translation type="vanished">Uitrollen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>Oprollen</translation>
+        <translation type="vanished">Oprollen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>&amp;Laag</translation>
+        <translation type="vanished">&amp;Laag</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>Altijd bovenop</translation>
+        <translation type="vanished">Altijd bovenop</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>&amp;Normaal</translation>
+        <translation type="vanished">&amp;Normaal</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>Altijd onderop</translation>
+        <translation type="vanished">Altijd onderop</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>&amp;Sluiten</translation>
+        <translation type="vanished">&amp;Sluiten</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>Groep</translation>
+        <translation type="vanished">Groep</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>Sluit groep</translation>
+        <translation type="vanished">Sluit groep</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
-        <translation>Instellingen van taakbeheerder</translation>
+        <translation type="vanished">Instellingen van taakbeheerder</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>Algemeen</translation>
+        <translation type="vanished">Algemeen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>Toon alleen vensters van bureaublad</translation>
+        <translation type="vanished">Toon alleen vensters van bureaublad</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>Toon alleen vensters van &amp;balk&apos;s scherm</translation>
+        <translation type="vanished">Toon alleen vensters van &amp;balk&apos;s scherm</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>Toon alleen geminimaliseerde vensters</translation>
+        <translation type="vanished">Toon alleen geminimaliseerde vensters</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
-        <translation>Verhef geminimaliseerde vensters op huidige bureaublad</translation>
+        <translation type="vanished">Verhef geminimaliseerde vensters op huidige bureaublad</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
-        <translation>Bladeren door vensters bij muiswieldraaien</translation>
+        <translation type="vanished">Bladeren door vensters bij muiswieldraaien</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
-        <translation>Venster&amp;groepering</translation>
+        <translation type="vanished">Venster&amp;groepering</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
-        <translation>Toon opduikvenster bij zweven met muispijl</translation>
+        <translation type="vanished">Toon opduikvenster bij zweven met muispijl</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>Uiterlijk</translation>
+        <translation type="vanished">Uiterlijk</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>Maximale breedte van knop</translation>
+        <translation type="vanished">Maximale breedte van knop</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
         <source> px</source>
-        <translation> px</translation>
+        <translation type="vanished"> px</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>Maximale knophoogte</translation>
+        <translation type="vanished">Maximale knophoogte</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
         <source>Use icons by WindowClass, if available</source>
-        <translation>Gebruik pictogrammen van WindowClass, indien beschikbaar</translation>
+        <translation type="vanished">Gebruik pictogrammen van WindowClass, indien beschikbaar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation>Knoppen automatisch draaien wanneer de balk verticaal is</translation>
+        <translation type="vanished">Knoppen automatisch draaien wanneer de balk verticaal is</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
         <source>Button style</source>
-        <translation>Stijl van knoppen</translation>
+        <translation type="vanished">Stijl van knoppen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
-        <translation>Sluiten bij middelklik</translation>
+        <translation type="vanished">Sluiten bij middelklik</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>Pictogram en tekst</translation>
+        <translation type="vanished">Pictogram en tekst</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>Alleen pictogram</translation>
+        <translation type="vanished">Alleen pictogram</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>Alleen tekst</translation>
+        <translation type="vanished">Alleen tekst</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>Huidig</translation>
+        <translation type="vanished">Huidig</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished">Activeer taak %1</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">Toepassing</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">Naar &amp;bureaublad</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;Alle bureaubladen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">Bureaublad &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">&amp;Naar huidig bureaublad</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished">Verplaatsen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished">Herschalen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">Ma&amp;ximaliseren</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">Verticaal maximaliseren</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">Horizontaal maximaliseren</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Herstellen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">Mi&amp;nimaliseren</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">Uitrollen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">Oprollen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">&amp;Laag</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">Altijd bovenop</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">&amp;Normaal</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">Altijd onderop</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Sluiten</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">Groep</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">Sluit groep</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
+        <source>Task Manager Settings</source>
+        <translation type="unfinished">Instellingen van taakbeheerder</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished">Algemeen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
+        <source>Show only windows from desktop</source>
+        <translation type="unfinished">Toon alleen vensters van bureaublad</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="unfinished">Toon alleen vensters van &amp;balk&apos;s scherm</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
+        <source>Show only minimized windows</source>
+        <translation type="unfinished">Toon alleen geminimaliseerde vensters</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
+        <source>Raise minimized windows on current desktop</source>
+        <translation type="unfinished">Verhef geminimaliseerde vensters op huidige bureaublad</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">Sluiten bij middelklik</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished">Bladeren door vensters bij muiswieldraaien</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished">Venster&amp;groepering</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished">Toon opduikvenster bij zweven met muispijl</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Uiterlijk</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">Stijl van knoppen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished">Maximale breedte van knop</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"> px</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished">Maximale knophoogte</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished">Knoppen automatisch draaien wanneer de balk verticaal is</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished">Gebruik pictogrammen van WindowClass, indien beschikbaar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
+        <source>Icon and text</source>
+        <translation type="unfinished">Pictogram en tekst</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
+        <source>Only icon</source>
+        <translation type="unfinished">Alleen pictogram</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
+        <source>Only text</source>
+        <translation type="unfinished">Alleen tekst</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
+        <source>Current</source>
+        <translation type="unfinished">Huidig</translation>
     </message>
 </context>
 </TS>

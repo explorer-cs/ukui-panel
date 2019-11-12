@@ -2,231 +2,368 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fi">
 <context>
-    <name>LXQtTaskBar</name>
-    <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
-        <source>Activate task %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>Sovellus</translation>
+        <translation type="vanished">Sovellus</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>Työ&amp;pöydälle</translation>
+        <translation type="vanished">Työ&amp;pöydälle</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;Kaikille työpöydille</translation>
+        <translation type="vanished">&amp;Kaikille työpöydille</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>Työpöytä &amp;%1</translation>
+        <translation type="vanished">Työpöytä &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>&amp;Nykyiselle työpöydälle</translation>
+        <translation type="vanished">&amp;Nykyiselle työpöydälle</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
-        <source>&amp;Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
-        <source>Resi&amp;ze</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>Suu&amp;renna</translation>
+        <translation type="vanished">Suu&amp;renna</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>Suurenna pystysuunnassa</translation>
+        <translation type="vanished">Suurenna pystysuunnassa</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>Suurenna vaakasuunnassa</translation>
+        <translation type="vanished">Suurenna vaakasuunnassa</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Palauta</translation>
+        <translation type="vanished">&amp;Palauta</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>Pie&amp;nennä</translation>
+        <translation type="vanished">Pie&amp;nennä</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>Rullaa alas</translation>
+        <translation type="vanished">Rullaa alas</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>Rullaa ylös</translation>
+        <translation type="vanished">Rullaa ylös</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>Tas&amp;o</translation>
+        <translation type="vanished">Tas&amp;o</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>Aina &amp;ylimpänä</translation>
+        <translation type="vanished">Aina &amp;ylimpänä</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>&amp;Tavallinen</translation>
+        <translation type="vanished">&amp;Tavallinen</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>Aina &amp;alimpana</translation>
+        <translation type="vanished">Aina &amp;alimpana</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>&amp;Sulje</translation>
+        <translation type="vanished">&amp;Sulje</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>Ryhmä</translation>
+        <translation type="vanished">Ryhmä</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>Sulje ryhmä</translation>
+        <translation type="vanished">Sulje ryhmä</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
+        <source>General</source>
+        <translation type="vanished">Yleiset</translation>
+    </message>
+    <message>
+        <source>Show only windows from desktop</source>
+        <translation type="vanished">Näytä ikkunat vain työpöydältä</translation>
+    </message>
+    <message>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="vanished">Näytä ikkunat vain &amp;paneelin näytöltä</translation>
+    </message>
+    <message>
+        <source>Show only minimized windows</source>
+        <translation type="vanished">Näytä vain pienennetyt ikkunat</translation>
+    </message>
+    <message>
+        <source>Appearance</source>
+        <translation type="vanished">Ulkonäkö</translation>
+    </message>
+    <message>
+        <source>Maximum button width</source>
+        <translation type="vanished">Painikkeiden maksimi leveys</translation>
+    </message>
+    <message>
+        <source>Maximum button height</source>
+        <translation type="vanished">Painikkeiden maksimi korkeus</translation>
+    </message>
+    <message>
+        <source>Button style</source>
+        <translation type="vanished">Painiketyyli</translation>
+    </message>
+    <message>
+        <source>Close on middle-click</source>
+        <translation type="vanished">Sulje hiiren keskimmäisen painikkeen painalluksella</translation>
+    </message>
+    <message>
+        <source>Icon and text</source>
+        <translation type="vanished">Kuvake ja teksti</translation>
+    </message>
+    <message>
+        <source>Only icon</source>
+        <translation type="vanished">Pelkkä kuvake</translation>
+    </message>
+    <message>
+        <source>Only text</source>
+        <translation type="vanished">Pelkkä teksti</translation>
+    </message>
+    <message>
+        <source>Current</source>
+        <translation type="vanished">Nykyinen</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">Sovellus</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">Työ&amp;pöydälle</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;Kaikille työpöydille</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">Työpöytä &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">&amp;Nykyiselle työpöydälle</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">Suu&amp;renna</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">Suurenna pystysuunnassa</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">Suurenna vaakasuunnassa</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Palauta</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">Pie&amp;nennä</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">Rullaa alas</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">Rullaa ylös</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">Tas&amp;o</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">Aina &amp;ylimpänä</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">&amp;Tavallinen</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">Aina &amp;alimpana</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Sulje</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">Ryhmä</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">Sulje ryhmä</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>Yleiset</translation>
+        <translation type="unfinished">Yleiset</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>Näytä ikkunat vain työpöydältä</translation>
+        <translation type="unfinished">Näytä ikkunat vain työpöydältä</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>Näytä ikkunat vain &amp;paneelin näytöltä</translation>
+        <translation type="unfinished">Näytä ikkunat vain &amp;paneelin näytöltä</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>Näytä vain pienennetyt ikkunat</translation>
+        <translation type="unfinished">Näytä vain pienennetyt ikkunat</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">Sulje hiiren keskimmäisen painikkeen painalluksella</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>Ulkonäkö</translation>
+        <translation type="unfinished">Ulkonäkö</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">Painiketyyli</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>Painikkeiden maksimi leveys</translation>
+        <translation type="unfinished">Painikkeiden maksimi leveys</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
         <source> px</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>Painikkeiden maksimi korkeus</translation>
+        <translation type="unfinished">Painikkeiden maksimi korkeus</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
-        <source>Use icons by WindowClass, if available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
-        <source>Button style</source>
-        <translation>Painiketyyli</translation>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
-        <source>Close on middle-click</source>
-        <translation>Sulje hiiren keskimmäisen painikkeen painalluksella</translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>Kuvake ja teksti</translation>
+        <translation type="unfinished">Kuvake ja teksti</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>Pelkkä kuvake</translation>
+        <translation type="unfinished">Pelkkä kuvake</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>Pelkkä teksti</translation>
+        <translation type="unfinished">Pelkkä teksti</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>Nykyinen</translation>
+        <translation type="unfinished">Nykyinen</translation>
     </message>
 </context>
 </TS>

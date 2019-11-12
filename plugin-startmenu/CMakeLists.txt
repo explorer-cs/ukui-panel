@@ -26,7 +26,7 @@ set(LIBRARIES
 )
 
 install(FILES
-    img/startmenu.svg
+    img/startmenu.svg  img/taskview.svg
     DESTINATION "${LXQT_DATA_DIR}/plugin-startmenu/img"
     COMPONENT Runtime
 )

@@ -9,14 +9,13 @@
         <translation>바탕화면 보이기</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>바탕화면 보이기: 글로벌 단축키 &apos;%1&apos; 의 등록이 되질 않습니다</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>바탕화면 보이기</translation>
+        <translation type="vanished">바탕화면 보이기</translation>
     </message>
 </context>
 </TS>

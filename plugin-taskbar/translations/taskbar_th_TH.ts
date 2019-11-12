@@ -2,229 +2,323 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="th_TH">
 <context>
-    <name>LXQtTaskBar</name>
-    <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
-        <source>Activate task %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>โปรแกรม</translation>
+        <translation type="vanished">โปรแกรม</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>ไปยัง &amp;พ&amp;ื&amp;้นโต๊ะ</translation>
+        <translation type="vanished">ไปยัง &amp;พ&amp;ื&amp;้นโต๊ะ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;ท&amp;ุกพื้นโต๊ะ</translation>
+        <translation type="vanished">&amp;ท&amp;ุกพื้นโต๊ะ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>พื้นโต๊ะ &amp;%1</translation>
+        <translation type="vanished">พื้นโต๊ะ &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>&amp;ไปยังพื้นโต๊ะปัจจุบัน</translation>
+        <translation type="vanished">&amp;ไปยังพื้นโต๊ะปัจจุบัน</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
-        <source>&amp;Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
-        <source>Resi&amp;ze</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>&amp;ขยายแผ่</translation>
+        <translation type="vanished">&amp;ขยายแผ่</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>ขยายแผ่ทางแนวตั้ง</translation>
+        <translation type="vanished">ขยายแผ่ทางแนวตั้ง</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>ขยายแผ่ทางแนวนอน</translation>
+        <translation type="vanished">ขยายแผ่ทางแนวนอน</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;ค&amp;ืนสภาพ</translation>
+        <translation type="vanished">&amp;ค&amp;ืนสภาพ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>&amp;ย&amp;่อเก็บ</translation>
+        <translation type="vanished">&amp;ย&amp;่อเก็บ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>ม้วนลง</translation>
+        <translation type="vanished">ม้วนลง</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>ม้วนขึ้น</translation>
+        <translation type="vanished">ม้วนขึ้น</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>&amp;ลำดับชั้น</translation>
+        <translation type="vanished">&amp;ลำดับชั้น</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>ด้าน&amp;หน้าเสมอ</translation>
+        <translation type="vanished">ด้าน&amp;หน้าเสมอ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>&amp;ปกติ</translation>
+        <translation type="vanished">&amp;ปกติ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>ด้านหลัง&amp;งเสมอ</translation>
+        <translation type="vanished">ด้านหลัง&amp;งเสมอ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>ปิ&amp;ด</translation>
-    </message>
-</context>
-<context>
-    <name>LXQtTaskGroup</name>
-    <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
-        <source>Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
-        <source>Close group</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">ปิ&amp;ด</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
+        <source>Button style</source>
+        <translation type="vanished">รูปแบบปุ่ม</translation>
+    </message>
+    <message>
+        <source>Close on middle-click</source>
+        <translation type="vanished">ปิดด้วยการคลิกปุ่มกลาง</translation>
+    </message>
+    <message>
+        <source>Icon and text</source>
+        <translation type="vanished">ไอคอนและข้อความ</translation>
+    </message>
+    <message>
+        <source>Only icon</source>
+        <translation type="vanished">ไอคอนเท่านั้น</translation>
+    </message>
+    <message>
+        <source>Only text</source>
+        <translation type="vanished">ข้อความเท่านั้น</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">โปรแกรม</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">ไปยัง &amp;พ&amp;ื&amp;้นโต๊ะ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;ท&amp;ุกพื้นโต๊ะ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">พื้นโต๊ะ &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">&amp;ไปยังพื้นโต๊ะปัจจุบัน</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">&amp;ขยายแผ่</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">ขยายแผ่ทางแนวตั้ง</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">ขยายแผ่ทางแนวนอน</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;ค&amp;ืนสภาพ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">&amp;ย&amp;่อเก็บ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">ม้วนลง</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">ม้วนขึ้น</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">&amp;ลำดับชั้น</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">ด้าน&amp;หน้าเสมอ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">&amp;ปกติ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">ด้านหลัง&amp;งเสมอ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">ปิ&amp;ด</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">ปิดด้วยการคลิกปุ่มกลาง</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">รูปแบบปุ่ม</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
         <source> px</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
-        <source>Use icons by WindowClass, if available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
-        <source>Button style</source>
-        <translation>รูปแบบปุ่ม</translation>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
-        <source>Close on middle-click</source>
-        <translation>ปิดด้วยการคลิกปุ่มกลาง</translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>ไอคอนและข้อความ</translation>
+        <translation type="unfinished">ไอคอนและข้อความ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>ไอคอนเท่านั้น</translation>
+        <translation type="unfinished">ไอคอนเท่านั้น</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>ข้อความเท่านั้น</translation>
+        <translation type="unfinished">ข้อความเท่านั้น</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
         <translation type="unfinished"></translation>
     </message>

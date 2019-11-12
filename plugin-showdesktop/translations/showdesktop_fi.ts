@@ -9,14 +9,13 @@
         <translation>Näytä työpöytä</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Näytä työpöytä: globaalia pikanäppäintä &apos;%1&apos; ei voi rekisteröidä</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Näytä työpöytä</translation>
+        <translation type="vanished">Näytä työpöytä</translation>
     </message>
 </context>
 </TS>

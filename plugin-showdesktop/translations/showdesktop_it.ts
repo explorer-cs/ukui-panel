@@ -9,14 +9,13 @@
         <translation>Mostra scrivania</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Mostra scrivania: la scorciatoia globale &apos;%1&apos; non può essere registrata</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Mostra scrivania</translation>
+        <translation type="vanished">Mostra scrivania</translation>
     </message>
 </context>
 </TS>
