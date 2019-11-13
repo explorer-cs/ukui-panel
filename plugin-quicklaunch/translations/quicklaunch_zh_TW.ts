@@ -22,19 +22,17 @@
 <context>
     <name>UKUIQuickLaunch</name>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="280"/>
-        <location filename="../ukuiquicklaunch.cpp" line="315"/>
+        <location filename="../ukuiquicklaunch.cpp" line="325"/>
         <source>Drop Error</source>
         <translation>移入錯誤</translation>
     </message>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="281"/>
-        <location filename="../ukuiquicklaunch.cpp" line="316"/>
+        <location filename="../ukuiquicklaunch.cpp" line="326"/>
         <source>File/URL &apos;%1&apos; cannot be embedded into QuickLaunch for now</source>
         <translation>檔案位址&apos;%1&apos;現在無法嵌入至快速啟動</translation>
     </message>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="525"/>
+        <location filename="../ukuiquicklaunch.cpp" line="566"/>
         <source>Drop application
 icons here</source>
         <translation>在此放置

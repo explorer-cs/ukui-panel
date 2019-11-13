@@ -22,19 +22,17 @@
 <context>
     <name>UKUIQuickLaunch</name>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="280"/>
-        <location filename="../ukuiquicklaunch.cpp" line="315"/>
+        <location filename="../ukuiquicklaunch.cpp" line="325"/>
         <source>Drop Error</source>
         <translation>Fejl ved slip</translation>
     </message>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="281"/>
-        <location filename="../ukuiquicklaunch.cpp" line="316"/>
+        <location filename="../ukuiquicklaunch.cpp" line="326"/>
         <source>File/URL &apos;%1&apos; cannot be embedded into QuickLaunch for now</source>
         <translation>Filen/URL&apos;en &apos;%1&apos; kan ikke indlejres i hurtigstart på nuværende tidspunkt</translation>
     </message>
     <message>
-        <location filename="../ukuiquicklaunch.cpp" line="525"/>
+        <location filename="../ukuiquicklaunch.cpp" line="566"/>
         <source>Drop application
 icons here</source>
         <translation>Slip programikoner her</translation>
