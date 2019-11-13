@@ -97,7 +97,7 @@ private:
     QString formatDateTime(const QDateTime &datetime, const QString &timeZoneName);
     void updatePopupContent();
     bool formatHasTimeZone(QString format);
-    QString preformat(const QString &format, const QTimeZone &timeZone, const QDateTime& dateTime);
+    QString preformat(const QDateTime &dateTime,const QString &format, const QTimeZone &timeZone);
 };
 
 

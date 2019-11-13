@@ -4,229 +4,405 @@
 <context>
     <name>LXQtTaskBar</name>
     <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
         <source>Activate task %1</source>
-        <translation>Activar a tarefa %1</translation>
+        <translation type="vanished">Activar a tarefa %1</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>Aplicativo</translation>
+        <translation type="vanished">Aplicativo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>Ao &amp;escritorio</translation>
+        <translation type="vanished">Ao &amp;escritorio</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;Todos os escritorios</translation>
+        <translation type="vanished">&amp;Todos os escritorios</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>Escritorio &amp;%1</translation>
+        <translation type="vanished">Escritorio &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>Ao escritorio &amp;actual</translation>
+        <translation type="vanished">Ao escritorio &amp;actual</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
         <source>&amp;Move</source>
-        <translation>&amp;Desprazar</translation>
+        <translation type="vanished">&amp;Desprazar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
         <source>Resi&amp;ze</source>
-        <translation>Redi&amp;mensionar</translation>
+        <translation type="vanished">Redi&amp;mensionar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>Ma&amp;ximizar</translation>
+        <translation type="vanished">Ma&amp;ximizar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>Maximizar verticalmente</translation>
+        <translation type="vanished">Maximizar verticalmente</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>Maximizar horizontalmente</translation>
+        <translation type="vanished">Maximizar horizontalmente</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Restaurar</translation>
+        <translation type="vanished">&amp;Restaurar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>Mi&amp;nimizar</translation>
+        <translation type="vanished">Mi&amp;nimizar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>Desenrolar</translation>
+        <translation type="vanished">Desenrolar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>Enrolar</translation>
+        <translation type="vanished">Enrolar</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>&amp;Disposición</translation>
+        <translation type="vanished">&amp;Disposición</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>Sempre &amp;enriba</translation>
+        <translation type="vanished">Sempre &amp;enriba</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
-        <source>&amp;Normal</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>Sempre em&amp;baixo</translation>
+        <translation type="vanished">Sempre em&amp;baixo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>&amp;Pechar</translation>
+        <translation type="vanished">&amp;Pechar</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>Grupo</translation>
+        <translation type="vanished">Grupo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>Pechar o grupo</translation>
+        <translation type="vanished">Pechar o grupo</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
-        <translation>Axustes do administrador de tarefas</translation>
+        <translation type="vanished">Axustes do administrador de tarefas</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>Xeral</translation>
+        <translation type="vanished">Xeral</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>Amosar só as xanelas do escritorio</translation>
+        <translation type="vanished">Amosar só as xanelas do escritorio</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>Amosar só as xanelas da pantalla do &amp;panel</translation>
+        <translation type="vanished">Amosar só as xanelas da pantalla do &amp;panel</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>Amosar só as xanelas minimizadas</translation>
+        <translation type="vanished">Amosar só as xanelas minimizadas</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
-        <translation>Elevar as xanelas minimizadas do escritorio actual</translation>
+        <translation type="vanished">Elevar as xanelas minimizadas do escritorio actual</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
-        <translation>Pechar co botón central do rato</translation>
+        <translation type="vanished">Pechar co botón central do rato</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
-        <translation>Percorrer as xanelas coa roda do rato</translation>
+        <translation type="vanished">Percorrer as xanelas coa roda do rato</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
-        <translation>A&amp;grupamento de xanelas</translation>
+        <translation type="vanished">A&amp;grupamento de xanelas</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
-        <translation>Amosar a xanela emerxente ao pasar o rato por riba</translation>
+        <translation type="vanished">Amosar a xanela emerxente ao pasar o rato por riba</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>Aparencia</translation>
+        <translation type="vanished">Aparencia</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
         <source>Button style</source>
-        <translation>Estilo do botón</translation>
+        <translation type="vanished">Estilo do botón</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>Largura máxima do botón</translation>
+        <translation type="vanished">Largura máxima do botón</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
-        <source> px</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>Altura máxima do botón</translation>
+        <translation type="vanished">Altura máxima do botón</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation>&amp;Rotar automaticamente os botóns cando o panel estea en vertical</translation>
+        <translation type="vanished">&amp;Rotar automaticamente os botóns cando o panel estea en vertical</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
         <source>Use icons by WindowClass, if available</source>
-        <translation>Usar as iconas de clase de xanela, se están dispoñíbeis</translation>
+        <translation type="vanished">Usar as iconas de clase de xanela, se están dispoñíbeis</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>Icona e texto</translation>
+        <translation type="vanished">Icona e texto</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>Só a icona</translation>
+        <translation type="vanished">Só a icona</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>Só o texto</translation>
+        <translation type="vanished">Só o texto</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>Actual</translation>
+        <translation type="vanished">Actual</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished">Activar a tarefa %1</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">Aplicativo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">Ao &amp;escritorio</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;Todos os escritorios</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">Escritorio &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">Ao escritorio &amp;actual</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished">&amp;Desprazar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished">Redi&amp;mensionar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">Ma&amp;ximizar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">Maximizar verticalmente</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">Maximizar horizontalmente</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Restaurar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">Mi&amp;nimizar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">Desenrolar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">Enrolar</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">&amp;Disposición</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">Sempre &amp;enriba</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">Sempre em&amp;baixo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Pechar</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">Grupo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">Pechar o grupo</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
+        <source>Task Manager Settings</source>
+        <translation type="unfinished">Axustes do administrador de tarefas</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished">Xeral</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
+        <source>Show only windows from desktop</source>
+        <translation type="unfinished">Amosar só as xanelas do escritorio</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="unfinished">Amosar só as xanelas da pantalla do &amp;panel</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
+        <source>Show only minimized windows</source>
+        <translation type="unfinished">Amosar só as xanelas minimizadas</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
+        <source>Raise minimized windows on current desktop</source>
+        <translation type="unfinished">Elevar as xanelas minimizadas do escritorio actual</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">Pechar co botón central do rato</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished">Percorrer as xanelas coa roda do rato</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished">A&amp;grupamento de xanelas</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished">Amosar a xanela emerxente ao pasar o rato por riba</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Aparencia</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">Estilo do botón</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished">Largura máxima do botón</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished">Altura máxima do botón</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished">&amp;Rotar automaticamente os botóns cando o panel estea en vertical</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished">Usar as iconas de clase de xanela, se están dispoñíbeis</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
+        <source>Icon and text</source>
+        <translation type="unfinished">Icona e texto</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
+        <source>Only icon</source>
+        <translation type="unfinished">Só a icona</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
+        <source>Only text</source>
+        <translation type="unfinished">Só o texto</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
+        <source>Current</source>
+        <translation type="unfinished">Actual</translation>
     </message>
 </context>
 </TS>

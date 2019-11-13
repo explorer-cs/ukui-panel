@@ -9,14 +9,13 @@
         <translation>הצגת שולחן עבודה</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>הצגת שולחן עבודה: לא ניתן לרשום את קיצור הדרך הגלובלי ‚%1’</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>הצגת שולחן עבודה</translation>
+        <translation type="vanished">הצגת שולחן עבודה</translation>
     </message>
 </context>
 </TS>

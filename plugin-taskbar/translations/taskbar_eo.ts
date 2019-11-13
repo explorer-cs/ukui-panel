@@ -2,229 +2,319 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="eo">
 <context>
-    <name>LXQtTaskBar</name>
-    <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
-        <source>Activate task %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>Aplikaĵo</translation>
+        <translation type="vanished">Aplikaĵo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>&amp;Al labortablo</translation>
+        <translation type="vanished">&amp;Al labortablo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>Ĉiuj l&amp;abortabloj</translation>
+        <translation type="vanished">Ĉiuj l&amp;abortabloj</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>Labortablo &amp;%1</translation>
+        <translation type="vanished">Labortablo &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>Al ak&amp;tuala labortablo</translation>
+        <translation type="vanished">Al ak&amp;tuala labortablo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
-        <source>&amp;Move</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
-        <source>Resi&amp;ze</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>Ma&amp;ksimumigi</translation>
+        <translation type="vanished">Ma&amp;ksimumigi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>Vertikale maksimumigi</translation>
+        <translation type="vanished">Vertikale maksimumigi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>Horizontale maksimumigi</translation>
+        <translation type="vanished">Horizontale maksimumigi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>&amp;Restaŭri</translation>
+        <translation type="vanished">&amp;Restaŭri</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>&amp;Malmaksimumigi</translation>
+        <translation type="vanished">&amp;Malmaksimumigi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>Malsupren rulumi</translation>
+        <translation type="vanished">Malsupren rulumi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>Supren rulumi</translation>
+        <translation type="vanished">Supren rulumi</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>Tavo&amp;lo</translation>
+        <translation type="vanished">Tavo&amp;lo</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>Ĉiam &amp;supre</translation>
+        <translation type="vanished">Ĉiam &amp;supre</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>&amp;Normale</translation>
+        <translation type="vanished">&amp;Normale</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>Ĉiam &amp;malsupre</translation>
+        <translation type="vanished">Ĉiam &amp;malsupre</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>&amp;Fermi</translation>
-    </message>
-</context>
-<context>
-    <name>LXQtTaskGroup</name>
-    <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
-        <source>Group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
-        <source>Close group</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&amp;Fermi</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
+        <source>Button style</source>
+        <translation type="vanished">Stilo de butonoj</translation>
+    </message>
+    <message>
+        <source>Icon and text</source>
+        <translation type="vanished">Piktogramo kaj teksto</translation>
+    </message>
+    <message>
+        <source>Only icon</source>
+        <translation type="vanished">Nur piktogramoj</translation>
+    </message>
+    <message>
+        <source>Only text</source>
+        <translation type="vanished">Nur teksto</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">Aplikaĵo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">&amp;Al labortablo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">Ĉiuj l&amp;abortabloj</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">Labortablo &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">Al ak&amp;tuala labortablo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">Ma&amp;ksimumigi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">Vertikale maksimumigi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">Horizontale maksimumigi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">&amp;Restaŭri</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">&amp;Malmaksimumigi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">Malsupren rulumi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">Supren rulumi</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">Tavo&amp;lo</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">Ĉiam &amp;supre</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">&amp;Normale</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">Ĉiam &amp;malsupre</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">&amp;Fermi</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
-        <source>Cycle windows on wheel scrolling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
-        <source>Window &amp;grouping</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
-        <source>Show popup on mouse hover</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
-        <source>Appearance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
-        <source>Maximum button width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
-        <source> px</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
-        <source>Maximum button height</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
-        <source>Use icons by WindowClass, if available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
-        <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
-        <source>Button style</source>
-        <translation>Stilo de butonoj</translation>
-    </message>
-    <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">Stilo de butonoj</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>Piktogramo kaj teksto</translation>
+        <translation type="unfinished">Piktogramo kaj teksto</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>Nur piktogramoj</translation>
+        <translation type="unfinished">Nur piktogramoj</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>Nur teksto</translation>
+        <translation type="unfinished">Nur teksto</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
         <translation type="unfinished"></translation>
     </message>

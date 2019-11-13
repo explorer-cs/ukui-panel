@@ -9,14 +9,13 @@
         <translation>デスクトップの表示</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>デスクトップの表示: グローバルなショートカット &apos;%1&apos; は登録できません</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>デスクトップを表示</translation>
+        <translation type="vanished">デスクトップを表示</translation>
     </message>
 </context>
 </TS>

@@ -9,12 +9,11 @@
         <translation>Schreibtisch anzeigen</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Schreibtisch anzeigen</translation>
+        <translation type="vanished">Schreibtisch anzeigen</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Schreibtisch anzeigen: Globales Tastaturkürzel &apos;%1&apos; kann nicht registriert werden</translation>
     </message>

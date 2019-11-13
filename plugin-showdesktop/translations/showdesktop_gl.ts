@@ -9,14 +9,13 @@
         <translation>Amosar o escritorio</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Amosar o escritorio: Non é posíbel rexistrar o atallo global «%1»</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Amosar o escritorio</translation>
+        <translation type="vanished">Amosar o escritorio</translation>
     </message>
 </context>
 </TS>

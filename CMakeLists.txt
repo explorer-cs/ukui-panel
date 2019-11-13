@@ -7,7 +7,7 @@
 project(ukui-panel)
 
 
-option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" ON)
+option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
 option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 'screensaver' plugin to 'quicklaunch'. This requires the lxqt-leave (lxqt-session) to be installed in runtime." OFF)
 # plugin-mainmenu
 option(USE_MENU_CACHE "Use menu-cached (no noticable penalty even on a 2004 single core pentium if not used)" OFF)

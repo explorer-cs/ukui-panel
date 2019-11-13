@@ -9,14 +9,13 @@
         <translation>Показать рабочий стол</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Показать рабочий стол: глобальное сочетание клавиш &apos;%1&apos; не может быть зарегистрировано</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Показать рабочий стол</translation>
+        <translation type="vanished">Показать рабочий стол</translation>
     </message>
 </context>
 </TS>

@@ -9,14 +9,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Prikaz namizja: globalne bližnjice »%1« ni moč registrirati</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Pokaži namizje</translation>
+        <translation type="vanished">Pokaži namizje</translation>
     </message>
 </context>
 </TS>

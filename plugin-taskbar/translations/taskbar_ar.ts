@@ -4,229 +4,413 @@
 <context>
     <name>LXQtTaskBar</name>
     <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
         <source>Activate task %1</source>
-        <translation>فعّل المهمة %1</translation>
+        <translation type="vanished">فعّل المهمة %1</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>التطبيق</translation>
+        <translation type="vanished">التطبيق</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>إلى س&amp;طح المكتب</translation>
+        <translation type="vanished">إلى س&amp;طح المكتب</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>&amp;كل أسطح المكتب</translation>
+        <translation type="vanished">&amp;كل أسطح المكتب</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>سطح المكتب &amp;%1</translation>
+        <translation type="vanished">سطح المكتب &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>إ&amp;لى سطح المكتب الحالي</translation>
+        <translation type="vanished">إ&amp;لى سطح المكتب الحالي</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
         <source>&amp;Move</source>
-        <translation>ا&amp;نقل</translation>
+        <translation type="vanished">ا&amp;نقل</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
         <source>Resi&amp;ze</source>
-        <translation>&amp;غيّر المقاس</translation>
+        <translation type="vanished">&amp;غيّر المقاس</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>&amp;كبّر</translation>
+        <translation type="vanished">&amp;كبّر</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>كبّر رأسيا</translation>
+        <translation type="vanished">كبّر رأسيا</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>كبّر أفقيا</translation>
+        <translation type="vanished">كبّر أفقيا</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>ا&amp;ستعِد</translation>
+        <translation type="vanished">ا&amp;ستعِد</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>&amp;صغّر</translation>
+        <translation type="vanished">&amp;صغّر</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>لُفّ لأسفل</translation>
+        <translation type="vanished">لُفّ لأسفل</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>لُفّ لأعلى</translation>
+        <translation type="vanished">لُفّ لأعلى</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>ال&amp;طبقة</translation>
+        <translation type="vanished">ال&amp;طبقة</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>&amp;فوق الكل دائما</translation>
+        <translation type="vanished">&amp;فوق الكل دائما</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>&amp;عادي</translation>
+        <translation type="vanished">&amp;عادي</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>&amp;تحت الكل دائما</translation>
+        <translation type="vanished">&amp;تحت الكل دائما</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>أ&amp;غلِق</translation>
+        <translation type="vanished">أ&amp;غلِق</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>المجموعة</translation>
+        <translation type="vanished">المجموعة</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>أغلِق المجموعة</translation>
+        <translation type="vanished">أغلِق المجموعة</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
-        <translation>إعدادات مدير المهام</translation>
+        <translation type="vanished">إعدادات مدير المهام</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>عام</translation>
+        <translation type="vanished">عام</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>اعرض فقط النوافذ في سطح المكتب</translation>
+        <translation type="vanished">اعرض فقط النوافذ في سطح المكتب</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>اعرض النوافذ في شاشة اللو&amp;حة فقط</translation>
+        <translation type="vanished">اعرض النوافذ في شاشة اللو&amp;حة فقط</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>اعرض النوافذ المصغّرة فقط</translation>
+        <translation type="vanished">اعرض النوافذ المصغّرة فقط</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
-        <translation>كبّر النوافذ المصغّرة في سطح المكتب الحالي</translation>
+        <translation type="vanished">كبّر النوافذ المصغّرة في سطح المكتب الحالي</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
-        <translation>أغلِق بالنقر بالوسط</translation>
+        <translation type="vanished">أغلِق بالنقر بالوسط</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
-        <translation>عجلة الفأرة تُبدّل بين النوافذ</translation>
+        <translation type="vanished">عجلة الفأرة تُبدّل بين النوافذ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
-        <translation>&amp;جمّع النوافذ</translation>
+        <translation type="vanished">&amp;جمّع النوافذ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
-        <translation>اعرض منبثقة عند مرور المؤشّر</translation>
+        <translation type="vanished">اعرض منبثقة عند مرور المؤشّر</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>المظهر</translation>
+        <translation type="vanished">المظهر</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
         <source>Button style</source>
-        <translation>نمط الأزرار</translation>
+        <translation type="vanished">نمط الأزرار</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>أدنى عرض للزرّ</translation>
+        <translation type="vanished">أدنى عرض للزرّ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
         <source> px</source>
-        <translation> بكسل</translation>
+        <translation type="vanished"> بكسل</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>أقصى ارتفاع للزرّ</translation>
+        <translation type="vanished">أقصى ارتفاع للزرّ</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation>&amp;دوّر الأزرار آليا عندما تكون اللوحة رأسية</translation>
+        <translation type="vanished">&amp;دوّر الأزرار آليا عندما تكون اللوحة رأسية</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
         <source>Use icons by WindowClass, if available</source>
-        <translation>استخدم الأيقونات من WindowClass إن وُجدت</translation>
+        <translation type="vanished">استخدم الأيقونات من WindowClass إن وُجدت</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>أيقونة ونص</translation>
+        <translation type="vanished">أيقونة ونص</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>أيقونة فقط</translation>
+        <translation type="vanished">أيقونة فقط</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>نص فقط</translation>
+        <translation type="vanished">نص فقط</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>الحالي</translation>
+        <translation type="vanished">الحالي</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished">فعّل المهمة %1</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">التطبيق</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">إلى س&amp;طح المكتب</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">&amp;كل أسطح المكتب</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">سطح المكتب &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">إ&amp;لى سطح المكتب الحالي</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished">ا&amp;نقل</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished">&amp;غيّر المقاس</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">&amp;كبّر</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">كبّر رأسيا</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">كبّر أفقيا</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">ا&amp;ستعِد</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">&amp;صغّر</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">لُفّ لأسفل</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">لُفّ لأعلى</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">ال&amp;طبقة</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">&amp;فوق الكل دائما</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">&amp;عادي</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">&amp;تحت الكل دائما</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">أ&amp;غلِق</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">المجموعة</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">أغلِق المجموعة</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
+        <source>Task Manager Settings</source>
+        <translation type="unfinished">إعدادات مدير المهام</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished">عام</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
+        <source>Show only windows from desktop</source>
+        <translation type="unfinished">اعرض فقط النوافذ في سطح المكتب</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="unfinished">اعرض النوافذ في شاشة اللو&amp;حة فقط</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
+        <source>Show only minimized windows</source>
+        <translation type="unfinished">اعرض النوافذ المصغّرة فقط</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
+        <source>Raise minimized windows on current desktop</source>
+        <translation type="unfinished">كبّر النوافذ المصغّرة في سطح المكتب الحالي</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">أغلِق بالنقر بالوسط</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished">عجلة الفأرة تُبدّل بين النوافذ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished">&amp;جمّع النوافذ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished">اعرض منبثقة عند مرور المؤشّر</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished">المظهر</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">نمط الأزرار</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished">أدنى عرض للزرّ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"> بكسل</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished">أقصى ارتفاع للزرّ</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished">&amp;دوّر الأزرار آليا عندما تكون اللوحة رأسية</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished">استخدم الأيقونات من WindowClass إن وُجدت</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
+        <source>Icon and text</source>
+        <translation type="unfinished">أيقونة ونص</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
+        <source>Only icon</source>
+        <translation type="unfinished">أيقونة فقط</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
+        <source>Only text</source>
+        <translation type="unfinished">نص فقط</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
+        <source>Current</source>
+        <translation type="unfinished">الحالي</translation>
     </message>
 </context>
 </TS>

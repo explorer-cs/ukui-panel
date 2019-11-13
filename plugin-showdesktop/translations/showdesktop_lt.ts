@@ -9,14 +9,13 @@
         <translation>Rodyti darbalaukį</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Rodyti darbalaukį: Visuotinis spartusis klavišas &quot;%1&quot; negali būti užregistruotas</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Rodyti darbalaukį</translation>
+        <translation type="vanished">Rodyti darbalaukį</translation>
     </message>
 </context>
 </TS>

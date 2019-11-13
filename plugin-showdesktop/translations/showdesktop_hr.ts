@@ -9,14 +9,13 @@
         <translation type="unfinished">Pokaži radnu površinu</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation type="unfinished">Pokaži Radnu površinu</translation>
+        <translation type="obsolete">Pokaži Radnu površinu</translation>
     </message>
 </context>
 </TS>

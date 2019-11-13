@@ -4,229 +4,413 @@
 <context>
     <name>LXQtTaskBar</name>
     <message>
-        <location filename="../lxqttaskbar.cpp" line="648"/>
         <source>Activate task %1</source>
-        <translation>啟用任務 %1</translation>
+        <translation type="vanished">啟用任務 %1</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskButton</name>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="513"/>
         <source>Application</source>
-        <translation>應用程式</translation>
+        <translation type="vanished">應用程式</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="547"/>
         <source>To &amp;Desktop</source>
-        <translation>傳送到桌面(&amp;D)</translation>
+        <translation type="vanished">傳送到桌面(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="549"/>
         <source>&amp;All Desktops</source>
-        <translation>傳送到全部桌面(&amp;A)</translation>
+        <translation type="vanished">傳送到全部桌面(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="557"/>
         <source>Desktop &amp;%1</source>
-        <translation>桌面 &amp;%1</translation>
+        <translation type="vanished">桌面 &amp;%1</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="564"/>
         <source>&amp;To Current Desktop</source>
-        <translation>傳送到當前桌面(&amp;T)</translation>
+        <translation type="vanished">傳送到當前桌面(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="572"/>
         <source>&amp;Move</source>
-        <translation>移動 (&amp;M)</translation>
+        <translation type="vanished">移動 (&amp;M)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="575"/>
         <source>Resi&amp;ze</source>
-        <translation>更改大小 (&amp;z)</translation>
+        <translation type="vanished">更改大小 (&amp;z)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="582"/>
         <source>Ma&amp;ximize</source>
-        <translation>最大化(&amp;x)</translation>
+        <translation type="vanished">最大化(&amp;x)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="589"/>
         <source>Maximize vertically</source>
-        <translation>垂直最大化</translation>
+        <translation type="vanished">垂直最大化</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="594"/>
         <source>Maximize horizontally</source>
-        <translation>水平最大化</translation>
+        <translation type="vanished">水平最大化</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="600"/>
         <source>&amp;Restore</source>
-        <translation>恢復(&amp;R)</translation>
+        <translation type="vanished">恢復(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="604"/>
         <source>Mi&amp;nimize</source>
-        <translation>最小化(&amp;n)</translation>
+        <translation type="vanished">最小化(&amp;n)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="610"/>
         <source>Roll down</source>
-        <translation>放下視窗</translation>
+        <translation type="vanished">放下視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="616"/>
         <source>Roll up</source>
-        <translation>捲起視窗</translation>
+        <translation type="vanished">捲起視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="624"/>
         <source>&amp;Layer</source>
-        <translation>層(&amp;L)</translation>
+        <translation type="vanished">層(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="626"/>
         <source>Always on &amp;top</source>
-        <translation>總是在最上層(&amp;t)</translation>
+        <translation type="vanished">總是在最上層(&amp;t)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="632"/>
         <source>&amp;Normal</source>
-        <translation>正常(&amp;N)</translation>
+        <translation type="vanished">正常(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="638"/>
         <source>Always on &amp;bottom</source>
-        <translation>總是在最底層(&amp;b)</translation>
+        <translation type="vanished">總是在最底層(&amp;b)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbutton.cpp" line="646"/>
         <source>&amp;Close</source>
-        <translation>關閉(&amp;C)</translation>
+        <translation type="vanished">關閉(&amp;C)</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskGroup</name>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="82"/>
         <source>Group</source>
-        <translation>群組</translation>
+        <translation type="vanished">群組</translation>
     </message>
     <message>
-        <location filename="../lxqttaskgroup.cpp" line="84"/>
         <source>Close group</source>
-        <translation>關閉群組</translation>
+        <translation type="vanished">關閉群組</translation>
     </message>
 </context>
 <context>
     <name>LXQtTaskbarConfiguration</name>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="14"/>
         <source>Task Manager Settings</source>
-        <translation>工作管理員設定</translation>
+        <translation type="vanished">工作管理員設定</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="20"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation type="vanished">一般</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="43"/>
         <source>Show only windows from desktop</source>
-        <translation>僅顯示桌面上的視窗</translation>
+        <translation type="vanished">僅顯示桌面上的視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="55"/>
         <source>Show only windows from &amp;panel&apos;s screen</source>
-        <translation>僅顯示面板視窗 (&amp;p)</translation>
+        <translation type="vanished">僅顯示面板視窗 (&amp;p)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="62"/>
         <source>Show only minimized windows</source>
-        <translation>僅顯示最小化視窗</translation>
+        <translation type="vanished">僅顯示最小化視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="69"/>
         <source>Raise minimized windows on current desktop</source>
-        <translation>在當前桌面展開最小化的視窗</translation>
+        <translation type="vanished">在當前桌面展開最小化的視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="83"/>
         <source>Cycle windows on wheel scrolling</source>
-        <translation>滾動滾輪時循環顯示視窗</translation>
+        <translation type="vanished">滾動滾輪時循環顯示視窗</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="93"/>
         <source>Window &amp;grouping</source>
-        <translation>視窗群組 (&amp;g)</translation>
+        <translation type="vanished">視窗群組 (&amp;g)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="102"/>
         <source>Show popup on mouse hover</source>
-        <translation>當滑鼠懸停時顯示彈出式預覽</translation>
+        <translation type="vanished">當滑鼠懸停時顯示彈出式預覽</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="112"/>
         <source>Appearance</source>
-        <translation>外觀</translation>
+        <translation type="vanished">外觀</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="131"/>
         <source>Maximum button width</source>
-        <translation>最大按鈕寬度</translation>
+        <translation type="vanished">最大按鈕寬度</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="144"/>
-        <location filename="../lxqttaskbarconfiguration.ui" line="170"/>
         <source> px</source>
-        <translation> 像素</translation>
+        <translation type="vanished"> 像素</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="157"/>
         <source>Maximum button height</source>
-        <translation>最大按鈕高度</translation>
+        <translation type="vanished">最大按鈕高度</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="190"/>
         <source>Use icons by WindowClass, if available</source>
-        <translation>如果可以的話，使用WindowClass的圖示</translation>
+        <translation type="vanished">如果可以的話，使用WindowClass的圖示</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="183"/>
         <source>Auto&amp;rotate buttons when the panel is vertical</source>
-        <translation>當面板垂直時自動旋轉按鈕 (&amp;r)</translation>
+        <translation type="vanished">當面板垂直時自動旋轉按鈕 (&amp;r)</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="121"/>
         <source>Button style</source>
-        <translation>按鈕樣式</translation>
+        <translation type="vanished">按鈕樣式</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.ui" line="76"/>
         <source>Close on middle-click</source>
-        <translation>按滑鼠中鍵關閉</translation>
+        <translation type="vanished">按滑鼠中鍵關閉</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="44"/>
         <source>Icon and text</source>
-        <translation>圖示與文字</translation>
+        <translation type="vanished">圖示與文字</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="45"/>
         <source>Only icon</source>
-        <translation>僅圖示</translation>
+        <translation type="vanished">僅圖示</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="46"/>
         <source>Only text</source>
-        <translation>僅文字</translation>
+        <translation type="vanished">僅文字</translation>
     </message>
     <message>
-        <location filename="../lxqttaskbarconfiguration.cpp" line="48"/>
         <source>Current</source>
-        <translation>現在</translation>
+        <translation type="vanished">現在</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskBar</name>
+    <message>
+        <location filename="../ukuitaskbar.cpp" line="648"/>
+        <source>Activate task %1</source>
+        <translation type="unfinished">啟用任務 %1</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskButton</name>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="512"/>
+        <source>Application</source>
+        <translation type="unfinished">應用程式</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="546"/>
+        <source>To &amp;Desktop</source>
+        <translation type="unfinished">傳送到桌面(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="548"/>
+        <source>&amp;All Desktops</source>
+        <translation type="unfinished">傳送到全部桌面(&amp;A)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="556"/>
+        <source>Desktop &amp;%1</source>
+        <translation type="unfinished">桌面 &amp;%1</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="563"/>
+        <source>&amp;To Current Desktop</source>
+        <translation type="unfinished">傳送到當前桌面(&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="571"/>
+        <source>&amp;Move</source>
+        <translation type="unfinished">移動 (&amp;M)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="574"/>
+        <source>Resi&amp;ze</source>
+        <translation type="unfinished">更改大小 (&amp;z)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="581"/>
+        <source>Ma&amp;ximize</source>
+        <translation type="unfinished">最大化(&amp;x)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="588"/>
+        <source>Maximize vertically</source>
+        <translation type="unfinished">垂直最大化</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="593"/>
+        <source>Maximize horizontally</source>
+        <translation type="unfinished">水平最大化</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="599"/>
+        <source>&amp;Restore</source>
+        <translation type="unfinished">恢復(&amp;R)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="603"/>
+        <source>Mi&amp;nimize</source>
+        <translation type="unfinished">最小化(&amp;n)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="609"/>
+        <source>Roll down</source>
+        <translation type="unfinished">放下視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="615"/>
+        <source>Roll up</source>
+        <translation type="unfinished">捲起視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="623"/>
+        <source>&amp;Layer</source>
+        <translation type="unfinished">層(&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="625"/>
+        <source>Always on &amp;top</source>
+        <translation type="unfinished">總是在最上層(&amp;t)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="631"/>
+        <source>&amp;Normal</source>
+        <translation type="unfinished">正常(&amp;N)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="637"/>
+        <source>Always on &amp;bottom</source>
+        <translation type="unfinished">總是在最底層(&amp;b)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbutton.cpp" line="645"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished">關閉(&amp;C)</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskGroup</name>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="82"/>
+        <source>Group</source>
+        <translation type="unfinished">群組</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskgroup.cpp" line="84"/>
+        <source>Close group</source>
+        <translation type="unfinished">關閉群組</translation>
+    </message>
+</context>
+<context>
+    <name>UKUITaskbarConfiguration</name>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="14"/>
+        <source>Task Manager Settings</source>
+        <translation type="unfinished">工作管理員設定</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished">一般</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="43"/>
+        <source>Show only windows from desktop</source>
+        <translation type="unfinished">僅顯示桌面上的視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="55"/>
+        <source>Show only windows from &amp;panel&apos;s screen</source>
+        <translation type="unfinished">僅顯示面板視窗 (&amp;p)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="62"/>
+        <source>Show only minimized windows</source>
+        <translation type="unfinished">僅顯示最小化視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="69"/>
+        <source>Raise minimized windows on current desktop</source>
+        <translation type="unfinished">在當前桌面展開最小化的視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="76"/>
+        <source>Close on middle-click</source>
+        <translation type="unfinished">按滑鼠中鍵關閉</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="83"/>
+        <source>Cycle windows on wheel scrolling</source>
+        <translation type="unfinished">滾動滾輪時循環顯示視窗</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="93"/>
+        <source>Window &amp;grouping</source>
+        <translation type="unfinished">視窗群組 (&amp;g)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="102"/>
+        <source>Show popup on mouse hover</source>
+        <translation type="unfinished">當滑鼠懸停時顯示彈出式預覽</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="112"/>
+        <source>Appearance</source>
+        <translation type="unfinished">外觀</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="121"/>
+        <source>Button style</source>
+        <translation type="unfinished">按鈕樣式</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="131"/>
+        <source>Maximum button width</source>
+        <translation type="unfinished">最大按鈕寬度</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="144"/>
+        <location filename="../ukuitaskbarconfiguration.ui" line="170"/>
+        <source> px</source>
+        <translation type="unfinished"> 像素</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="157"/>
+        <source>Maximum button height</source>
+        <translation type="unfinished">最大按鈕高度</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="183"/>
+        <source>Auto&amp;rotate buttons when the panel is vertical</source>
+        <translation type="unfinished">當面板垂直時自動旋轉按鈕 (&amp;r)</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.ui" line="190"/>
+        <source>Use icons by WindowClass, if available</source>
+        <translation type="unfinished">如果可以的話，使用WindowClass的圖示</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="44"/>
+        <source>Icon and text</source>
+        <translation type="unfinished">圖示與文字</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="45"/>
+        <source>Only icon</source>
+        <translation type="unfinished">僅圖示</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="46"/>
+        <source>Only text</source>
+        <translation type="unfinished">僅文字</translation>
+    </message>
+    <message>
+        <location filename="../ukuitaskbarconfiguration.cpp" line="48"/>
+        <source>Current</source>
+        <translation type="unfinished">現在</translation>
     </message>
 </context>
 </TS>

@@ -9,14 +9,13 @@
         <translation>اعرض سطح المكتب</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>عرض سطح المكتب: تعذر تسجيل الاختصار العمومي ”%1“</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>اعرض سطح المكتب</translation>
+        <translation type="vanished">اعرض سطح المكتب</translation>
     </message>
 </context>
 </TS>

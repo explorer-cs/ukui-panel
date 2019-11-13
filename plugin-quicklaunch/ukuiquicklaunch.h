@@ -82,8 +82,8 @@ private:
     void showPlaceHolder();
     void AddToTaskbar(QString *desktop);
     void AddToTaskbar(QString *filename,QString *exec,QString *iconpath);
-    void CheckIfExist(QString *filename);
-    void RemoveFromTaskbar(QString *filename);
+    void CheckIfExist(QString *desktop);
+    void RemoveFromTaskbar(QString *desktop);
 
 
 
@@ -93,9 +93,10 @@ private:
 
 private slots:
     void addButton(QuickLaunchAction* action);
-    //void addButton(QuickLaunchAction* action);
-    //void removeButton(QuickLaunchAction* action);
+    void checkButton(QuickLaunchAction* action);
+    void checkButton(QString *filename);
     void removeButton(QString *filename);
+    void removeButton(QuickLaunchAction* action);
     void switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2);
     void buttonDeleted();
     void buttonMoveLeft();

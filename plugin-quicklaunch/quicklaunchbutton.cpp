@@ -77,9 +77,10 @@ QuickLaunchButton::QuickLaunchButton(QuickLaunchAction * act, IUKUIPanelPlugin *
     setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
             this, SLOT(this_customContextMenuRequested(const QPoint&)));
-    file_name=act->m_settingsMap["name"];
-//    qDebug()<<"act->m_settingsMap name>>"<<act->m_settingsMap["name"];
-//    qDebug()<<"file_name   >>"<<file_name;
+    //file_name=act->m_settingsMap["name"];
+    file_name=act->m_settingsMap["desktop"];
+
+
 }
 
 

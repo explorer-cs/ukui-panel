@@ -9,14 +9,13 @@
         <translation>Tampilkan desktop</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Tampilkan Desktop: Pintasan global &apos;%1&apos; tidak dapat didaftarkan</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Tampilkan Desktop</translation>
+        <translation type="vanished">Tampilkan Desktop</translation>
     </message>
 </context>
 </TS>

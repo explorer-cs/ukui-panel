@@ -32,17 +32,17 @@
 <context>
     <name>ConfigPanelDialog</name>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="31"/>
+        <location filename="../config/configpaneldialog.cpp" line="32"/>
         <source>Configure Panel</source>
         <translation>Konfigurasi Panel</translation>
     </message>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="38"/>
+        <location filename="../config/configpaneldialog.cpp" line="39"/>
         <source>Panel</source>
         <translation>Panel</translation>
     </message>
     <message>
-        <location filename="../config/configpaneldialog.cpp" line="42"/>
+        <location filename="../config/configpaneldialog.cpp" line="43"/>
         <source>Widgets</source>
         <translation>Widget</translation>
     </message>
@@ -124,20 +124,20 @@
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="219"/>
-        <location filename="../config/configpanelwidget.cpp" line="206"/>
+        <location filename="../config/configpanelwidget.cpp" line="211"/>
         <source>Left</source>
         <translation>Kiri</translation>
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="224"/>
-        <location filename="../config/configpanelwidget.cpp" line="207"/>
-        <location filename="../config/configpanelwidget.cpp" line="213"/>
+        <location filename="../config/configpanelwidget.cpp" line="212"/>
+        <location filename="../config/configpanelwidget.cpp" line="218"/>
         <source>Center</source>
         <translation>Tengah</translation>
     </message>
     <message>
         <location filename="../config/configpanelwidget.ui" line="229"/>
-        <location filename="../config/configpanelwidget.cpp" line="208"/>
+        <location filename="../config/configpanelwidget.cpp" line="213"/>
         <source>Right</source>
         <translation>Kanan</translation>
     </message>
@@ -158,47 +158,52 @@
         <translation>Tampilkan dengan jeda:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="330"/>
+        <location filename="../config/configpanelwidget.ui" line="327"/>
+        <source>Visible thin margin for hidden panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config/configpanelwidget.ui" line="337"/>
         <source>Don&apos;t allow maximized windows go under the panel window</source>
         <translation>Jangan biarkan jendela yang dimaksimalkan masuk di bawah jendela panel</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="333"/>
+        <location filename="../config/configpanelwidget.ui" line="340"/>
         <source>Reserve space on display</source>
         <translation>Cadangan ruang pada layar</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="349"/>
+        <location filename="../config/configpanelwidget.ui" line="356"/>
         <source>Custom styling</source>
         <translation>Gaya kustom</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="370"/>
+        <location filename="../config/configpanelwidget.ui" line="377"/>
         <source>Font color:</source>
         <translation>Warna fonta:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="410"/>
+        <location filename="../config/configpanelwidget.ui" line="417"/>
         <source>Background color:</source>
         <translation>Warna latar belakang:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="449"/>
+        <location filename="../config/configpanelwidget.ui" line="456"/>
         <source>Background opacity:</source>
         <translation>Opasitas latar belakang:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="481"/>
+        <location filename="../config/configpanelwidget.ui" line="488"/>
         <source>&lt;small&gt;Compositing is required for panel transparency.&lt;/small&gt;</source>
         <translation>&lt;small&gt;Compositing dibutuhkan untuk transparasi panel.&lt;/small&gt;</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="509"/>
+        <location filename="../config/configpanelwidget.ui" line="516"/>
         <source>Background image:</source>
         <translation>Gambar latar belakang:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="561"/>
+        <location filename="../config/configpanelwidget.ui" line="568"/>
         <source>A partial workaround for widget styles that
 cannot give a separate theme to the panel.
 
@@ -217,12 +222,12 @@ Tema Ikon →
 Warnai ikon berdasarkan gaya widget (palette)</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="571"/>
+        <location filename="../config/configpanelwidget.ui" line="578"/>
         <source>Override icon &amp;theme</source>
         <translation>Ganti &amp;tema ikon</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.ui" line="586"/>
+        <location filename="../config/configpanelwidget.ui" line="593"/>
         <source>Icon theme for panels:</source>
         <translation>Tema ikon untuk panel:</translation>
     </message>
@@ -237,68 +242,68 @@ Warnai ikon berdasarkan gaya widget (palette)</translation>
         <translation>Posisi:</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="172"/>
+        <location filename="../config/configpanelwidget.cpp" line="177"/>
         <source>Top of desktop</source>
         <translation>Atas desktop</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="173"/>
+        <location filename="../config/configpanelwidget.cpp" line="178"/>
         <source>Left of desktop</source>
         <translation>Kiri desktop</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="174"/>
+        <location filename="../config/configpanelwidget.cpp" line="179"/>
         <source>Right of desktop</source>
         <translation>Kanan desktop</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="175"/>
+        <location filename="../config/configpanelwidget.cpp" line="180"/>
         <source>Bottom of desktop</source>
         <translation>Bawah desktop</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="184"/>
+        <location filename="../config/configpanelwidget.cpp" line="189"/>
         <source>Top of desktop %1</source>
         <translation>Atas desktop %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="185"/>
+        <location filename="../config/configpanelwidget.cpp" line="190"/>
         <source>Left of desktop %1</source>
         <translation>Kiri desktop %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="186"/>
+        <location filename="../config/configpanelwidget.cpp" line="191"/>
         <source>Right of desktop %1</source>
         <translation>Kanan desktop %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="187"/>
+        <location filename="../config/configpanelwidget.cpp" line="192"/>
         <source>Bottom of desktop %1</source>
         <translation>Bawah desktop %1</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="212"/>
+        <location filename="../config/configpanelwidget.cpp" line="217"/>
         <source>Top</source>
         <translation>Atas</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="214"/>
+        <location filename="../config/configpanelwidget.cpp" line="219"/>
         <source>Bottom</source>
         <translation>Bawah</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="430"/>
-        <location filename="../config/configpanelwidget.cpp" line="446"/>
+        <location filename="../config/configpanelwidget.cpp" line="436"/>
+        <location filename="../config/configpanelwidget.cpp" line="452"/>
         <source>Pick color</source>
         <translation>Pilih warna</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="464"/>
+        <location filename="../config/configpanelwidget.cpp" line="470"/>
         <source>Images (*.png *.gif *.jpg)</source>
         <translation>Gambar (*.png *.gif *.jpg)</translation>
     </message>
     <message>
-        <location filename="../config/configpanelwidget.cpp" line="464"/>
+        <location filename="../config/configpanelwidget.cpp" line="470"/>
         <source>Pick image</source>
         <translation>Pilih gambar</translation>
     </message>
@@ -353,78 +358,117 @@ Warnai ikon berdasarkan gaya widget (palette)</translation>
 <context>
     <name>LXQtPanel</name>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1068"/>
-        <location filename="../lxqtpanel.cpp" line="1094"/>
         <source>Panel</source>
-        <translation>Panel</translation>
+        <translation type="vanished">Panel</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1097"/>
         <source>Configure Panel</source>
-        <translation>Konfigurasi Panel</translation>
+        <translation type="vanished">Konfigurasi Panel</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1102"/>
         <source>Manage Widgets</source>
-        <translation>Kelola Widget</translation>
+        <translation type="vanished">Kelola Widget</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1108"/>
         <source>Add New Panel</source>
-        <translation>Tambah Panel Baru</translation>
+        <translation type="vanished">Tambah Panel Baru</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1115"/>
         <source>Remove Panel</source>
         <comment>Menu Item</comment>
-        <translation>Hapus Panel</translation>
+        <translation type="vanished">Hapus Panel</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1120"/>
         <source>Lock This Panel</source>
-        <translation>Kunci Panel Ini</translation>
+        <translation type="vanished">Kunci Panel Ini</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1273"/>
         <source>Remove Panel</source>
         <comment>Dialog Title</comment>
-        <translation>Hapus Panel</translation>
+        <translation type="vanished">Hapus Panel</translation>
     </message>
     <message>
-        <location filename="../lxqtpanel.cpp" line="1274"/>
         <source>Removing a panel can not be undone.
 Do you want to remove this panel?</source>
-        <translation>Penghapusan panel tidak dapat dibatalkan.
+        <translation type="vanished">Penghapusan panel tidak dapat dibatalkan.
 Apakah Anda ingin menghapus panel ini?</translation>
     </message>
 </context>
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../plugin.cpp" line="411"/>
+        <location filename="../plugin.cpp" line="452"/>
         <source>Configure &quot;%1&quot;</source>
         <translation>Konfigurasi &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../plugin.cpp" line="416"/>
+        <location filename="../plugin.cpp" line="457"/>
         <source>Move &quot;%1&quot;</source>
         <translation>Pindah &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../plugin.cpp" line="424"/>
+        <location filename="../plugin.cpp" line="465"/>
         <source>Remove &quot;%1&quot;</source>
         <translation>Hapus &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
+    <name>UKUIPanel</name>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1078"/>
+        <location filename="../ukuipanel.cpp" line="1104"/>
+        <source>Panel</source>
+        <translation type="unfinished">Panel</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1106"/>
+        <source>Configure Panel</source>
+        <translation type="unfinished">Konfigurasi Panel</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1110"/>
+        <source>Manage Widgets</source>
+        <translation type="unfinished">Kelola Widget</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1115"/>
+        <source>Add New Panel</source>
+        <translation type="unfinished">Tambah Panel Baru</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1122"/>
+        <source>Remove Panel</source>
+        <comment>Menu Item</comment>
+        <translation type="unfinished">Hapus Panel</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1127"/>
+        <source>Lock This Panel</source>
+        <translation type="unfinished">Kunci Panel Ini</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1280"/>
+        <source>Remove Panel</source>
+        <comment>Dialog Title</comment>
+        <translation type="unfinished">Hapus Panel</translation>
+    </message>
+    <message>
+        <location filename="../ukuipanel.cpp" line="1281"/>
+        <source>Removing a panel can not be undone.
+Do you want to remove this panel?</source>
+        <translation type="unfinished">Penghapusan panel tidak dapat dibatalkan.
+Apakah Anda ingin menghapus panel ini?</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
-        <location filename="../lxqtpanelapplication.cpp" line="95"/>
+        <location filename="../ukuipanelapplication.cpp" line="99"/>
         <source>Use alternate configuration file.</source>
         <translation>Gunakan berkas konfigurasi alternatif.</translation>
     </message>
     <message>
-        <location filename="../lxqtpanelapplication.cpp" line="96"/>
+        <location filename="../ukuipanelapplication.cpp" line="100"/>
         <source>Configuration file</source>
         <translation>Berkas konfigurasi</translation>
     </message>

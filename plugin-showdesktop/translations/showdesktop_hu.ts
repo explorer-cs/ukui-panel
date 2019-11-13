@@ -9,14 +9,13 @@
         <translation>Asztalmegjelenítés</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Asztalmegjelenítés: A &apos;%1&apos; gyorsbillentyű nem regisztrálható</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Asztalmegjelenítés</translation>
+        <translation type="vanished">Asztalmegjelenítés</translation>
     </message>
 </context>
 </TS>

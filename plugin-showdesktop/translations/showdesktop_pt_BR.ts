@@ -9,14 +9,13 @@
         <translation>Mostrar área de trabalho</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="66"/>
+        <location filename="../showdesktop.cpp" line="68"/>
         <source>Show Desktop: Global shortcut &apos;%1&apos; cannot be registered</source>
         <translation>Exibir Área De Trabalho: Atalho Global &apos;%1&apos; não pode ser registrado</translation>
     </message>
     <message>
-        <location filename="../showdesktop.cpp" line="51"/>
         <source>Show Desktop</source>
-        <translation>Exibir Área de Trabalho</translation>
+        <translation type="vanished">Exibir Área de Trabalho</translation>
     </message>
 </context>
 </TS>
