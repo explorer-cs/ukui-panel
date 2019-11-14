@@ -1,5 +1,4 @@
 #include "startmenu.h"
-#include "lxqtmainmenuconfiguration.h"
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QScreen>
@@ -9,26 +8,9 @@
 
 StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
-    mShortcut(0),
     IUKUIPanelPlugin(startupInfo)
 {
     realign();
-    mShortcut = GlobalKeyShortcut::Client::instance()->addAction(QString{}, QStringLiteral("/panel/%1/show_hide").arg(settings()->group()), StartMenu::tr("Show/hide main menu"), this);
-    if (mShortcut)
-    {
-        connect(mShortcut, &GlobalKeyShortcut::Action::registrationFinished, [this] {
-            if (mShortcut->shortcut().isEmpty())
-                mShortcut->changeShortcut(QStringLiteral(DEFAULT_SHORTCUT));
-        });
-        connect(mShortcut, &GlobalKeyShortcut::Action::activated, [this] {
-            if (!mHideTimer.isActive())
-                // Delay this a little -- if we don't do this, search field
-                // won't be able to capture focus
-                // See <https://github.com/lxqt/lxqt-panel/pull/131> and
-                // <https://github.com/lxqt/lxqt-panel/pull/312>
-                mDelayedPopup.start();
-        });
-    }
 
 }
 
@@ -129,10 +111,10 @@ StartMenuWidget::~StartMenuWidget()
 
 void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (!mCapturing)
-        return;
-    WId id = QApplication::desktop()->winId();
-    qDebug()<<id<<endl;
+//    if (!mCapturing)
+//        return;
+//    WId id = QApplication::desktop()->winId();
+//    qDebug()<<id<<endl;
 }
 
 
@@ -146,11 +128,7 @@ void StartMenuWidget::captureMouse()
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
 
-QDialog *StartMenu::configureDialog()
-{
-    qDebug()<<mShortcut<<endl;
-    qDebug( )<<DEFAULT_SHORTCUT<<endl;
-    return new LXQtMainMenuConfiguration(settings(), mShortcut, QStringLiteral(DEFAULT_SHORTCUT));
+void StartMenuWidget::contextMenuEvent(QContextMenuEvent *event) {
+  //创建一个菜单 添加事件
+qDebug()<<"contextMenuEvent    right press event";
 }
-
-

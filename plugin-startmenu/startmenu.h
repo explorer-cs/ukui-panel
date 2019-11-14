@@ -10,9 +10,6 @@
 #include <QToolButton>
 #include <XdgIcon>
 
-#include "lxqtmainmenuconfiguration.h"
-
-
 
 #include <QMainWindow>
 #include <QHBoxLayout>
@@ -37,6 +34,7 @@ public:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event);
+    virtual void contextMenuEvent(QContextMenuEvent *event);
 
 private slots:
     void captureMouse();
@@ -58,19 +56,12 @@ public:
     ~StartMenu();
 
     virtual QWidget *widget() { return &mWidget; }
-
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
-
-    bool isSeparate() const { return true; }
-
     void realign();
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
-    QDialog *configureDialog();
 private:
     StartMenuWidget mWidget;
-    GlobalKeyShortcut::Action *mShortcut;
-    QTimer mDelayedPopup;
-    QTimer mHideTimer;
+
 
 };
 
