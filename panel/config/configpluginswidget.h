@@ -31,6 +31,7 @@
 #include "../ukuipanel.h"
 
 #include <QWidget>
+#include "comm_func.h"
 
 namespace Ui {
     class ConfigPluginsWidget;

@@ -79,6 +79,7 @@ ConfigPluginsWidget::~ConfigPluginsWidget()
 void ConfigPluginsWidget::reset()
 {
 
+    qDebug()<<"ConfigPluginsWidget  reset is here";
 }
 
 void ConfigPluginsWidget::showAddPluginDialog()
