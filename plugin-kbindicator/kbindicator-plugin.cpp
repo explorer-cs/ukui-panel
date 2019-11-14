@@ -28,9 +28,9 @@
 #include <QObject>
 #include <QX11Info>
 #include "src/kbdstate.h"
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 
-class LXQtKbIndicatorPlugin: public QObject, public ILXQtPanelPluginLibrary
+class UKUIKbIndicatorPlugin: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
@@ -39,7 +39,7 @@ public:
     virtual ~LXQtKbIndicatorPlugin()
     {}
 
-    virtual ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    virtual IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
         // Currently only X11 supported
         if (!QX11Info::connection()) {

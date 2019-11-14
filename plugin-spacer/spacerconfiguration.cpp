@@ -37,7 +37,7 @@ const QStringList SpacerConfiguration::msTypes = {
 };
 
 SpacerConfiguration::SpacerConfiguration(PluginSettings *settings, QWidget *parent) :
-    LXQtPanelPluginConfigDialog(settings, parent),
+    UKUIPanelPluginConfigDialog(settings, parent),
     ui(new Ui::SpacerConfiguration)
 {
     setAttribute(Qt::WA_DeleteOnClose);

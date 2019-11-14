@@ -158,7 +158,7 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
     btn->setFixedSize(45,40);
     mLayout->addWidget(btn);
-
+    mLayout->setSpacing(200);
     //set button style
     btn->setStyleSheet(
                 //正常状态样式

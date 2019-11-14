@@ -28,7 +28,7 @@
 #ifndef SPACER_H
 #define SPACER_H
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QFrame>
 
 
@@ -50,12 +50,12 @@ private:
     QString mOrientation;
 };
 
-class Spacer :  public QObject, public ILXQtPanelPlugin
+class Spacer :  public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 
 public:
-    Spacer(const ILXQtPanelPluginStartupInfo &startupInfo);
+    Spacer(const IUKUIPanelPluginStartupInfo &startupInfo);
 
     virtual QWidget *widget() override { return &mSpacer; }
     virtual QString themeId() const override { return QStringLiteral("Spacer"); }
@@ -63,7 +63,7 @@ public:
     bool isSeparate() const override { return true; }
     bool isExpandable() const override { return mExpandable; }
 
-    virtual ILXQtPanelPlugin::Flags flags() const override { return HaveConfigDialog; }
+    virtual IUKUIPanelPlugin::Flags flags() const override { return HaveConfigDialog; }
     QDialog *configureDialog() override;
 
     virtual void realign() override;
@@ -80,13 +80,13 @@ private:
     bool mExpandable;
 };
 
-class SpacerPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class SpacerPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new Spacer(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const { return new Spacer(startupInfo);}
 };
 
 #endif

@@ -37,7 +37,7 @@
 #include <QFileDialog>
 
 LXQtMainMenuConfiguration::LXQtMainMenuConfiguration(PluginSettings *settings, GlobalKeyShortcut::Action * shortcut, const QString &defaultShortcut, QWidget *parent) :
-    LXQtPanelPluginConfigDialog(settings, parent),
+    UKUIPanelPluginConfigDialog(settings, parent),
     ui(new Ui::LXQtMainMenuConfiguration),
     mDefaultShortcut(defaultShortcut),
     mShortcut(shortcut)

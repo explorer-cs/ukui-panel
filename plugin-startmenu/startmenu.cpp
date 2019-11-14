@@ -92,7 +92,6 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
                 "QToolButton:pressed{"
                 "background-color:rgba(190,216,239,12%);"
                 "}"
-
                 );
     mButton2.setStyleSheet(
                 //正常状态样式

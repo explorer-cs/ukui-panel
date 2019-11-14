@@ -51,9 +51,9 @@ void SpacerWidget::setOrientation(QString const & orientation)
 /************************************************
 
  ************************************************/
-Spacer::Spacer(const ILXQtPanelPluginStartupInfo &startupInfo) :
+Spacer::Spacer(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject()
-    , ILXQtPanelPlugin(startupInfo)
+    , IUKUIPanelPlugin(startupInfo)
     , mSize(8)
     , mExpandable(false)
 {

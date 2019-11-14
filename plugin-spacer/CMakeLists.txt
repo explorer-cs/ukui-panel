@@ -14,4 +14,4 @@ set(UIS
     spacerconfiguration.ui
 )
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+BUILD_UKUI_PLUGIN(${PLUGIN})

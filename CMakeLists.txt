@@ -92,7 +92,7 @@ include("cmake/BuildPlugin.cmake")
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
-setByDefault(COLORPICKER_PLUGIN Yes)
+#setByDefault(COLORPICKER_PLUGIN Yes)
 if(COLORPICKER_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Color Picker")
     add_subdirectory(plugin-colorpicker)
@@ -115,7 +115,7 @@ if(DIRECTORYMENU_PLUGIN)
     add_subdirectory(plugin-directorymenu)
 endif()
 
-setByDefault(DOM_PLUGIN No)
+#setByDefault(DOM_PLUGIN No)
 if(DOM_PLUGIN)
     list(APPEND ENABLED_PLUGINS "DOM")
     add_subdirectory(plugin-dom)
@@ -252,7 +252,7 @@ if(WORLDCLOCK_PLUGIN)
     add_subdirectory(plugin-worldclock)
 endif(WORLDCLOCK_PLUGIN)
 
-#setByDefault(SPACER_PLUGIN Yes)
+setByDefault(SPACER_PLUGIN Yes)
 if(SPACER_PLUGIN)
     list(APPEND STATIC_PLUGINS "spacer")
     add_definitions(-DWITH_SPACER_PLUGIN)

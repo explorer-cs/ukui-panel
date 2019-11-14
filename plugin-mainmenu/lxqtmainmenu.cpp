@@ -28,7 +28,7 @@
 
 #include "lxqtmainmenu.h"
 #include "lxqtmainmenuconfiguration.h"
-#include "../panel/lxqtpanel.h"
+#include "../panel/ukuipanel.h"
 #include "actionview.h"
 #include <QAction>
 #include <QTimer>
@@ -53,9 +53,9 @@
 
 #define DEFAULT_SHORTCUT "Alt+F1"
 
-LXQtMainMenu::LXQtMainMenu(const ILXQtPanelPluginStartupInfo &startupInfo):
+LXQtMainMenu::LXQtMainMenu(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     mMenu(0),
     mShortcut(0),
     mSearchEditAction{new QWidgetAction{this}},
@@ -80,6 +80,29 @@ LXQtMainMenu::LXQtMainMenu(const ILXQtPanelPluginStartupInfo &startupInfo):
 
     mButton.setAutoRaise(true);
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    mButton.setFixedSize(60,40);
+    mButton.setStyleSheet(
+                //正常状态样式
+                "QToolButton{"
+                "qproperty-icon:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
+                "qproperty-iconSize:40px 40px;"
+                "border-style:outset;"                  //边框样式（inset/outset）
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "border-color:rgba(255,255,255,30);"    //边框颜色
+                "font:bold 14px;"                       //字体，字体大小
+                "color:rgba(0,0,0,100);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "}"
+                //鼠标悬停样式
+                "QToolButton:hover{"
+                "background-color:rgba(190,216,239,20%);"
+                "}"
+                //鼠标按下样式
+                "QToolButton:pressed{"
+                "background-color:rgba(190,216,239,12%);"
+                "}"
+                );
     //Notes:
     //1. installing event filter to parent widget to avoid infinite loop
     //   (while setting icon we also need to set the style)
@@ -117,6 +140,7 @@ LXQtMainMenu::LXQtMainMenu(const ILXQtPanelPluginStartupInfo &startupInfo):
                 mDelayedPopup.start();
         });
     }
+
 }
 
 

@@ -337,6 +337,7 @@ void UKUITaskGroup::regroup()
             setText(button->text());
             setToolTip(button->toolTip());
             setWindowId(button->windowId());
+
         }
     }
     else if (cont == 0)
@@ -348,6 +349,7 @@ void UKUITaskGroup::regroup()
         setText(t);
         setToolTip(parentTaskBar()->isShowGroupOnHover() ? QString() : t);
     }
+
 }
 
 /************************************************

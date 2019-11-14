@@ -29,7 +29,7 @@
 #ifndef LXQTMAINMENUCONFIGURATION_H
 #define LXQTMAINMENUCONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 class QAbstractButton;
@@ -42,7 +42,7 @@ namespace GlobalKeyShortcut {
     class Action;
 }
 
-class LXQtMainMenuConfiguration : public LXQtPanelPluginConfigDialog
+class LXQtMainMenuConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

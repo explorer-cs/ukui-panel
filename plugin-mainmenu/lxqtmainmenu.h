@@ -29,7 +29,7 @@
 #ifndef LXQT_MAINMENU_H
 #define LXQT_MAINMENU_H
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <XdgMenu>
 
 #ifdef HAVE_MENU_CACHE
@@ -62,15 +62,15 @@ namespace GlobalKeyShortcut
 class Action;
 }
 
-class LXQtMainMenu : public QObject, public ILXQtPanelPlugin
+class LXQtMainMenu : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    LXQtMainMenu(const ILXQtPanelPluginStartupInfo &startupInfo);
+    LXQtMainMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~LXQtMainMenu();
 
     QString themeId() const { return "MainMenu"; }
-    virtual ILXQtPanelPlugin::Flags flags() const { return HaveConfigDialog ; }
+    virtual IUKUIPanelPlugin::Flags flags() const { return HaveConfigDialog ; }
 
     QWidget *widget() { return &mButton; }
     QDialog *configureDialog();
@@ -125,13 +125,13 @@ private slots:
     void setSearchFocus(QAction *action);
 };
 
-class LXQtMainMenuPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class LXQtMainMenuPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new LXQtMainMenu(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const { return new LXQtMainMenu(startupInfo);}
 };
 
 #endif

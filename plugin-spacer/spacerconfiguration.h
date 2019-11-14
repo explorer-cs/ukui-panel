@@ -28,7 +28,7 @@
 #ifndef SPACERCONFIGURATION_H
 #define SPACERCONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 class QAbstractButton;
@@ -37,7 +37,7 @@ namespace Ui {
     class SpacerConfiguration;
 }
 
-class SpacerConfiguration : public LXQtPanelPluginConfigDialog
+class SpacerConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

@@ -79,6 +79,7 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     setLayout(mLayout);
     mLayout->setMargin(0);
     mLayout->setStretch(LXQt::GridLayout::StretchHorizontal | LXQt::GridLayout::StretchVertical);
+
     realign();
 
     mPlaceHolder->setMinimumSize(1, 1);
@@ -366,6 +367,7 @@ void UKUITaskBar::onWindowChanged(WId window, NET::Properties prop, NET::Propert
         if (!(*i)->onWindowChanged(window, prop, prop2) && acceptWindow(window))
         { // window is removed from a group because of class change, so we should add it again
             addWindow(window);
+
         }
     }
 }
