@@ -115,6 +115,7 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
                 "color:rgba(255,255,255,100%);"                //字体颜色
                 "padding:0px;"                          //填衬
                 "spacing:10px;"
+                "border-bottom-style:solid"
                 "}"
                 //鼠标悬停样式
                 "QToolButton:hover{"

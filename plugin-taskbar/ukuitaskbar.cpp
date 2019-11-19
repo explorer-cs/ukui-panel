@@ -57,7 +57,7 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     QFrame(parent),
     mSignalMapper(new QSignalMapper(this)),
     mButtonStyle(Qt::ToolButtonTextBesideIcon),
-    mButtonWidth(160),
+    mButtonWidth(60),
     mButtonHeight(40),
     mCloseOnMiddleClick(true),
     mRaiseOnCurrentDesktop(true),
@@ -460,7 +460,7 @@ void UKUITaskBar::settingsChanged()
     else if (s == "TEXT")
         setButtonStyle(Qt::ToolButtonTextOnly);
     else
-        setButtonStyle(Qt::ToolButtonTextBesideIcon);
+        setButtonStyle(Qt::ToolButtonIconOnly);
 
     mShowOnlyOneDesktopTasks = mPlugin->settings()->value("showOnlyOneDesktopTasks", mShowOnlyOneDesktopTasks).toBool();
     mShowDesktopNum = mPlugin->settings()->value("showDesktopNum", mShowDesktopNum).toInt();

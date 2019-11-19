@@ -277,6 +277,22 @@ if(STARTMENU_PLUGIN)
     add_subdirectory(plugin-startmenu)
 endif(STARTMENU_PLUGIN)
 
+setByDefault(POWERSWITCH_PLUGIN Yes)
+if(POWERSWITCH_PLUGIN)
+#    list(APPEND STATIC_PLUGINS "powerswitch")
+#    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "powerswitch")
+    add_subdirectory(plugin-powerswitch)
+endif(POWERSWITCH_PLUGIN)
+
+setByDefault(RECYCLEBIN_PLUGIN Yes)
+if(RECYCLEBIN_PLUGIN)
+#    list(APPEND STATIC_PLUGINS "powerswitch")
+#    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "recyclebin")
+    add_subdirectory(plugin-recyclebin)
+endif(RECYCLEBIN_PLUGIN)
+
 #########################################################################
 
 message(STATUS  "**************** The following plugins will be built ****************")
@@ -290,5 +306,3 @@ add_subdirectory(panel)
 # merged from lxqt-common
 add_subdirectory(autostart)
 add_subdirectory(menu)
-
-message("&&&&&&&&&&&CMAKE_INSTALL_FULL_DATAROOTDIR&&   "${CMAKE_INSTALL_FULL_DATAROOTDIR})

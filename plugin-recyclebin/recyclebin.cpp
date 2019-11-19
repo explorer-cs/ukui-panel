@@ -1,4 +1,4 @@
-#include "startmenu.h"
+#include "recyclebin.h"
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QScreen>
@@ -6,7 +6,7 @@
 
 #include <lxqt-globalkeys.h>
 
-StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
+RecycleBin::RecycleBin(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
     IUKUIPanelPlugin(startupInfo)
 {
@@ -15,12 +15,12 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
 }
 
 
-StartMenu::~StartMenu()
+RecycleBin::~RecycleBin()
 {
 }
 
 
-void StartMenu::realign()
+void RecycleBin::realign()
 {
 //    QSize size;
 //    size.setHeight(40);
@@ -32,55 +32,25 @@ void StartMenu::realign()
 
 }
 
-StartMenuWidget::StartMenuWidget(QWidget *parent):
+RecycleBinWidget::RecycleBinWidget(QWidget *parent):
     QFrame(parent)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins (0, 0, 0, 0);
     layout->setSpacing (1);
     setLayout(layout);
-    layout->addWidget (&mButton);
     layout->addWidget(&mButton2);
 
-
-    //mButton.setAutoRaise(true);
-    mButton.setFixedSize(60,40);
     mButton2.setFixedSize(40,40);
 
-
-
     mCapturing = false;
-    connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
+    connect(&mButton2, SIGNAL(clicked()), this, SLOT(captureMouse()));
 
-    mButton.setStyleSheet(
-                //正常状态样式
-                "QToolButton{"
-                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
-                "qproperty-icon:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
-                "qproperty-iconSize:40px 40px;"
-                "border-style:outset;"                  //边框样式（inset/outset）
-                "border-width:0px;"                     //边框宽度像素
-                "border-radius:0px;"                   //边框圆角半径像素
-                "border-color:rgba(255,255,255,30);"    //边框颜色
-                "font:bold 14px;"                       //字体，字体大小
-                "color:rgba(0,0,0,100);"                //字体颜色
-                "padding:0px;"                          //填衬
-                "border-bottom-style:solid"
-                "}"
-                //鼠标悬停样式
-                "QToolButton:hover{"
-                "background-color:rgba(190,216,239,20%);"
-                "}"
-                //鼠标按下样式
-                "QToolButton:pressed{"
-                "background-color:rgba(190,216,239,12%);"
-                "}"
-                );
     mButton2.setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
                 /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
-                "qproperty-icon:url(/usr/share/plugin-startmenu/img/taskview.svg);"
+                "qproperty-icon:url(/usr/share/plugin-recyclebin/img/recyclebin.svg);"
                 "qproperty-iconSize:24px 24px;"
                 "border-style:outset;"                  //边框样式（inset/outset）
                 "border-width:0px;"                     //边框宽度像素
@@ -105,12 +75,12 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
 
 
-StartMenuWidget::~StartMenuWidget()
+RecycleBinWidget::~RecycleBinWidget()
 {
 }
 
 
-void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
+void RecycleBinWidget::mouseReleaseEvent(QMouseEvent *event)
 {
 //    if (!mCapturing)
 //        return;
@@ -119,7 +89,7 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
 }
 
 
-void StartMenuWidget::captureMouse()
+void RecycleBinWidget::captureMouse()
 {
     if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
     {
@@ -129,7 +99,7 @@ void StartMenuWidget::captureMouse()
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
 
-void StartMenuWidget::contextMenuEvent(QContextMenuEvent *event) {
+void RecycleBinWidget::contextMenuEvent(QContextMenuEvent *event) {
   //创建一个菜单 添加事件
 qDebug()<<"contextMenuEvent    right press event";
 }

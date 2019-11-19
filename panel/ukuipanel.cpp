@@ -1148,6 +1148,45 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                    this, SLOT(showConfigDialog())
                   )->setDisabled(mLockPanel);
 
+    QAction *pmenuaction_1;
+    QAction *pmenuaction_2;
+    QAction *pmenuaction_3;
+    QAction *pmenuaction_4;
+    pmenuaction_1=new QAction(this);
+    pmenuaction_1->setText("上");
+    pmenuaction_2=new QAction(this);
+    pmenuaction_2->setText("下");
+    pmenuaction_3=new QAction(this);
+    pmenuaction_3->setText("左");
+    pmenuaction_4=new QAction(this);
+    pmenuaction_4->setText("右");
+    QMenu *pmenu_positon;
+    pmenu_positon=new QMenu(this);
+    pmenu_positon->setTitle("调整位置");
+    pmenu_positon->addAction(pmenuaction_1);
+    pmenu_positon->addAction(pmenuaction_2);
+    pmenu_positon->addAction(pmenuaction_3);
+    pmenu_positon->addAction(pmenuaction_4);
+    menu->addMenu(pmenu_positon);
+    pmenu_positon->setStyleSheet(
+                         "QMenu {"
+                         "background-color:rgba(21,26,30,90%);"
+                         "border-color:rgba(255,255,255,30);"    //边框颜色
+                         "font:bold 14px;"                       //字体，字体大小
+                         "color:rgba(255,255,255,100);"                //字体颜色
+                         "padding:2px 2px; "                     //设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
+                        " }"
+
+                        //鼠标悬停样式
+                        "QToolButton:hover{"
+                        "background-color:rgba(190,216,239,30%);"
+                        "}"
+                        //鼠标按下样式
+                        "QToolButton:pressed{"
+                        "background-color:rgba(0,0,0,12%);"
+                        "}"
+
+                        );
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
                    tr("Add New Panel"),

@@ -98,6 +98,10 @@ extern void * loadPluginTranslation_calendar_helper;
 extern void * loadPluginTranslation_startmenu_helper;
 #endif
 
+#if defined(WITH_POWERSWITCH_PLUGIN)
+#include "../plugin-powerswitch/powerswitch.h" // startmenu
+extern void * loadPluginTranslation_powerswitch_helper;
+#endif
 
 QColor Plugin::mMoveMarkerColor= QColor(255, 0, 0, 255);
 
