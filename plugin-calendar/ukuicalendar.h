@@ -118,7 +118,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
 };
 
-class IndicatorCalendarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
+class UKUICalendarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")

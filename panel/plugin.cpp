@@ -88,10 +88,10 @@ extern void * loadPluginTranslation_tray_helper;
 #include "../plugin-worldclock/lxqtworldclock.h" // worldclock
 extern void * loadPluginTranslation_worldclock_helper;
 #endif
-
+#if defined(WITH_CALENDAR_PLUGIN)
 #include "../plugin-calendar/ukuicalendar.h" // indicatorCalendar
 extern void * loadPluginTranslation_calendar_helper;
-
+#endif
 
 #if defined(WITH_STARTMENU_PLUGIN)
 #include "../plugin-startmenu/startmenu.h" // startmenu
@@ -254,7 +254,9 @@ namespace
 #if defined(WITH_WORLDCLOCK_PLUGIN)
         std::make_tuple(QLatin1String("worldclock"), plugin_ptr_t{new LXQtWorldClockLibrary}, loadPluginTranslation_worldclock_helper),// worldclock
 #endif
-
+#if defined(WITH_CALENDAR_PLUGIN)
+        std::make_tuple(QLatin1String("calendar"), plugin_ptr_t{new UKUICalendarPluginLibrary}, loadPluginTranslation_calendar_helper),// calendar
+#endif
 #if defined(WITH_STARTMENU_PLUGIN)
         std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new UKUIStartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
 #endif
