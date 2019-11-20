@@ -34,6 +34,14 @@ UKUIQuickLaunchPlugin::UKUIQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &
     IUKUIPanelPlugin(startupInfo),
     mWidget(new UKUIQuickLaunch(this))
 {
+    FilectrlAdaptor *f;
+    f=new FilectrlAdaptor(mWidget);
+    QDBusConnection con=QDBusConnection::sessionBus();
+    if(!con.registerService("com.kylin.security.controller.filectrl") ||
+            !con.registerObject("/",mWidget))
+    {
+        qDebug()<<"fail";
+    }
 }
 
 UKUIQuickLaunchPlugin::~UKUIQuickLaunchPlugin()

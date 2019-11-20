@@ -106,6 +106,7 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
 
     realign();
     mLayout->setSpacing(80);
+
 }
 
 
@@ -228,10 +229,11 @@ void UKUIQuickLaunch::checkButton(QuickLaunchAction* action)
         qDebug()<<i;
         QuickLaunchButton *b = qobject_cast<QuickLaunchButton*>(mLayout->itemAt(i)->widget());
         if (b->file_name == btn->file_name) {
-            qDebug()<<" already  insert  *****  "<<child;
+            qDebug()<<" already  insert   ";
+            break;
         } else {
             ++i;
-            qDebug()<<"don't insert   %%%%%%%%";
+            qDebug()<<"don't insert  ";
         }
      }
     saveSettings();
@@ -348,41 +350,74 @@ void UKUIQuickLaunch::dropEvent(QDropEvent *e)
     }
     saveSettings();
     QString filepath="/home/hepuyao/桌面/firefox.desktop";
-    AddToTaskbar(&filepath);
+    AddToTaskb(&filepath);
 }
 
-
-void UKUIQuickLaunch::AddToTaskbar(QString *desktop)
+bool UKUIQuickLaunch::AddToTaskbar(QString arg)
 {
-/*
-    QString *mdesktop=desktop;
-    const auto url=QUrl(*mdesktop);
+    /*
+        QString *mdesktop=desktop;
+        const auto url=QUrl(*mdesktop);
+        QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+        QFileInfo fi(fileName);
+        XdgDesktopFile xdg;
+        //add by QuickLaunchAction(&xdg, this)
+        if (xdg.load(fileName))
+        {
+            if (xdg.isSuitable())
+                addButton(new QuickLaunchAction(&xdg, this));
+        }
+        else if (fi.exists() && fi.isExecutable() && !fi.isDir())
+        {
+            addButton(new QuickLaunchAction(fileName, fileName, "", this));
+        }
+        else if (fi.exists())
+        {
+            addButton(new QuickLaunchAction(fileName, this));
+        }
+        else
+        {
+            qWarning() << "XdgDesktopFile" << fileName << "is not valid";
+            QMessageBox::information(this, tr("Drop Error"),
+                              tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
+                            );
+        }
+        saveSettings();
+    */
+    const auto url=QUrl(arg);
     QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
     QFileInfo fi(fileName);
     XdgDesktopFile xdg;
-    //add by QuickLaunchAction(&xdg, this)
-    if (xdg.load(fileName))
-    {
-        if (xdg.isSuitable())
-            addButton(new QuickLaunchAction(&xdg, this));
-    }
-    else if (fi.exists() && fi.isExecutable() && !fi.isDir())
-    {
-        addButton(new QuickLaunchAction(fileName, fileName, "", this));
-    }
-    else if (fi.exists())
-    {
-        addButton(new QuickLaunchAction(fileName, this));
-    }
-    else
-    {
-        qWarning() << "XdgDesktopFile" << fileName << "is not valid";
-        QMessageBox::information(this, tr("Drop Error"),
-                          tr("File/URL '%1' cannot be embedded into QuickLaunch for now").arg(fileName)
-                        );
-    }
+    xdg.load(fileName);
+    addButton(new QuickLaunchAction(&xdg, this));
     saveSettings();
-*/
+    return false;
+}
+
+bool UKUIQuickLaunch::CheckIfExist(QString arg)
+{
+    const auto url=QUrl(arg);
+    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+    QFileInfo fi(fileName);
+    XdgDesktopFile xdg;
+    xdg.load(fileName);
+    checkButton(new QuickLaunchAction(&xdg, this));
+    return true;
+}
+
+bool UKUIQuickLaunch::RemoveFromTaskbar(QString arg)
+{
+    const auto url=QUrl(arg);
+    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
+    QFileInfo fi(fileName);
+    XdgDesktopFile xdg;
+    xdg.load(fileName);
+    removeButton(new QuickLaunchAction(&xdg, this));
+    return true;
+}
+void UKUIQuickLaunch::AddToTaskb(QString *desktop)
+{
+
     QString *mdesktop=desktop;
     const auto url=QUrl(*mdesktop);
     QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
@@ -394,11 +429,6 @@ void UKUIQuickLaunch::AddToTaskbar(QString *desktop)
 
 }
 
-void UKUIQuickLaunch::AddToTaskbar(QString *filename, QString *exec, QString *iconpath)
-{
-    addButton(new QuickLaunchAction(*filename,*exec,*iconpath,this));
-    saveSettings();
-}
 
 void  UKUIQuickLaunch::CheckIfExist(QString *desktop)
 {
@@ -409,6 +439,13 @@ void  UKUIQuickLaunch::CheckIfExist(QString *desktop)
     XdgDesktopFile xdg;
     xdg.load(fileName);
     checkButton(new QuickLaunchAction(&xdg, this));
+}
+bool UKUIQuickLaunch::AddToTaskb(const QString &arg)
+{
+    // handle method call com.kylin.security.controller.filectrl.AddToTaskbar
+    bool out0;
+    QMetaObject::invokeMethod(parent(), "AddToTaskbar", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
+    return out0;
 }
 
 //void UKUIQuickLaunch::RemoveFromTaskbar(QString *filename)
@@ -534,13 +571,13 @@ void UKUIQuickLaunch::buttonMoveRight()
 
 
      QString desktopfile="/usr/share/applications/fcitx.desktop";
-     AddToTaskbar(&desktopfile);
+     AddToTaskb(&desktopfile);
      desktopfile="/usr/share/applications/vim.desktop";
-     AddToTaskbar(&desktopfile);
+     AddToTaskb(&desktopfile);
      desktopfile="/usr/share/applications/assistant-qt5.desktop";
-     AddToTaskbar(&desktopfile);
+     AddToTaskb(&desktopfile);
      desktopfile="/usr/share/applications/mpv.desktop";
-     AddToTaskbar(&desktopfile);
+     AddToTaskb(&desktopfile);
 
 }
 
@@ -586,4 +623,65 @@ void UKUIQuickLaunch::showPlaceHolder()
     }
 
     mLayout->addWidget(mPlaceHolder);
+}
+
+
+
+#include <QtCore/QMetaObject>
+#include <QtCore/QByteArray>
+#include <QtCore/QList>
+#include <QtCore/QMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVariant>
+
+/*
+ * Implementation of adaptor class FilectrlAdaptor
+ */
+
+FilectrlAdaptor::FilectrlAdaptor(QObject *parent)
+    : QDBusAbstractAdaptor(parent)
+{
+    // constructor
+    setAutoRelaySignals(true);
+}
+
+FilectrlAdaptor::~FilectrlAdaptor()
+{
+    // destructor
+}
+
+bool FilectrlAdaptor::AddToTaskbar(const QString &arg)
+{
+    // handle method call com.kylin.security.controller.filectrl.AddToTaskbar
+    bool out0;
+    QMetaObject::invokeMethod(parent(), "AddToTaskbar", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
+        qDebug()<<"add set is here"<<arg;
+        QString desktopfile="/usr/share/applications/fcitx.desktop";
+        emit addtak(3);
+
+
+    return out0;
+}
+
+bool FilectrlAdaptor::CheckIfExist(const QString &arg)
+{
+    // handle method call com.kylin.security.controller.filectrl.CheckIfExist
+    bool out0;
+    QMetaObject::invokeMethod(parent(), "CheckIfExist", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
+    return out0;
+}
+
+bool FilectrlAdaptor::RemoveFromTaskbar(const QString &arg)
+{
+    // handle method call com.kylin.security.controller.filectrl.RemoveFromTaskbar
+    bool out0;
+    QMetaObject::invokeMethod(parent(), "RemoveFromTaskbar", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
+    qDebug()<<"revove set is here"<<arg;
+    return out0;
+}
+
+DBus::DBus(QObject *parent) : QObject(parent)
+{
+
 }

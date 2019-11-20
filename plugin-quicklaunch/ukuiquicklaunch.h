@@ -38,7 +38,19 @@
 #include "qlayoutitem.h"
 #include "qlayoutitem.h"
 #include "qgridlayout.h"
+//-----------------dbus
+#include <QtCore/QObject>
+#include <QtDBus/QtDBus>
 
+QT_BEGIN_NAMESPACE
+class QByteArray;
+template<class T> class QList;
+template<class Key, class Value> class QMap;
+class QString;
+class QStringList;
+class QVariant;
+QT_END_NAMESPACE
+//-----------------------
 
 class XdgDesktopFile;
 class QuickLaunchAction;
@@ -59,6 +71,24 @@ class UKUIQuickLaunch : public QFrame
 {
     Q_OBJECT
 
+    Q_CLASSINFO("D-Bus Interface", "com.kylin.security.controller.filectrl")
+    Q_CLASSINFO("D-Bus Introspection", ""
+"  <interface name=\"com.kylin.security.controller.filectrl\">\n"
+"    <method name=\"AddToTaskbar\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"    <method name=\"RemoveFromTaskbar\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"    <method name=\"CheckIfExist\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"  </interface>\n"
+        "")
+
 public:
    UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
     ~UKUIQuickLaunch();
@@ -68,7 +98,15 @@ public:
 
     void realign();
     //virtual QLayoutItem *takeAt(int index) = 0;
+    void saveSettings();
+    void showPlaceHolder();
+    void AddToTaskb(QString *desktop);
+    void AddToTaskbar(QString *filename,QString *exec,QString *iconpath);
+    void CheckIfExist(QString *desktop);
+    void RemoveFromTaskbar(QString *desktop);
+    bool AddToTaskb(const QString &arg);
 
+    friend class FilectrlAdaptor;
 
 private:
     LXQt::GridLayout *mLayout;
@@ -77,15 +115,6 @@ private:
 
     void dragEnterEvent(QDragEnterEvent *e);
     void dropEvent(QDropEvent *e);
-
-    void saveSettings();
-    void showPlaceHolder();
-    void AddToTaskbar(QString *desktop);
-    void AddToTaskbar(QString *filename,QString *exec,QString *iconpath);
-    void CheckIfExist(QString *desktop);
-    void RemoveFromTaskbar(QString *desktop);
-
-
 
 
 
@@ -101,6 +130,59 @@ private slots:
     void buttonDeleted();
     void buttonMoveLeft();
     void buttonMoveRight();
+
+public slots:
+    bool AddToTaskbar(QString arg);
+    bool RemoveFromTaskbar(QString arg);
+    bool CheckIfExist(QString arg);
+
 };
 
+
+
+class FilectrlAdaptor: public QDBusAbstractAdaptor
+{
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "com.kylin.security.controller.filectrl")
+    Q_CLASSINFO("D-Bus Introspection", ""
+"  <interface name=\"com.kylin.security.controller.filectrl\">\n"
+"    <method name=\"AddToTaskbar\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"    <method name=\"RemoveFromTaskbar\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"    <method name=\"CheckIfExist\">\n"
+"      <arg direction=\"out\" type=\"b\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
+"  </interface>\n"
+        "")
+public:
+    FilectrlAdaptor(QObject *parent);
+    virtual ~FilectrlAdaptor();
+
+public: // PROPERTIES
+public Q_SLOTS: // METHODS
+    bool AddToTaskbar(const QString &arg);
+    bool CheckIfExist(const QString &arg);
+    bool RemoveFromTaskbar(const QString &arg);
+
+Q_SIGNALS: // SIGNALS
+
+signals:
+    void addtak(int);
+};
+
+class DBus : public QObject
+{
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface","com.kylin.security.controller.filectrl")
+public:
+    explicit DBus(QObject *parent = 0);
+
+
+};
 #endif

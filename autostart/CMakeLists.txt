@@ -13,3 +13,4 @@ install(FILES
     DESTINATION "${LXQT_ETC_XDG_DIR}/autostart"
     COMPONENT Runtime
 )
+
