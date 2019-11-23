@@ -112,6 +112,31 @@ UKUITaskButton * UKUITaskGroup::addWindow(WId id)
     UKUITaskButton *btn = new UKUITaskButton(id, parentTaskBar(), mPopup);
     btn->setToolButtonStyle(popupButtonStyle());
 
+    btn->setStyleSheet(
+                //正常状态样式
+                "QToolButton{"
+                "background-color:rgba(74,112,139,90%);"//背景色（也可以设置图片）
+                "qproperty-iconSize:24px 24px;"
+                "border-style:outset;"                  //边框样式（inset/outset）
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "border-color:rgba(255,255,255,30);"    //边框颜色
+                "font:bold 14px;"                       //字体，字体大小
+                "color:rgba(255,255,255,100%);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "spacing:0px;"
+                "border-bottom-style:solid"
+                "}"
+                //鼠标悬停样式
+                "QToolButton:hover{"
+                "background-color:rgba(74,112,139,80%);"
+                "}"
+                //鼠标按下样式
+                "QToolButton:pressed{"
+                "background-color:rgba(74,112,139,100%);"
+                "}"
+                );
+
     if (btn->isApplicationActive())
     {
         btn->setChecked(true);

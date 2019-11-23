@@ -107,15 +107,18 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
                 "QToolButton{"
                 "background-color:rgba(190,216,239,20%);"//背景色（也可以设置图片）
                 "qproperty-iconSize:24px 24px;"
-                "border-style:outset;"                  //边框样式（inset/outset）
-                "border-width:0px;"                     //边框宽度像素
-                "border-radius:0px;"                   //边框圆角半径像素
+                "border-style:inset;"                  //边框样式（inset/outset）
+                "border-width:2px;"                     //边框宽度像素
+//                "border-radius:0px;"                   //边框圆角半径像素
                 "border-color:rgba(255,255,255,30);"    //边框颜色
-                "font:bold 14px;"                       //字体，字体大小
-                "color:rgba(255,255,255,100%);"                //字体颜色
+//                "font:bold 14px;"                       //字体，字体大小
+//                "color:rgba(255,255,255,100%);"                //字体颜色
                 "padding:0px;"                          //填衬
-                "spacing:10px;"
-                "border-bottom-style:solid"
+                "spacing:2px;"
+                "}"
+                "QToolButton{"
+                "border-bottom-color:rgb(58,95,205);"
+                "border-bottom-width:5px;"
                 "}"
                 //鼠标悬停样式
                 "QToolButton:hover{"

@@ -16,7 +16,7 @@
         TEMPLATE
             ${NAME}
         INSTALL_DIR
-	${UKUI_TRANSLATIONS_DIR}/${PROGRAM}/${NAME}
+        ${UKUI_TRANSLATIONS_DIR}/${PROGRAM}/${NAME}
     )
 
     #lxqt_translate_to(QM_FILES ${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROGRAM}/${PROJECT_NAME})

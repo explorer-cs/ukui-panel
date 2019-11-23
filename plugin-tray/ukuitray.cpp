@@ -77,6 +77,7 @@ UKUITray::UKUITray(IUKUIPanelPlugin *plugin, QWidget *parent):
     mDisplay(QX11Info::display())
 {
     mLayout = new LXQt::GridLayout(this);
+    //mLayout->setHorizontalSpacing(10);
     realign();
     _NET_SYSTEM_TRAY_OPCODE = XfitMan::atom("_NET_SYSTEM_TRAY_OPCODE");
     // Init the selection later just to ensure that no signals are sent until
@@ -393,6 +394,23 @@ void UKUITray::addIcon(Window winId)
         return;
 
     icon = new TrayIcon(winId, mIconSize, this);
+//    icon->setStyleSheet(
+//                         "TrayIcon {"
+//                         "background-color:rgb(21,26,30);"
+//                         "border-color:rgba(255,255,255,30);"    //边框颜色
+//                         "font:SimSun 14px;"                       //字体，字体大小
+//                         "color:rgba(255,255,255,100);"                //字体颜色
+//                        " }"
+
+//                        //鼠标悬停样式
+//                        "TrayIcon:hover{"
+//                        "background-color:rgba(190,216,239,30%);"
+//                        "}"
+//                        //鼠标按下样式
+//                        "TrayIcon:selected{"
+//                        "background-color:rgba(190,216,239,30%);"
+//                        "}"
+//                        );
     mIcons.append(icon);
     mLayout->addWidget(icon);
     connect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);

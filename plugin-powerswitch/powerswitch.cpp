@@ -6,7 +6,7 @@
 
 #include <lxqt-globalkeys.h>
 
-StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
+PowerSwitch::PowerSwitch(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
     IUKUIPanelPlugin(startupInfo)
 {
@@ -15,12 +15,12 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
 }
 
 
-StartMenu::~StartMenu()
+PowerSwitch::~PowerSwitch()
 {
 }
 
 
-void StartMenu::realign()
+void PowerSwitch::realign()
 {
 //    QSize size;
 //    size.setHeight(40);
@@ -32,7 +32,7 @@ void StartMenu::realign()
 
 }
 
-StartMenuWidget::StartMenuWidget(QWidget *parent):
+PowerSwitchWidget::PowerSwitchWidget(QWidget *parent):
     QFrame(parent)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
@@ -79,12 +79,12 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
 
 
-StartMenuWidget::~StartMenuWidget()
+PowerSwitchWidget::~PowerSwitchWidget()
 {
 }
 
 
-void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
+void PowerSwitchWidget::mouseReleaseEvent(QMouseEvent *event)
 {
 //    if (!mCapturing)
 //        return;
@@ -93,7 +93,7 @@ void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
 }
 
 
-void StartMenuWidget::captureMouse()
+void PowerSwitchWidget::captureMouse()
 {
     if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
     {
@@ -103,7 +103,7 @@ void StartMenuWidget::captureMouse()
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
 
-void StartMenuWidget::contextMenuEvent(QContextMenuEvent *event) {
+void PowerSwitchWidget::contextMenuEvent(QContextMenuEvent *event) {
   //创建一个菜单 添加事件
 qDebug()<<"contextMenuEvent    right press event";
 }

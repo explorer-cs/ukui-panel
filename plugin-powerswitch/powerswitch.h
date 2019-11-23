@@ -21,12 +21,12 @@
 #define DEFAULT_SHORTCUT "Alt+F1"
 
 
-class  StartMenuWidget: public QFrame
+class  PowerSwitchWidget: public QFrame
 {
     Q_OBJECT
 public:
-    StartMenuWidget(QWidget* parent = nullptr);
-    ~StartMenuWidget();
+    PowerSwitchWidget(QWidget* parent = nullptr);
+    ~PowerSwitchWidget();
 
     QLineEdit *lineEdit() { return &mLineEdit; }
     QToolButton *button() { return &mButton; }
@@ -47,24 +47,24 @@ private:
 
 
 
-class StartMenu : public QObject, public IUKUIPanelPlugin
+class PowerSwitch : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
-    ~StartMenu();
+    PowerSwitch(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~PowerSwitch();
 
     virtual QWidget *widget() { return &mWidget; }
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
     void realign();
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
 private:
-    StartMenuWidget mWidget;
+    PowerSwitchWidget mWidget;
 
 
 };
 
-class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
+class PowerSwitchLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
@@ -72,7 +72,7 @@ class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new StartMenu(startupInfo);
+        return new PowerSwitch(startupInfo);
     }
 };
 

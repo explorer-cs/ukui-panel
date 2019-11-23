@@ -18,6 +18,9 @@
 
 #include "../panel/plugin.h"
 #include "../panel/ukuipanel.h"
+//#include "../panel/config/configpaneldialog.h"
+#include "../panel/config/configpanelwidget.h"
+#include <QMenu>
 #define DEFAULT_SHORTCUT "Alt+F1"
 
 
@@ -38,12 +41,17 @@ protected:
 
 private slots:
     void captureMouse();
+    void configpanel();
 
 private:
     QLineEdit mLineEdit;
     QToolButton mButton;
     QToolButton mButton2;
     bool mCapturing;
+    QMenu *st_menu;
+    QPointer<ConfigPanelDialog> mConfigDialog;
+
+
 };
 
 

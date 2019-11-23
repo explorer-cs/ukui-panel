@@ -724,18 +724,21 @@ int UKUIPanel::findAvailableScreen(UKUIPanel::Position position)
  ************************************************/
 void UKUIPanel::showConfigDialog()
 {
-    if (mConfigDialog.isNull())
-        mConfigDialog = new ConfigPanelDialog(this, nullptr /*make it top level window*/);
+//    if (mConfigDialog.isNull())
+//        mConfigDialog = new ConfigPanelDialog(this, nullptr /*make it top level window*/);
 
-    mConfigDialog->showConfigPanelPage();
-    mStandaloneWindows->observeWindow(mConfigDialog.data());
-    mConfigDialog->show();
-    mConfigDialog->raise();
-    mConfigDialog->activateWindow();
-    WId wid = mConfigDialog->windowHandle()->winId();
+//    mConfigDialog->showConfigPanelPage();
+//    mStandaloneWindows->observeWindow(mConfigDialog.data());
+//    mConfigDialog->show();
+//    mConfigDialog->raise();
+//    mConfigDialog->activateWindow();
+//    WId wid = mConfigDialog->windowHandle()->winId();
 
-    KWindowSystem::activateWindow(wid);
-    KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
+//    KWindowSystem::activateWindow(wid);
+//    KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
+
+            mConfigDialog = new ConfigPanelDialog(this, nullptr);
+        mConfigDialog->show();
 }
 
 
@@ -1100,19 +1103,19 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     }
     menu->setStyleSheet(
                          "QMenu {"
-                         "background-color:rgba(21,26,30,90%);"
+                         "background-color:rgb(21,26,30);"
                          "border-color:rgba(255,255,255,30);"    //边框颜色
-                         "font:bold 14px;"                       //字体，字体大小
+                         "font:SimSun 14px;"                       //字体，字体大小
                          "color:rgba(255,255,255,100);"                //字体颜色
                         " }"
 
                         //鼠标悬停样式
-                        "QToolButton:hover{"
+                        "QMenu:hover{"
                         "background-color:rgba(190,216,239,30%);"
                         "}"
                         //鼠标按下样式
-                        "QToolButton:pressed{"
-                        "background-color:rgba(0,0,0,12%);"
+                        "QMenu:selected{"
+                        "background-color:rgba(190,216,239,30%);"
                         "}"
 
                         );
@@ -1172,7 +1175,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                          "QMenu {"
                          "background-color:rgba(21,26,30,90%);"
                          "border-color:rgba(255,255,255,30);"    //边框颜色
-                         "font:bold 14px;"                       //字体，字体大小
+                         "font:SimSun 14px;"                       //字体，字体大小
                          "color:rgba(255,255,255,100);"                //字体颜色
                          "padding:2px 2px; "                     //设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
                         " }"
