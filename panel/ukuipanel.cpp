@@ -783,7 +783,8 @@ void UKUIPanel::updateStyleSheet()
             .arg(mBackgroundColor.green())
             .arg(mBackgroundColor.blue())
             .arg((float) mOpacity / 100);
-        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
+//        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(8,10,12,90%); }");
     }
 
     if (QFileInfo(mBackgroundImage).exists())

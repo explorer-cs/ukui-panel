@@ -93,35 +93,6 @@ include("cmake/BuildPlugin.cmake")
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
-#setByDefault(COLORPICKER_PLUGIN Yes)
-if(COLORPICKER_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "Color Picker")
-    add_subdirectory(plugin-colorpicker)
-endif()
-
-#setByDefault(CPULOAD_PLUGIN Yes)
-if(CPULOAD_PLUGIN)
-    find_library(STATGRAB_LIB statgrab)
-
-    if(NOT STATGRAB_LIB)
-        message(FATAL_ERROR "CPU Load plugin requires libstatgrab")
-    endif()
-    list(APPEND ENABLED_PLUGINS "Cpu Load")
-    add_subdirectory(plugin-cpuload)
-endif()
-
-#setByDefault(DIRECTORYMENU_PLUGIN Yes)
-if(DIRECTORYMENU_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "Directory menu")
-    add_subdirectory(plugin-directorymenu)
-endif()
-
-#setByDefault(DOM_PLUGIN No)
-if(DOM_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "DOM")
-    add_subdirectory(plugin-dom)
-endif(DOM_PLUGIN)
-
 #setByDefault(DESKTOPSWITCH_PLUGIN Yes)
 if(DESKTOPSWITCH_PLUGIN)
     list(APPEND STATIC_PLUGINS "desktopswitch")
@@ -130,11 +101,6 @@ if(DESKTOPSWITCH_PLUGIN)
     add_subdirectory(plugin-desktopswitch)
 endif()
 
-#setByDefault(KBINDICATOR_PLUGIN Yes)
-if(KBINDICATOR_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "Keyboard Indicator")
-    add_subdirectory(plugin-kbindicator)
-endif(KBINDICATOR_PLUGIN)
 
 #setByDefault(MAINMENU_PLUGIN Yes)
 if(MAINMENU_PLUGIN)
@@ -158,16 +124,6 @@ if(QUICKLAUNCH_PLUGIN)
     add_subdirectory(plugin-quicklaunch)
 endif()
 
-#setByDefault(SENSORS_PLUGIN Yes)
-if(SENSORS_PLUGIN)
-    find_library(SENSORS_LIB sensors)
-
-    if(NOT SENSORS_LIB)
-        message(FATAL_ERROR "Sensors plugin requires lm_sensors")
-    endif()
-    list(APPEND ENABLED_PLUGINS "Sensors")
-    add_subdirectory(plugin-sensors)
-endif()
 
 setByDefault(SHOWDESKTOP_PLUGIN Yes)
 if(SHOWDESKTOP_PLUGIN)
@@ -177,22 +133,6 @@ if(SHOWDESKTOP_PLUGIN)
     add_subdirectory(plugin-showdesktop)
 endif()
 
-#setByDefault(NETWORKMONITOR_PLUGIN Yes)
-if(NETWORKMONITOR_PLUGIN)
-    find_library(STATGRAB_LIB statgrab)
-
-    if(NOT STATGRAB_LIB)
-        message(FATAL_ERROR "Network Monitor plugin requires libstatgrab")
-    endif()
-    list(APPEND ENABLED_PLUGINS "Network Monitor")
-    add_subdirectory(plugin-networkmonitor)
-endif()
-
-#setByDefault(SYSSTAT_PLUGIN Yes)
-if(SYSSTAT_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "System Stats")
-    add_subdirectory(plugin-sysstat)
-endif(SYSSTAT_PLUGIN)
 
 setByDefault(TASKBAR_PLUGIN Yes)
 if(TASKBAR_PLUGIN)
@@ -202,13 +142,6 @@ if(TASKBAR_PLUGIN)
   add_subdirectory(plugin-taskbar)
 endif()
 
-#setByDefault(STATUSNOTIFIER_PLUGIN Yes)
-if(STATUSNOTIFIER_PLUGIN)
-    list(APPEND STATIC_PLUGINS "statusnotifier")
-    add_definitions(-DWITH_STATUSNOTIFIER_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "Status Notifier")
-    add_subdirectory(plugin-statusnotifier)
-endif()
 
 setByDefault(TRAY_PLUGIN Yes)
 if(TRAY_PLUGIN)
@@ -245,13 +178,6 @@ if(VOLUME_PLUGIN)
     add_subdirectory(plugin-volume)
 endif()
 
-#setByDefault(WORLDCLOCK_PLUGIN Yes)
-if(WORLDCLOCK_PLUGIN)
-    list(APPEND STATIC_PLUGINS "worldclock")
-    add_definitions(-DWITH_WORLDCLOCK_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "World Clock")
-    add_subdirectory(plugin-worldclock)
-endif(WORLDCLOCK_PLUGIN)
 
 setByDefault(SPACER_PLUGIN Yes)
 if(SPACER_PLUGIN)
@@ -305,4 +231,6 @@ add_subdirectory(panel)
 
 # merged from lxqt-common
 #add_subdirectory(autostart)
+
+
 
