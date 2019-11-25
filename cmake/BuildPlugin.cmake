@@ -2,7 +2,7 @@
     set(PROGRAM "ukui-panel")
     project(${PROGRAM}_${NAME})
 
-    set(PROG_SHARE_DIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/ukui/${PROGRAM})
+    set(PROG_SHARE_DIR ${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROGRAM})
     set(PLUGIN_SHARE_DIR ${PROG_SHARE_DIR}/${NAME})
 
     # Translations **********************************
@@ -20,6 +20,7 @@
     )
 
     #lxqt_translate_to(QM_FILES ${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/${PROGRAM}/${PROJECT_NAME})
+    message("^^^^^^^^^^^^^^^^^^^^^^^CMAKE_INSTALL_FULL_DATAROOTDIR^^^^"${PROGRAM})
     file (GLOB ${PROJECT_NAME}_DESKTOP_FILES_IN resources/*.desktop.in)
     lxqt_translate_desktop(DESKTOP_FILES
         SOURCES
