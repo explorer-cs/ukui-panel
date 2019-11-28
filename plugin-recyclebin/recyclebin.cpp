@@ -91,12 +91,7 @@ void RecycleBinWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void RecycleBinWidget::captureMouse()
 {
-    if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
-    {
-    QProcess *process =new QProcess(this);
-    process->startDetached("/usr/bin/ukui-menu");
-    }
-    else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
+
 }
 
 void RecycleBinWidget::contextMenuEvent(QContextMenuEvent *event) {

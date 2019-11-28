@@ -232,6 +232,6 @@ add_subdirectory(panel)
 # merged from lxqt-common
 add_subdirectory(autostart)
 add_subdirectory(menu)
-
+file(GLOB_RECURSE QRC_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
 
