@@ -87,12 +87,12 @@ public:
     static QColor moveMarkerColor() { return mMoveMarkerColor; }
     static void setMoveMarkerColor(QColor color) { mMoveMarkerColor = color; }
 
-public slots:
+public Q_SLOTS:
     void realign();
     void showConfigureDialog();
     void requestRemove();
 
-signals:
+Q_SIGNALS:
     void startMove();
     void remove();
     /*!
@@ -125,7 +125,7 @@ private:
     QString mName;
     QPointer<QDialog> mConfigDialog; //!< plugin's config dialog (if any)
 
-private slots:
+private Q_SLOTS:
     void settingsChanged();
 
 };

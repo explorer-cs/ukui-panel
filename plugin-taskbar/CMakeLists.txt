@@ -22,10 +22,13 @@ set(UIS
     ukuitaskbarconfiguration.ui
 )
 
+
 set(LIBRARIES
     lxqt
     lxqt-globalkeys
     Qt5Xdg
 )
+
+
 
 BUILD_UKUI_PLUGIN(${PLUGIN})

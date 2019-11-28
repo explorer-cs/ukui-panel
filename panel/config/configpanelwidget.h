@@ -51,13 +51,13 @@ public:
     IUKUIPanel::Position position() const { return mPosition; }
     void updateIconThemeSettings();
 
-signals:
+Q_SIGNALS:
     void changed();
 
-public slots:
+public Q_SLOTS:
     void reset();
 
-private slots:
+private Q_SLOTS:
     void editChanged();
     void widthTypeChanged();
     void positionChanged();

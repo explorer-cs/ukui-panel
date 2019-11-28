@@ -25,3 +25,6 @@ override_dh_auto_configure:
 		-DDOM_PLUGIN=OFF \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		$(NOT_LINUX)
+override_dh_autobuild:
+	dh_auto_build
+

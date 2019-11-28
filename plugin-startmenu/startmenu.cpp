@@ -44,7 +44,7 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
 
     //mButton.setAutoRaise(true);
-    mButton.setFixedSize(60,40);
+    mButton.setFixedSize(100,100);
     mButton2.setFixedSize(40,40);
 
 
@@ -52,12 +52,59 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
 
+    //gtkstyle
+        GdkColor taskbuttoncolor;
+        taskbuttoncolor=get_border_color("ukuimenu_color");
+
+        int color_red=turncolor(taskbuttoncolor.red);
+        int color_green=turncolor(taskbuttoncolor.green);
+        int color_blue=turncolor(taskbuttoncolor.blue);
+        qDebug()<<"^^^^^^^^^^^^^^^^^^^^^"<<color_red;
+        qDebug()<<"^^^^^^^^^^^^^&&&^^^"<<color_green;
+        qDebug()<<"^^^^^^^^^^^^^^^^^^^^^"<<color_blue;
+         mButton.setStyleSheet(
+          "QToolButton{"
+            //"background-color:rgba(41,103,0,80%);"//背景色（也可以设置图片）
+            "qproperty-icon:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
+            "qproperty-iconSize:60px 40px;"
+            "border-style:outset;"                  //边框样式（inset/outset）
+            "border-width:0px;"                     //边框宽度像素
+            "border-radius:0px;"                   //边框圆角半径像素
+            "border-color:rgba(255,255,255,30);"    //边框颜色
+            "font:SimSun 14px;"                       //字体，字体大小
+            "color:rgba(0,0,0,100);"                //字体颜色
+            "padding:0px;"                          //填衬
+            "border-bottom-style:solid"
+            "}"
+            //鼠标悬停样式
+            "QToolButton:hover{"
+            "background-color:rgba(190,216,239,20%);"
+            //"qproperty-icon:url(/usr/share/plugin-startmenu/img/taskview.svg);"
+            "border-style:outset;"                  //边框样式（inset/outset）
+            "border-width:0px;"                     //边框宽度像素
+            "border-radius:0px;"                   //边框圆角半径像素
+            "border-color:rgba(255,255,255,30);"    //边框颜色
+            "font:SimSun 14px;"                       //字体，字体大小
+            "color:rgba(0,0,0,100);"                //字体颜色
+            "padding:0px;"                          //填衬
+            "border-bottom-style:solid"
+
+            "}"
+            //鼠标按下样式
+            "QToolButton:pressed{"
+            "background-color:rgba(190,216,239,12%);"
+            //"background-image:url(/usr/share/plugin-startmenu/img/powerswitch.svg);"
+            "}"
+            );
+
     mButton.setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
-                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
-                "qproperty-icon:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
-                "qproperty-iconSize:40px 40px;"
+                "background-color:rgba(color_red,color_green,color_blue,80%);"//背景色（也可以设置图片）
+               " background-color:color_red;"
+                //"qproperty-icon:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
+                "background-image:url(/usr/share/plugin-startmenu/img/startmenu.svg);"
+                //"qproperty-iconSize:40px 40px;"
                 "border-style:outset;"                  //边框样式（inset/outset）
                 "border-width:0px;"                     //边框宽度像素
                 "border-radius:0px;"                   //边框圆角半径像素
@@ -70,12 +117,25 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
                 //鼠标悬停样式
                 "QToolButton:hover{"
                 "background-color:rgba(190,216,239,20%);"
+                //"qproperty-icon:url(/usr/share/plugin-startmenu/img/taskview.svg);"
+                "background-image:url(/usr/share/plugin-startmenu/img/taskview.svg);"
+                "border-style:outset;"                  //边框样式（inset/outset）
+                "border-width:0px;"                     //边框宽度像素
+                "border-radius:0px;"                   //边框圆角半径像素
+                "border-color:rgba(255,255,255,30);"    //边框颜色
+                "font:SimSun 14px;"                       //字体，字体大小
+                "color:rgba(0,0,0,100);"                //字体颜色
+                "padding:0px;"                          //填衬
+                "border-bottom-style:solid"
+
                 "}"
                 //鼠标按下样式
                 "QToolButton:pressed{"
                 "background-color:rgba(190,216,239,12%);"
+                "background-image:url(/usr/share/plugin-startmenu/img/powerswitch.svg);"
                 "}"
                 );
+
     mButton2.setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
@@ -129,17 +189,19 @@ void StartMenuWidget::captureMouse()
 }
 
 void StartMenuWidget::contextMenuEvent(QContextMenuEvent *event) {
+
   //创建一个菜单 添加事件
-qDebug()<<"contextMenuEvent    right press event";
+qDebug()<<"contextMenuEvent    345 right press event";
 st_menu=new QMenu;
 st_menu->setContextMenuPolicy(Qt::CustomContextMenu);
-
+st_menu->setFixedWidth(250);
 st_menu->setStyleSheet(
                      "QMenu {"
                      "background-color:rgb(21,26,30);"
                      "border-color:rgba(255,255,255,30);"    //边框颜色
                      "font:SimSun 14px;"                       //字体，字体大小
                      "color:rgba(255,255,255,100);"                //字体颜色
+
                     " }"
 
                     //鼠标悬停样式
@@ -189,7 +251,6 @@ st_menu->exec(QCursor::pos());
 
 
 
-
 }
 
 void StartMenuWidget::configpanel()
@@ -201,4 +262,50 @@ void StartMenuWidget::configpanel()
     UKUIPanel *falsepanel;
     mPanelPage = new ConfigPanelWidget(falsepanel, this);
 
+}
+
+//gtkstyle
+GdkColor StartMenuWidget::get_border_color(char *color_name)
+{
+    GdkColor color;
+
+            GObject *gs = (GObject *)gtk_settings_get_default ();
+            GValue color_scheme_value = G_VALUE_INIT;
+            g_value_init (&color_scheme_value, G_TYPE_STRING);
+            g_object_get_property (gs, "gtk-color-scheme", &color_scheme_value);
+            gchar *color_scheme = (char *)g_value_get_string (&color_scheme_value);
+            gchar color_spec[16] = { 0 };
+            char *needle = strstr(color_scheme, color_name);
+            if (needle) {
+                    while (1) {
+                            if (color_spec[0] != '#') {
+                                    color_spec[0] = *needle;
+                                    needle++;
+                                    continue;
+                            }
+
+                            if ((*needle >= 0x30 && *needle <= 0x39) ||
+                                (*needle >= 0x41 && *needle <= 0x46) ||
+                                (*needle >= 0x61 && *needle <= 0x66)) {
+                                    color_spec[strlen(color_spec)] = *needle;
+                                    needle++;
+                            } else {
+                                    break;
+                            }
+                    }
+                    gdk_color_parse (color_spec, &color);
+            } else {
+                    gdk_color_parse ("#3B9DC5", &color);
+            }
+
+            return color;
+}
+
+guint StartMenuWidget::turncolor(guint colorsingal)
+{
+    guint s1=colorsingal%16;
+    guint s2_p=colorsingal/16;
+    guint s2=s2_p%16;
+    guint s=10*s2+s1;
+    return s;
 }

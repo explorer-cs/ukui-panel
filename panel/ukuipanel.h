@@ -241,7 +241,7 @@ public:
      */
     void updateConfigDialog() const;
 
-public slots:
+public Q_SLOTS:
     /**
      * @brief Shows the QWidget and makes it visible on all desktops. This
      * method is NOT related to showPanel(), hidePanel() and hidePanelWork()
@@ -326,7 +326,7 @@ public slots:
      */
     void ensureVisible();
 
-signals:
+Q_SIGNALS:
     /**
      * @brief This signal gets emitted whenever this panel receives a
      * QEvent::LayoutRequest, i.e. "Widget layout needs to be redone.".
@@ -384,7 +384,7 @@ protected:
      */
     void showEvent(QShowEvent *event) override;
 
-public slots:
+public Q_SLOTS:
     /**
      * @brief Shows the ConfigPanelDialog and shows the "Config Panel"
      * page, i.e. calls showConfigPanelPage(). If the dialog does not
@@ -401,7 +401,7 @@ public slots:
      */
     void showConfigDialog();
 
-private slots:
+private Q_SLOTS:
     /**
      * @brief Shows the ConfigPanelDialog and shows the "Config Plugins"
      * page, i.e. calls showConfigPluginsPage(). If the dialog does not

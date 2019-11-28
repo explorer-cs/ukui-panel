@@ -9,5 +9,6 @@ usr/share/ukui/panel.conf
 usr/share/man
 usr/share
 usr/
+usr/share/lxqt
 #panel/resources/ukui-panel.desktop usr/share/applications
 

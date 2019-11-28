@@ -1129,7 +1129,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                    tr("Configure Panel"),
                    this, SLOT(showConfigDialog())
                   )->setDisabled(mLockPanel);
-    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
+    menu->addAction(QIcon::fromTheme("edit-delete"),
                    tr("Manage Widgets"),
                    this, SLOT(showAddPluginDialog())
                   )->setDisabled(mLockPanel);
@@ -1189,7 +1189,6 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                         "QToolButton:pressed{"
                         "background-color:rgba(0,0,0,12%);"
                         "}"
-
                         );
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),

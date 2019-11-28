@@ -22,7 +22,7 @@
 #include "../panel/config/configpanelwidget.h"
 #include <QMenu>
 #define DEFAULT_SHORTCUT "Alt+F1"
-
+#include <gtk/gtk.h>
 
 class  StartMenuWidget: public QFrame
 {
@@ -39,7 +39,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     virtual void contextMenuEvent(QContextMenuEvent *event);
 
-private slots:
+private Q_SLOTS:
     void captureMouse();
     void configpanel();
 
@@ -51,7 +51,11 @@ private:
     QMenu *st_menu;
     QPointer<ConfigPanelDialog> mConfigDialog;
 
-
+private:
+//    gtkstyle
+    GtkStyle *g;
+    GdkColor get_border_color(char *color_name);
+    guint turncolor(guint colorsingal);
 };
 
 
