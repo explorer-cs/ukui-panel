@@ -42,7 +42,7 @@
 #define ACT_INFO_UPPER      QString(ACT_INFO).toUpper()
 #define ACT_MENU_UPPER      QString(ACT_MENU).toUpper()
 
-DeviceAction::DeviceAction(LXQtMountPlugin *plugin, QObject *parent)
+DeviceAction::DeviceAction(UKUIMountPlugin *plugin, QObject *parent)
     : QObject(parent)
     , mPlugin(plugin)
 {
@@ -52,7 +52,7 @@ DeviceAction::~DeviceAction()
 {
 }
 
-DeviceAction *DeviceAction::create(ActionId id, LXQtMountPlugin *plugin, QObject *parent)
+DeviceAction *DeviceAction::create(ActionId id, UKUIMountPlugin *plugin, QObject *parent)
 {
     switch (id)
     {

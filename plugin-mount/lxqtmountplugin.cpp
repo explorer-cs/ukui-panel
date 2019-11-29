@@ -30,9 +30,9 @@
 
 #include <Solid/DeviceNotifier>
 
-LXQtMountPlugin::LXQtMountPlugin(const ILXQtPanelPluginStartupInfo &startupInfo):
+UKUIMountPlugin::UKUIMountPlugin(const IUKUIPanelPluginStartupInfo &startupInfo):
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     mPopup(nullptr),
     mDeviceAction(nullptr)
 {
@@ -42,16 +42,16 @@ LXQtMountPlugin::LXQtMountPlugin(const ILXQtPanelPluginStartupInfo &startupInfo)
     connect(mButton, &QToolButton::clicked, mPopup, &Popup::showHide);
     connect(mPopup, &Popup::visibilityChanged, mButton, &QToolButton::setDown);
     // Note: postpone creation of the mDeviceAction to not fire it in startup time
-    QTimer::singleShot(0, this, &LXQtMountPlugin::settingsChanged);
+    QTimer::singleShot(0, this, &UKUIMountPlugin::settingsChanged);
 }
 
-LXQtMountPlugin::~LXQtMountPlugin()
+UKUIMountPlugin::~UKUIMountPlugin()
 {
     delete mButton;
     delete mPopup;
 }
 
-QDialog *LXQtMountPlugin::configureDialog()
+QDialog *UKUIMountPlugin::configureDialog()
 {
     if (mPopup)
         mPopup->hide();
@@ -61,12 +61,12 @@ QDialog *LXQtMountPlugin::configureDialog()
     return configWindow;
 }
 
-void LXQtMountPlugin::realign()
+void UKUIMountPlugin::realign()
 {
     //nothing to do
 }
 
-void LXQtMountPlugin::settingsChanged()
+void UKUIMountPlugin::settingsChanged()
 {
     QString s = settings()->value(QLatin1String(CFG_KEY_ACTION)).toString();
     DeviceAction::ActionId actionId = DeviceAction::stringToActionId(s, DeviceAction::ActionMenu);

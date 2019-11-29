@@ -29,7 +29,6 @@
 #define LXQT_PLUGIN_MOUNT_DEVICEACTION_MENU_H
 
 #include "deviceaction.h"
-
 #include <QWidget>
 #include <QTimer>
 
@@ -39,7 +38,7 @@ class DeviceActionMenu : public DeviceAction
 {
     Q_OBJECT
 public:
-    explicit DeviceActionMenu(LXQtMountPlugin *plugin, QObject *parent = 0);
+    explicit DeviceActionMenu(UKUIMountPlugin *plugin, QObject *parent = 0);
     virtual ActionId Type() const throw () { return ActionMenu; }
 
 protected:

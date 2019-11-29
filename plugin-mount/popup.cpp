@@ -27,7 +27,7 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "popup.h"
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 
 #include <QDesktopWidget>
 #include <QVBoxLayout>
@@ -52,7 +52,7 @@ static bool hasRemovableParent(Solid::Device device)
     return false;
 }
 
-Popup::Popup(ILXQtPanelPlugin * plugin, QWidget* parent):
+Popup::Popup(IUKUIPanelPlugin * plugin, QWidget* parent):
     QDialog(parent,  Qt::Window | Qt::WindowStaysOnTopHint | Qt::CustomizeWindowHint | Qt::Popup | Qt::X11BypassWindowManagerHint),
     mPlugin(plugin),
     mPlaceholder(nullptr),

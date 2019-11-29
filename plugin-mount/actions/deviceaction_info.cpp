@@ -30,7 +30,7 @@
 
 #include <LXQt/Notification>
 
-DeviceActionInfo::DeviceActionInfo(LXQtMountPlugin *plugin, QObject *parent):
+DeviceActionInfo::DeviceActionInfo(UKUIMountPlugin *plugin, QObject *parent):
     DeviceAction(plugin, parent)
 {
 }

@@ -1,8 +1,10 @@
 [Desktop Entry]
 Type=Service
-ServiceTypes=LXQtPanel/Plugin
+ServiceTypes=UKUIPanel/Plugin
 Name=Removable media
 Comment=Easy mounting and unmounting of USB and optical drives.
 Icon=drive-removable-media
 
 #TRANSLATIONS_DIR=../translations
+Name=挂载设备
+Comment=removeable media

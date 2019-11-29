@@ -28,8 +28,8 @@
 #ifndef LXQTMOUNTPLUGIN_H
 #define LXQTMOUNTPLUGIN_H
 
-#include "../panel/ilxqtpanelplugin.h"
-#include "../panel/lxqtpanel.h"
+#include "../panel/iukuipanelplugin.h"
+#include "../panel/ukuipanel.h"
 #include "button.h"
 #include "popup.h"
 #include "actions/deviceaction.h"
@@ -40,17 +40,17 @@
 \author Petr Vanek <petr@scribus.info>
 */
 
-class LXQtMountPlugin : public QObject, public ILXQtPanelPlugin
+class UKUIMountPlugin : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 
 public:
-    LXQtMountPlugin(const ILXQtPanelPluginStartupInfo &startupInfo);
-    ~LXQtMountPlugin();
+    UKUIMountPlugin(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~UKUIMountPlugin();
 
     virtual QWidget *widget() { return mButton; }
     virtual QString themeId() const { return QLatin1String("LXQtMount"); }
-    virtual ILXQtPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog; }
+    virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog; }
 
     Popup *popup() { return mPopup; }
     QIcon icon() { return mButton->icon(); };
@@ -68,16 +68,16 @@ private:
     DeviceAction *mDeviceAction;
 };
 
-class LXQtMountPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class UKUIMountPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new LXQtMountPlugin(startupInfo);
+        return new UKUIMountPlugin(startupInfo);
     }
 };
 

@@ -29,7 +29,7 @@
 #include "../lxqtmountplugin.h"
 #include "../popup.h"
 
-DeviceActionMenu::DeviceActionMenu(LXQtMountPlugin *plugin, QObject *parent):
+DeviceActionMenu::DeviceActionMenu(UKUIMountPlugin *plugin, QObject *parent):
     DeviceAction(plugin, parent)
 {
     mPopup = plugin->popup();

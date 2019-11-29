@@ -28,7 +28,7 @@
 #ifndef LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 #define LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
 
 #define CFG_KEY_ACTION  "newDeviceAction"
 #define ACT_SHOW_MENU   "showMenu"
@@ -39,7 +39,7 @@ namespace Ui {
     class Configuration;
 }
 
-class Configuration : public LXQtPanelPluginConfigDialog
+class Configuration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 
