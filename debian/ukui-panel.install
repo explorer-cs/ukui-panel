@@ -4,7 +4,6 @@ usr/include/ukui
 usr/lib/*/ukui-panel
 usr/share/desktop-directories
 usr/share/ukui/ukui-panel
-#usr/share/ukui/translations/ukui-panel/*
 usr/share/ukui/panel.conf
 usr/share/man
 usr/share

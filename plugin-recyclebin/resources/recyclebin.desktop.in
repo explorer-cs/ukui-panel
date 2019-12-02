@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Service
 ServiceTypes=UKUIPanel/Plugin
-Name=PowerSwitch
-Comment=Get the start menu under the cursor. For web developers.
-Icon=start-menu
+Name=RecycleBin
+Comment=Get the recyclebin
+Icon=recyclebin
 
 #TRANSLATIONS_DIR=../translations
 Name=回收站

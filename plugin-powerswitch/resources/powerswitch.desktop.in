@@ -2,8 +2,8 @@
 Type=Service
 ServiceTypes=UKUIPanel/Plugin
 Name=PowerSwitch
-Comment=Get the start menu under the cursor. For web developers.
-Icon=start-menu
+Comment=Get the powerswitch
+Icon=power-switch
 
 #TRANSLATIONS_DIR=../translations
 Name=电源管理

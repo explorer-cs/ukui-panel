@@ -30,7 +30,7 @@
 #include "deviceaction_menu.h"
 #include "deviceaction_nothing.h"
 #include "../menudiskitem.h"
-#include "../lxqtmountplugin.h"
+#include "../ukuimountplugin.h"
 
 #include <Solid/StorageAccess>
 

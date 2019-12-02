@@ -26,7 +26,7 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "deviceaction_menu.h"
-#include "../lxqtmountplugin.h"
+#include "../ukuimountplugin.h"
 #include "../popup.h"
 
 DeviceActionMenu::DeviceActionMenu(UKUIMountPlugin *plugin, QObject *parent):

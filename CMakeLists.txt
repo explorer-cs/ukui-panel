@@ -213,7 +213,7 @@ endif(POWERSWITCH_PLUGIN)
 
 setByDefault(RECYCLEBIN_PLUGIN Yes)
 if(RECYCLEBIN_PLUGIN)
-#    list(APPEND STATIC_PLUGINS "powerswitch")
+#    list(APPEND STATIC_PLUGINS "recyclebin")
 #    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
     list(APPEND ENABLED_PLUGINS "recyclebin")
     add_subdirectory(plugin-recyclebin)

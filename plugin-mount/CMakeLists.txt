@@ -1,7 +1,7 @@
 set(PLUGIN "mount")
 
 set(HEADERS
-    lxqtmountplugin.h
+    ukuimountplugin.h
     configuration.h
     button.h
     menudiskitem.h
@@ -13,7 +13,7 @@ set(HEADERS
 )
 
 set(SOURCES
-    lxqtmountplugin.cpp
+    ukuimountplugin.cpp
     configuration.cpp
     button.cpp
     menudiskitem.cpp

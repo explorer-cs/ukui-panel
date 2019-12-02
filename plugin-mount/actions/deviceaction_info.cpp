@@ -25,7 +25,7 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#include "../lxqtmountplugin.h"
+#include "../ukuimountplugin.h"
 #include "deviceaction_info.h"
 
 #include <LXQt/Notification>
