@@ -195,10 +195,11 @@ st_menu->exec(QCursor::pos());
 void StartMenuWidget::configpanel()
 {
 //    mConfigDialog = new ConfigPanelDialog(this, nullptr);
-
 //    mConfigDialog->show();
-    ConfigPanelWidget *mPanelPage;
-    UKUIPanel *falsepanel;
-    mPanelPage = new ConfigPanelWidget(falsepanel, this);
+
+
+//    ConfigPanelWidget *mPanelPage;
+//    UKUIPanel *falsepanel;
+//    mPanelPage = new ConfigPanelWidget(falsepanel, this);
 
 }
