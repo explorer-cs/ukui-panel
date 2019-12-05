@@ -41,6 +41,7 @@ class ConfigPanelDialog : public LXQt::ConfigDialog
 public:
     ConfigPanelDialog(UKUIPanel *panel, QWidget *parent = 0);
 
+    //this three funtion influnce nothing
     void showConfigPanelPage();
     void showConfigPluginsPage();
     void updateIconThemeSettings();
@@ -48,6 +49,15 @@ public:
 private:
     ConfigPanelWidget *mPanelPage;
     ConfigPluginsWidget *mPluginsPage;
+
+public slots:
+    //void testpaneldig();
+public slots:
+    void configPosition_top();
+    void configPosition_bottom();
+
+signals:
+    void testsig();
 };
 
 #endif // CONFIGPANELDIALOG_H

@@ -48,6 +48,7 @@ class PluginInfo;
 }
 class UKUIPanelLayout;
 class ConfigPanelDialog;
+
 class PanelPluginsModel;
 class WindowNotifier;
 
@@ -668,7 +669,9 @@ private:
      * @brief Pointer to the current ConfigPanelDialog if there is any. Make
      * sure to test this pointer for validity because it is lazily loaded.
      */
-    QPointer<ConfigPanelDialog> mConfigDialog;
+   QPointer<ConfigPanelDialog> mConfigDialog;
+    //ConfigPanelDialog  *mConfigDialog;
+    //QPointer<ConfigPanelWidget> mConfigWidget;
 
     /**
      * @brief The animation used for showing/hiding an auto-hiding panel.
@@ -689,6 +692,15 @@ private:
 
     // settings should be kept private for security
     LXQt::Settings *settings() const { return mSettings; }
+
+
+private slots:
+    void changePosition_top();
+    void changePosition_bottom();
+
+public:
+    //ConfigPanelWidget *mconfigpanelwidget;
+
 };
 
 

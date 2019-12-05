@@ -50,12 +50,16 @@ public:
     int screenNum() const { return mScreenNum; }
     IUKUIPanel::Position position() const { return mPosition; }
     void updateIconThemeSettings();
+    IUKUIPanel::Position mPosition;
 
 signals:
     void changed();
 
 public slots:
     void reset();
+
+void positionChanged_top();
+void positionChanged_bottom();
 
 private slots:
     void editChanged();
@@ -69,7 +73,7 @@ private:
     Ui::ConfigPanelWidget *ui;
     UKUIPanel *mPanel;
     int mScreenNum;
-    IUKUIPanel::Position mPosition;
+
 
     void addPosition(const QString& name, int screen, UKUIPanel::Position position);
     void fillComboBox_position();

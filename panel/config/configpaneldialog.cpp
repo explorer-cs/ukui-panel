@@ -25,6 +25,10 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
+
+
+//this class to show the page of config panel
+
 #include "configpaneldialog.h"
 #include <QDebug>
 
@@ -36,21 +40,25 @@ ConfigPanelDialog::ConfigPanelDialog(UKUIPanel *panel, QWidget *parent):
     setAttribute(Qt::WA_DeleteOnClose);
 
     mPanelPage = new ConfigPanelWidget(panel, this);
+    qDebug()<<"mPanelPage is:";
     addPage(mPanelPage, tr("Panel"), QLatin1String("configure"));
-    connect(this, &ConfigPanelDialog::reset, mPanelPage, &ConfigPanelWidget::reset);
+    //connect(this, &ConfigPanelDialog::reset, mPanelPage, &ConfigPanelWidget::reset);
 
     mPluginsPage = new ConfigPluginsWidget(panel, this);
     addPage(mPluginsPage, tr("Widgets"), QLatin1String("preferences-plugin"));
-    connect(this, &ConfigPanelDialog::reset, mPluginsPage, &ConfigPluginsWidget::reset);
+    //connect(this, &ConfigPanelDialog::reset, mPluginsPage, &ConfigPluginsWidget::reset);
 
-    connect(this, &ConfigPanelDialog::accepted, [panel] {
-        panel->saveSettings();
-   });
+//    connect(this, &ConfigPanelDialog::accepted, [panel] {
+//        panel->saveSettings();
+
+//   });
+
 }
 
 void ConfigPanelDialog::showConfigPanelPage()
 {
     showPage(mPanelPage);
+
 }
 
 void ConfigPanelDialog::showConfigPluginsPage()
@@ -62,3 +70,22 @@ void ConfigPanelDialog::updateIconThemeSettings()
 {
     mPanelPage->updateIconThemeSettings();
 }
+
+void ConfigPanelDialog::configPosition_top()
+{
+    //qDebug()<<"mPanelPage ptr is:"<<mPanelPage;
+    mPanelPage->positionChanged_top();
+
+}
+
+void ConfigPanelDialog::configPosition_bottom()
+{
+    //qDebug()<<"mPanelPage ptr is:"<<mPanelPage;
+    mPanelPage->positionChanged_bottom();
+
+}
+
+
+
+
+

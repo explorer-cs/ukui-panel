@@ -228,6 +228,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
         showPanel(false);
         QTimer::singleShot(PANEL_HIDE_FIRST_TIME, this, SLOT(hidePanel()));
     }
+   // mConfigDialog=new ConfigPanelDialog(this);
 }
 
 /************************************************
@@ -739,6 +740,8 @@ void UKUIPanel::showConfigDialog()
 
             mConfigDialog = new ConfigPanelDialog(this, nullptr);
         mConfigDialog->show();
+        //mConfigWidget->positionChanged();
+
 }
 
 
@@ -1152,14 +1155,15 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                    this, SLOT(showConfigDialog())
                   )->setDisabled(mLockPanel);
 
-    QAction *pmenuaction_1;
-    QAction *pmenuaction_2;
+
+    QAction *pmenuaction_top;
+    QAction *pmenuaction_bottom;
     QAction *pmenuaction_3;
     QAction *pmenuaction_4;
-    pmenuaction_1=new QAction(this);
-    pmenuaction_1->setText("上");
-    pmenuaction_2=new QAction(this);
-    pmenuaction_2->setText("下");
+    pmenuaction_top=new QAction(this);
+    pmenuaction_top->setText("上");
+    pmenuaction_bottom=new QAction(this);
+    pmenuaction_bottom->setText("下");
     pmenuaction_3=new QAction(this);
     pmenuaction_3->setText("左");
     pmenuaction_4=new QAction(this);
@@ -1167,8 +1171,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     QMenu *pmenu_positon;
     pmenu_positon=new QMenu(this);
     pmenu_positon->setTitle("调整位置");
-    pmenu_positon->addAction(pmenuaction_1);
-    pmenu_positon->addAction(pmenuaction_2);
+    pmenu_positon->addAction(pmenuaction_top);
+    pmenu_positon->addAction(pmenuaction_bottom);
     pmenu_positon->addAction(pmenuaction_3);
     pmenu_positon->addAction(pmenuaction_4);
     menu->addMenu(pmenu_positon);
@@ -1191,6 +1195,11 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                         "}"
 
                         );
+
+    connect(pmenuaction_top,SIGNAL(triggered()),this,SLOT(changePosition_top()));
+    connect(pmenuaction_bottom,SIGNAL(triggered()),this,SLOT(changePosition_bottom()));
+
+
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
                    tr("Add New Panel"),
@@ -1499,3 +1508,21 @@ bool UKUIPanel::isPluginSingletonAndRunnig(QString const & pluginId) const
     else
         return plugin->iPlugin()->flags().testFlag(IUKUIPanelPlugin::SingleInstance);
 }
+
+void UKUIPanel::changePosition_top()
+{
+    //mConfigWidget->positionChanged();
+     //qDebug()<<"mPanelPage"<<mConfigDialog->mPanelPage;
+    //mConfigDialog->mPanelPage->positionChanged();
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPosition_top();
+}
+
+
+void UKUIPanel::changePosition_bottom()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPosition_bottom();
+}
+
+
