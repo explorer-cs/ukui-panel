@@ -252,6 +252,8 @@ void TrayIcon::setIconSize(QSize iconSize)
 
     if (mIconId)
         xfitMan().resizeWindow(mIconId, req_size.width(), req_size.height());
+    QSize mysize(16,16);
+    mIconSize=mysize;
 }
 
 

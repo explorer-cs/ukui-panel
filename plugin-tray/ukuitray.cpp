@@ -51,7 +51,7 @@
 #undef Bool // defined as int in X11/Xlib.h
 
 #include "../panel/iukuipanelplugin.h"
-
+#include <QPushButton>
 #define _NET_SYSTEM_TRAY_ORIENTATION_HORZ 0
 #define _NET_SYSTEM_TRAY_ORIENTATION_VERT 1
 
@@ -411,7 +411,28 @@ void UKUITray::addIcon(Window winId)
 //                        "background-color:rgba(190,216,239,30%);"
 //                        "}"
 //                        );
+    QPushButton *pushbutton_space;
+    pushbutton_space=new QPushButton(this);
+    pushbutton_space->setObjectName(QString::fromUtf8("4"));
+    //pushbutton_space->setGeometry(QRect(1, 1, 30, 38));
+    pushbutton_space->setFixedSize(0,40);
+
+    pushbutton_space->setStyleSheet(
+                         "QPushButton {"
+                         "background-color:rgba(255,0,0,100%);"
+                        " }"
+
+                        //鼠标悬停样式
+                        "QPushButton:hover{"
+                        "background-color:rgba(0,216,0,30%);"
+                        "}"
+                        //鼠标按下样式
+                        "QPushButton:selected{"
+                        "background-color:rgba(255,0,0,30%);"
+                        "}"
+                        );
     mIcons.append(icon);
+    mLayout->addWidget(pushbutton_space);
     mLayout->addWidget(icon);
     connect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
 }
