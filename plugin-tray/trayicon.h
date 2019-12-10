@@ -73,6 +73,7 @@ private:
     Display* mDisplay;
 
     static bool isXCompositeAvailable();
+    QSize mRectSize;
 };
 
 #endif // TRAYICON_H
