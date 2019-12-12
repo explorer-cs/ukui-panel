@@ -109,36 +109,27 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
 
 IndicatorCalendar::~IndicatorCalendar()
 {
+     qDebug()<<"calend exit start";
     if(mMainWidget != NULL)
     {
-     delete mMainWidget;
-     mMainWidget = NULL;
+     mMainWidget->deleteLater();
     }
-
     if(mWebViewDiag != NULL)
     {
-     delete mWebViewDiag;
-     mWebViewDiag = NULL;
+        mWebViewDiag->deleteLater();
     }
-
     if(mRotatedWidget != NULL)
     {
-     delete mRotatedWidget;
-     mRotatedWidget = NULL;
+     mRotatedWidget->deleteLater();
     }
-
     if(mContent != NULL)
     {
-     delete mContent;
-     mContent = NULL;
+     mContent->deleteLater();
     }
-
     if(mPopupContent != NULL)
     {
-     delete mPopupContent;
-     mPopupContent = NULL;
+     mPopupContent->deleteLater();
     }
-
 }
 
 void IndicatorCalendar::timeout()

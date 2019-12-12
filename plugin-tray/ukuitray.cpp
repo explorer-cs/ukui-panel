@@ -87,7 +87,6 @@ UKUITray::UKUITray(IUKUIPanelPlugin *plugin, QWidget *parent):
 
 
 /************************************************
-
  ************************************************/
 UKUITray::~UKUITray()
 {
@@ -361,15 +360,15 @@ void UKUITray::startTray()
  ************************************************/
 void UKUITray::stopTray()
 {
-//    for (auto & icon : mIcons)
-//        disconnect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
-//    qDeleteAll(mIcons);
-//    if (mTrayId)
-//    {
-//        XDestroyWindow(mDisplay, mTrayId);
-//        mTrayId = 0;
-//    }
-//    mValid = false;
+    for (auto & icon : mIcons)
+        disconnect(icon, &QObject::destroyed, this, &UKUITray::onIconDestroyed);
+    qDeleteAll(mIcons);
+    if (mTrayId)
+    {
+        XDestroyWindow(mDisplay, mTrayId);
+        mTrayId = 0;
+    }
+    mValid = false;
 }
 
 
@@ -400,7 +399,7 @@ void UKUITray::addIcon(Window winId)
 //                         "border-color:rgba(255,255,255,30);"    //边框颜色
 //                         "font:SimSun 14px;"                       //字体，字体大小
 //                         "color:rgba(255,255,255,100);"                //字体颜色
-//                        " }"
+//                         "}"
 
 //                        //鼠标悬停样式
 //                        "TrayIcon:hover{"
