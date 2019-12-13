@@ -203,7 +203,7 @@ if(STARTMENU_PLUGIN)
     add_subdirectory(plugin-startmenu)
 endif(STARTMENU_PLUGIN)
 
-#setByDefault(POWERSWITCH_PLUGIN Yes)
+setByDefault(POWERSWITCH_PLUGIN Yes)
 if(POWERSWITCH_PLUGIN)
 #    list(APPEND STATIC_PLUGINS "powerswitch")
 #    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
@@ -211,13 +211,6 @@ if(POWERSWITCH_PLUGIN)
     add_subdirectory(plugin-powerswitch)
 endif(POWERSWITCH_PLUGIN)
 
-#setByDefault(RECYCLEBIN_PLUGIN Yes)
-if(RECYCLEBIN_PLUGIN)
-#    list(APPEND STATIC_PLUGINS "recyclebin")
-#    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
-    list(APPEND ENABLED_PLUGINS "recyclebin")
-    add_subdirectory(plugin-recyclebin)
-endif(RECYCLEBIN_PLUGIN)
 
 #########################################################################
 
@@ -230,7 +223,7 @@ message(STATUS "****************************************************************
 add_subdirectory(panel)
 
 # merged from lxqt-common
-add_subdirectory(autostart)
+#add_subdirectory(autostart)
 add_subdirectory(menu)
 file(GLOB_RECURSE QRC_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
