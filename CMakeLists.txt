@@ -93,6 +93,7 @@ include("cmake/BuildPlugin.cmake")
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
+
 #setByDefault(DESKTOPSWITCH_PLUGIN Yes)
 if(DESKTOPSWITCH_PLUGIN)
     list(APPEND STATIC_PLUGINS "desktopswitch")

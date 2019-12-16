@@ -28,7 +28,7 @@
 #ifndef DESKTOPSWITCHCERCONFIGURATION_H
 #define DESKTOPSWITCHCERCONFIGURATION_H
 
-#include "../panel/lxqtpanelpluginconfigdialog.h"
+#include "../panel/ukuipanelpluginconfigdialog.h"
 #include "../panel/pluginsettings.h"
 
 #include <QFormLayout>
@@ -40,7 +40,7 @@ namespace Ui {
     class DesktopSwitchConfiguration;
 }
 
-class DesktopSwitchConfiguration : public LXQtPanelPluginConfigDialog
+class DesktopSwitchConfiguration : public UKUIPanelPluginConfigDialog
 {
     Q_OBJECT
 

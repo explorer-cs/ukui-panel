@@ -16,7 +16,7 @@ set(UIS
     desktopswitchconfiguration.ui
 )
 
-
 set(LIBRARIES ${LIBRARIES} lxqt lxqt-globalkeys)
 
-BUILD_LXQT_PLUGIN(${PLUGIN})
+
+BUILD_UKUI_PLUGIN(${PLUGIN})

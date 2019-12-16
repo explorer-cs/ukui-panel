@@ -29,7 +29,7 @@
 #ifndef DESKTOPSWITCH_H
 #define DESKTOPSWITCH_H
 
-#include "../panel/ilxqtpanelplugin.h"
+#include "../panel/iukuipanelplugin.h"
 #include <QFrame>
 #include <QScopedPointer>
 #include <KWindowSystem/NETWM>
@@ -59,11 +59,11 @@ protected:
 /**
  * @brief Desktop switcher. A very simple one...
  */
-class DesktopSwitch : public QObject, public ILXQtPanelPlugin
+class DesktopSwitch : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo);
+    DesktopSwitch(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~DesktopSwitch();
 
     QString themeId() const { return "DesktopSwitch"; }
@@ -71,7 +71,7 @@ public:
     bool isSeparate() const { return true; }
     void realign();
 
-    virtual ILXQtPanelPlugin::Flags flags() const { return HaveConfigDialog; }
+    virtual IUKUIPanelPlugin::Flags flags() const { return HaveConfigDialog; }
     QDialog *configureDialog();
 
 private:
@@ -99,13 +99,13 @@ private slots:
     void onWindowChanged(WId id, NET::Properties properties, NET::Properties2 properties2);
 };
 
-class DesktopSwitchPluginLibrary: public QObject, public ILXQtPanelPluginLibrary
+class DesktopSwitchPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
     // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
-    Q_INTERFACES(ILXQtPanelPluginLibrary)
+    Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    ILXQtPanelPlugin *instance(const ILXQtPanelPluginStartupInfo &startupInfo) const { return new DesktopSwitch(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const { return new DesktopSwitch(startupInfo);}
 };
 
 #endif

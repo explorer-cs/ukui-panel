@@ -42,9 +42,9 @@
 
 static const QString DEFAULT_SHORTCUT_TEMPLATE("Control+F%1");
 
-DesktopSwitch::DesktopSwitch(const ILXQtPanelPluginStartupInfo &startupInfo) :
+DesktopSwitch::DesktopSwitch(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
-    ILXQtPanelPlugin(startupInfo),
+    IUKUIPanelPlugin(startupInfo),
     m_pSignalMapper(new QSignalMapper(this)),
     m_desktopCount(KWindowSystem::numberOfDesktops()),
     mRows(-1),
