@@ -118,4 +118,3 @@ install(FILES
     DESTINATION "${LXQT_ETC_XDG_DIR}/autostart/"
     COMPONENT Runtime
 )
-message("^^^^^^^^^^^^^^LXQT_ETC_XDG_DIR"${LXQT_ETC_XDG_DIR})

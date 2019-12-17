@@ -58,7 +58,7 @@ Popup::Popup(IUKUIPanelPlugin * plugin, QWidget* parent):
     mPlaceholder(nullptr),
     mDisplayCount(0)
 {
-    setObjectName("LXQtMountPopup");
+    setObjectName("UKUIMountPopup");
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setLayout(new QVBoxLayout(this));
     layout()->setMargin(0);
