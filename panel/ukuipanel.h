@@ -697,6 +697,12 @@ private:
 private slots:
     void changePosition_top();
     void changePosition_bottom();
+    void changePosition_left();
+    void changePosition_right();
+    void panelsizechange_s();
+    void panelsizechange_m();
+    void panelsizechange_l();
+    void panelsizechange_xl();
 
 public:
     //ConfigPanelWidget *mconfigpanelwidget;

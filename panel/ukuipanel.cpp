@@ -1150,31 +1150,73 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                    this, SLOT(showConfigDialog())
                   )->setDisabled(mLockPanel);
 
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("系统监视器"),
-                   this, SLOT(showConfigDialog())
-                  )->setDisabled(mLockPanel);
+    QAction *pmenuaction_s;
+    QAction *pmenuaction_m;
+    QAction *pmenuaction_l;
+    QAction *pmenuaction_xl;
+
+    pmenuaction_s=new QAction(this);
+    pmenuaction_s->setText("小");
+    pmenuaction_m=new QAction(this);
+    pmenuaction_m->setText("中");
+    pmenuaction_l=new QAction(this);
+    pmenuaction_l->setText("大");
+    pmenuaction_xl=new QAction(this);
+    pmenuaction_xl->setText("特大");
+
+    QMenu *pmenu_panelsize;
+    pmenu_panelsize=new QMenu(this);
+    pmenu_panelsize->setTitle("调整高度");
+    pmenu_panelsize->addAction(pmenuaction_s);
+    pmenu_panelsize->addAction(pmenuaction_m);
+    pmenu_panelsize->addAction(pmenuaction_l);
+    pmenu_panelsize->addAction(pmenuaction_xl);
+    menu->addMenu(pmenu_panelsize);
+    pmenu_panelsize->setStyleSheet(
+                         "QMenu {"
+                         "background-color:rgba(21,26,30,90%);"
+                         "border-color:rgba(255,255,255,30);"    //边框颜色
+                         "font:SimSun 14px;"                       //字体，字体大小
+                         "color:rgba(255,255,255,100);"                //字体颜色
+                         "padding:2px 2px; "                     //设置菜单项文字上下和左右的内边距，效果就是菜单中的条目左右上下有了间隔
+                        " }"
+
+                        //鼠标悬停样式
+                        "QToolButton:hover{"
+                        "background-color:rgba(190,216,239,30%);"
+                        "}"
+                        //鼠标按下样式
+                        "QToolButton:pressed{"
+                        "background-color:rgba(0,0,0,12%);"
+                        "}"
+
+                        );
+
+    connect(pmenuaction_s,SIGNAL(triggered()),this,SLOT(panelsizechange_s()));
+    connect(pmenuaction_m,SIGNAL(triggered()),this,SLOT(panelsizechange_m()));
+    connect(pmenuaction_l,SIGNAL(triggered()),this,SLOT(panelsizechange_l()));
+    connect(pmenuaction_xl,SIGNAL(triggered()),this,SLOT(panelsizechange_xl()));
 
 
     QAction *pmenuaction_top;
     QAction *pmenuaction_bottom;
-    QAction *pmenuaction_3;
-    QAction *pmenuaction_4;
+    QAction *pmenuaction_left;
+    QAction *pmenuaction_right;
     pmenuaction_top=new QAction(this);
     pmenuaction_top->setText("上");
     pmenuaction_bottom=new QAction(this);
     pmenuaction_bottom->setText("下");
-    pmenuaction_3=new QAction(this);
-    pmenuaction_3->setText("左");
-    pmenuaction_4=new QAction(this);
-    pmenuaction_4->setText("右");
+    pmenuaction_left=new QAction(this);
+    pmenuaction_left->setText("左");
+    pmenuaction_right=new QAction(this);
+    pmenuaction_right->setText("右");
     QMenu *pmenu_positon;
     pmenu_positon=new QMenu(this);
     pmenu_positon->setTitle("调整位置");
     pmenu_positon->addAction(pmenuaction_top);
     pmenu_positon->addAction(pmenuaction_bottom);
-    pmenu_positon->addAction(pmenuaction_3);
-    pmenu_positon->addAction(pmenuaction_4);
+    pmenu_positon->addAction(pmenuaction_left);
+    pmenu_positon->addAction(pmenuaction_right);
     menu->addMenu(pmenu_positon);
     pmenu_positon->setStyleSheet(
                          "QMenu {"
@@ -1198,6 +1240,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     connect(pmenuaction_top,SIGNAL(triggered()),this,SLOT(changePosition_top()));
     connect(pmenuaction_bottom,SIGNAL(triggered()),this,SLOT(changePosition_bottom()));
+    connect(pmenuaction_left,SIGNAL(triggered()),this,SLOT(changePosition_left()));
+    connect(pmenuaction_right,SIGNAL(triggered()),this,SLOT(changePosition_right()));
 
 
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
@@ -1518,11 +1562,50 @@ void UKUIPanel::changePosition_top()
     mConfigDialog->configPosition_top();
 }
 
-
+//change panel position
 void UKUIPanel::changePosition_bottom()
 {
     mConfigDialog = new ConfigPanelDialog(this, nullptr);
     mConfigDialog->configPosition_bottom();
 }
 
+void UKUIPanel::changePosition_left()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPosition_left();
+}
 
+void UKUIPanel::changePosition_right()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPosition_right();
+}
+
+//change panel size
+void UKUIPanel::panelsizechange_s()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPanelSize_m();
+
+}
+
+void UKUIPanel::panelsizechange_m()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPanelSize_m();
+
+}
+
+void UKUIPanel::panelsizechange_l()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPanelSize_l();
+
+}
+
+void UKUIPanel::panelsizechange_xl()
+{
+    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    mConfigDialog->configPanelSize_xl();
+
+}

@@ -308,10 +308,12 @@ void UKUITaskBar::addWindow(WId window)
 
         mLayout->addWidget(group);
         group->setToolButtonsStyle(mButtonStyle);
+        qDebug()<<"test group id here";
     }
 
     mKnownWindows[window] = group;
     group->addWindow(window);
+    group->groupName();
 }
 
 /************************************************
@@ -460,7 +462,7 @@ void UKUITaskBar::settingsChanged()
     else if (s == "TEXT")
         setButtonStyle(Qt::ToolButtonTextOnly);
     else
-        setButtonStyle(Qt::ToolButtonIconOnly);
+        setButtonStyle(Qt::ToolButtonTextBesideIcon);
 
     mShowOnlyOneDesktopTasks = mPlugin->settings()->value("showOnlyOneDesktopTasks", mShowOnlyOneDesktopTasks).toBool();
     mShowDesktopNum = mPlugin->settings()->value("showDesktopNum", mShowDesktopNum).toInt();

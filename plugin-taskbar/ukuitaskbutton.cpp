@@ -106,7 +106,7 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
                 //正常状态样式
                 "QToolButton{"
                 "background-color:rgba(190,216,239,20%);"//背景色（也可以设置图片）
-                "qproperty-iconSize:24px 24px;"
+//                "qproperty-iconSize:24px 24px;"
                 "border-style:inset;"                  //边框样式（inset/outset）
                 "border-width:2px;"                     //边框宽度像素
 //                "border-radius:0px;"                   //边框圆角半径像素
@@ -216,6 +216,7 @@ void UKUITaskButton::dragMoveEvent(QDragMoveEvent * event)
         emit dragging(event->source(), event->pos());
         setAttribute(Qt::WA_UnderMouse, false);
     }
+    qDebug()<<"hre is ukuitarkbar";
 }
 
 void UKUITaskButton::dragLeaveEvent(QDragLeaveEvent *event)
@@ -263,6 +264,7 @@ void UKUITaskButton::mouseReleaseEvent(QMouseEvent* event)
             raiseApplication();
     }
     QToolButton::mouseReleaseEvent(event);
+
 }
 
 /************************************************

@@ -28,4 +28,11 @@ set(LIBRARIES
     Qt5Xdg
 )
 
+#find_package(PkgConfig)
+##configure_file(no_keywords link_pkgconfig)
+#pkg_check_modules(TASKBAR_DEPS REQUIRED Qt5X11Extras)
+#include_directories(${TASKBAR_DEPS_INCLUDE_DIRS})
+#ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
+#link_libraries(libQt5X11Extras.so)
+
 BUILD_UKUI_PLUGIN(${PLUGIN})

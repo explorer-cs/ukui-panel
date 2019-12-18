@@ -60,6 +60,12 @@ public slots:
 
 void positionChanged_top();
 void positionChanged_bottom();
+void positionChanged_left();
+void positionChanged_right();
+void panelSizeChange_m();
+void panelSizeChange_l();
+void panelSizeChange_xl();
+
 
 private slots:
     void editChanged();

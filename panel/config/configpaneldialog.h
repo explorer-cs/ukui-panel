@@ -55,6 +55,11 @@ public slots:
 public slots:
     void configPosition_top();
     void configPosition_bottom();
+    void configPosition_left();
+    void configPosition_right();
+    void configPanelSize_m();
+    void configPanelSize_l();
+    void configPanelSize_xl();
 
 signals:
     void testsig();

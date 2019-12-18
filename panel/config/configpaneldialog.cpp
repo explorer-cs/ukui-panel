@@ -82,10 +82,29 @@ void ConfigPanelDialog::configPosition_bottom()
 {
     //qDebug()<<"mPanelPage ptr is:"<<mPanelPage;
     mPanelPage->positionChanged_bottom();
-
 }
 
+void ConfigPanelDialog::configPosition_left()
+{
+    mPanelPage->positionChanged_left();
+}
 
+void ConfigPanelDialog::configPosition_right()
+{
+    mPanelPage->positionChanged_right();
+}
 
+void ConfigPanelDialog::configPanelSize_m()
+{
+    mPanelPage->panelSizeChange_m();
+}
 
+void ConfigPanelDialog::configPanelSize_l()
+{
+    mPanelPage->panelSizeChange_l();
+}
 
+void ConfigPanelDialog::configPanelSize_xl()
+{
+    mPanelPage->panelSizeChange_xl();
+}

@@ -429,12 +429,7 @@ void ConfigPanelWidget::positionChanged()
 
 }
 
-void ConfigPanelWidget::positionChanged_top()
-{    mPosition   =IUKUIPanel::PositionTop;
-     editChanged();}
-void ConfigPanelWidget::positionChanged_bottom()
-{    mPosition   =IUKUIPanel::PositionBottom;
-     editChanged();}
+
 /************************************************
  *
  ************************************************/
@@ -480,4 +475,44 @@ void ConfigPanelWidget::pickBackgroundImage()
     d->setWindowModality(Qt::WindowModal);
     connect(d, &QFileDialog::fileSelected, ui->lineEdit_customBgImage, &QLineEdit::setText);
     d->show();
+}
+
+void ConfigPanelWidget::positionChanged_top()
+{    mPosition   =IUKUIPanel::PositionTop;
+     editChanged();
+}
+void ConfigPanelWidget::positionChanged_bottom()
+{    mPosition   =IUKUIPanel::PositionBottom;
+     editChanged();
+}
+
+void ConfigPanelWidget::positionChanged_left()
+{    mPosition   =IUKUIPanel::PositionLeft;
+     editChanged();
+}
+
+void ConfigPanelWidget::positionChanged_right()
+{    mPosition   =IUKUIPanel::PositionRight;
+     editChanged();
+}
+
+void ConfigPanelWidget::panelSizeChange_m()
+{
+    mOldPanelSize=40;
+    editChanged();
+    reset();
+}
+
+void ConfigPanelWidget::panelSizeChange_l()
+{
+    mOldPanelSize=60;
+    editChanged();
+    reset();
+}
+
+void ConfigPanelWidget::panelSizeChange_xl()
+{
+    mOldPanelSize=80;
+    editChanged();
+    reset();
 }

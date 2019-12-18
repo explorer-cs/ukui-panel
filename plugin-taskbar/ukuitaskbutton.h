@@ -34,7 +34,8 @@
 #include <QToolButton>
 #include <QProxyStyle>
 #include "../panel/iukuipanel.h"
-
+//#include <QWinThumbnailToolBar>
+#include "qtx11extrasversion.h"
 class QPainter;
 class QPalette;
 class QMimeData;

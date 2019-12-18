@@ -156,7 +156,7 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
-    btn->setFixedSize(45,40);
+    btn->setFixedSize(40,40);
     mLayout->addWidget(btn);
     //set button style
     btn->setStyleSheet(
@@ -194,27 +194,6 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
     realign();
 }
 
-
-//void UKUIQuickLaunch::addButton(QString *filename,QuickLaunchAction* action)
-//{
-
-//    mLayout->setEnabled(false);
-//    QuickLaunchButton* btn = new QuickLaunchButton(filename,action, mPlugin, this);
-//    mLayout->addWidget(btn);
-//    mbtnmap.insert(*filename,btn);
-
-
-//    connect(btn, SIGNAL(switchButtons(QuickLaunchButton*,QuickLaunchButton*)), this, SLOT(switchButtons(QuickLaunchButton*,QuickLaunchButton*)));
-//    connect(btn, SIGNAL(buttonDeleted()), this, SLOT(buttonDeleted()));
-//    connect(btn, SIGNAL(movedLeft()), this, SLOT(buttonMoveLeft()));
-//    connect(btn, SIGNAL(movedRight()), this, SLOT(buttonMoveRight()));
-
-//    mLayout->removeWidget(mPlaceHolder);
-//    delete mPlaceHolder;
-//    mPlaceHolder = 0;
-//    mLayout->setEnabled(true);
-//    realign();
-//}
 
 void UKUIQuickLaunch::checkButton(QuickLaunchAction* action)
 {
@@ -481,27 +460,6 @@ void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButto
 }
 
 
-//void UKUIQuickLaunch::buttonDeleted(xdg)
-//{
-
-//    QLayoutItem *child;
-//    while ((child = mLayout->layout()->itemAt(i))) {
-//            if (child->widget() == btn) {
-//                qDebug()<<"child   >>>"<<child;
-//                mLayout->removeItem(child);
-//            } else {
-//                ++i;
-//            }
-//        }
-//    mLayout->removeWidget(btn);
-//    btn->deleteLater();
-//    saveSettings();
-
-//    if (mLayout->isEmpty())
-//        showPlaceHolder();
-//    realign();
-//}
-
 void UKUIQuickLaunch::buttonDeleted()
 {
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
@@ -519,7 +477,6 @@ void UKUIQuickLaunch::buttonDeleted()
 
 void UKUIQuickLaunch::buttonMoveLeft()
 {
-    /*old code
     QuickLaunchButton *btn = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn)
         return;
@@ -530,21 +487,11 @@ void UKUIQuickLaunch::buttonMoveLeft()
         mLayout->moveItem(index, index - 1);
         saveSettings();
     }
-    */
-    QString desktopfile="/usr/share/applications/assistant-qt5.desktop";
-
-    //RemoveFromTaskbar(&desktopfile);
-    QString desktopfile2="/usr/share/applications/xdiagnose.desktop";
-    QString filename="fcitx";
-    removeButton(&desktopfile);
-
-
 }
 
 
 void UKUIQuickLaunch::buttonMoveRight()
 {
-    /*  old code
     QuickLaunchButton *btn1 = qobject_cast<QuickLaunchButton*>(sender());
     if (!btn1)
         return;
@@ -555,27 +502,6 @@ void UKUIQuickLaunch::buttonMoveRight()
         mLayout->moveItem(index, index + 1);
         saveSettings();
     }
-    */
-
-//    QString filename="fcitx";
-//    QString exec="fcitx";
-//    QString iconpath="/usr/share/icons/hicolor/128x128/apps/fcitx.png";
-//    AddToTaskbar(&filename,&exec,&iconpath);
-
-//    filename="baidunetdisk";
-//    exec="baidunetdisk";
-//    iconpath="/usr/share/icons/hicolor/128x128/apps/baidunetdisk.png";
-//    AddToTaskbar(&filename,&exec,&iconpath);
-
-
-     QString desktopfile="/usr/share/applications/fcitx.desktop";
-     AddToTaskb(&desktopfile);
-     desktopfile="/usr/share/applications/vim.desktop";
-     AddToTaskb(&desktopfile);
-     desktopfile="/usr/share/applications/assistant-qt5.desktop";
-     AddToTaskb(&desktopfile);
-     desktopfile="/usr/share/applications/mpv.desktop";
-     AddToTaskb(&desktopfile);
 
 }
 
