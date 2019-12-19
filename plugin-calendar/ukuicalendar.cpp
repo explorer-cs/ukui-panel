@@ -194,7 +194,6 @@ void IndicatorCalendar::updateTimeText()
         str.replace("-","/");
         str.replace("星期","周");
         mContent->setText(str);
-        qDebug()<<"tzNow.toString"<<str<<endl;
         if (old_size != mContent->sizeHint())
             mRotatedWidget->adjustContentSize();
         mRotatedWidget->update();

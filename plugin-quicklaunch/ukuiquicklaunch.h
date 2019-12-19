@@ -100,11 +100,6 @@ public:
     //virtual QLayoutItem *takeAt(int index) = 0;
     void saveSettings();
     void showPlaceHolder();
-    void AddToTaskb(QString *desktop);
-    void AddToTaskbar(QString *filename,QString *exec,QString *iconpath);
-    void CheckIfExist(QString *desktop);
-    void RemoveFromTaskbar(QString *desktop);
-    bool AddToTaskb(const QString &arg);
 
     friend class FilectrlAdaptor;
 

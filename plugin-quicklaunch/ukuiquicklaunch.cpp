@@ -229,7 +229,7 @@ void UKUIQuickLaunch::checkButton(QString *filename)
                 qDebug()<<" already  insert  *****  "<<child;                //mLayout->removeItem(child);
             } else {
                 ++i;
-                qDebug()<<"don't insert   %%%%%%%%";
+                qDebug()<<"not insert  ";
             }
         }
      saveSettings();
@@ -326,15 +326,11 @@ void UKUIQuickLaunch::dropEvent(QDropEvent *e)
         }
     }
     saveSettings();
-    QString filepath="/home/hepuyao/桌面/firefox.desktop";
-    AddToTaskb(&filepath);
 }
 
 bool UKUIQuickLaunch::AddToTaskbar(QString arg)
 {
-    /*
-        QString *mdesktop=desktop;
-        const auto url=QUrl(*mdesktop);
+        const auto url=QUrl(arg);
         QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
         QFileInfo fi(fileName);
         XdgDesktopFile xdg;
@@ -360,15 +356,7 @@ bool UKUIQuickLaunch::AddToTaskbar(QString arg)
                             );
         }
         saveSettings();
-    */
-    const auto url=QUrl(arg);
-    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-    QFileInfo fi(fileName);
-    XdgDesktopFile xdg;
-    xdg.load(fileName);
-    addButton(new QuickLaunchAction(&xdg, this));
-    saveSettings();
-    return false;
+        return true;
 }
 
 bool UKUIQuickLaunch::CheckIfExist(QString arg)
@@ -392,56 +380,7 @@ bool UKUIQuickLaunch::RemoveFromTaskbar(QString arg)
     removeButton(new QuickLaunchAction(&xdg, this));
     return true;
 }
-void UKUIQuickLaunch::AddToTaskb(QString *desktop)
-{
 
-    QString *mdesktop=desktop;
-    const auto url=QUrl(*mdesktop);
-    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-    QFileInfo fi(fileName);
-    XdgDesktopFile xdg;
-    xdg.load(fileName);
-    addButton(new QuickLaunchAction(&xdg, this));
-    saveSettings();
-
-}
-
-
-void  UKUIQuickLaunch::CheckIfExist(QString *desktop)
-{
-    QString *mdesktop=desktop;
-    const auto url=QUrl(*mdesktop);
-    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-    QFileInfo fi(fileName);
-    XdgDesktopFile xdg;
-    xdg.load(fileName);
-    checkButton(new QuickLaunchAction(&xdg, this));
-}
-bool UKUIQuickLaunch::AddToTaskb(const QString &arg)
-{
-    // handle method call com.kylin.security.controller.filectrl.AddToTaskbar
-    bool out0;
-    QMetaObject::invokeMethod(parent(), "AddToTaskbar", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
-    return out0;
-}
-
-//void UKUIQuickLaunch::RemoveFromTaskbar(QString *filename)
-//{
-//    QString *file_name=filename;
-//    removeButton(file_name);
-//}
-void UKUIQuickLaunch::RemoveFromTaskbar(QString *desktop)
-{
-    QString *mdesktop=desktop;
-    qDebug()<<"desktop   ##########"<<*mdesktop<<endl;
-    const auto url=QUrl(*mdesktop);
-    QString fileName(url.isLocalFile() ? url.toLocalFile() : url.url());
-    QFileInfo fi(fileName);
-    qDebug()<<"fileName   ##########"<<fileName<<endl;
-    XdgDesktopFile xdg;
-    xdg.load(fileName);
-    removeButton(new QuickLaunchAction(&xdg, this));
-}
 
 void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
 {
@@ -580,11 +519,7 @@ bool FilectrlAdaptor::AddToTaskbar(const QString &arg)
     // handle method call com.kylin.security.controller.filectrl.AddToTaskbar
     bool out0;
     QMetaObject::invokeMethod(parent(), "AddToTaskbar", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
-        qDebug()<<"add set is here"<<arg;
-        QString desktopfile="/usr/share/applications/fcitx.desktop";
-        emit addtak(3);
-
-
+    emit addtak(3);
     return out0;
 }
 
