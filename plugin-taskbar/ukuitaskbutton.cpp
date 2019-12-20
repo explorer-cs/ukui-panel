@@ -31,7 +31,8 @@
 #include "ukuitaskgroup.h"
 #include "ukuitaskbar.h"
 
-#include <LXQt/Settings>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
 
 #include <QDebug>
 #include <XdgIcon>
@@ -216,7 +217,6 @@ void UKUITaskButton::dragMoveEvent(QDragMoveEvent * event)
         emit dragging(event->source(), event->pos());
         setAttribute(Qt::WA_UnderMouse, false);
     }
-    qDebug()<<"hre is ukuitarkbar";
 }
 
 void UKUITaskButton::dragLeaveEvent(QDragLeaveEvent *event)

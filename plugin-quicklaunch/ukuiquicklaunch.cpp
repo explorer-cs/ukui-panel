@@ -41,7 +41,7 @@
 #include <QDebug>
 #include <XdgDesktopFile>
 #include <XdgIcon>
-#include <LXQt/GridLayout>
+#include "../common/ukuigridlayout.h"
 #include "../panel/pluginsettings.h"
 #include <QTableWidget>
 using namespace  std;

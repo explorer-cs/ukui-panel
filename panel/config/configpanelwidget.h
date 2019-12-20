@@ -31,7 +31,8 @@
 #include "../ukuipanel.h"
 #include <QSettings>
 #include <QTimer>
-#include <LXQt/ConfigDialog>
+//#include <LXQt/ConfigDialog>
+#include "../common/lxqtconfigdialog.h"
 
 class UKUIPanel;
 

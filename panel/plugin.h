@@ -32,8 +32,10 @@
 #include <QFrame>
 #include <QString>
 #include <QPointer>
-#include <LXQt/PluginInfo>
-#include <LXQt/Settings>
+//#include <LXQt/PluginInfo>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
+#include "../common/ukuiplugininfo.h"
 #include "iukuipanel.h"
 #include "ukuipanelglobals.h"
 #include "pluginsettings.h"

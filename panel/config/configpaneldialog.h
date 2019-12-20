@@ -32,7 +32,8 @@
 #include "configpluginswidget.h"
 #include "../ukuipanel.h"
 
-#include <LXQt/ConfigDialog>
+//#include <LXQt/ConfigDialog>
+#include "../common/lxqtconfigdialog.h"
 
 class ConfigPanelDialog : public LXQt::ConfigDialog
 {

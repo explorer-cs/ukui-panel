@@ -2,7 +2,7 @@ set(PLUGIN "tray")
 
 include(CheckLibraryExists)
 
-find_package(XCB REQUIRED COMPONENTS xcb xcb-util xcb-damage)
+#find_package(XCB REQUIRED COMPONENTS xcb xcb-util xcb-damage)
 find_package(PkgConfig)
 
 find_package(X11 REQUIRED)

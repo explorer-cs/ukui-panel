@@ -36,7 +36,8 @@
 #include <XdgIcon>
 #include <Solid/StorageAccess>
 #include <Solid/OpticalDrive>
-#include <LXQt/Notification>
+//#include <LXQt/Notification>
+#include "../common/lxqtnotification.h"
 #include <QDebug>
 
 MenuDiskItem::MenuDiskItem(Solid::Device device, Popup *popup):

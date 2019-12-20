@@ -34,7 +34,8 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 #include <QPointer>
-#include <LXQt/Settings>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
 #include "iukuipanel.h"
 #include "ukuipanelglobals.h"
 

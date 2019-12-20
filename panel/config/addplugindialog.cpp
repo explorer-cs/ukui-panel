@@ -30,7 +30,8 @@
 #include "plugin.h"
 #include "../ukuipanelapplication.h"
 
-#include <LXQt/HtmlDelegate>
+//#include <LXQt/HtmlDelegate>
+#include "../common/ukuihtmldelegate.h"
 #include <XdgIcon>
 #include <XdgDirs>
 

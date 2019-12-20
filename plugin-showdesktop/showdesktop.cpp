@@ -28,8 +28,10 @@
 #include <QAction>
 #include <QX11Info>
 #include <lxqt-globalkeys.h>
-#include <XdgIcon>
-#include <LXQt/Notification>
+//#include <XdgIcon>
+#include "xdgicon.h"
+//#include <LXQt/Notification>
+#include "../common/lxqtnotification.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/NETWM>
 #include "showdesktop.h"

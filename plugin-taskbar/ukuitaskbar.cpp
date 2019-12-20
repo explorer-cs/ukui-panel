@@ -37,17 +37,16 @@
 #include <QMimeData>
 #include <QWheelEvent>
 #include <QFlag>
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QDebug>
 #include <QTimer>
 
 #include <lxqt-globalkeys.h>
-#include <LXQt/GridLayout>
+#include "../common/ukuigridlayout.h"
 #include <XdgIcon>
 
 #include "ukuitaskbar.h"
 #include "ukuitaskgroup.h"
-
 using namespace LXQt;
 
 /************************************************

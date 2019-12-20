@@ -27,7 +27,8 @@
 
 #include "pluginsettings.h"
 #include "pluginsettings_p.h"
-#include <LXQt/Settings>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
 
 class PluginSettingsPrivate
 {

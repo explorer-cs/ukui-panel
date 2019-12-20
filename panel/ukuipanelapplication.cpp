@@ -30,7 +30,8 @@
 #include "ukuipanelapplication_p.h"
 #include "ukuipanel.h"
 #include "config/configpaneldialog.h"
-#include <LXQt/Settings>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
 #include <QtDebug>
 #include <QUuid>
 #include <QScreen>

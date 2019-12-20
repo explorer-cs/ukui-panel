@@ -32,7 +32,8 @@
 #include <QDialog>
 #include <QLabel>
 #include <QtWebKitWidgets/QWebView>
-#include <LXQt/RotatedWidget>
+//#include <LXQt/RotatedWidget>
+#include "../common/lxqtrotatedwidget.h"
 #include "../panel/iukuipanelplugin.h"
 #include "ukuiwebviewdialog.h"
 

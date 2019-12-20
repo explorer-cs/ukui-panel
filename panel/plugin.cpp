@@ -46,8 +46,10 @@
 #include <memory>
 #include <KF5/KWindowSystem/KWindowSystem>
 
-#include <LXQt/Settings>
-#include <LXQt/Translator>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
+//#include <LXQt/Translator>
+#include "../common/ukuitranslator.h"
 #include <XdgIcon>
 
 

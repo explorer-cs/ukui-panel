@@ -30,7 +30,8 @@
 #include "ukuipanelapplication.h"
 #include <QPointer>
 #include <XdgIcon>
-#include <LXQt/Settings>
+//#include <LXQt/Settings>
+#include "../common/ukuisettings.h"
 
 #include <QDebug>
 

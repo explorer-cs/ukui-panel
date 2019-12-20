@@ -36,7 +36,7 @@
 #include <QX11Info>
 #include "trayicon.h"
 #include "../panel/iukuipanel.h"
-#include <LXQt/GridLayout>
+#include "../common/ukuigridlayout.h"
 #include "ukuitray.h"
 #include "xfitman.h"
 

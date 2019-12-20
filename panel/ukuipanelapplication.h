@@ -29,7 +29,8 @@
 #ifndef UKUIPanelAPPLICATION_H
 #define UKUIPanelAPPLICATION_H
 
-#include <LXQt/Application>
+//#include <LXQt/Application>
+#include "../common/lxqtapplication.h"
 #include "iukuipanelplugin.h"
 
 class QScreen;

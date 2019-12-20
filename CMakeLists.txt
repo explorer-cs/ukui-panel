@@ -34,6 +34,8 @@ set(CMAKE_AUTORCC ON)
 set(REQUIRED_QT_VERSION "5.7.1")
 set(KF5_MINIMUM_VERSION "5.36.0")
 set(LXQT_MINIMUM_VERSION "0.14.1")
+set(QTXDG_MINIMUM_VERSION "3.3.1")
+set(QT_MINIMUM_VERSION "5.7.1")
 
 find_package(Qt5DBus ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(Qt5LinguistTools ${REQUIRED_QT_VERSION} REQUIRED)
@@ -44,19 +46,21 @@ find_package(KF5WindowSystem ${KF5_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt-globalkeys ${LXQT_MINIMUM_VERSION} REQUIRED)
 find_package(lxqt-globalkeys-ui ${LXQT_MINIMUM_VERSION} REQUIRED)
+find_package(Qt5 ${QT_MINIMUM_VERSION} CONFIG REQUIRED Widgets DBus X11Extras LinguistTools)
+find_package(Qt5Xdg ${QTXDG_MINIMUM_VERSION} REQUIRED)
+find_package(X11 REQUIRED)
 
 # Patch Version
 set(UKUI_VERSION 3.0)
 set(UKUI_PANEL_PATCH_VERSION 0)
 set(UKUI_MAJOR_VERSION 3)
 set(UKUI_MINOR_VERSION 0)
-#set(UKUI_TS "/usr/local/share/lxqt/translation")
-#set(UKUI_TRANSLATIONS_DIR "${LXQT_DATA_DIR}/ukui/translations/")
+
 set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/translations/")
 set(UKUI_PANEL_VERSION ${UKUI_MAJOR_VERSION}.${UKUI_MINOR_VERSION}.${UKUI_PANEL_PATCH_VERSION})
 add_definitions("-DUKUI_PANEL_VERSION=\"${UKUI_PANEL_VERSION}\"")
 
-include(LXQtPreventInSourceBuilds)
+#include(LXQtPreventInSourceBuilds)
 include(LXQtTranslate)
 
 # All LXQtCompilerSettings except CMAKE_MODULE_LINKER_FLAGS work just fine
@@ -65,7 +69,7 @@ include(LXQtTranslate)
 #  set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined ${SYMBOLIC_FLAGS} ${CMAKE_MODULE_LINKER_FLAGS}")
 message(STATUS "==OLD== CMAKE_MODULE_LINKER_FLAGS: ${CMAKE_MODULE_LINKER_FLAGS}")
 set( OLD_CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS}")
-include(LXQtCompilerSettings NO_POLICY_SCOPE)
+#include(LXQtCompilerSettings NO_POLICY_SCOPE)
 set(CMAKE_MODULE_LINKER_FLAGS "${OLD_CMAKE_MODULE_LINKER_FLAGS} ${SYMBOLIC_FLAGS}")
 
 # Warning: This must be before add_subdirectory(panel). Move with caution.
@@ -226,6 +230,7 @@ add_subdirectory(panel)
 # merged from lxqt-common
 #add_subdirectory(autostart)
 add_subdirectory(menu)
+add_subdirectory(common)
 file(GLOB_RECURSE QRC_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
 
