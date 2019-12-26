@@ -511,7 +511,7 @@ void UKUITaskBar::realign()
     refreshButtonRotation();
 
     IUKUIPanel *panel = mPlugin->panel();
-    QSize maxSize = QSize(mButtonWidth, mButtonHeight);
+    QSize maxSize = QSize(160, mButtonHeight);
     QSize minSize = QSize(0, 0);
 
     bool rotated = false;

@@ -38,7 +38,7 @@
 #include "qlayoutitem.h"
 #include "qlayoutitem.h"
 #include "qgridlayout.h"
-//-----------------dbus
+//for dbus
 #include <QtCore/QObject>
 #include <QtDBus/QtDBus>
 
@@ -71,9 +71,10 @@ class UKUIQuickLaunch : public QFrame
 {
     Q_OBJECT
 
-    Q_CLASSINFO("D-Bus Interface", "com.kylin.security.controller.filectrl")
+    //use d-bus model to Interaction with ukui-menu
+    Q_CLASSINFO("D-Bus Interface", "com.kylin.ukuipanel.filectrl")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.kylin.security.controller.filectrl\">\n"
+"  <interface name=\"com.kylin.ukuipanel.filectrl\">\n"
 "    <method name=\"AddToTaskbar\">\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
@@ -117,7 +118,7 @@ private:
 
 private slots:
     void addButton(QuickLaunchAction* action);
-    void checkButton(QuickLaunchAction* action);
+    bool checkButton(QuickLaunchAction* action);
     void checkButton(QString *filename);
     void removeButton(QString *filename);
     void removeButton(QuickLaunchAction* action);
@@ -138,9 +139,9 @@ public slots:
 class FilectrlAdaptor: public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "com.kylin.security.controller.filectrl")
+    Q_CLASSINFO("D-Bus Interface", "com.kylin.ukuipanel.filectrl")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.kylin.security.controller.filectrl\">\n"
+"  <interface name=\"com.kylin.ukuipanel.filectrl\">\n"
 "    <method name=\"AddToTaskbar\">\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
@@ -174,7 +175,7 @@ signals:
 class DBus : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface","com.kylin.security.controller.filectrl")
+    Q_CLASSINFO("D-Bus Interface","com.kylin.ukuipanel.filectrl")
 public:
     explicit DBus(QObject *parent = 0);
 

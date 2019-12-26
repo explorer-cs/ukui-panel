@@ -151,44 +151,6 @@ st_menu->setStyleSheet(
                     "background-color:rgba(190,216,239,30%);"
                     "}"
                     );
-QAction *act_1;
-act_1=new QAction(this);
-act_1->setText("任务栏布局");
-QAction *act_2;
-act_2=new QAction(this);
-act_2->setText("设置任务栏");
-
-// connect(act_2,SIGNAL(triggered(bool)),this,SLOT(configpanel()));
-QAction *act_3;
-act_3=new QAction(this);
-act_3->setText("编辑分类菜单");
-QAction *act_4;
-act_4=new QAction(this);
-act_4->setText("控制面板");
-QAction *act_5;
-act_5=new QAction(this);
-act_5->setText("文件管理器");
-QAction *act_6;
-act_6=new QAction(this);
-act_6->setText("命令行");
-QAction *act_7;
-act_7=new QAction(this);
-act_7->setText("关机或注销");
-QAction *act_8;
-act_8=new QAction(this);
-act_8->setText("显示桌面");
-st_menu->addAction(act_1);
-st_menu->addAction(act_2);
-st_menu->addAction(act_3);
-st_menu->addAction(act_4);
-st_menu->addAction(act_5);
-st_menu->addAction(act_6);
-st_menu->addAction(act_7);
-st_menu->addAction(act_8);
-st_menu->exec(QCursor::pos());
-
-
-
 
 }
 

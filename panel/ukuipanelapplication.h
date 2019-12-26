@@ -176,7 +176,7 @@ private:
     /*!
      * \brief mSettings is the LXQt::Settings object that is used for the
      * current instance of lxqt-panel. Normally, this refers to the config file
-     * $HOME/.config/lxqt/panel.conf (on Unix systems). This behaviour can be
+     * $HOME/.config/ukui/panel.conf (on Unix systems). This behaviour can be
      * changed with the -c command line option.
      */
 

@@ -44,6 +44,13 @@
 #include "../common/ukuigridlayout.h"
 #include "../panel/pluginsettings.h"
 #include <QTableWidget>
+#include <QtCore/QMetaObject>
+#include <QtCore/QByteArray>
+#include <QtCore/QList>
+#include <QtCore/QMap>
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QVariant>
 using namespace  std;
 
 UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
@@ -195,27 +202,32 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 }
 
 
-void UKUIQuickLaunch::checkButton(QuickLaunchAction* action)
+bool UKUIQuickLaunch::checkButton(QuickLaunchAction* action)
 {
-
+    bool checkresult;
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
     int i = 0;
     QLayoutItem *child;
 
     while ((child = mLayout->layout()->itemAt(i))) {
-        qDebug()<<i;
         QuickLaunchButton *b = qobject_cast<QuickLaunchButton*>(mLayout->itemAt(i)->widget());
-        if (b->file_name == btn->file_name) {
-            qDebug()<<" already  insert   ";
+        if (b->file_name == btn->file_name)
+        {
+            qDebug()<<" already  insert  ";
+            checkresult=false;
             break;
-        } else {
+        }
+        else {
             ++i;
-            qDebug()<<"don't insert  ";
+            qDebug()<<"don't insert ";
+            checkresult=true;
         }
      }
     saveSettings();
+    return checkresult;
 }
 
+//check by filename
 void UKUIQuickLaunch::checkButton(QString *filename)
 {
     int i = 0;
@@ -224,9 +236,8 @@ void UKUIQuickLaunch::checkButton(QString *filename)
     while ((child = mLayout->layout()->itemAt(i))) {
         qDebug()<<i;
         QuickLaunchButton *b = qobject_cast<QuickLaunchButton*>(mLayout->itemAt(i)->widget());
-        qDebug()<<"b->file_name   ---"<<b->file_name;
             if (b->file_name == filename) {
-                qDebug()<<" already  insert  *****  "<<child;                //mLayout->removeItem(child);
+                qDebug()<<" already  insert  "<<child;                //mLayout->removeItem(child);
             } else {
                 ++i;
                 qDebug()<<"not insert  ";
@@ -259,6 +270,7 @@ void UKUIQuickLaunch::removeButton(QuickLaunchAction* action)
      saveSettings();
 }
 
+//remove by filename
 void UKUIQuickLaunch::removeButton(QString *filename)
 {
     int i = 0;
@@ -366,8 +378,8 @@ bool UKUIQuickLaunch::CheckIfExist(QString arg)
     QFileInfo fi(fileName);
     XdgDesktopFile xdg;
     xdg.load(fileName);
-    checkButton(new QuickLaunchAction(&xdg, this));
-    return true;
+    return  checkButton(new QuickLaunchAction(&xdg, this));
+
 }
 
 bool UKUIQuickLaunch::RemoveFromTaskbar(QString arg)
@@ -490,13 +502,7 @@ void UKUIQuickLaunch::showPlaceHolder()
 
 
 
-#include <QtCore/QMetaObject>
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
+
 
 /*
  * Implementation of adaptor class FilectrlAdaptor

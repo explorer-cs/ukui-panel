@@ -109,7 +109,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     {
         qDebug()<<"configFile.is not Empty"<<endl;
         QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
-        QString loaclCong = QString(qgetenv("HOME"))+"/.config/ukui/";
+        QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
         QFile file(loaclCong+"panel.conf");
         if(!file.exists())
             copyFileToPath(defaultConf,loaclCong,"panel.conf",false);

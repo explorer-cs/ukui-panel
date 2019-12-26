@@ -88,7 +88,6 @@ set(QTX_LIBRARIES Qt5::Widgets Qt5::Xml Qt5::DBus)
 #)
 
 #lxqt_app_translation_loader(SOURCES ${PROJECT_NAME})
-add_subdirectory(dbus-server)
 add_executable(${PROJECT}
     ${PUB_HEADERS}
     ${PRIV_HEADERS}
@@ -102,7 +101,6 @@ target_link_libraries(${PROJECT}
     ${QTX_LIBRARIES}
     KF5::WindowSystem
     ${STATIC_PLUGINS}
-    dbus-server
 )
 
 install(TARGETS ${PROJECT} RUNTIME DESTINATION bin)
