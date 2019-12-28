@@ -449,6 +449,7 @@ QMenu *Plugin::popupMenu() const
     QString name = this->name().replace("&", "&&");
     QMenu* menu = new QMenu(windowTitle());
 
+    /* //set top menu selection ,do not delete until you get the ui finish
     if (mPlugin->flags().testFlag(IUKUIPanelPlugin::HaveConfigDialog))
     {
         QAction* configAction = new QAction(
@@ -469,6 +470,7 @@ QMenu *Plugin::popupMenu() const
         tr("Remove \"%1\"").arg(name), menu);
     menu->addAction(removeAction);
     connect(removeAction, SIGNAL(triggered()), this, SLOT(requestRemove()));
+    */
 
     return menu;
 }

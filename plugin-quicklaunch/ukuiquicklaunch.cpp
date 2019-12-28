@@ -214,13 +214,13 @@ bool UKUIQuickLaunch::checkButton(QuickLaunchAction* action)
         if (b->file_name == btn->file_name)
         {
             qDebug()<<" already  insert  ";
-            checkresult=false;
+            checkresult=true;
             break;
         }
         else {
             ++i;
             qDebug()<<"don't insert ";
-            checkresult=true;
+            checkresult=false;
         }
      }
     saveSettings();

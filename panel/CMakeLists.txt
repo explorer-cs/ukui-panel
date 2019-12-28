@@ -75,19 +75,19 @@ project(${PROJECT})
 set(QTX_LIBRARIES Qt5::Widgets Qt5::Xml Qt5::DBus)
 
  #Translations
-#lxqt_translate_ts(QM_FILES SOURCES
-#    UPDATE_TRANSLATIONS
-#        ${UPDATE_TRANSLATIONS}
-#    SOURCES
-#        ${PUB_HEADERS}
-#        ${PRIV_HEADERS}
-#        ${SOURCES}
-#        ${UI}
-#    INSTALL_DIR
-#    "${UKUI_TRANSLATIONS_DIR}/${PROJECT_NAME}"
-#)
+lxqt_translate_ts(QM_FILES SOURCES
+    UPDATE_TRANSLATIONS
+        ${UPDATE_TRANSLATIONS}
+    SOURCES
+        ${PUB_HEADERS}
+        ${PRIV_HEADERS}
+        ${SOURCES}
+        ${UI}
+    INSTALL_DIR
+    "${UKUI_TRANSLATIONS_DIR}/${PROJECT_NAME}"
+)
 
-#lxqt_app_translation_loader(SOURCES ${PROJECT_NAME})
+lxqt_app_translation_loader(SOURCES ${PROJECT_NAME})
 add_executable(${PROJECT}
     ${PUB_HEADERS}
     ${PRIV_HEADERS}

@@ -738,7 +738,7 @@ void UKUIPanel::showConfigDialog()
 //    KWindowSystem::activateWindow(wid);
 //    KWindowSystem::setOnDesktop(wid, KWindowSystem::currentDesktop());
 
-            mConfigDialog = new ConfigPanelDialog(this, nullptr);
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
         mConfigDialog->show();
         //mConfigWidget->positionChanged();
 
@@ -768,6 +768,22 @@ void UKUIPanel::showAddPluginDialog()
 /************************************************
 
  ************************************************/
+
+void UKUIPanel::setPanelStyle()
+{
+
+}
+
+void UKUIPanel::systeMonitor()
+{
+    system("mate-system-monitor");
+}
+#include <KWindowSystem/KWindowSystem>
+#include <KWindowSystem/NETWM>
+void UKUIPanel::showDesktop()
+{
+    KWindowSystem::setShowingDesktop(!KWindowSystem::showingDesktop());
+}
 void UKUIPanel::updateStyleSheet()
 {
     QStringList sheet;
@@ -1128,28 +1144,50 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     // Panel menu ...............................
 
     //menu->addTitle(QIcon(), tr("Panel"));
+//    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+//                   tr("Configure Panel"),
+//                   this, SLOT(showConfigDialog())
+//                  )->setDisabled(mLockPanel);
+//    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
+//                   tr("Manage Widgets"),
+//                   this, SLOT(showAddPluginDialog())
+//                  )->setDisabled(mLockPanel);
+
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("Configure Panel"),
-                   this, SLOT(showConfigDialog())
+                   tr("设置任务栏"),
+                   this, SLOT(setPanelStyle())
                   )->setDisabled(mLockPanel);
-    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
-                   tr("Manage Widgets"),
-                   this, SLOT(showAddPluginDialog())
-                  )->setDisabled(mLockPanel);
+
+    menu->addSeparator();
 
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("显示'任务视图'按钮"),
-                   this, SLOT(showConfigDialog())
+                   this, SLOT(setPanelStyle())
                   )->setDisabled(mLockPanel);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("显示'屏幕按键'按钮"),
-                   this, SLOT(showConfigDialog())
+                   this, SLOT(setPanelStyle())
                   )->setDisabled(mLockPanel);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("显示'工作区切换'按钮"),
-                   this, SLOT(showConfigDialog())
+                   this, SLOT(setPanelStyle())
                   )->setDisabled(mLockPanel);
 
+        menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+                       tr("显示桌面"),
+                       this, SLOT(showDesktop())
+                      )->setDisabled(mLockPanel);
+
+    menu->addSeparator();
+
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-remove")),
+                   tr("系统监视器"),
+                   this, SLOT(systeMonitor())
+                  )->setDisabled(mLockPanel);
+
+    menu->addSeparator();
+
+    /* import code
     QAction *pmenuaction_s;
     QAction *pmenuaction_m;
     QAction *pmenuaction_l;
@@ -1164,6 +1202,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenuaction_xl=new QAction(this);
     pmenuaction_xl->setText("特大");
 
+
     QMenu *pmenu_panelsize;
     pmenu_panelsize=new QMenu(this);
     pmenu_panelsize->setTitle("调整高度");
@@ -1172,6 +1211,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenu_panelsize->addAction(pmenuaction_l);
     pmenu_panelsize->addAction(pmenuaction_xl);
     menu->addMenu(pmenu_panelsize);
+
+
     pmenu_panelsize->setStyleSheet(
                          "QMenu {"
                          "background-color:rgba(21,26,30,90%);"
@@ -1196,7 +1237,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     connect(pmenuaction_m,SIGNAL(triggered()),this,SLOT(panelsizechange_m()));
     connect(pmenuaction_l,SIGNAL(triggered()),this,SLOT(panelsizechange_l()));
     connect(pmenuaction_xl,SIGNAL(triggered()),this,SLOT(panelsizechange_xl()));
-
+    */
+    menu->addSeparator();
 
     QAction *pmenuaction_top;
     QAction *pmenuaction_bottom;
@@ -1215,8 +1257,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenu_positon->setTitle("调整位置");
     pmenu_positon->addAction(pmenuaction_top);
     pmenu_positon->addAction(pmenuaction_bottom);
-    pmenu_positon->addAction(pmenuaction_left);
-    pmenu_positon->addAction(pmenuaction_right);
+    //pmenu_positon->addAction(pmenuaction_left);
+    //pmenu_positon->addAction(pmenuaction_right);
     menu->addMenu(pmenu_positon);
     pmenu_positon->setStyleSheet(
                          "QMenu {"
@@ -1242,13 +1284,14 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     connect(pmenuaction_bottom,SIGNAL(triggered()),this,SLOT(changePosition_bottom()));
     connect(pmenuaction_left,SIGNAL(triggered()),this,SLOT(changePosition_left()));
     connect(pmenuaction_right,SIGNAL(triggered()),this,SLOT(changePosition_right()));
+    pmenu_positon->setDisabled(mLockPanel);
 
 
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
-                   tr("Add New Panel"),
-                   a, SLOT(addNewPanel())
-                  );
+//    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
+//                   tr("Add New Panel"),
+//                   a, SLOT(addNewPanel())
+//                  );
 
 
     if (a->count() > 1)
@@ -1264,10 +1307,10 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     act_lock->setChecked(mLockPanel);
     connect(act_lock, &QAction::triggered, [this] { mLockPanel = !mLockPanel; saveSettings(false); });
 
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("重置任务栏"),
-                   this, SLOT(showConfigDialog())
-                  )->setDisabled(mLockPanel);
+//    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+//                   tr("重置任务栏"),
+//                   this, SLOT(showConfigDialog())
+//                  )->setDisabled(mLockPanel);
 
 #ifdef DEBUG
     menu->addSeparator();

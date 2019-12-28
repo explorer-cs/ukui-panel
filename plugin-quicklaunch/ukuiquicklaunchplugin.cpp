@@ -37,7 +37,7 @@ UKUIQuickLaunchPlugin::UKUIQuickLaunchPlugin(const IUKUIPanelPluginStartupInfo &
     FilectrlAdaptor *f;
     f=new FilectrlAdaptor(mWidget);
     QDBusConnection con=QDBusConnection::sessionBus();
-    if(!con.registerService("com.kylin.ukuipanel.filectrl") ||
+    if(!con.registerService("com.ukui.panel.desktop") ||
             !con.registerObject("/",mWidget))
     {
         qDebug()<<"fail";

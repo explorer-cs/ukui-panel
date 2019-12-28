@@ -424,6 +424,9 @@ private slots:
      * 2. LXQt::Application::themeChanged(), i.e. when the user changes
      * the theme.
      */
+    void setPanelStyle();
+    void systeMonitor();
+    void showDesktop();
     void realign();
     /**
      * @brief Moves a plugin in PanelPluginsModel, i.e. calls

@@ -72,9 +72,9 @@ class UKUIQuickLaunch : public QFrame
     Q_OBJECT
 
     //use d-bus model to Interaction with ukui-menu
-    Q_CLASSINFO("D-Bus Interface", "com.kylin.ukuipanel.filectrl")
+    Q_CLASSINFO("D-Bus Interface", "com.ukui.panel.desktop")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.kylin.ukuipanel.filectrl\">\n"
+"  <interface name=\"com.ukui.panel.desktop\">\n"
 "    <method name=\"AddToTaskbar\">\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
@@ -139,9 +139,9 @@ public slots:
 class FilectrlAdaptor: public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "com.kylin.ukuipanel.filectrl")
+    Q_CLASSINFO("D-Bus Interface", "com.ukui.panel.desktop")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.kylin.ukuipanel.filectrl\">\n"
+"  <interface name=\"com.ukui.panel.desktop\">\n"
 "    <method name=\"AddToTaskbar\">\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
@@ -175,7 +175,7 @@ signals:
 class DBus : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface","com.kylin.ukuipanel.filectrl")
+    Q_CLASSINFO("D-Bus Interface","com.ukui.panel.desktop")
 public:
     explicit DBus(QObject *parent = 0);
 
