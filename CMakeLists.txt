@@ -216,7 +216,13 @@ if(POWERSWITCH_PLUGIN)
     add_subdirectory(plugin-powerswitch)
 endif(POWERSWITCH_PLUGIN)
 
-
+setByDefault(TASKVIEW_PLUGIN Yes)
+if(TASKVIEW_PLUGIN)
+#    list(APPEND STATIC_PLUGINS "taskview")
+#    add_definitions(-DWITH_TASKVIEW_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "taskview")
+    add_subdirectory(plugin-taskview)
+endif(TASKVIEW_PLUGIN)
 #########################################################################
 
 message(STATUS  "**************** The following plugins will be built ****************")

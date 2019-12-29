@@ -1143,7 +1143,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     // Panel menu ...............................
 
-    //menu->addTitle(QIcon(), tr("Panel"));
+//    menu->addTitle(QIcon(), tr("Panel"));
 //    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
 //                   tr("Configure Panel"),
 //                   this, SLOT(showConfigDialog())
@@ -1180,8 +1180,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     menu->addSeparator();
 
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-remove")),
-                   tr("系统监视器"),
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-remove")),               
+    tr("系统监视器"),
                    this, SLOT(systeMonitor())
                   )->setDisabled(mLockPanel);
 
