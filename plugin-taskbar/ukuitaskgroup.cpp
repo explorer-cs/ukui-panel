@@ -41,6 +41,76 @@
 #include <KF5/KWindowSystem/KWindowSystem>
 #include <functional>
 
+#include <QtX11Extras/QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
+#include <QLabel>
+
+#include <qmainwindow.h>
+#include <QWidget>
+
+#define PREVIEW_WIDTH		168
+#define PREVIEW_HEIGHT		128
+#define SPACE_WIDTH			8
+#define SPACE_HEIGHT		8
+#define THUMBNAIL_WIDTH		(PREVIEW_WIDTH - SPACE_WIDTH)
+#define THUMBNAIL_HEIGHT	(PREVIEW_HEIGHT - SPACE_HEIGHT)
+#define ICON_WIDTH			48
+#define ICON_HEIGHT			48
+
+QPixmap qimageFromXImage(XImage* ximage)
+{
+    QImage::Format format = QImage::Format_ARGB32_Premultiplied;
+    if (ximage->depth == 24)
+        format = QImage::Format_RGB32;
+    else if (ximage->depth == 16)
+        format = QImage::Format_RGB16;
+
+    QImage image = QImage(reinterpret_cast<uchar*>(ximage->data),
+                          ximage->width, ximage->height,
+                          ximage->bytes_per_line, format).copy();
+
+    // 大端还是小端?
+    if ((QSysInfo::ByteOrder == QSysInfo::LittleEndian && ximage->byte_order == MSBFirst)
+            || (QSysInfo::ByteOrder == QSysInfo::BigEndian && ximage->byte_order == LSBFirst)) {
+
+        for (int i = 0; i < image.height(); i++) {
+            if (ximage->depth == 16) {
+                ushort* p = reinterpret_cast<ushort*>(image.scanLine(i));
+                ushort* end = p + image.width();
+                while (p < end) {
+                    *p = ((*p << 8) & 0xff00) | ((*p >> 8) & 0x00ff);
+                    p++;
+                }
+            } else {
+                uint* p = reinterpret_cast<uint*>(image.scanLine(i));
+                uint* end = p + image.width();
+                while (p < end) {
+                    *p = ((*p << 24) & 0xff000000) | ((*p << 8) & 0x00ff0000)
+                         | ((*p >> 8) & 0x0000ff00) | ((*p >> 24) & 0x000000ff);
+                    p++;
+                }
+            }
+        }
+    }
+
+    // 修复alpha通道
+    if (format == QImage::Format_RGB32) {
+        QRgb* p = reinterpret_cast<QRgb*>(image.bits());
+        for (int y = 0; y < ximage->height; ++y) {
+            for (int x = 0; x < ximage->width; ++x)
+                p[x] |= 0xff000000;
+            p += ximage->bytes_per_line / 4;
+        }
+    }
+
+    return QPixmap::fromImage(image);
+}
+
+
+
+
 /************************************************
 
  ************************************************/
@@ -49,7 +119,7 @@ UKUITaskGroup::UKUITaskGroup(const QString &groupName, WId window, UKUITaskBar *
     mGroupName(groupName),
     mPopup(new UKUIGroupPopup(this)),
     mPreventPopup(false),
-    mSingleButton(false)
+    mSingleButton(true)
 {
     Q_ASSERT(parent);
 
@@ -144,7 +214,7 @@ UKUITaskButton * UKUITaskGroup::addWindow(WId id)
     }
 
     mButtonHash.insert(id, btn);
-    mPopup->addButton(btn);
+    //mPopup->addButton(btn);
 
     connect(btn, SIGNAL(clicked()), this, SLOT(onChildButtonClicked()));
     refreshVisibility();
@@ -343,29 +413,29 @@ void UKUITaskGroup::regroup()
     int cont = visibleButtonsCount();
     recalculateFrameIfVisible();
 
-    if (cont == 1)
-    {
-        mSingleButton = false;
-        // Get first visible button
-        UKUITaskButton * button = NULL;
-        for (UKUITaskButton *btn : qAsConst(mButtonHash))
-        {
-            if (btn->isVisibleTo(mPopup))
-            {
-                button = btn;
-                break;
-            }
-        }
+//    if (cont == 1)
+//    {
+//        mSingleButton = false;
+//        // Get first visible button
+//        UKUITaskButton * button = NULL;
+//        for (UKUITaskButton *btn : qAsConst(mButtonHash))
+//        {
+//            if (btn->isVisibleTo(mPopup))
+//            {
+//                button = btn;
+//                break;
+//            }
+//        }
 
-        if (button)
-        {
-            setText(button->text());
-            setToolTip(button->toolTip());
-            setWindowId(button->windowId());
+//        if (button)
+//        {
+//            setText(button->text());
+//            setToolTip(button->toolTip());
+//            setWindowId(button->windowId());
 
-        }
-    }
-    else if (cont == 0)
+//        }
+//    }
+    /*else*/ if (cont == 0)
         hide();
     else
     {
@@ -444,7 +514,6 @@ QMimeData * UKUITaskGroup::mimeData()
  ************************************************/
 void UKUITaskGroup::setPopupVisible(bool visible, bool fast)
 {
-    qDebug()<<"visible is :"<<visible<<"mPreventPopup is:"<<mPreventPopup<<"mSingleButton is:"<< mSingleButton;
     if (visible && !mPreventPopup && !mSingleButton)
     {
 
@@ -455,18 +524,15 @@ void UKUITaskGroup::setPopupVisible(bool visible, bool fast)
             recalculateFrameSize();
             recalculateFramePosition();
         }
-        testdebug();
+        showPreview();
+        /* for origin preview
         plugin()->willShowWindow(mPopup);
         mPopup->show();
         qDebug()<<"setPopupVisible ********";
-        emit popupShown(this);
+        emit popupShown(this);*/
     }
     else
         mPopup->hide(fast);
-}
-void UKUITaskGroup::testdebug()
-{
-    qDebug()<<"testdebug ****";
 }
 /************************************************
 
@@ -578,7 +644,6 @@ void UKUITaskGroup::enterEvent(QEvent *event)
 
     if (sDraggging)
         return;
-    qDebug()<<"UKUITaskGroup::enterEvent";
     if (parentTaskBar()->isShowGroupOnHover())
     {
         setPopupVisible(true);
@@ -689,4 +754,45 @@ void UKUITaskGroup::groupPopupShown(UKUITaskGroup * const sender)
     //close all popups (should they be visible because of close delay)
     if (this != sender && isVisible())
             setPopupVisible(false, true/*fast*/);
+}
+
+void UKUITaskGroup::removeWidget()
+{
+
+}
+
+void UKUITaskGroup::showPreview()
+{
+    XImage *img = NULL;
+    Display *display = NULL;
+    XWindowAttributes attr;
+    //removeWidget();
+    for (UKUITaskButtonHash::const_iterator it = mButtonHash.begin();it != mButtonHash.end();it++)
+    {
+        display = XOpenDisplay(NULL);
+        XGetWindowAttributes(display, it.key(), &attr);
+        img = XGetImage(display, it.key(), 0, 0, attr.width, attr.height, 0xffffffff,ZPixmap);
+
+        QPixmap thumbnail = qimageFromXImage(img).scaled(THUMBNAIL_WIDTH,THUMBNAIL_HEIGHT,Qt::KeepAspectRatio,Qt::FastTransformation);
+        thumbnail.save(QString("/tmp/picture/%1.png").arg(it.key()));
+        //QLabel * label = new QLabel(mPopup); // 创建堆对象
+
+        UKUITaskButton *btn = it.value();
+        btn->setFixedSize(thumbnail.width(),thumbnail.height());
+        btn->setIcon(thumbnail);
+        btn->setIconSize(thumbnail.rect().size());
+
+        btn->setToolButtonStyle(Qt::ToolButtonIconOnly);/*not show title*/
+        //btn->setStyleSheet(QString("border-image:url(/tmp/picture/%1.png)").arg(mButtonHash.begin().key()));
+        //mPopup->addButton(btn);
+//        mPopup->setLayout(new QHBoxLayout);
+        mPopup->layout()->addWidget(btn);
+        qDebug()<<"btn->text() is:"<<btn->text();
+        XDestroyImage(img);
+        XCloseDisplay(display);
+    }
+    plugin()->willShowWindow(mPopup);
+    mPopup->show();
+
+   emit popupShown(this);
 }

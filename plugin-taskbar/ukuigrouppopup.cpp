@@ -53,7 +53,7 @@ UKUIGroupPopup::UKUIGroupPopup(UKUITaskGroup *group):
     setAttribute(Qt::WA_AlwaysShowToolTips);
     setAttribute(Qt::WA_TranslucentBackground);
 
-    setLayout(new QVBoxLayout);
+    setLayout(new QHBoxLayout);
     layout()->setSpacing(3);
     layout()->setMargin(3);
 

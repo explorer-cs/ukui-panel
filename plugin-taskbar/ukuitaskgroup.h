@@ -69,7 +69,8 @@ public:
     void setToolButtonsStyle(Qt::ToolButtonStyle style);
 
     void setPopupVisible(bool visible = true, bool fast = false);
-    void testdebug();
+    void showPreview();
+    void removeWidget();
 
 public slots:
     void onWindowRemoved(WId window);
