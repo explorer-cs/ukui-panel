@@ -2,7 +2,6 @@ set(PLUGIN "mount")
 
 set(HEADERS
     ukuimountplugin.h
-    configuration.h
     button.h
     menudiskitem.h
     popup.h
@@ -14,7 +13,6 @@ set(HEADERS
 
 set(SOURCES
     ukuimountplugin.cpp
-    configuration.cpp
     button.cpp
     menudiskitem.cpp
     popup.cpp
@@ -24,9 +22,7 @@ set(SOURCES
     actions/deviceaction_nothing.cpp
 )
 
-set(UIS
-    configuration.ui
-)
+
 
 find_package(KF5Solid ${QT_MINIMUM_VERSION} REQUIRED)
 set(LIBRARIES Qt5Xdg KF5::Solid)

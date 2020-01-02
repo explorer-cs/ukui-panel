@@ -49,7 +49,7 @@ UKUITaskGroup::UKUITaskGroup(const QString &groupName, WId window, UKUITaskBar *
     mGroupName(groupName),
     mPopup(new UKUIGroupPopup(this)),
     mPreventPopup(false),
-    mSingleButton(true)
+    mSingleButton(false)
 {
     Q_ASSERT(parent);
 
@@ -345,7 +345,7 @@ void UKUITaskGroup::regroup()
 
     if (cont == 1)
     {
-        mSingleButton = true;
+        mSingleButton = false;
         // Get first visible button
         UKUITaskButton * button = NULL;
         for (UKUITaskButton *btn : qAsConst(mButtonHash))
@@ -444,23 +444,30 @@ QMimeData * UKUITaskGroup::mimeData()
  ************************************************/
 void UKUITaskGroup::setPopupVisible(bool visible, bool fast)
 {
+    qDebug()<<"visible is :"<<visible<<"mPreventPopup is:"<<mPreventPopup<<"mSingleButton is:"<< mSingleButton;
     if (visible && !mPreventPopup && !mSingleButton)
     {
+
         if (!mPopup->isVisible())
         {
             // setup geometry
+
             recalculateFrameSize();
             recalculateFramePosition();
         }
-
+        testdebug();
         plugin()->willShowWindow(mPopup);
         mPopup->show();
+        qDebug()<<"setPopupVisible ********";
         emit popupShown(this);
     }
     else
         mPopup->hide(fast);
 }
-
+void UKUITaskGroup::testdebug()
+{
+    qDebug()<<"testdebug ****";
+}
 /************************************************
 
  ************************************************/
@@ -571,9 +578,11 @@ void UKUITaskGroup::enterEvent(QEvent *event)
 
     if (sDraggging)
         return;
-
+    qDebug()<<"UKUITaskGroup::enterEvent";
     if (parentTaskBar()->isShowGroupOnHover())
+    {
         setPopupVisible(true);
+    }
 }
 
 /************************************************

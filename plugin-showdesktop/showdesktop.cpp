@@ -27,7 +27,6 @@
 
 #include <QAction>
 #include <QX11Info>
-#include <lxqt-globalkeys.h>
 //#include <XdgIcon>
 #include "xdgicon.h"
 //#include <LXQt/Notification>
@@ -43,12 +42,6 @@ ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
     IUKUIPanelPlugin(startupInfo)
 {
-    m_key = GlobalKeyShortcut::Client::instance()->addAction(QString(), QString("/panel/%1/show_hide").arg(settings()->group()), tr("Show desktop"), this);
-    if (m_key)
-    {
-        connect(m_key, &GlobalKeyShortcut::Action::registrationFinished, this, &ShowDesktop::shortcutRegistered);
-        connect(m_key, SIGNAL(activated()), this, SLOT(toggleShowingDesktop()));
-    }
 
     QAction * act = new QAction(XdgIcon::fromTheme("ukui-icon-theme-one"), tr(""), this);
     connect(act, SIGNAL(triggered()), this, SLOT(toggleShowingDesktop()));
@@ -58,18 +51,6 @@ ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
     mButton.setAutoRaise(true);
     mButton.setFixedSize(12,40);
 
-}
-
-void ShowDesktop::shortcutRegistered()
-{
-    if (m_key->shortcut().isEmpty())
-    {
-        m_key->changeShortcut(DEFAULT_SHORTCUT);
-        if (m_key->shortcut().isEmpty())
-        {
-            LXQt::Notification::notify(tr("Show Desktop: Global shortcut '%1' cannot be registered").arg(DEFAULT_SHORTCUT));
-        }
-    }
 }
 
 void ShowDesktop::toggleShowingDesktop()

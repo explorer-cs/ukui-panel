@@ -28,7 +28,6 @@
 #ifndef LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 #define LXQT_PLUGIN_MOUNT_CONFIGURATION_H
 
-#include "../panel/ukuipanelpluginconfigdialog.h"
 
 #define CFG_KEY_ACTION  "newDeviceAction"
 #define ACT_SHOW_MENU   "showMenu"

@@ -33,10 +33,6 @@
 #include <QToolButton>
 
 
-namespace GlobalKeyShortcut
-{
-class Action;
-}
 
 class ShowDesktop :  public QObject, public IUKUIPanelPlugin
 {
@@ -47,12 +43,10 @@ public:
 
     virtual QWidget *widget() { return &mButton; }
     virtual QString themeId() const { return "ShowDesktop"; }
-private:
-    GlobalKeyShortcut::Action * m_key;
+
 
 private slots:
     void toggleShowingDesktop();
-    void shortcutRegistered();
 
 private:
     QToolButton mButton;

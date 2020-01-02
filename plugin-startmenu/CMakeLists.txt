@@ -11,12 +11,6 @@ set(SOURCES
 set(UIS
 )
 
-set(LIBRARIES
-    lxqt
-    lxqt-globalkeys
-    lxqt-globalkeys-ui
-)
-
 install(FILES
     img/startmenu.svg  img/taskview.svg
     DESTINATION "${LXQT_DATA_DIR}/plugin-startmenu/img"

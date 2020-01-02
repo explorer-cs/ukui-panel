@@ -4,7 +4,6 @@
 #include <QScreen>
 #include <QDebug>
 
-#include <lxqt-globalkeys.h>
 
 PowerSwitch::PowerSwitch(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),

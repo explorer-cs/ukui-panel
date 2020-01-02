@@ -10,7 +10,6 @@ set(SOURCES
 
 set(LIBRARIES
     ${LIBRARIES}
-    lxqt-globalkeys
     Qt5Xdg
 )
 

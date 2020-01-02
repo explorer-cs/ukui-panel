@@ -1124,11 +1124,16 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     menu->setStyleSheet(
                          "QMenu {"
                          "background-color:rgb(21,26,30);"
-                         "border-color:rgba(255,255,255,30);"    //边框颜色
+                         "border: 1px solid #626c6e;"
+                         //"border-color:rgba(255,255,255,30);"    //边框颜色
                          "font:SimSun 14px;"                       //字体，字体大小
                          "color:rgba(255,255,255,100);"                //字体颜色
+                        "padding: 4px 2px 4px 2px;"
                         " }"
-
+                        "QMenu::item {"
+                        "width: 244px;"
+                        "height: 90px;"
+                        "}"
                         //鼠标悬停样式
                         "QMenu:hover{"
                         "background-color:rgba(190,216,239,30%);"
@@ -1153,6 +1158,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 //                   this, SLOT(showAddPluginDialog())
 //                  )->setDisabled(mLockPanel);
 
+    menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("设置任务栏"),
                    this, SLOT(setPanelStyle())

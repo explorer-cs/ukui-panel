@@ -27,8 +27,6 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "popup.h"
-#include "../panel/iukuipanelplugin.h"
-
 #include <QDesktopWidget>
 #include <QVBoxLayout>
 #include <QTimer>
@@ -93,7 +91,6 @@ void Popup::showHide()
 {
     if (isHidden())
     {
-        mPlugin->willShowWindow(this);
         show();
     } else
         close();
@@ -173,5 +170,4 @@ void Popup::addItem(Solid::Device device)
 void Popup::realign()
 {
     adjustSize();
-    setGeometry(mPlugin->calculatePopupWindowPos(sizeHint()));
 }

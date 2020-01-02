@@ -440,6 +440,11 @@ void UKUITaskBar::setButtonStyle(Qt::ToolButtonStyle buttonStyle)
         emit buttonStyleRefreshed(mButtonStyle);
 }
 
+void UKUITaskBar::setShowGroupOnHover(bool bFlag)
+{
+
+}
+
 /************************************************
 
  ************************************************/
@@ -461,7 +466,7 @@ void UKUITaskBar::settingsChanged()
     else if (s == "TEXT")
         setButtonStyle(Qt::ToolButtonTextOnly);
     else
-        setButtonStyle(Qt::ToolButtonTextBesideIcon);
+        setButtonStyle(Qt::ToolButtonIconOnly);
 
     mShowOnlyOneDesktopTasks = mPlugin->settings()->value("showOnlyOneDesktopTasks", mShowOnlyOneDesktopTasks).toBool();
     mShowDesktopNum = mPlugin->settings()->value("showDesktopNum", mShowDesktopNum).toInt();
@@ -511,7 +516,7 @@ void UKUITaskBar::realign()
     refreshButtonRotation();
 
     IUKUIPanel *panel = mPlugin->panel();
-    QSize maxSize = QSize(160, mButtonHeight);
+    QSize maxSize = QSize(130, mButtonHeight);
     QSize minSize = QSize(0, 0);
 
     bool rotated = false;

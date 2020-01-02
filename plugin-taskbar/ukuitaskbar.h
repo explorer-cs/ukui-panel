@@ -77,6 +77,7 @@ public:
     bool isGroupingEnabled() const { return mGroupingEnabled; }
     bool isShowGroupOnHover() const { return mShowGroupOnHover; }
     bool isIconByClass() const { return mIconByClass; }
+    void setShowGroupOnHover(bool bFlag);
     inline IUKUIPanel * panel() const { return mPlugin->panel(); }
     inline IUKUIPanelPlugin * plugin() const { return mPlugin; }
 

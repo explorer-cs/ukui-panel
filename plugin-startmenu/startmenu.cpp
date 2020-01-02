@@ -4,8 +4,6 @@
 #include <QScreen>
 #include <QDebug>
 
-#include <lxqt-globalkeys.h>
-
 StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
     IUKUIPanelPlugin(startupInfo)

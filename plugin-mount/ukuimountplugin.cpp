@@ -26,7 +26,6 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include "ukuimountplugin.h"
-#include "configuration.h"
 
 #include <Solid/DeviceNotifier>
 
@@ -56,9 +55,6 @@ QDialog *UKUIMountPlugin::configureDialog()
     if (mPopup)
         mPopup->hide();
 
-    Configuration *configWindow = new Configuration(settings());
-    configWindow->setAttribute(Qt::WA_DeleteOnClose, true);
-    return configWindow;
 }
 
 void UKUIMountPlugin::realign()
@@ -68,16 +64,6 @@ void UKUIMountPlugin::realign()
 
 void UKUIMountPlugin::settingsChanged()
 {
-    QString s = settings()->value(QLatin1String(CFG_KEY_ACTION)).toString();
-    DeviceAction::ActionId actionId = DeviceAction::stringToActionId(s, DeviceAction::ActionMenu);
 
-    if (mDeviceAction == nullptr || mDeviceAction->Type() != actionId)
-    {
-        delete mDeviceAction;
-        mDeviceAction = DeviceAction::create(actionId, this, this);
-
-        connect(mPopup, &Popup::deviceAdded, mDeviceAction, &DeviceAction::onDeviceAdded);
-        connect(mPopup, &Popup::deviceRemoved, mDeviceAction, &DeviceAction::onDeviceRemoved);
-    }
 
 }

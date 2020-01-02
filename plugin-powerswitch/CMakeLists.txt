@@ -11,11 +11,6 @@ set(SOURCES
 set(UIS
 )
 
-set(LIBRARIES
-    lxqt
-    lxqt-globalkeys
-    lxqt-globalkeys-ui
-)
 install(FILES
     img/powerswitch.svg
     DESTINATION "${LXQT_DATA_DIR}/plugin-powerswitch/img"

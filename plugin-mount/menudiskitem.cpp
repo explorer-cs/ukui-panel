@@ -37,7 +37,6 @@
 #include <Solid/StorageAccess>
 #include <Solid/OpticalDrive>
 //#include <LXQt/Notification>
-#include "../common/lxqtnotification.h"
 #include <QDebug>
 
 MenuDiskItem::MenuDiskItem(Solid::Device device, Popup *popup):
@@ -155,7 +154,6 @@ void MenuDiskItem::onMounted(Solid::ErrorType error, QVariant resultData, const 
         {
             QString errorMsg = tr("Mounting of <b><nobr>\"%1\"</nobr></b> failed: %2");
             errorMsg = errorMsg.arg(mDevice.description()).arg(resultData.toString());
-            LXQt::Notification::notify(tr("Removable media/devices manager"), errorMsg, mDevice.icon());
         }
     }
 }
@@ -176,7 +174,6 @@ void MenuDiskItem::onUnmounted(Solid::ErrorType error, QVariant resultData, cons
         {
             QString errorMsg = tr("Unmounting of <strong><nobr>\"%1\"</nobr></strong> failed: %2");
             errorMsg = errorMsg.arg(mDevice.description()).arg(resultData.toString());
-            LXQt::Notification::notify(tr("Removable media/devices manager"), errorMsg, mDevice.icon());
         }
     }
 }

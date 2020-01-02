@@ -395,7 +395,6 @@ void UKUITray::addIcon(Window winId)
     icon = new TrayIcon(winId, mIconSize, this);
 //    icon->setStyleSheet(
 //                         "TrayIcon {"
-//                         "background-color:rgb(21,26,30);"
 //                         "border-color:rgba(255,255,255,30);"    //边框颜色
 //                         "font:SimSun 14px;"                       //字体，字体大小
 //                         "color:rgba(255,255,255,100);"                //字体颜色
