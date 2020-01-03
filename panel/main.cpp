@@ -31,11 +31,19 @@
     CONFIG_ID      Section name in config file ~/.config/ukui/panel.conf
                    (default main)
  */
-
+#include <QTranslator>
 int main(int argc, char *argv[])
 {
     UKUIPanelApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+    QString locale = QLocale::system().name();
+    QTranslator translator;
+    if (locale == "zh_CN"){
+        if (translator.load("ukui-panel_zh_CN.qm", "/usr/share/plugin-startmenu/img"))
+            app.installTranslator(&translator);
+        else
+            qDebug() << "Load translations file" << locale << "failed!";
+    }
 
     return app.exec();
 }

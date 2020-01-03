@@ -1148,15 +1148,15 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     // Panel menu ...............................
 
-//    menu->addTitle(QIcon(), tr("Panel"));
-//    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-//                   tr("Configure Panel"),
-//                   this, SLOT(showConfigDialog())
-//                  )->setDisabled(mLockPanel);
-//    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
-//                   tr("Manage Widgets"),
-//                   this, SLOT(showAddPluginDialog())
-//                  )->setDisabled(mLockPanel);
+    menu->addTitle(QIcon(), tr("Panel"));
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+                   tr("Configure Panel"),
+                   this, SLOT(showConfigDialog())
+                  )->setDisabled(mLockPanel);
+    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
+                   tr("Manage Widgets"),
+                   this, SLOT(showAddPluginDialog())
+                  )->setDisabled(mLockPanel);
 
     menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
@@ -1263,8 +1263,8 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenu_positon->setTitle("调整位置");
     pmenu_positon->addAction(pmenuaction_top);
     pmenu_positon->addAction(pmenuaction_bottom);
-    //pmenu_positon->addAction(pmenuaction_left);
-    //pmenu_positon->addAction(pmenuaction_right);
+    pmenu_positon->addAction(pmenuaction_left);
+    pmenu_positon->addAction(pmenuaction_right);
     menu->addMenu(pmenu_positon);
     pmenu_positon->setStyleSheet(
                          "QMenu {"

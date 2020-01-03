@@ -6,18 +6,18 @@
     set(PLUGIN_SHARE_DIR ${PROG_SHARE_DIR}/${NAME})
 
     # Translations **********************************
-    lxqt_translate_ts(${PROJECT_NAME}_QM_FILES
-        UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
-        SOURCES
-            ${HEADERS}
-            ${SOURCES}
-            ${MOCS}
-            ${UIS}
-        TEMPLATE
-            ${NAME}
-        INSTALL_DIR
-        ${UKUI_TRANSLATIONS_DIR}/${PROGRAM}/${NAME}
-    )
+#    lxqt_translate_ts(${PROJECT_NAME}_QM_FILES
+#        UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
+#        SOURCES
+#            ${HEADERS}
+#            ${SOURCES}
+#            ${MOCS}
+#            ${UIS}
+#        TEMPLATE
+#            ${NAME}
+#        INSTALL_DIR
+#        ${UKUI_TRANSLATIONS_DIR}/${PROGRAM}/${NAME}
+#    )
 
     file (GLOB ${PROJECT_NAME}_DESKTOP_FILES_IN resources/*.desktop.in)
     lxqt_translate_desktop(DESKTOP_FILES

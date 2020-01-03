@@ -787,7 +787,6 @@ void UKUITaskGroup::showPreview()
         //mPopup->addButton(btn);
 //        mPopup->setLayout(new QHBoxLayout);
         mPopup->layout()->addWidget(btn);
-        qDebug()<<"btn->text() is:"<<btn->text();
         XDestroyImage(img);
         XCloseDisplay(display);
     }

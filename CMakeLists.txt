@@ -237,6 +237,4 @@ add_subdirectory(panel)
 #add_subdirectory(autostart)
 add_subdirectory(menu)
 add_subdirectory(common)
-file(GLOB_RECURSE QRC_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
-
 
