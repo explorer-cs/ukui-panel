@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Service
-ServiceTypes=UKUIPanel/Plugin
-Name=Desktop switcher
-Comment=Allows easy switching between virtual desktops.
-Icon=user-desktop
-
-#TRANSLATIONS_DIR=../translations
