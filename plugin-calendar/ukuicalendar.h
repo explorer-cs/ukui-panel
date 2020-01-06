@@ -55,10 +55,11 @@ public:
     bool isSeparate() const { return true; }
     void activated(ActivationReason reason);
 
-    virtual void settingsChanged();
-    virtual void realign();
+    void settingsChanged()override;
+    void realign()override;
     void initializeCalendar();
     void setbackground();
+    void setTimeShowStyle();
 //signals:
 Q_SIGNALS:
     void deactivated();
@@ -99,6 +100,7 @@ private:
     void updatePopupContent();
     bool formatHasTimeZone(QString format);
     QString preformat(const QDateTime &dateTime,const QString &format, const QTimeZone &timeZone);
+    bool mbIsNeedUpdate;
 };
 
 

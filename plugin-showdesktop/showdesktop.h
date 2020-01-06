@@ -43,7 +43,7 @@ public:
 
     virtual QWidget *widget() { return &mButton; }
     virtual QString themeId() const { return "ShowDesktop"; }
-
+    void realign()override;
 
 private slots:
     void toggleShowingDesktop();
