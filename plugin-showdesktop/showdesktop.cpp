@@ -38,6 +38,9 @@
 
 #define DEFAULT_SHORTCUT "Control+Alt+D"
 
+#define DESKTOP_HEIGHT  (12)
+#define DESKTOP_WIDTH   (40)
+
 ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
     QObject(),
     IUKUIPanelPlugin(startupInfo)
@@ -49,8 +52,20 @@ ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
     mButton.setDefaultAction(act);
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     mButton.setAutoRaise(true);
-    mButton.setFixedSize(12,40);
+    realign();
 
+}
+
+void ShowDesktop::realign()
+{
+    if(panel()->isHorizontal())
+    {
+        mButton.setFixedSize(DESKTOP_HEIGHT,DESKTOP_WIDTH);
+    }
+    else
+    {
+       mButton.setFixedSize(DESKTOP_WIDTH,DESKTOP_HEIGHT);
+    }
 }
 
 void ShowDesktop::toggleShowingDesktop()

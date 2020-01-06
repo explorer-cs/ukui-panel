@@ -45,6 +45,9 @@
 #include <glib.h>
 #include <gio/gio.h>
 
+#define CALENDAR_HEIGHT (40)
+#define CALENDAR_WIDTH (85)
+
 IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupInfo):
     QWidget(),
     IUKUIPanelPlugin(startupInfo),
@@ -52,6 +55,7 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mUpdateInterval(1),
     mAutoRotate(true),
     mbActived(false),
+    mbIsNeedUpdate(false),
     mbHasCreatedWebView(false),
     mPopupContent(NULL),
     mWebViewDiag(NULL)
@@ -81,8 +85,7 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     connect(mContent, SIGNAL(wheelScrolled(int)), SLOT(wheelScrolled(int)));
     connect(mWebViewDiag, SIGNAL(deactivated()), SLOT(hidewebview()));
 
-
-    mContent->setFixedSize(85,40);
+    setTimeShowStyle();
     mContent->setStyleSheet(
                 //正常状态样式
                 "QLabel{"
@@ -185,20 +188,28 @@ void IndicatorCalendar::updateTimeText()
         }
     }
 
-    if (!isUpToDate)
+    if (!isUpToDate || mbIsNeedUpdate)
     {
         const QSize old_size = mContent->sizeHint();
-
-
-        QString str=tzNow.toString("hh:mm dddd  yyyy-MM-dd");
+        QString str;
+        if(panel()->isHorizontal())
+        {
+            str=tzNow.toString("hh:mm dddd  yyyy-MM-dd");
+        }
+        else
+        {
+            str=tzNow.toString("hh:mm dddd  MM-dd");
+        }
         str.replace("-","/");
         str.replace("星期","周");
         mContent->setText(str);
         if (old_size != mContent->sizeHint())
+        {
             mRotatedWidget->adjustContentSize();
+        }
         mRotatedWidget->update();
         updatePopupContent();
-
+        mbIsNeedUpdate = false;
     }
 }
 
@@ -589,6 +600,7 @@ QString IndicatorCalendar::preformat(const QDateTime &dateTime,const QString &fo
 
 void IndicatorCalendar::realign()
 {
+    setTimeShowStyle();
     if (mAutoRotate)
         switch (panel()->position())
         {
@@ -598,17 +610,32 @@ void IndicatorCalendar::realign()
             break;
 
         case IUKUIPanel::PositionLeft:
-            mRotatedWidget->setOrigin(Qt::BottomLeftCorner);
+            //mRotatedWidget->setOrigin(Qt::BottomLeftCorner);
             break;
 
         case IUKUIPanel::PositionRight:
-            mRotatedWidget->setOrigin(Qt::TopRightCorner);
+            //mRotatedWidget->setOrigin(Qt::TopRightCorner);
             break;
         }
     else
+    {
         mRotatedWidget->setOrigin(Qt::TopLeftCorner);
+    }
 }
 
+void IndicatorCalendar::setTimeShowStyle()
+{
+    if(panel()->isHorizontal())
+    {
+        mContent->setFixedSize(CALENDAR_WIDTH,CALENDAR_HEIGHT);
+    }
+    else
+    {
+        mContent->setFixedSize(CALENDAR_HEIGHT,CALENDAR_WIDTH);
+    }
+    mbIsNeedUpdate = true;
+    timeout();
+}
 
 void IndicatorCalendar::setbackground()
 {
