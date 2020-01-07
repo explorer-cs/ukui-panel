@@ -495,23 +495,26 @@ void ConfigPanelWidget::positionChanged_right()
      editChanged();
 }
 
-void ConfigPanelWidget::panelSizeChange_m()
+void ConfigPanelWidget::changeToMidSize()
 {
-    mOldPanelSize=40;
+    mOldPanelSize = 40;
+    mOldIconSize = 24;
     editChanged();
     reset();
 }
 
-void ConfigPanelWidget::panelSizeChange_l()
+void ConfigPanelWidget::changeToLargeSize()
 {
-    mOldPanelSize=60;
+    mOldPanelSize = 60;
+    mOldIconSize = 36;
     editChanged();
     reset();
 }
 
-void ConfigPanelWidget::panelSizeChange_xl()
+void ConfigPanelWidget::changeToSmallSize()
 {
-    mOldPanelSize=80;
+    mOldPanelSize = 80;
+    mOldIconSize  = 48;
     editChanged();
     reset();
 }

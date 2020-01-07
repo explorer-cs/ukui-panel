@@ -1193,11 +1193,9 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     menu->addSeparator();
 
-    /* import code
     QAction *pmenuaction_s;
     QAction *pmenuaction_m;
     QAction *pmenuaction_l;
-    QAction *pmenuaction_xl;
 
     pmenuaction_s=new QAction(this);
     pmenuaction_s->setText("小");
@@ -1205,8 +1203,6 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenuaction_m->setText("中");
     pmenuaction_l=new QAction(this);
     pmenuaction_l->setText("大");
-    pmenuaction_xl=new QAction(this);
-    pmenuaction_xl->setText("特大");
 
 
     QMenu *pmenu_panelsize;
@@ -1215,7 +1211,6 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     pmenu_panelsize->addAction(pmenuaction_s);
     pmenu_panelsize->addAction(pmenuaction_m);
     pmenu_panelsize->addAction(pmenuaction_l);
-    pmenu_panelsize->addAction(pmenuaction_xl);
     menu->addMenu(pmenu_panelsize);
 
 
@@ -1242,8 +1237,6 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     connect(pmenuaction_s,SIGNAL(triggered()),this,SLOT(panelsizechange_s()));
     connect(pmenuaction_m,SIGNAL(triggered()),this,SLOT(panelsizechange_m()));
     connect(pmenuaction_l,SIGNAL(triggered()),this,SLOT(panelsizechange_l()));
-    connect(pmenuaction_xl,SIGNAL(triggered()),this,SLOT(panelsizechange_xl()));
-    */
     menu->addSeparator();
 
     QAction *pmenuaction_top;
@@ -1607,54 +1600,68 @@ void UKUIPanel::changePosition_top()
     //mConfigWidget->positionChanged();
      //qDebug()<<"mPanelPage"<<mConfigDialog->mPanelPage;
     //mConfigDialog->mPanelPage->positionChanged();
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPosition_top();
 }
 
 //change panel position
 void UKUIPanel::changePosition_bottom()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPosition_bottom();
 }
 
 void UKUIPanel::changePosition_left()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPosition_left();
 }
 
 void UKUIPanel::changePosition_right()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPosition_right();
 }
 
 //change panel size
 void UKUIPanel::panelsizechange_s()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
-    mConfigDialog->configPanelSize_m();
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
+    mConfigDialog->configPanelSize_S();
 
 }
 
 void UKUIPanel::panelsizechange_m()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPanelSize_m();
 
 }
 
 void UKUIPanel::panelsizechange_l()
 {
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
     mConfigDialog->configPanelSize_l();
-
 }
 
-void UKUIPanel::panelsizechange_xl()
-{
-    mConfigDialog = new ConfigPanelDialog(this, nullptr);
-    mConfigDialog->configPanelSize_xl();
-
-}

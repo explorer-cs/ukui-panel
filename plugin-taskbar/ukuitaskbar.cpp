@@ -56,8 +56,8 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     QFrame(parent),
     mSignalMapper(new QSignalMapper(this)),
     mButtonStyle(Qt::ToolButtonTextBesideIcon),
-    mButtonWidth(50),
-    mButtonHeight(46),
+    mButtonWidth(400),
+    mButtonHeight(100),
     mCloseOnMiddleClick(true),
     mRaiseOnCurrentDesktop(true),
     mShowOnlyOneDesktopTasks(false),
@@ -456,8 +456,8 @@ void UKUITaskBar::settingsChanged()
     bool showOnlyMinimizedTasksOld = mShowOnlyMinimizedTasks;
     const bool iconByClassOld = mIconByClass;
 
-    mButtonWidth = mPlugin->settings()->value("buttonWidth", 50).toInt();
-    mButtonHeight = mPlugin->settings()->value("buttonHeight", 46).toInt();
+    mButtonWidth = mPlugin->settings()->value("buttonWidth", 400).toInt();
+    mButtonHeight = mPlugin->settings()->value("buttonHeight", 100).toInt();
     QString s = mPlugin->settings()->value("buttonStyle").toString().toUpper();
 
     if (s == "ICON")
