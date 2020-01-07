@@ -56,8 +56,8 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     QFrame(parent),
     mSignalMapper(new QSignalMapper(this)),
     mButtonStyle(Qt::ToolButtonTextBesideIcon),
-    mButtonWidth(60),
-    mButtonHeight(40),
+    mButtonWidth(50),
+    mButtonHeight(46),
     mCloseOnMiddleClick(true),
     mRaiseOnCurrentDesktop(true),
     mShowOnlyOneDesktopTasks(false),
@@ -307,7 +307,6 @@ void UKUITaskBar::addWindow(WId window)
 
         mLayout->addWidget(group);
         group->setToolButtonsStyle(mButtonStyle);
-        qDebug()<<"test group id here";
     }
 
     mKnownWindows[window] = group;
@@ -457,8 +456,8 @@ void UKUITaskBar::settingsChanged()
     bool showOnlyMinimizedTasksOld = mShowOnlyMinimizedTasks;
     const bool iconByClassOld = mIconByClass;
 
-    mButtonWidth = mPlugin->settings()->value("buttonWidth", 160).toInt();
-    mButtonHeight = mPlugin->settings()->value("buttonHeight", 40).toInt();
+    mButtonWidth = mPlugin->settings()->value("buttonWidth", 50).toInt();
+    mButtonHeight = mPlugin->settings()->value("buttonHeight", 46).toInt();
     QString s = mPlugin->settings()->value("buttonStyle").toString().toUpper();
 
     if (s == "ICON")
@@ -516,7 +515,7 @@ void UKUITaskBar::realign()
     refreshButtonRotation();
 
     IUKUIPanel *panel = mPlugin->panel();
-    QSize maxSize = QSize(130, mButtonHeight);
+    QSize maxSize = QSize(50, mButtonHeight);
     QSize minSize = QSize(0, 0);
 
     bool rotated = false;

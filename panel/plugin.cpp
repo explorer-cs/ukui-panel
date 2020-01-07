@@ -345,7 +345,6 @@ bool Plugin::loadModule(const QString &libraryName)
         delete obj;
         return false;
     }
-    qDebug()<<"dynamic load plugin success";
     return loadLib(pluginLib);
 }
 

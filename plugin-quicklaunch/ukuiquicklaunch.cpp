@@ -163,7 +163,7 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
-    btn->setFixedSize(40,40);
+    btn->setFixedSize(46,46);
     mLayout->addWidget(btn);
     //set button style
     btn->setStyleSheet(

@@ -40,7 +40,6 @@ ConfigPanelDialog::ConfigPanelDialog(UKUIPanel *panel, QWidget *parent):
     setAttribute(Qt::WA_DeleteOnClose);
 
     mPanelPage = new ConfigPanelWidget(panel, this);
-    qDebug()<<"mPanelPage is:";
     addPage(mPanelPage, tr("Panel"), QLatin1String("configure"));
     //connect(this, &ConfigPanelDialog::reset, mPanelPage, &ConfigPanelWidget::reset);
 

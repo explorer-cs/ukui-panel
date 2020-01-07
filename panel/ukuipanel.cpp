@@ -1050,7 +1050,7 @@ bool UKUIPanel::event(QEvent *event)
         // Sometimes Qt needs to re-create the underlying window of the widget and
         // the winId() may be changed at runtime. So we need to reset all X11 properties
         // when this happens.
-        qDebug() << "WinIdChange" << hex << effectiveWinId() << "handle" << windowHandle() << windowHandle()->screen();
+        //qDebug() << "WinIdChange" << hex << effectiveWinId() << "handle" << windowHandle() << windowHandle()->screen();
 
         // Qt::WA_X11NetWmWindowTypeDock becomes ineffective in Qt 5
         // See QTBUG-39887: https://bugreports.qt-project.org/browse/QTBUG-39887

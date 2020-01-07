@@ -90,7 +90,7 @@ void UKUITaskbarConfiguration::loadSettings()
     ui->middleClickCB->setChecked(settings().value("closeOnMiddleClick", true).toBool());
     ui->raiseOnCurrentDesktopCB->setChecked(settings().value("raiseOnCurrentDesktop", false).toBool());
     ui->buttonStyleCB->setCurrentIndex(ui->buttonStyleCB->findData(settings().value("buttonStyle", "IconText")));
-    ui->buttonWidthSB->setValue(settings().value("buttonWidth", 400).toInt());
+    ui->buttonWidthSB->setValue(50);
     ui->buttonHeightSB->setValue(settings().value("buttonHeight", 100).toInt());
     ui->groupingGB->setChecked(settings().value("groupingEnabled",true).toBool());
     ui->showGroupOnHoverCB->setChecked(settings().value("showGroupOnHover",true).toBool());
@@ -105,7 +105,7 @@ void UKUITaskbarConfiguration::saveSettings()
     settings().setValue("showOnlyCurrentScreenTasks", ui->limitByScreenCB->isChecked());
     settings().setValue("showOnlyMinimizedTasks", ui->limitByMinimizedCB->isChecked());
     settings().setValue("buttonStyle", ui->buttonStyleCB->itemData(ui->buttonStyleCB->currentIndex()));
-    settings().setValue("buttonWidth", ui->buttonWidthSB->value());
+    settings().setValue("buttonWidth", 50);
     settings().setValue("buttonHeight", ui->buttonHeightSB->value());
     settings().setValue("autoRotate", ui->autoRotateCB->isChecked());
     settings().setValue("closeOnMiddleClick", ui->middleClickCB->isChecked());

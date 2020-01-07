@@ -212,7 +212,7 @@ public:
     // Settings
     int iconSize() const override { return mIconSize; } //!< Implement IUKUIPanel::iconSize().
     int lineCount() const override { return mLineCount; } //!< Implement IUKUIPanel::lineCount().
-    int panelSize() const { return mPanelSize; }
+    int panelSize() const  override{ return mPanelSize; }
     int length() const { return mLength; }
     bool lengthInPercents() const { return mLengthInPercents; }
     UKUIPanel::Alignment alignment() const { return mAlignment; }
