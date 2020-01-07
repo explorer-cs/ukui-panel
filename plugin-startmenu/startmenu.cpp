@@ -41,7 +41,8 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
 
 
     //mButton.setAutoRaise(true);
-    mButton.setFixedSize(60,40);
+    mButton.setFixedSize(42,46);
+    qDebug()<<"";
 
 
 

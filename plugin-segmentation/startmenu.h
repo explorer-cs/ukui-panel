@@ -24,53 +24,22 @@
 #define DEFAULT_SHORTCUT "Alt+F1"
 
 
-class  StartMenuWidget: public QFrame
+class Segmentation : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    StartMenuWidget(QWidget* parent = nullptr);
-    ~StartMenuWidget();
+    Segmentation(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~Segmentation();
 
-    QLineEdit *lineEdit() { return &mLineEdit; }
-    QToolButton *button() { return &mButton; }
-
-
-protected:
-    void mouseReleaseEvent(QMouseEvent *event);
-    virtual void contextMenuEvent(QContextMenuEvent *event);
-
-private slots:
-    void captureMouse();
-    void configpanel();
-
-private:
-    QLineEdit mLineEdit;
-    QToolButton mButton;
-    QToolButton mButton2;
-    bool mCapturing;
-    QMenu *st_menu;
-    QPointer<ConfigPanelDialog> mConfigDialog;
-
-
-
-};
-
-
-
-class StartMenu : public QObject, public IUKUIPanelPlugin
-{
-    Q_OBJECT
-public:
-    StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
-    ~StartMenu();
-
-    virtual QWidget *widget() { return &mWidget; }
+    virtual QWidget *widget() { return &mButtonx; }
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
     void realign();
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
 private:
-    StartMenuWidget mWidget;
+    //StartMenuWidget mWidget;
+    QWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
+    QToolButton mButtonx;
 
 
 
@@ -84,7 +53,7 @@ class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new StartMenu(startupInfo);
+        return new Segmentation(startupInfo);
     }
 };
 

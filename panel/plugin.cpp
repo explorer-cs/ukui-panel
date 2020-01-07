@@ -70,6 +70,10 @@ extern void * loadPluginTranslation_quicklaunch_helper;
 #include "../plugin-showdesktop/showdesktop.h" // showdesktop
 extern void * loadPluginTranslation_showdesktop_helper;
 #endif
+#if defined(WITH_SPACERX_PLUGIN)
+#include "../plugin-spacerx/spacerx.h" // spacerx
+extern void * loadPluginTranslation_spacerx_helper;
+#endif
 #if defined(WITH_SPACER_PLUGIN)
 #include "../plugin-spacer/spacer.h" // spacer
 extern void * loadPluginTranslation_spacer_helper;
@@ -240,6 +244,9 @@ namespace
 #endif
 #if defined(WITH_SHOWDESKTOP_PLUGIN)
         std::make_tuple(QLatin1String("showdesktop"), plugin_ptr_t{new ShowDesktopLibrary}, loadPluginTranslation_showdesktop_helper),// showdesktop
+#endif
+#if defined(WITH_SPACERX_PLUGIN)
+        std::make_tuple(QLatin1String("spacerx"), plugin_ptr_t{new SpacerXPluginLibrary}, loadPluginTranslation_spacerx_helper),// spacerx
 #endif
 #if defined(WITH_SPACER_PLUGIN)
         std::make_tuple(QLatin1String("spacer"), plugin_ptr_t{new SpacerPluginLibrary}, loadPluginTranslation_spacer_helper),// spacer
