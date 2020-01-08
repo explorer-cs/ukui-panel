@@ -9,6 +9,18 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     IUKUIPanelPlugin(startupInfo)
 {
     realign();
+    mCapturing = false;
+    connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
+
+//    new FilectrlAdaptor(this);
+//    QDBusConnection con=QDBusConnection::sessionBus();
+//    if(!con.registerService("com.ukui.panel.position") ||
+//            !con.registerObject("/pos",this))
+//    {
+//        qDebug()<<"fail";
+//    }
+
+
 
 }
 
@@ -20,35 +32,7 @@ StartMenu::~StartMenu()
 
 void StartMenu::realign()
 {
-//    QSize size;
-//    size.setHeight(40);
-//    size.setWidth(40);
-//    mWidget.button()->setFixedHeight(40);
-//    mWidget.button()->setIconSize(size);
-//    mWidget.button()->setFixedWidth(60);
-//      mWidget.lineEdit()->setFixedHeight(80);
-
-}
-
-StartMenuWidget::StartMenuWidget(QWidget *parent):
-    QFrame(parent)
-{
-    QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->setContentsMargins (0, 0, 0, 0);
-    layout->setSpacing (1);
-    setLayout(layout);
-    layout->addWidget (&mButton);
-
-
-    //mButton.setAutoRaise(true);
-    mButton.setFixedSize(42,46);
-    qDebug()<<"";
-
-
-
-    mCapturing = false;
-    connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
-
+    mButton.setFixedSize(panel()->panelSize(),panel()->panelSize());
     mButton.setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
@@ -73,27 +57,12 @@ StartMenuWidget::StartMenuWidget(QWidget *parent):
                 "background-color:rgba(190,216,239,12%);"
                 "}"
                 );
+    qDebug()<<"mPlugin->panel()->position():"<<mPlugin->panel()->position();
+
 
 }
 
-
-
-
-StartMenuWidget::~StartMenuWidget()
-{
-}
-
-
-void StartMenuWidget::mouseReleaseEvent(QMouseEvent *event)
-{
-//    if (!mCapturing)
-//        return;
-//    WId id = QApplication::desktop()->winId();
-//    qDebug()<<id<<endl;
-}
-
-
-void StartMenuWidget::captureMouse()
+void StartMenu::captureMouse()
 {
     if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
     {
@@ -102,41 +71,32 @@ void StartMenuWidget::captureMouse()
     }
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
-
-void StartMenuWidget::contextMenuEvent(QContextMenuEvent *event) {
-  //创建一个菜单 添加事件
-qDebug()<<"contextMenuEvent    right press event";
-st_menu=new QMenu;
-st_menu->setContextMenuPolicy(Qt::CustomContextMenu);
-
-st_menu->setStyleSheet(
-                     "QMenu {"
-                     "background-color:rgb(21,26,30);"
-                     "border-color:rgba(255,255,255,30);"    //边框颜色
-                     "font:SimSun 14px;"                       //字体，字体大小
-                     "color:rgba(255,255,255,100);"                //字体颜色
-                    " }"
-
-                    //鼠标悬停样式
-                    "QMenu:hover{"
-                    "background-color:rgba(190,216,239,30%);"
-                    "}"
-                    //鼠标按下样式
-                    "QMenu:selected{"
-                    "background-color:rgba(190,216,239,30%);"
-                    "}"
-                    );
-
-}
-
-void StartMenuWidget::configpanel()
+bool StartMenu::GetPanelPosition(QString arg)
 {
-//    mConfigDialog = new ConfigPanelDialog(this, nullptr);
-//    mConfigDialog->show();
-
-
-//    ConfigPanelWidget *mPanelPage;
-//    UKUIPanel *falsepanel;
-//    mPanelPage = new ConfigPanelWidget(falsepanel, this);
-
+    qDebug()<<"AddToTaskbar   d-bus";
+    return true;
 }
+/*
+ * Implementation of adaptor class FilectrlAdaptor
+ */
+
+//FilectrlAdaptor::FilectrlAdaptor(QObject *parent)
+//    : QDBusAbstractAdaptor(parent)
+//{
+//    // constructor
+//    setAutoRelaySignals(true);
+//}
+
+//FilectrlAdaptor::~FilectrlAdaptor()
+//{
+//    // destructor
+//}
+
+//bool FilectrlAdaptor::GetPanelPosition(const QString &arg)
+//{
+//    // handle method call com.kylin.security.controller.filectrl.GetPanelPosition
+//    bool out0;
+//    QMetaObject::invokeMethod(parent(), "GetPanelPosition", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
+//    emit addtak(3);
+//    return out0;
+//}

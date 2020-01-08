@@ -21,60 +21,73 @@
 //#include "../panel/config/configpaneldialog.h"
 #include "../panel/config/configpanelwidget.h"
 #include <QMenu>
+#include <QtDBus/QtDBus>
 #define DEFAULT_SHORTCUT "Alt+F1"
-
-
-class  StartMenuWidget: public QFrame
-{
-    Q_OBJECT
-public:
-    StartMenuWidget(QWidget* parent = nullptr);
-    ~StartMenuWidget();
-
-    QLineEdit *lineEdit() { return &mLineEdit; }
-    QToolButton *button() { return &mButton; }
-
-
-protected:
-    void mouseReleaseEvent(QMouseEvent *event);
-    virtual void contextMenuEvent(QContextMenuEvent *event);
-
-private slots:
-    void captureMouse();
-    void configpanel();
-
-private:
-    QLineEdit mLineEdit;
-    QToolButton mButton;
-    QToolButton mButton2;
-    bool mCapturing;
-    QMenu *st_menu;
-    QPointer<ConfigPanelDialog> mConfigDialog;
-
-
-
-};
-
 
 
 class StartMenu : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
+//    //use d-bus model to Interaction with ukui-menu
+//    Q_CLASSINFO("D-Bus Interface", "com.ukui.panel.positon")
+//    Q_CLASSINFO("D-Bus position", ""
+//"  <interface name=\"com.ukui.panel.position\">\n"
+//"    <method name=\"GetPanelPosition\">\n"
+//"      <arg direction=\"out\" type=\"b\"/>\n"
+//"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+//"    </method>\n"
+//"  </interface>\n"
+//        "")
+
 public:
     StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
     ~StartMenu();
 
-    virtual QWidget *widget() { return &mWidget; }
+    virtual QWidget *widget() { return &mButton; }
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
     void realign();
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
 private:
-    StartMenuWidget mWidget;
+    //StartMenuWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
+    QToolButton mButton;
+    StartMenu *mStartMenu;
+    bool mCapturing;
 
-
+public slots:
+    bool GetPanelPosition(QString arg);
+private slots:
+    void captureMouse();
 
 };
+
+//class FilectrlAdaptor: public QDBusAbstractAdaptor
+//{
+//    Q_OBJECT
+
+//    //use d-bus model to Interaction with ukui-menu
+//    Q_CLASSINFO("D-Bus Interface", "com.ukui.panel.position")
+//    Q_CLASSINFO("D-Bus Introspection", ""
+//"  <interface name=\"com.ukui.panel.position\">\n"
+//"    <method name=\"GetPanelPosition\">\n"
+//"      <arg direction=\"out\" type=\"b\"/>\n"
+//"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+//"    </method>\n"
+//"  </interface>\n"
+//        "")
+//public:
+//    FilectrlAdaptor(QObject *parent);
+//    virtual ~FilectrlAdaptor();
+
+//public: // PROPERTIES
+//public Q_SLOTS: // METHODS
+//    bool GetPanelPosition(const QString &arg);
+
+//Q_SIGNALS: // SIGNALS
+
+//signals:
+//    void addtak(int);
+//};
 
 class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
@@ -87,5 +100,6 @@ public:
         return new StartMenu(startupInfo);
     }
 };
+
 
 #endif

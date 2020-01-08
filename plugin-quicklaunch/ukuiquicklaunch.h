@@ -71,24 +71,6 @@ class UKUIQuickLaunch : public QFrame
 {
     Q_OBJECT
 
-    //use d-bus model to Interaction with ukui-menu
-    Q_CLASSINFO("D-Bus Interface", "com.ukui.panel.desktop")
-    Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.ukui.panel.desktop\">\n"
-"    <method name=\"AddToTaskbar\">\n"
-"      <arg direction=\"out\" type=\"b\"/>\n"
-"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
-"    </method>\n"
-"    <method name=\"RemoveFromTaskbar\">\n"
-"      <arg direction=\"out\" type=\"b\"/>\n"
-"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
-"    </method>\n"
-"    <method name=\"CheckIfExist\">\n"
-"      <arg direction=\"out\" type=\"b\"/>\n"
-"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
-"    </method>\n"
-"  </interface>\n"
-        "")
 
 public:
    UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent = 0);
@@ -111,6 +93,7 @@ private:
 
     void dragEnterEvent(QDragEnterEvent *e);
     void dropEvent(QDropEvent *e);
+    QuickLaunchButton* btn;
 
 
 
@@ -131,6 +114,7 @@ public slots:
     bool AddToTaskbar(QString arg);
     bool RemoveFromTaskbar(QString arg);
     bool CheckIfExist(QString arg);
+    int GetPanelPosition(QString arg);
 
 };
 
@@ -154,6 +138,10 @@ class FilectrlAdaptor: public QDBusAbstractAdaptor
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
 "    </method>\n"
+"    <method name=\"GetPanelPosition\">\n"
+"      <arg direction=\"out\" type=\"i\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
 "  </interface>\n"
         "")
 public:
@@ -165,6 +153,7 @@ public Q_SLOTS: // METHODS
     bool AddToTaskbar(const QString &arg);
     bool CheckIfExist(const QString &arg);
     bool RemoveFromTaskbar(const QString &arg);
+    int GetPanelPosition(const QString &arg);
 
 Q_SIGNALS: // SIGNALS
 
@@ -172,13 +161,4 @@ signals:
     void addtak(int);
 };
 
-class DBus : public QObject
-{
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface","com.ukui.panel.desktop")
-public:
-    explicit DBus(QObject *parent = 0);
-
-
-};
 #endif

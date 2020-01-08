@@ -49,7 +49,10 @@
 
 #include <qmainwindow.h>
 #include <QWidget>
-
+#include <QDesktopWidget>
+#include <QApplication>
+#include "../panel/iukuipanelplugin.h"
+#include <QSize>
 #define PREVIEW_WIDTH		168
 #define PREVIEW_HEIGHT		128
 #define SPACE_WIDTH			8
@@ -779,6 +782,7 @@ void UKUITaskGroup::showPreview()
 
         UKUITaskButton *btn = it.value();
         btn->setFixedSize(thumbnail.width(),thumbnail.height());
+        //btn->resize(thumbnail.width(),thumbnail.height());
         btn->setIcon(thumbnail);
         btn->setIconSize(thumbnail.rect().size());
 
@@ -791,6 +795,9 @@ void UKUITaskGroup::showPreview()
         XCloseDisplay(display);
     }
     plugin()->willShowWindow(mPopup);
+    mPopup->adjustSize();
+    mPopup->setGeometry(300,QApplication::desktop()->availableGeometry().height() - 130,200,150);
+    //mPopup->setGeometry(mPlugin->panel()->calculatePopupWindowPos(QPoint(0,QApplication::desktop()->availableGeometry().height() - mPopup->height()),QSize(200,150)));
     mPopup->show();
 
    emit popupShown(this);

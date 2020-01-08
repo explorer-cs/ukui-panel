@@ -112,6 +112,8 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
         showPlaceHolder();
 
     realign();
+    qDebug()<<"GetPanelPosition panel.position"<<mPlugin->panel()->position();
+
 
 }
 
@@ -137,6 +139,7 @@ void UKUIQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
     IUKUIPanel *panel = mPlugin->panel();
+    btn->setFixedSize(mPlugin->panel()->panelSize(),mPlugin->panel()->panelSize());
 
     if (mPlaceHolder)
     {
@@ -162,8 +165,8 @@ void UKUIQuickLaunch::realign()
 void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
-    QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
-    btn->setFixedSize(46,46);
+    btn = new QuickLaunchButton(action, mPlugin, this);
+
     mLayout->addWidget(btn);
     //set button style
     btn->setStyleSheet(
@@ -393,6 +396,11 @@ bool UKUIQuickLaunch::RemoveFromTaskbar(QString arg)
     return true;
 }
 
+int UKUIQuickLaunch::GetPanelPosition(QString arg)
+{
+    qDebug()<<"GetPanelPosition panel.position"<<mPlugin->panel()->position();
+    return mPlugin->panel()->position();
+}
 
 void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
 {
@@ -546,7 +554,10 @@ bool FilectrlAdaptor::RemoveFromTaskbar(const QString &arg)
     return out0;
 }
 
-DBus::DBus(QObject *parent) : QObject(parent)
+int FilectrlAdaptor::GetPanelPosition(const QString &arg)
 {
-
+    // handle method call com.kylin.security.controller.filectrl.RemoveFromTaskbar
+    int out0;
+    QMetaObject::invokeMethod(parent(), "GetPanelPosition", Q_RETURN_ARG(int, out0), Q_ARG(QString, arg));
+    return out0;
 }
