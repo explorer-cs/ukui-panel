@@ -1,8 +1,0 @@
-ukui-panel.pro.*
-plugin.cpp.*
-ukui-panel
-*.o
-*.swp
-*CMakeFiles*
-Makefile
-.qmake.stash
