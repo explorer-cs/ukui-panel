@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=UKUIPanel/Plugin
+Name=Mount
+Comment=Easy mounting and unmounting of USB and optical drives.
+Icon=drive-removable-media
+
+#TRANSLATIONS_DIR=../translations
+Name=挂载设备
+Comment=removeable media
