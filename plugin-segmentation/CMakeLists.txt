@@ -12,7 +12,7 @@ set(UIS
 )
 
 install(FILES
-    img/segmentation.svg img/segmentation2.png
+    img/segmentation.svg img/segmentationh.svg
     DESTINATION "${LXQT_DATA_DIR}/plugin-segmentation/img"
     COMPONENT Runtime
 )
