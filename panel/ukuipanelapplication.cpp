@@ -104,6 +104,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     parser.process(*this);
 
     const QString configFile = parser.value(configFileOption);
+    qDebug()<<"configFile is : "<<configFile;
 
     if (configFile.isEmpty())
     {

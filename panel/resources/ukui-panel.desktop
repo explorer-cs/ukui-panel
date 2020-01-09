@@ -6,4 +6,5 @@ Exec=ukui-panel
 Terminal=false
 Type=Application
 Icon=baidunetdisk
+X-UKUI-AutoRestart=true
 
