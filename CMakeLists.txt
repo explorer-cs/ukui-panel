@@ -231,6 +231,14 @@ if(SEGMENTATION_PLUGIN)
     list(APPEND ENABLED_PLUGINS "segmentation")
     add_subdirectory(plugin-segmentation)
 endif(SEGMENTATION_PLUGIN)
+
+setByDefault(PART_PLUGIN Yes)
+if(PART_PLUGIN)
+#    list(APPEND STATIC_PLUGINS "powerswitch")
+#    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
+    list(APPEND ENABLED_PLUGINS "part")
+    add_subdirectory(plugin-part)
+endif(PART_PLUGIN)
 #########################################################################
 
 message(STATUS  "**************** The following plugins will be built ****************")

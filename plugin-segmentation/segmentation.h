@@ -40,6 +40,7 @@ private:
     QWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
     QToolButton mButton;
+    bool mCapturing;
 };
 
 class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary

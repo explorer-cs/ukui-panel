@@ -1148,15 +1148,15 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     // Panel menu ...............................
 
-//    menu->addTitle(QIcon(), tr("Panel"));
-//    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-//                   tr("Configure Panel"),
-//                   this, SLOT(showConfigDialog())
-//                  )->setDisabled(mLockPanel);
-//    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
-//                   tr("Manage Widgets"),
-//                   this, SLOT(showAddPluginDialog())
-//                  )->setDisabled(mLockPanel);
+    menu->addTitle(QIcon(), tr("Panel"));
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+                   tr("Configure Panel"),
+                   this, SLOT(showConfigDialog())
+                  )->setDisabled(mLockPanel);
+    menu->addAction(XdgIcon::fromTheme("preferences-plugin"),
+                   tr("Manage Widgets"),
+                   this, SLOT(showAddPluginDialog())
+                  )->setDisabled(mLockPanel);
 
     menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
@@ -1287,10 +1287,10 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
 
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
-//    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
-//                   tr("Add New Panel"),
-//                   a, SLOT(addNewPanel())
-//                  );
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
+                   tr("Add New Panel"),
+                   a, SLOT(addNewPanel())
+                  );
 
 
     if (a->count() > 1)
@@ -1306,10 +1306,10 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     act_lock->setChecked(mLockPanel);
     connect(act_lock, &QAction::triggered, [this] { mLockPanel = !mLockPanel; saveSettings(false); });
 
-//    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-//                   tr("重置任务栏"),
-//                   this, SLOT(panelReset())
-//                  )->setDisabled(mLockPanel);
+    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
+                   tr("重置任务栏"),
+                   this, SLOT(panelReset())
+                  )->setDisabled(mLockPanel);
 
 #ifdef DEBUG
     menu->addSeparator();

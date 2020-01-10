@@ -1,11 +1,11 @@
 set(PLUGIN "segmentation")
 
 set(HEADERS
-    startmenu.h
+    segmentation.h
 )
 
 set(SOURCES
-    startmenu.cpp
+    segmentation.cpp
 )
 
 set(UIS
