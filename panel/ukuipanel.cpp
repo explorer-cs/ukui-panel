@@ -1147,7 +1147,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
 
     // Panel menu ...............................
-
+/*
     menu->addTitle(QIcon(), tr("Panel"));
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("Configure Panel"),
@@ -1157,7 +1157,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                    tr("Manage Widgets"),
                    this, SLOT(showAddPluginDialog())
                   )->setDisabled(mLockPanel);
-
+*/
     menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("设置任务栏"),
@@ -1285,7 +1285,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     connect(pmenuaction_right,SIGNAL(triggered()),this,SLOT(changePosition_right()));
     pmenu_positon->setDisabled(mLockPanel);
 
-
+/*
     UKUIPanelApplication *a = reinterpret_cast<UKUIPanelApplication*>(qApp);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-add")),
                    tr("Add New Panel"),
@@ -1300,17 +1300,17 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
                        this, SLOT(userRequestForDeletion())
                       )->setDisabled(mLockPanel);
     }
-
+*/
     QAction * act_lock = menu->addAction(tr("Lock This Panel"));
     act_lock->setCheckable(true);
     act_lock->setChecked(mLockPanel);
     connect(act_lock, &QAction::triggered, [this] { mLockPanel = !mLockPanel; saveSettings(false); });
-
+/*
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("重置任务栏"),
                    this, SLOT(panelReset())
                   )->setDisabled(mLockPanel);
-
+*/
 #ifdef DEBUG
     menu->addSeparator();
     menu->addAction("Exit (debug only)", qApp, SLOT(quit()));

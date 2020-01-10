@@ -232,7 +232,7 @@ if(SEGMENTATION_PLUGIN)
     add_subdirectory(plugin-segmentation)
 endif(SEGMENTATION_PLUGIN)
 
-setByDefault(PART_PLUGIN Yes)
+#setByDefault(PART_PLUGIN Yes)
 if(PART_PLUGIN)
 #    list(APPEND STATIC_PLUGINS "powerswitch")
 #    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
