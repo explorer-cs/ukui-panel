@@ -93,11 +93,14 @@ void ConfigPanelDialog::configPosition_right()
     mPanelPage->positionChanged_right();
 }
 
+<<<<<<< HEAD:panel/config/configpaneldialog.cpp
 void ConfigPanelDialog::configPanelSize_S()
 {
     mPanelPage->changeToSmallSize();
 }
 
+=======
+>>>>>>> master:panel/config/configpaneldialog.cpp
 void ConfigPanelDialog::configPanelSize_m()
 {
     mPanelPage->changeToMidSize();
@@ -108,3 +111,10 @@ void ConfigPanelDialog::configPanelSize_l()
     mPanelPage->changeToLargeSize();
 }
 
+<<<<<<< HEAD:panel/config/configpaneldialog.cpp
+=======
+void ConfigPanelDialog::configPanelSize_S()
+{
+    mPanelPage->changeToSmallSize();
+}
+>>>>>>> master:panel/config/configpaneldialog.cpp

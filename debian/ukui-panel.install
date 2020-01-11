@@ -8,5 +8,9 @@ usr/share/ukui/panel.conf
 usr/share/man
 usr/share
 usr/
+<<<<<<< HEAD
 panel/resources/ukui-panel.desktop usr/share/applications
+=======
+#panel/resources/ukui-panel.desktop usr/share/applications
+>>>>>>> master
 

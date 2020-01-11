@@ -92,8 +92,12 @@ void PowerSwitchWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void PowerSwitchWidget::captureMouse()
 {
+<<<<<<< HEAD
     qDebug()<<"show taskview";
     system("ukui-window-switch --show-workspace");
+=======
+
+>>>>>>> master
 }
 
 void PowerSwitchWidget::contextMenuEvent(QContextMenuEvent *event) {

@@ -6,5 +6,8 @@ Exec=ukui-panel
 Terminal=false
 Type=Application
 Icon=baidunetdisk
+<<<<<<< HEAD
 X-UKUI-AutoRestart=true
+=======
+>>>>>>> master
 

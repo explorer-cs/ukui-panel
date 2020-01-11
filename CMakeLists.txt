@@ -231,6 +231,7 @@ if(SEGMENTATION_PLUGIN)
     list(APPEND ENABLED_PLUGINS "segmentation")
     add_subdirectory(plugin-segmentation)
 endif(SEGMENTATION_PLUGIN)
+<<<<<<< HEAD
 
 #setByDefault(PART_PLUGIN Yes)
 if(PART_PLUGIN)
@@ -239,6 +240,8 @@ if(PART_PLUGIN)
     list(APPEND ENABLED_PLUGINS "part")
     add_subdirectory(plugin-part)
 endif(PART_PLUGIN)
+=======
+>>>>>>> master
 #########################################################################
 
 message(STATUS  "**************** The following plugins will be built ****************")

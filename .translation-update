@@ -1,0 +1,11 @@
+translations='
+              ./panel
+              ./plugin-desktopswitch
+              ./plugin-mount
+              ./plugin-quicklaunch
+              ./plugin-showdesktop
+              ./plugin-spacer
+              ./plugin-taskbar
+              ./plugin-tray
+              ./plugin-worldclock
+'

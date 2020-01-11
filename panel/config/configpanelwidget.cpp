@@ -484,6 +484,7 @@ void ConfigPanelWidget::positionChanged_bottom()
 {    mPosition   =IUKUIPanel::PositionBottom;
      editChanged();
 }
+<<<<<<< HEAD:panel/config/configpanelwidget.cpp
 
 void ConfigPanelWidget::positionChanged_left()
 {    mPosition   =IUKUIPanel::PositionLeft;
@@ -518,4 +519,39 @@ void ConfigPanelWidget::changeToLargeSize()
     editChanged();
     reset();
 }
+=======
+>>>>>>> master:panel/config/configpanelwidget.cpp
 
+void ConfigPanelWidget::positionChanged_left()
+{    mPosition   =IUKUIPanel::PositionLeft;
+     editChanged();
+}
+
+void ConfigPanelWidget::positionChanged_right()
+{    mPosition   =IUKUIPanel::PositionRight;
+     editChanged();
+}
+
+void ConfigPanelWidget::changeToMidSize()
+{
+    mOldPanelSize = 40;
+    mOldIconSize = 24;
+    editChanged();
+    reset();
+}
+
+void ConfigPanelWidget::changeToLargeSize()
+{
+    mOldPanelSize = 60;
+    mOldIconSize = 36;
+    editChanged();
+    reset();
+}
+
+void ConfigPanelWidget::changeToSmallSize()
+{
+    mOldPanelSize = 80;
+    mOldIconSize  = 48;
+    editChanged();
+    reset();
+}

@@ -103,6 +103,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     parser.process(*this);
 
+<<<<<<< HEAD
     QFile::remove(QString(qgetenv("HOME"))+"/.config/lxqt/panel.conf");
     const QString configFile = parser.value(configFileOption);
     qDebug()<<"configFile is : "<<configFile;
@@ -110,6 +111,13 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     if (configFile.isEmpty())
     {
         qDebug()<<"conf file is not exit";
+=======
+    const QString configFile = parser.value(configFileOption);
+
+    if (configFile.isEmpty())
+    {
+        qDebug()<<"configFile.is not Empty"<<endl;
+>>>>>>> master
         QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
         QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
         QFile file(loaclCong+"panel.conf");
