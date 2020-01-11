@@ -41,7 +41,7 @@
 #include <QDebug>
 #include <QTimer>
 
-//#include <lxqt-globalkeys.h>
+#include <lxqt-globalkeys.h>
 #include "../common/ukuigridlayout.h"
 #include <XdgIcon>
 
@@ -647,42 +647,42 @@ void UKUITaskBar::registerShortcuts()
     // Register shortcuts to switch to the task
     // mPlaceHolder is always at position 0
     // tasks are at positions 1..10
-//    GlobalKeyShortcut::Action * gshortcut;
-//    QString path;
-//    QString description;
-//    for (int i = 1; i <= 10; ++i)
-//    {
-//        path = QString("/panel/%1/task_%2").arg(mPlugin->settings()->group()).arg(i);
-//        description = tr("Activate task %1").arg(i);
+    GlobalKeyShortcut::Action * gshortcut;
+    QString path;
+    QString description;
+    for (int i = 1; i <= 10; ++i)
+    {
+        path = QString("/panel/%1/task_%2").arg(mPlugin->settings()->group()).arg(i);
+        description = tr("Activate task %1").arg(i);
 
-//        gshortcut = GlobalKeyShortcut::Client::instance()->addAction(QStringLiteral(), path, description, this);
+        gshortcut = GlobalKeyShortcut::Client::instance()->addAction(QStringLiteral(), path, description, this);
 
-//        if (nullptr != gshortcut)
-//        {
-//            mKeys << gshortcut;
-//            connect(gshortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
-//            connect(gshortcut, &GlobalKeyShortcut::Action::activated, mSignalMapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
-//            mSignalMapper->setMapping(gshortcut, i);
-//        }
-//    }
+        if (nullptr != gshortcut)
+        {
+            mKeys << gshortcut;
+            connect(gshortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
+            connect(gshortcut, &GlobalKeyShortcut::Action::activated, mSignalMapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
+            mSignalMapper->setMapping(gshortcut, i);
+        }
+    }
 }
 
 void UKUITaskBar::shortcutRegistered()
 {
-//    GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
+    GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
 
-//    disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
+    disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
 
-//    const int i = mKeys.indexOf(shortcut);
-//    Q_ASSERT(-1 != i);
+    const int i = mKeys.indexOf(shortcut);
+    Q_ASSERT(-1 != i);
 
-//    if (shortcut->shortcut().isEmpty())
-//    {
-//        // Shortcuts come in order they were registered
-//        // starting from index 0
-//        const int key = (i + 1) % 10;
-//        shortcut->changeShortcut(QStringLiteral("Meta+%1").arg(key));
-//    }
+    if (shortcut->shortcut().isEmpty())
+    {
+        // Shortcuts come in order they were registered
+        // starting from index 0
+        const int key = (i + 1) % 10;
+        shortcut->changeShortcut(QStringLiteral("Meta+%1").arg(key));
+    }
 }
 
 void UKUITaskBar::activateTask(int pos)
