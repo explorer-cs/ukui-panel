@@ -26,13 +26,10 @@
 
 
 #include "ukuipanelapplication.h"
-<<<<<<< HEAD
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <syslog.h>
-=======
->>>>>>> master
 /*! The ukui-panel is the panel of UKUI.
   Usage: ukui-panel [CONFIG_ID]
     CONFIG_ID      Section name in config file ~/.config/ukui/panel.conf
@@ -43,7 +40,6 @@ int main(int argc, char *argv[])
 {
     UKUIPanelApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-<<<<<<< HEAD
 
     //Singleton
     int fd = open("/tmp/ukui-panel-lock", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
@@ -55,8 +51,6 @@ int main(int argc, char *argv[])
     }
 
     //tanslate
-=======
->>>>>>> master
     QString locale = QLocale::system().name();
     QTranslator translator;
     if (locale == "zh_CN"){

@@ -1,12 +1,6 @@
 [Desktop Entry]
 Type=Service
 ServiceTypes=UKUIPanel/Plugin
-<<<<<<< HEAD
 Name=Segmentation
 Comment=Segmentation
 Icon=segmentation
-=======
-Name=Start Menu
-Comment=Get the start menu under the cursor. For web developers.
-Icon=start-menu
->>>>>>> master

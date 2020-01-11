@@ -105,7 +105,6 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
     connect(mParentTaskBar, &UKUITaskBar::iconByClassChanged, this, &UKUITaskButton::updateIcon);
     mParentTaskBar->setStyleSheet(
                 //正常状态样式
-<<<<<<< HEAD
                 "QFrame{"
                 "border-width:2px;"                     //边框宽度像素
                 "}"
@@ -121,17 +120,6 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
                                 "font:bold 14px;"                       //字体，字体大小
                                 "color:rgba(0,0,0,100);"                //字体颜色
                                 "padding:0px;"
-=======
-                "QToolButton{"
-                /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
-                "border-style:outset;"                  //边框样式（inset/outset）
-                "border-width:0px;"                     //边框宽度像素
-                "border-radius:0px;"                   //边框圆角半径像素
-                "border-color:rgba(255,255,255,30);"    //边框颜色
-                "font:bold 14px;"                       //字体，字体大小
-                "color:rgba(0,0,0,100);"                //字体颜色
-                "padding:0px;"                          //填衬
->>>>>>> master
                 "}"
                 //鼠标悬停样式
                 "QToolButton:hover{"
@@ -142,10 +130,7 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
                 "background-color:rgba(190,216,239,12%);"
                 "}"
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
                 );
 }
 

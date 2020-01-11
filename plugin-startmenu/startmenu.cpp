@@ -11,30 +11,6 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     realign();
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
-<<<<<<< HEAD
-=======
-
-//    new FilectrlAdaptor(this);
-//    QDBusConnection con=QDBusConnection::sessionBus();
-//    if(!con.registerService("com.ukui.panel.position") ||
-//            !con.registerObject("/pos",this))
-//    {
-//        qDebug()<<"fail";
-//    }
-
-
-
-}
-
-
-StartMenu::~StartMenu()
-{
-}
-
-
-void StartMenu::realign()
-{
->>>>>>> master
     mButton.setFixedSize(panel()->panelSize(),panel()->panelSize());
     mButton.setStyleSheet(
                 //正常状态样式
@@ -60,17 +36,12 @@ void StartMenu::realign()
                 "background-color:rgba(190,216,239,12%);"
                 "}"
                 );
-<<<<<<< HEAD
 
 
-=======
-    qDebug()<<"mPlugin->panel()->position():"<<mPlugin->panel()->position();
->>>>>>> master
 
 
 }
 
-<<<<<<< HEAD
 
 StartMenu::~StartMenu()
 {
@@ -82,8 +53,6 @@ void StartMenu::realign()
 
 }
 
-=======
->>>>>>> master
 void StartMenu::captureMouse()
 {
     if(QFileInfo::exists(QString("/usr/bin/ukui-menu")))
@@ -93,35 +62,3 @@ void StartMenu::captureMouse()
     }
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
-<<<<<<< HEAD
-=======
-bool StartMenu::GetPanelPosition(QString arg)
-{
-    qDebug()<<"AddToTaskbar   d-bus";
-    return true;
-}
-/*
- * Implementation of adaptor class FilectrlAdaptor
- */
-
-//FilectrlAdaptor::FilectrlAdaptor(QObject *parent)
-//    : QDBusAbstractAdaptor(parent)
-//{
-//    // constructor
-//    setAutoRelaySignals(true);
-//}
-
-//FilectrlAdaptor::~FilectrlAdaptor()
-//{
-//    // destructor
-//}
-
-//bool FilectrlAdaptor::GetPanelPosition(const QString &arg)
-//{
-//    // handle method call com.kylin.security.controller.filectrl.GetPanelPosition
-//    bool out0;
-//    QMetaObject::invokeMethod(parent(), "GetPanelPosition", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
-//    emit addtak(3);
-//    return out0;
-//}
->>>>>>> master

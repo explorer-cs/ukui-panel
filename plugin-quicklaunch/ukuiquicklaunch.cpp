@@ -139,10 +139,6 @@ void UKUIQuickLaunch::realign()
 {
     mLayout->setEnabled(false);
     IUKUIPanel *panel = mPlugin->panel();
-<<<<<<< HEAD
-=======
-    btn->setFixedSize(mPlugin->panel()->panelSize(),mPlugin->panel()->panelSize());
->>>>>>> master
 
     if (mPlaceHolder)
     {
@@ -168,13 +164,9 @@ void UKUIQuickLaunch::realign()
 void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
-<<<<<<< HEAD
 
     QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
     btn->setFixedSize(mPlugin->panel()->panelSize(),mPlugin->panel()->panelSize());
-=======
-    btn = new QuickLaunchButton(action, mPlugin, this);
->>>>>>> master
 
     mLayout->addWidget(btn);
     //set button style

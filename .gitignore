@@ -1,0 +1,12 @@
+*.pro*
+plugin.cpp.*
+ukui-panel
+*.o
+*.swp
+CMakeLists.txt.user
+build
+Makefile
+.qmake.stash
+obj-*
+
+
