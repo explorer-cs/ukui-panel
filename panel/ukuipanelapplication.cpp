@@ -157,13 +157,13 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
 void UKUIPanelApplication::updateStylesheet(QString themeName)
 {
-    QFile file(QString(PLUGIN_DESKTOPS_DIR)+"/../panel.qss");
-    file.open(QFile::ReadOnly);
-    QTextStream filetext(&file);
-    QString stylesheet = filetext.readAll();
-    this->setStyleSheet(stylesheet);
-    file.close();
-    qDebug()<<"updateStylesheet:"<<themeName;
+//    QFile file(QString(PLUGIN_DESKTOPS_DIR)+"/../panel.qss");
+//    file.open(QFile::ReadOnly);
+//    QTextStream filetext(&file);
+//    QString stylesheet = filetext.readAll();
+//    this->setStyleSheet(stylesheet);
+//    file.close();
+//    qDebug()<<"updateStylesheet:"<<themeName;
 }
 
 UKUIPanelApplication::~UKUIPanelApplication()

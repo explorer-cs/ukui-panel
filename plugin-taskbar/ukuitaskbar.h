@@ -41,7 +41,7 @@
 #include <QFrame>
 #include <QBoxLayout>
 #include <QMap>
-#include <lxqt-globalkeys.h>
+//#include <lxqt-globalkeys.h>
 #include "../panel/iukuipanel.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/KWindowInfo>
@@ -119,7 +119,7 @@ private:
 private:
     QMap<WId, UKUITaskGroup*> mKnownWindows; //!< Ids of known windows (mapping to buttons/groups)
     LXQt::GridLayout *mLayout;
-    QList<GlobalKeyShortcut::Action*> mKeys;
+//    QList<GlobalKeyShortcut::Action*> mKeys;
     QSignalMapper *mSignalMapper;
 
     // Settings

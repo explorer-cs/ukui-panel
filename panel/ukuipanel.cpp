@@ -1198,11 +1198,11 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     QAction *pmenuaction_l;
 
     pmenuaction_s=new QAction(this);
-    pmenuaction_s->setText("小");
+    pmenuaction_s->setText("小尺寸");
     pmenuaction_m=new QAction(this);
-    pmenuaction_m->setText("中");
+    pmenuaction_m->setText("中尺寸");
     pmenuaction_l=new QAction(this);
-    pmenuaction_l->setText("大");
+    pmenuaction_l->setText("大尺寸");
 
 
     QMenu *pmenu_panelsize;

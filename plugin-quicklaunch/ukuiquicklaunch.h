@@ -115,6 +115,7 @@ public slots:
     bool RemoveFromTaskbar(QString arg);
     bool CheckIfExist(QString arg);
     int GetPanelPosition(QString arg);
+    int GetPanelSize(QString arg);
 
 };
 
@@ -142,6 +143,10 @@ class FilectrlAdaptor: public QDBusAbstractAdaptor
 "      <arg direction=\"out\" type=\"i\"/>\n"
 "      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
 "    </method>\n"
+"    <method name=\"GetPanelSize\">\n"
+"      <arg direction=\"out\" type=\"i\"/>\n"
+"      <arg direction=\"in\" type=\"s\" name=\"arg\"/>\n"
+"    </method>\n"
 "  </interface>\n"
         "")
 public:
@@ -154,6 +159,7 @@ public Q_SLOTS: // METHODS
     bool CheckIfExist(const QString &arg);
     bool RemoveFromTaskbar(const QString &arg);
     int GetPanelPosition(const QString &arg);
+    int GetPanelSize(const QString &arg);
 
 Q_SIGNALS: // SIGNALS
 
