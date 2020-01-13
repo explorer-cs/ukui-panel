@@ -93,6 +93,11 @@ void ConfigPanelDialog::configPosition_right()
     mPanelPage->positionChanged_right();
 }
 
+void ConfigPanelDialog::configPanelSize_S()
+{
+    mPanelPage->changeToSmallSize();
+}
+
 void ConfigPanelDialog::configPanelSize_m()
 {
     mPanelPage->changeToMidSize();
@@ -103,7 +108,3 @@ void ConfigPanelDialog::configPanelSize_l()
     mPanelPage->changeToLargeSize();
 }
 
-void ConfigPanelDialog::configPanelSize_S()
-{
-    mPanelPage->changeToSmallSize();
-}

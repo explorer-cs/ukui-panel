@@ -8,3 +8,5 @@ build
 Makefile
 .qmake.stash
 obj-*
+
+

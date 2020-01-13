@@ -11,27 +11,6 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     realign();
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
-
-//    new FilectrlAdaptor(this);
-//    QDBusConnection con=QDBusConnection::sessionBus();
-//    if(!con.registerService("com.ukui.panel.position") ||
-//            !con.registerObject("/pos",this))
-//    {
-//        qDebug()<<"fail";
-//    }
-
-
-
-}
-
-
-StartMenu::~StartMenu()
-{
-}
-
-
-void StartMenu::realign()
-{
     mButton.setFixedSize(panel()->panelSize(),panel()->panelSize());
     mButton.setStyleSheet(
                 //正常状态样式
@@ -57,8 +36,20 @@ void StartMenu::realign()
                 "background-color:rgba(190,216,239,12%);"
                 "}"
                 );
-    qDebug()<<"mPlugin->panel()->position():"<<mPlugin->panel()->position();
 
+
+
+
+}
+
+
+StartMenu::~StartMenu()
+{
+}
+
+
+void StartMenu::realign()
+{
 
 }
 
@@ -71,32 +62,3 @@ void StartMenu::captureMouse()
     }
     else{qDebug()<<"not find /usr/bin/ukui-start-menu"<<endl;}
 }
-bool StartMenu::GetPanelPosition(QString arg)
-{
-    qDebug()<<"AddToTaskbar   d-bus";
-    return true;
-}
-/*
- * Implementation of adaptor class FilectrlAdaptor
- */
-
-//FilectrlAdaptor::FilectrlAdaptor(QObject *parent)
-//    : QDBusAbstractAdaptor(parent)
-//{
-//    // constructor
-//    setAutoRelaySignals(true);
-//}
-
-//FilectrlAdaptor::~FilectrlAdaptor()
-//{
-//    // destructor
-//}
-
-//bool FilectrlAdaptor::GetPanelPosition(const QString &arg)
-//{
-//    // handle method call com.kylin.security.controller.filectrl.GetPanelPosition
-//    bool out0;
-//    QMetaObject::invokeMethod(parent(), "GetPanelPosition", Q_RETURN_ARG(bool, out0), Q_ARG(QString, arg));
-//    emit addtak(3);
-//    return out0;
-//}

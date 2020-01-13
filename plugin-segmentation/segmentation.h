@@ -21,15 +21,15 @@
 //#include "../panel/config/configpaneldialog.h"
 #include "../panel/config/configpanelwidget.h"
 #include <QMenu>
-#include <QtDBus/QtDBus>
+#define DEFAULT_SHORTCUT "Alt+F1"
 
 
-class StartMenu : public QObject, public IUKUIPanelPlugin
+class Segmentation : public QObject, public IUKUIPanelPlugin
 {
     Q_OBJECT
 public:
-    StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo);
-    ~StartMenu();
+    Segmentation(const IUKUIPanelPluginStartupInfo &startupInfo);
+    ~Segmentation();
 
     virtual QWidget *widget() { return &mButton; }
     virtual QString themeId() const { return QStringLiteral("startmenu"); }
@@ -37,14 +37,10 @@ public:
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
 private:
     //StartMenuWidget mWidget;
+    QWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
     QToolButton mButton;
-    StartMenu *mStartMenu;
     bool mCapturing;
-
-private slots:
-    void captureMouse();
-
 };
 
 class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
@@ -55,9 +51,8 @@ class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
     {
-        return new StartMenu(startupInfo);
+        return new Segmentation(startupInfo);
     }
 };
-
 
 #endif

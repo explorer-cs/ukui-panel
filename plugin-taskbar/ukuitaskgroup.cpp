@@ -188,7 +188,7 @@ UKUITaskButton * UKUITaskGroup::addWindow(WId id)
     btn->setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
-                "background-color:rgba(74,112,139,90%);"//背景色（也可以设置图片）
+                "background-color:rgba(174,0,0,90%);"//背景色（也可以设置图片）
                 "qproperty-iconSize:24px 24px;"
                 "border-style:outset;"                  //边框样式（inset/outset）
                 "border-width:0px;"                     //边框宽度像素
@@ -199,14 +199,6 @@ UKUITaskButton * UKUITaskGroup::addWindow(WId id)
                 "padding:0px;"                          //填衬
                 "spacing:0px;"
                 "border-bottom-style:solid"
-                "}"
-                //鼠标悬停样式
-                "QToolButton:hover{"
-                "background-color:rgba(74,112,139,80%);"
-                "}"
-                //鼠标按下样式
-                "QToolButton:pressed{"
-                "background-color:rgba(74,112,139,100%);"
                 "}"
                 );
 
@@ -582,9 +574,10 @@ QSize UKUITaskGroup::recalculateFrameSize()
  ************************************************/
 int UKUITaskGroup::recalculateFrameHeight() const
 {
-    int cont = visibleButtonsCount();
-    int h = !plugin()->panel()->isHorizontal() && parentTaskBar()->isAutoRotate() ? width() : height();
-    return cont * h + (cont + 1) * mPopup->spacing();
+//    int cont = visibleButtonsCount();
+//    int h = !plugin()->panel()->isHorizontal() && parentTaskBar()->isAutoRotate() ? width() : height();
+//    return cont * h + (cont + 1) * mPopup->spacing();
+    return 120;
 }
 
 /************************************************
@@ -598,6 +591,7 @@ int UKUITaskGroup::recalculateFrameWidth() const
     for (UKUITaskButton *btn : qAsConst(mButtonHash))
         txtWidth = qMax(fm.width(btn->text()), txtWidth);
     return iconSize().width() + qMin(txtWidth, max) + 30/* give enough room to margins and borders*/;
+
 }
 
 /************************************************
@@ -772,7 +766,7 @@ void UKUITaskGroup::showPreview()
     //removeWidget();
     for (UKUITaskButtonHash::const_iterator it = mButtonHash.begin();it != mButtonHash.end();it++)
     {
-        display = XOpenDisplay(NULL);
+        display = XOpenDisplay(nullptr);
         XGetWindowAttributes(display, it.key(), &attr);
         img = XGetImage(display, it.key(), 0, 0, attr.width, attr.height, 0xffffffff,ZPixmap);
 
@@ -782,21 +776,20 @@ void UKUITaskGroup::showPreview()
 
         UKUITaskButton *btn = it.value();
         btn->setFixedSize(thumbnail.width(),thumbnail.height());
-        //btn->resize(thumbnail.width(),thumbnail.height());
         btn->setIcon(thumbnail);
         btn->setIconSize(thumbnail.rect().size());
 
         btn->setToolButtonStyle(Qt::ToolButtonIconOnly);/*not show title*/
         //btn->setStyleSheet(QString("border-image:url(/tmp/picture/%1.png)").arg(mButtonHash.begin().key()));
-        //mPopup->addButton(btn);
-//        mPopup->setLayout(new QHBoxLayout);
         mPopup->layout()->addWidget(btn);
         XDestroyImage(img);
         XCloseDisplay(display);
     }
     plugin()->willShowWindow(mPopup);
-    mPopup->adjustSize();
-    mPopup->setGeometry(300,QApplication::desktop()->availableGeometry().height() - 130,200,150);
+    //mPopup->adjustSize();
+    //mPopup->setGeometry(300,QApplication::desktop()->availableGeometry().height() - 130,200,150);
+    //recalculateFrameIfVisible();
+    //recalculateFramePosition();
     //mPopup->setGeometry(mPlugin->panel()->calculatePopupWindowPos(QPoint(0,QApplication::desktop()->availableGeometry().height() - mPopup->height()),QSize(200,150)));
     mPopup->show();
 

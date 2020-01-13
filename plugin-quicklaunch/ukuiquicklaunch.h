@@ -93,7 +93,7 @@ private:
 
     void dragEnterEvent(QDragEnterEvent *e);
     void dropEvent(QDropEvent *e);
-    QuickLaunchButton* btn;
+
 
 
 

@@ -1,18 +1,18 @@
 set(PLUGIN "segmentation")
 
 set(HEADERS
-    startmenu.h
+    segmentation.h
 )
 
 set(SOURCES
-    startmenu.cpp
+    segmentation.cpp
 )
 
 set(UIS
 )
 
 install(FILES
-    img/segmentation.svg
+    img/segmentation.svg img/segmentationh.svg
     DESTINATION "${LXQT_DATA_DIR}/plugin-segmentation/img"
     COMPONENT Runtime
 )

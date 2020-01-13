@@ -76,7 +76,8 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     setStyle(mStyle);
     mLayout = new LXQt::GridLayout(this);
     setLayout(mLayout);
-    mLayout->setMargin(0);
+    mLayout->setMargin(6);
+    mLayout->setSpacing(29);
     mLayout->setStretch(LXQt::GridLayout::StretchHorizontal | LXQt::GridLayout::StretchVertical);
 
     realign();
