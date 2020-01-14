@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -59,7 +59,7 @@ class QuickLaunchButton;
 class QSettings;
 class QLabel;
 
-namespace LXQt {
+namespace UKUi {
 class GridLayout;
 }
 
@@ -87,7 +87,7 @@ public:
     friend class FilectrlAdaptor;
 
 private:
-    LXQt::GridLayout *mLayout;
+    UKUi::GridLayout *mLayout;
     IUKUIPanelPlugin *mPlugin;
     QLabel *mPlaceHolder;
 

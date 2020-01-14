@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org/
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org/
  *
- * Copyright: 2013 LXQt team
+ * Copyright: 2013 UKUi team
  * Authors:
  *   Hong Jen Yee (PCMan) <pcman.tw@gmail.com>
  *
@@ -25,15 +25,15 @@
  *
  * END_COMMON_COPYRIGHT_HEADER */
 
-#ifndef __LXQT_PANEL_GLOBALS_H__
-#define __LXQT_PANEL_GLOBALS_H__
+#ifndef __UKUI_PANEL_GLOBALS_H__
+#define __UKUI_PANEL_GLOBALS_H__
 
 #include <QtGlobal>
 
-#ifdef COMPILE_LXQT_PANEL
+#ifdef COMPILE_UKUI_PANEL
 #define UKUI_PANEL_API Q_DECL_EXPORT
 #else
 #define UKUI_PANEL_API Q_DECL_IMPORT
 #endif
 
-#endif // __LXQT_PANEL_GLOBALS_H__
+#endif // __UKUI_PANEL_GLOBALS_H__

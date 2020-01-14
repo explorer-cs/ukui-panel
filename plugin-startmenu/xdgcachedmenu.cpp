@@ -83,9 +83,9 @@ XdgCachedMenu::XdgCachedMenu(MenuCache* menuCache, QWidget* parent): QMenu(paren
     // qDebug() << "CREATE MENU FROM CACHE" << menuCache;
     MenuCacheDir* dir = menu_cache_dup_root_dir(menuCache);
 
-    // get current desktop name or fallback to LXQt
+    // get current desktop name or fallback to UKUi
     const QByteArray xdgDesktop = qgetenv("XDG_CURRENT_DESKTOP");
-    const QByteArray desktop = xdgDesktop.isEmpty() ? "LXQt:X-LXQt" : xdgDesktop;
+    const QByteArray desktop = xdgDesktop.isEmpty() ? "UKUi:X-UKUi" : xdgDesktop;
     menu_cache_desktop_ = menu_cache_get_desktop_env_flag(menuCache, desktop.constData());
 
     addMenuItems(this, dir);

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -32,10 +32,10 @@
 #include <QFrame>
 #include <QString>
 #include <QPointer>
-//#include <LXQt/PluginInfo>
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
-#include "../common/ukuiplugininfo.h"
+//#include <UKUi/PluginInfo>
+//#include <UKUi/Settings>
+#include "common/ukuisettings.h"
+#include "common/ukuiplugininfo.h"
 #include "iukuipanel.h"
 #include "ukuipanelglobals.h"
 #include "pluginsettings.h"
@@ -60,7 +60,7 @@ public:
     };
 
 
-    explicit Plugin(const LXQt::PluginInfo &desktopFile, LXQt::Settings *settings, const QString &settingsGroup, UKUIPanel *panel);
+    explicit Plugin(const UKUi::PluginInfo &desktopFile, UKUi::Settings *settings, const QString &settingsGroup, UKUIPanel *panel);
     ~Plugin();
 
     bool isLoaded() const { return mPlugin != 0; }
@@ -74,7 +74,7 @@ public:
     QMenu* popupMenu() const;
     const IUKUIPanelPlugin * iPlugin() const { return mPlugin; }
 
-    const LXQt::PluginInfo desktopFile() const { return mDesktopFile; }
+    const UKUi::PluginInfo desktopFile() const { return mDesktopFile; }
 
     bool isSeparate() const;
     bool isExpandable() const;
@@ -116,7 +116,7 @@ private:
     void watchWidgets(QObject * const widget);
     void unwatchWidgets(QObject * const widget);
 
-    const LXQt::PluginInfo mDesktopFile;
+    const UKUi::PluginInfo mDesktopFile;
     QPluginLoader *mPluginLoader;
     IUKUIPanelPlugin *mPlugin;
     QWidget *mPluginWidget;

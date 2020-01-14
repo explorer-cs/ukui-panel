@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -39,7 +39,7 @@
 #include "trayicon.h"
 #include "xfitman.h"
 
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <X11/Xatom.h>
 #include <X11/Xutil.h>
 #include <X11/extensions/Xcomposite.h>
@@ -88,7 +88,7 @@ TrayIcon::TrayIcon(Window iconId, QSize const & iconSize, QWidget* parent):
     setObjectName("TrayIcon");
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     // NOTE:
-    // see https://github.com/lxqt/lxqt/issues/945
+    // see https://github.com/ukui/ukui/issues/945
     // workaround: delayed init because of weird behaviour of some icons/windows (claws-mail)
     // (upon starting the app the window for receiving clicks wasn't correctly sized
     //  no matter what we've done)

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -33,7 +33,7 @@
 #include <QDebug>
 
 ConfigPanelDialog::ConfigPanelDialog(UKUIPanel *panel, QWidget *parent):
-    LXQt::ConfigDialog(tr("Configure Panel"), panel->settings(), parent),
+    UKUi::ConfigDialog(tr("Configure Panel"), panel->settings(), parent),
     mPanelPage(nullptr),
     mPluginsPage(nullptr)
 {

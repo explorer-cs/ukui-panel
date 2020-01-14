@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -26,6 +26,7 @@
 
 
 #include "ukuipanelapplication.h"
+#include <QTranslator>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -35,7 +36,7 @@
     CONFIG_ID      Section name in config file ~/.config/ukui/panel.conf
                    (default main)
  */
-#include <QTranslator>
+
 int main(int argc, char *argv[])
 {
     UKUIPanelApplication app(argc, argv);

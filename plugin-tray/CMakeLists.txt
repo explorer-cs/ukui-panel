@@ -6,6 +6,7 @@ include(CheckLibraryExists)
 find_package(PkgConfig)
 
 find_package(X11 REQUIRED)
+find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} REQUIRED)
 pkg_check_modules(XCOMPOSITE REQUIRED xcomposite)
 pkg_check_modules(XDAMAGE REQUIRED xdamage)
 pkg_check_modules(XRENDER REQUIRED xrender)
@@ -30,6 +31,7 @@ set(LIBRARIES
     ${XDAMAGE_LIBRARIES}
     ${XRENDER_LIBRARIES}
     ${XCB_LIBRARIES}
+    Qt5X11Extras
 )
 
 BUILD_UKUI_PLUGIN(${PLUGIN})

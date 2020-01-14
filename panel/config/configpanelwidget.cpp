@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -39,7 +39,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-using namespace LXQt;
+using namespace UKUi;
 
 struct ScreenPosition
 {
@@ -122,6 +122,7 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
 
     connect(ui->groupBox_icon, &QGroupBox::clicked, this, &ConfigPanelWidget::editChanged);
     connect(ui->comboBox_icon, QOverload<int>::of(&QComboBox::activated), this, &ConfigPanelWidget::editChanged);
+
 }
 
 

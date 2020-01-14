@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -34,8 +34,8 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 #include <QPointer>
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
+//#include <UKUi/Settings>
+#include "common/ukuisettings.h"
 #include "iukuipanel.h"
 #include "ukuipanelglobals.h"
 
@@ -43,7 +43,7 @@ class QMenu;
 class Plugin;
 class QAbstractItemModel;
 
-namespace LXQt {
+namespace UKUi {
 class Settings;
 class PluginInfo;
 }
@@ -53,7 +53,7 @@ class ConfigPanelDialog;
 class PanelPluginsModel;
 class WindowNotifier;
 
-/*! \brief The UKUIPanel class provides a single lxqt-panel. All UKUIPanel
+/*! \brief The UKUIPanel class provides a single ukui-panel. All UKUIPanel
  * instances should be created and handled by UKUIPanelApplication. In turn,
  * all Plugins should be created and handled by UKUIPanels.
  *
@@ -113,10 +113,10 @@ public:
      * 8. Shows the panel, even if it is hidable (but then, starts the timer).
      * @param configGroup The name of the panel which is used as identifier
      * in the config file.
-     * @param settings The settings instance of this lxqt panel application.
+     * @param settings The settings instance of this ukui panel application.
      * @param parent Parent QWidget, can be omitted.
      */
-    UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidget *parent = 0);
+    UKUIPanel(const QString &configGroup, UKUi::Settings *settings, QWidget *parent = 0);
     virtual ~UKUIPanel();
 
     /**
@@ -212,7 +212,7 @@ public:
     // Settings
     int iconSize() const override { return mIconSize; } //!< Implement IUKUIPanel::iconSize().
     int lineCount() const override { return mLineCount; } //!< Implement IUKUIPanel::lineCount().
-    int panelSize() const  override{ return mPanelSize; }
+    int panelSize() const override{ return mPanelSize; }
     int length() const { return mLength; }
     bool lengthInPercents() const { return mLengthInPercents; }
     UKUIPanel::Alignment alignment() const { return mAlignment; }
@@ -247,13 +247,13 @@ public slots:
     /**
      * @brief Shows the QWidget and makes it visible on all desktops. This
      * method is NOT related to showPanel(), hidePanel() and hidePanelWork()
-     * which handle the LXQt hiding by resizing the panel.
+     * which handle the UKUi hiding by resizing the panel.
      */
     void show();
     /**
      * @brief Shows the panel (immediately) after it had been hidden before.
      * Stops the QTimer mHideTimer. This it NOT the same as QWidget::show()
-     * because hiding the panel in LXQt is done by making it very thin. So
+     * because hiding the panel in UKUi is done by making it very thin. So
      * this method in fact restores the original size of the panel.
      * \param animate flag for the panel show-up animation disabling (\sa mAnimationTime).
      *
@@ -272,7 +272,7 @@ public slots:
     /**
      * @brief Actually hides the panel. Will be invoked when the QTimer
      * mHideTimer times out. That timer will be started by showPanel(). This
-     * is NOT the same as QWidget::hide() because hiding the panel in LXQt is
+     * is NOT the same as QWidget::hide() because hiding the panel in UKUi is
      * done by making the panel very thin. So this method in fact makes the
      * panel very thin while the QWidget stays visible.
      *
@@ -421,7 +421,7 @@ private slots:
      * Two signals will be connected to this slot:
      * 1. QDesktopWidget::workAreaResized(int screen) which will be emitted
      * when the work area available (on screen) changes.
-     * 2. LXQt::Application::themeChanged(), i.e. when the user changes
+     * 2. UKUi::Application::themeChanged(), i.e. when the user changes
      * the theme.
      */
     void setPanelStyle();
@@ -452,10 +452,10 @@ private:
      */
     UKUIPanelLayout* mLayout;
     /**
-     * @brief The LXQt::Settings instance as retrieved from
+     * @brief The UKUi::Settings instance as retrieved from
      * UKUIPanelApplication.
      */
-    LXQt::Settings *mSettings;
+    UKUi::Settings *mSettings;
     /**
      * @brief The background widget for the panel. This background widget will
      * have the background color or the background image if any of these is
@@ -695,7 +695,7 @@ private:
     void updateStyleSheet();
 
     // settings should be kept private for security
-    LXQt::Settings *settings() const { return mSettings; }
+    UKUi::Settings *settings() const { return mSettings; }
 
 
 private slots:

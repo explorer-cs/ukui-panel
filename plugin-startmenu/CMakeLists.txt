@@ -11,9 +11,13 @@ set(SOURCES
 set(UIS
 )
 
+set(LIBRARIES
+    Qt5Xdg
+)
+
 install(FILES
     img/startmenu.svg  img/taskview.svg img/ukui-panel_zh_CN.qm
-    DESTINATION "${LXQT_DATA_DIR}/plugin-startmenu/img"
+    DESTINATION "${UKUI_DATA_DIR}/plugin-startmenu/img"
     COMPONENT Runtime
 )
 set(UKUI_TRANSLATIONS_DAT "/usr/local/share/")

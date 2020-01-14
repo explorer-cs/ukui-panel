@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -30,8 +30,7 @@
 #include "ukuipanelapplication.h"
 #include <QPointer>
 #include <XdgIcon>
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
+#include "common/ukuisettings.h"
 
 #include <QDebug>
 
@@ -128,7 +127,7 @@ Plugin const * PanelPluginsModel::pluginByID(QString id) const
     return nullptr;
 }
 
-void PanelPluginsModel::addPlugin(const LXQt::PluginInfo &desktopFile)
+void PanelPluginsModel::addPlugin(const UKUi::PluginInfo &desktopFile)
 {
     if (dynamic_cast<UKUIPanelApplication const *>(qApp)->isPluginSingletonAndRunnig(desktopFile.id()))
         return;
@@ -237,10 +236,10 @@ qDebug()<<"desktopDirs  =  "<<desktopDirs<<endl;
         {
             //plugin-screensaver was dropped
             //convert settings to plugin-quicklaunch
-            const QString & lock_desktop = QStringLiteral(LXQT_LOCK_DESKTOP);
+            const QString & lock_desktop = QStringLiteral(UKUI_LOCK_DESKTOP);
             qWarning().noquote() << "Found deprecated plugin of type 'screensaver', migrating to 'quicklaunch' with '" << lock_desktop << '\'';
             type = QStringLiteral("quicklaunch");
-            LXQt::Settings * settings = mPanel->settings();
+            UKUi::Settings * settings = mPanel->settings();
             settings->beginGroup(name);
             settings->remove(QString{});//remove all existing keys
             settings->setValue(QStringLiteral("type"), type);
@@ -252,7 +251,7 @@ qDebug()<<"desktopDirs  =  "<<desktopDirs<<endl;
         }
 #endif
 
-        LXQt::PluginInfoList list = LXQt::PluginInfo::search(desktopDirs, "UKUIPanel/Plugin", QString("%1.desktop").arg(type));
+        UKUi::PluginInfoList list = UKUi::PluginInfo::search(desktopDirs, "UKUIPanel/Plugin", QString("%1.desktop").arg(type));
         if( !list.count())
         {
             qWarning() << QString("Plugin \"%1\" not found.").arg(type);
@@ -267,7 +266,7 @@ qDebug()<<"desktopDirs  =  "<<desktopDirs<<endl;
     }
 }
 
-QPointer<Plugin> PanelPluginsModel::loadPlugin(LXQt::PluginInfo const & desktopFile, QString const & settingsGroup)
+QPointer<Plugin> PanelPluginsModel::loadPlugin(UKUi::PluginInfo const & desktopFile, QString const & settingsGroup)
 {
     std::unique_ptr<Plugin> plugin(new Plugin(desktopFile, mPanel->settings(), settingsGroup, mPanel));
     if (plugin->isLoaded())

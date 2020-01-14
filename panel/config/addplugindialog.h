@@ -1,7 +1,7 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
+ * UKUi - a lightweight, Qt based, desktop toolset
  * http://razor-qt.org
  *
  * Copyright: 2010-2011 Razor team
@@ -26,11 +26,11 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 
-#ifndef LXQT_ADDPLUGINDIALOG_H
-#define LXQT_ADDPLUGINDIALOG_H
+#ifndef UKUI_ADDPLUGINDIALOG_H
+#define UKUI_ADDPLUGINDIALOG_H
 
-//#include <LXQt/PluginInfo>
-#include "../common/ukuiplugininfo.h"
+//#include <UKUi/PluginInfo>
+#include "../panel/common/ukuiplugininfo.h"
 #include <QDialog>
 #include <QTimer>
 
@@ -49,11 +49,11 @@ public:
     ~AddPluginDialog();
 
 signals:
-    void pluginSelected(const LXQt::PluginInfo &plugin);
+    void pluginSelected(const UKUi::PluginInfo &plugin);
 
 private:
     Ui::AddPluginDialog *ui;
-    LXQt::PluginInfoList mPlugins;
+    UKUi::PluginInfoList mPlugins;
     QTimer mSearchTimer;
 
 private slots:
@@ -61,4 +61,4 @@ private slots:
     void emitPluginSelected();
 };
 
-#endif // LXQT_ADDPLUGINDIALOG_H
+#endif // UKUI_ADDPLUGINDIALOG_H

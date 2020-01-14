@@ -1,11 +1,11 @@
 ﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2012-2013 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Kuzma Shapran <kuzma.shapran@gmail.com>
  *
@@ -32,8 +32,8 @@
 #include <QDialog>
 #include <QLabel>
 #include <QtWebKitWidgets/QWebView>
-//#include <LXQt/RotatedWidget>
-#include "../common/lxqtrotatedwidget.h"
+//#include <UKUi/RotatedWidget>
+#include "../panel/common/ukuirotatedwidget.h"
 #include "../panel/iukuipanelplugin.h"
 #include "ukuiwebviewdialog.h"
 
@@ -74,7 +74,7 @@ private Q_SLOTS:
 private:
     QWidget *mMainWidget;
     UkuiWebviewDialog   *mWebViewDiag;
-    LXQt::RotatedWidget* mRotatedWidget;
+    UKUi::RotatedWidget* mRotatedWidget;
     bool mbActived;
     bool mbHasCreatedWebView;
     CalendarActiveLabel *mContent;
@@ -124,7 +124,7 @@ protected:
 class UKUICalendarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_PLUGIN_METADATA(IID "ukui.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const

@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *   Maciej Płaza <plaza.maciej@gmail.com>
@@ -41,13 +41,12 @@
 #include <QDebug>
 #include <QTimer>
 
-//#include <lxqt-globalkeys.h>
-#include "../common/ukuigridlayout.h"
+#include "../panel/common/ukuigridlayout.h"
 #include <XdgIcon>
 
 #include "ukuitaskbar.h"
 #include "ukuitaskgroup.h"
-using namespace LXQt;
+using namespace UKUi;
 
 /************************************************
 
@@ -74,11 +73,10 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     mStyle(new LeftAlignedTextStyle())
 {
     setStyle(mStyle);
-    mLayout = new LXQt::GridLayout(this);
+    mLayout = new UKUi::GridLayout(this);
     setLayout(mLayout);
-    mLayout->setMargin(6);
-    mLayout->setSpacing(29);
-    mLayout->setStretch(LXQt::GridLayout::StretchHorizontal | LXQt::GridLayout::StretchVertical);
+    mLayout->setMargin(0);
+    mLayout->setStretch(UKUi::GridLayout::StretchHorizontal | UKUi::GridLayout::StretchVertical);
 
     realign();
 
@@ -556,7 +554,7 @@ void UKUITaskBar::realign()
 
     mLayout->setCellMinimumSize(minSize);
     mLayout->setCellMaximumSize(maxSize);
-    mLayout->setDirection(rotated ? LXQt::GridLayout::TopToBottom : LXQt::GridLayout::LeftToRight);
+    mLayout->setDirection(rotated ? UKUi::GridLayout::TopToBottom : UKUi::GridLayout::LeftToRight);
     mLayout->setEnabled(true);
 
     //our placement on screen could have been changed

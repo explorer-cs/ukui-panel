@@ -6,8 +6,8 @@
     set(PLUGIN_SHARE_DIR ${PROG_SHARE_DIR}/${NAME})
 
     # Translations **********************************
-#    lxqt_translate_ts(${PROJECT_NAME}_QM_FILES
-#        UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
+#    ukui_translate_ts(${PROJECT_NAME}_QM_FILES
+#       UPDATE_TRANSLATIONS ${UPDATE_TRANSLATIONS}
 #        SOURCES
 #            ${HEADERS}
 #            ${SOURCES}
@@ -17,15 +17,15 @@
 #            ${NAME}
 #        INSTALL_DIR
 #        ${UKUI_TRANSLATIONS_DIR}/${PROGRAM}/${NAME}
-#    )
+#   )
 
     file (GLOB ${PROJECT_NAME}_DESKTOP_FILES_IN resources/*.desktop.in)
-    lxqt_translate_desktop(DESKTOP_FILES
+    ukui_translate_desktop(DESKTOP_FILES
         SOURCES
             ${${PROJECT_NAME}_DESKTOP_FILES_IN}
     )
 
-    lxqt_plugin_translation_loader(QM_LOADER ${NAME} "ukui-panel")
+    ukui_plugin_translation_loader(QM_LOADER ${NAME} "ukui-panel")
     #************************************************
 
     file (GLOB CONFIG_FILES resources/*.conf)
@@ -50,8 +50,8 @@
     else() # static
         add_library(${NAME} STATIC ${SRC}) # build statically linked lib
     endif()
-    target_link_libraries(${NAME} ${QTX_LIBRARIES} lxqt ${LIBRARIES} KF5::WindowSystem)
-
+    #target_link_libraries(${NAME} ${QTX_LIBRARIES} ${LIBRARIES} KF5::WindowSystem)
+    target_link_libraries(${NAME} ${QTX_LIBRARIES} ${LIBRARIES} KF5::WindowSystem)
     install(FILES ${CONFIG_FILES}  DESTINATION ${PLUGIN_SHARE_DIR})
     install(FILES ${DESKTOP_FILES} DESTINATION ${PROG_SHARE_DIR})
 

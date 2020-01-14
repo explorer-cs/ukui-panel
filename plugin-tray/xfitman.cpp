@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -33,7 +33,7 @@
 // #include <stdlib.h>
 // #include <assert.h>
 
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QIcon>
 
 #include "xfitman.h"

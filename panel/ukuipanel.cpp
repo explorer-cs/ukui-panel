@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -36,11 +36,11 @@
 #include "plugin.h"
 #include "panelpluginsmodel.h"
 #include "windownotifier.h"
-#include <LXQt/PluginInfo>
+#include "common/ukuiplugininfo.h"
 
 #include <QScreen>
 #include <QWindow>
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 #include <QDebug>
 #include <QString>
 #include <QDesktopWidget>
@@ -119,7 +119,7 @@ QString UKUIPanel::positionToStr(IUKUIPanel::Position position)
 /************************************************
 
  ************************************************/
-UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidget *parent) :
+UKUIPanel::UKUIPanel(const QString &configGroup, UKUi::Settings *settings, QWidget *parent) :
     QFrame(parent),
     mSettings(settings),
     mConfigGroup(configGroup),
@@ -154,7 +154,7 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
     // Since Qt 5, the default behaviour is changed. A window is always activated on mouse click.
     // Please see the source code of Qt5: src/plugins/platforms/xcb/qxcbwindow.cpp.
     // void QXcbWindow::handleButtonPressEvent(const xcb_button_press_event_t *event)
-    // This new behaviour caused lxqt bug #161 - Cannot minimize windows from panel 1 when two task managers are open
+    // This new behaviour caused ukui bug #161 - Cannot minimize windows from panel 1 when two task managers are open
     // Besides, this breaks minimizing or restoring windows when clicking on the taskbar buttons.
     // To workaround this regression bug, we need to add this window flag here.
     // However, since the panel gets no keyboard focus, this may decrease accessibility since
@@ -204,12 +204,12 @@ UKUIPanel::UKUIPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
 
     // connecting to QDesktopWidget::workAreaResized shouldn't be necessary,
     // as we've already connceted to QDesktopWidget::resized, but it actually
-    // is. Read mode on https://github.com/lxqt/lxqt-panel/pull/310
+    // is. Read mode on https://github.com/ukui/ukui-panel/pull/310
     connect(QApplication::desktop(), &QDesktopWidget::workAreaResized,
             this, &UKUIPanel::ensureVisible);
 
-    connect(LXQt::Settings::globalSettings(), SIGNAL(settingsChanged()), this, SLOT(update()));
-    connect(lxqtApp, SIGNAL(themeChanged()), this, SLOT(realign()));
+    connect(UKUi::Settings::globalSettings(), SIGNAL(settingsChanged()), this, SLOT(update()));
+    connect(ukuiApp, SIGNAL(themeChanged()), this, SLOT(realign()));
 
     connect(mStandaloneWindows.data(), &WindowNotifier::firstShown, [this] { showPanel(true); });
     connect(mStandaloneWindows.data(), &WindowNotifier::lastHidden, this, &UKUIPanel::hidePanel);
@@ -787,7 +787,7 @@ void UKUIPanel::showDesktop()
 void UKUIPanel::updateStyleSheet()
 {
     QStringList sheet;
-    sheet << QString("Plugin > QAbstractButton, LXQtTray { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
+    sheet << QString("Plugin > QAbstractButton, UKUiTray { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
     sheet << QString("Plugin > * > QAbstractButton, TrayIcon { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
 
     if (mFontColor.isValid())
@@ -1050,7 +1050,7 @@ bool UKUIPanel::event(QEvent *event)
         // Sometimes Qt needs to re-create the underlying window of the widget and
         // the winId() may be changed at runtime. So we need to reset all X11 properties
         // when this happens.
-        //qDebug() << "WinIdChange" << hex << effectiveWinId() << "handle" << windowHandle() << windowHandle()->screen();
+        qDebug() << "WinIdChange" << hex << effectiveWinId() << "handle" << windowHandle() << windowHandle()->screen();
 
         // Qt::WA_X11NetWmWindowTypeDock becomes ineffective in Qt 5
         // See QTBUG-39887: https://bugreports.qt-project.org/browse/QTBUG-39887

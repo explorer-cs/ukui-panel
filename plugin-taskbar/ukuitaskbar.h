@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *   Maciej Płaza <plaza.maciej@gmail.com>
@@ -51,7 +51,7 @@ class QSignalMapper;
 class UKUITaskButton;
 class ElidedButtonStyle;
 
-namespace LXQt {
+namespace UKUi {
 class GridLayout;
 }
 
@@ -118,7 +118,7 @@ private:
 
 private:
     QMap<WId, UKUITaskGroup*> mKnownWindows; //!< Ids of known windows (mapping to buttons/groups)
-    LXQt::GridLayout *mLayout;
+    UKUi::GridLayout *mLayout;
 //    QList<GlobalKeyShortcut::Action*> mKeys;
     QSignalMapper *mSignalMapper;
 

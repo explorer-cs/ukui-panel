@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -41,7 +41,7 @@
 #include <QDebug>
 #include <XdgDesktopFile>
 #include <XdgIcon>
-#include "../common/ukuigridlayout.h"
+#include "../panel/common/ukuigridlayout.h"
 #include "../panel/pluginsettings.h"
 #include <QTableWidget>
 #include <QtCore/QMetaObject>
@@ -60,7 +60,7 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
 {
     setAcceptDrops(true);
 
-    mLayout = new LXQt::GridLayout(this);
+    mLayout = new UKUi::GridLayout(this);
     setLayout(mLayout);
 
     QString desktop;

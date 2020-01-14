@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -33,10 +33,10 @@
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 #include "trayicon.h"
 #include "../panel/iukuipanel.h"
-#include "../common/ukuigridlayout.h"
+#include "../panel/common/ukuigridlayout.h"
 #include "ukuitray.h"
 #include "xfitman.h"
 
@@ -76,7 +76,7 @@ UKUITray::UKUITray(IUKUIPanelPlugin *plugin, QWidget *parent):
     mPlugin(plugin),
     mDisplay(QX11Info::display())
 {
-    mLayout = new LXQt::GridLayout(this);
+    mLayout = new UKUi::GridLayout(this);
     //mLayout->setHorizontalSpacing(10);
     realign();
     _NET_SYSTEM_TRAY_OPCODE = XfitMan::atom("_NET_SYSTEM_TRAY_OPCODE");

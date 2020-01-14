@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -29,8 +29,8 @@
 #ifndef UKUIPanelAPPLICATION_H
 #define UKUIPanelAPPLICATION_H
 
-//#include <LXQt/Application>
-#include "../common/lxqtapplication.h"
+//#include <UKUi/Application>
+#include "common/ukuiapplication.h"
 #include "iukuipanelplugin.h"
 
 class QScreen;
@@ -39,7 +39,7 @@ class UKUIPanel;
 class UKUIPanelApplicationPrivate;
 
 /*!
- * \brief The UKUIPanelApplication class inherits from LXQt::Application and
+ * \brief The UKUIPanelApplication class inherits from UKUi::Application and
  * is therefore the QApplication that we will create and execute in our
  * main()-function.
  *
@@ -49,18 +49,18 @@ class UKUIPanelApplicationPrivate;
  * to have more than one panel (for example one panel at the top and one
  * panel at the bottom of the screen) without additional effort.
  */
-class UKUIPanelApplication : public LXQt::Application
+class UKUIPanelApplication : public UKUi::Application
 {
     Q_OBJECT
 public:
     /*!
      * \brief Creates a new UKUIPanelApplication with the given command line
      * arguments. Performs the following steps:
-     * 1. Initializes the LXQt::Application, sets application name and version.
+     * 1. Initializes the UKUi::Application, sets application name and version.
      * 2. Handles command line arguments. Currently, the only cmdline argument
      * is -c = -config = -configfile which chooses a different config file
-     * for the LXQt::Settings.
-     * 3. Creates the LXQt::Settings.
+     * for the UKUi::Settings.
+     * 3. Creates the UKUi::Settings.
      * 4. Connects QCoreApplication::aboutToQuit to cleanup().
      * 5. Calls addPanel() for each panel found in the config file. If there is
      * none, adds a new panel.
@@ -174,8 +174,8 @@ private slots:
 
 private:
     /*!
-     * \brief mSettings is the LXQt::Settings object that is used for the
-     * current instance of lxqt-panel. Normally, this refers to the config file
+     * \brief mSettings is the UKUi::Settings object that is used for the
+     * current instance of ukui-panel. Normally, this refers to the config file
      * $HOME/.config/ukui/panel.conf (on Unix systems). This behaviour can be
      * changed with the -c command line option.
      */
