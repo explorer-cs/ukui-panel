@@ -67,7 +67,7 @@ private:
 class PowerSwitchLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_PLUGIN_METADATA(IID "ukui.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const

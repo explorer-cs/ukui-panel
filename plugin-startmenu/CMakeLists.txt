@@ -17,7 +17,7 @@ set(LIBRARIES
 
 install(FILES
     img/startmenu.svg  img/taskview.svg img/ukui-panel_zh_CN.qm
-    DESTINATION "${UKUI_DATA_DIR}/plugin-startmenu/img"
+    DESTINATION "${PACKAGE_DATA_DIR}/plugin-startmenu/img"
     COMPONENT Runtime
 )
 set(UKUI_TRANSLATIONS_DAT "/usr/local/share/")
