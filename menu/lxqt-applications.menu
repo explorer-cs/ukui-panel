@@ -99,13 +99,13 @@
 		</Include>
 	</Menu>	 <!-- End Internet -->
 
-	<!-- LXQt-About -->
+	<!-- UKUi-About -->
 	<Menu>
-		<Name>LXQt-About</Name>
+		<Name>UKUi-About</Name>
 		<Include>
-		<Filename>lxqt-about.desktop</Filename>
+		<Filename>ukui-about.desktop</Filename>
 		</Include>
-	</Menu> <!-- End LXQt-About -->
+	</Menu> <!-- End UKUi-About -->
 
 	<!-- Multimedia -->
 	<Menu>
@@ -140,7 +140,7 @@
 				<Not><Category>PackageManager</Category></Not>
 				<Not><Category>X-Leave</Category></Not>
 				<Not><Category>Screensaver</Category></Not>
-				<Not><Filename>lxqt-about.desktop</Filename></Not>
+				<Not><Filename>ukui-about.desktop</Filename></Not>
 			</And>
 		</Include>
 	</Menu>	 <!-- End System Tools -->
@@ -164,11 +164,11 @@
 		<Name>DesktopSettings</Name>
 		<Directory>lxde-settings.directory</Directory>
 		<Menu>
-			<Name>LXQtSettings</Name>
-			<Directory>lxqt-settings.directory</Directory>
+			<Name>UKUiSettings</Name>
+			<Directory>ukui-settings.directory</Directory>
 			<Include>
 				<And>
-					<Category>LXQt</Category>
+					<Category>UKUi</Category>
 					<Or>
 						<Category>Settings</Category>
 						<Category>PackageManager</Category>
@@ -180,7 +180,7 @@
 				<Filename>pcmanfm-qt-desktop-pref.desktop</Filename>
 			</Include>
 			<Layout>
-				<Filename>lxqt-config.desktop</Filename>
+				<Filename>ukui-config.desktop</Filename>
 				<Separator/>
 				<Merge type="menus"/>
 				<Merge type="files"/>
@@ -195,7 +195,7 @@
 		</Include>
 		<Exclude>
 			<Or>
-				<Filename>lxqt-config.desktop</Filename>
+				<Filename>ukui-config.desktop</Filename>
 			</Or>
 		</Exclude>
 		<Layout>
@@ -207,7 +207,7 @@
 	<!-- Leave -->
 	<Menu>
 		<Name>X-Leave</Name>
-		<Directory>lxqt-leave.directory</Directory>
+		<Directory>ukui-leave.directory</Directory>
 		<Include>
 			<And>
 				<Category>X-Leave</Category>
@@ -219,7 +219,7 @@
 	<Menu>
 		<Name>Screensaver</Name>
 		<Include>
-		<Filename>lxqt-lockscreen.desktop</Filename>
+		<Filename>ukui-lockscreen.desktop</Filename>
 		</Include>
 	</Menu> <!-- End Screensaver -->
 
@@ -228,7 +228,7 @@
 		<Merge type="menus"/>
 		<Separator/>
 		<Menuname>DesktopSettings</Menuname>
-		<Menuname show_empty="false" inline="true">LXQt-About</Menuname>
+		<Menuname show_empty="false" inline="true">UKUi-About</Menuname>
 		<Separator/>
 		<Menuname show_empty="false">X-Leave</Menuname>
 		<Menuname show_empty="false" inline="true">Screensaver</Menuname>

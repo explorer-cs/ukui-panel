@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
  * Authors:
@@ -39,7 +39,7 @@
 class TrayIcon;
 class QSize;
 
-namespace LXQt {
+namespace UKUi {
 class GridLayout;
 }
 
@@ -93,7 +93,7 @@ private:
     int mDamageEvent;
     int mDamageError;
     QSize mIconSize;
-    LXQt::GridLayout *mLayout;
+    UKUi::GridLayout *mLayout;
     IUKUIPanelPlugin *mPlugin;
     Atom _NET_SYSTEM_TRAY_OPCODE;
     Display* mDisplay;

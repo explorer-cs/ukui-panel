@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2012 Razor team
  * Authors:
@@ -41,7 +41,7 @@
 #include <QDebug>
 #include <XdgDesktopFile>
 #include <XdgIcon>
-#include "../common/ukuigridlayout.h"
+#include "../panel/common/ukuigridlayout.h"
 #include "../panel/pluginsettings.h"
 #include <QTableWidget>
 #include <QtCore/QMetaObject>
@@ -60,7 +60,7 @@ UKUIQuickLaunch::UKUIQuickLaunch(IUKUIPanelPlugin *plugin, QWidget* parent) :
 {
     setAcceptDrops(true);
 
-    mLayout = new LXQt::GridLayout(this);
+    mLayout = new UKUi::GridLayout(this);
     setLayout(mLayout);
 
     QString desktop;
@@ -403,6 +403,12 @@ int UKUIQuickLaunch::GetPanelPosition(QString arg)
     return mPlugin->panel()->position();
 }
 
+int UKUIQuickLaunch::GetPanelSize(QString arg)
+{
+    qDebug()<<"GetPanelPosition panel.position"<<mPlugin->panel()->position();
+    return mPlugin->panel()->panelSize();
+}
+
 void UKUIQuickLaunch::switchButtons(QuickLaunchButton *button1, QuickLaunchButton *button2)
 {
     if (button1 == button2)
@@ -560,5 +566,13 @@ int FilectrlAdaptor::GetPanelPosition(const QString &arg)
     // handle method call com.kylin.security.controller.filectrl.RemoveFromTaskbar
     int out0;
     QMetaObject::invokeMethod(parent(), "GetPanelPosition", Q_RETURN_ARG(int, out0), Q_ARG(QString, arg));
+    return out0;
+}
+
+int FilectrlAdaptor::GetPanelSize(const QString &arg)
+{
+    // handle method call com.kylin.security.controller.filectrl.RemoveFromTaskbar
+    int out0;
+    QMetaObject::invokeMethod(parent(), "GetPanelSize", Q_RETURN_ARG(int, out0), Q_ARG(QString, arg));
     return out0;
 }

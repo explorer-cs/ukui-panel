@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *   Kuzma Shapran <kuzma.shapran@gmail.com>
@@ -35,7 +35,7 @@
 #include <QProxyStyle>
 #include "../panel/iukuipanel.h"
 //#include <QWinThumbnailToolBar>
-#include "qtx11extrasversion.h"
+#include <QtX11Extras/qtx11extrasversion.h>
 class QPainter;
 class QPalette;
 class QMimeData;
@@ -81,7 +81,7 @@ public:
     UKUITaskBar * parentTaskBar() const {return mParentTaskBar;}
 
     void refreshIconGeometry(QRect const & geom);
-    static QString mimeDataFormat() { return QLatin1String("lxqt/UKUITaskButton"); }
+    static QString mimeDataFormat() { return QLatin1String("ukui/UKUITaskButton"); }
     /*! \return true if this buttom received DragEnter event (and no DragLeave event yet)
      * */
     bool hasDragAndDropHover() const;

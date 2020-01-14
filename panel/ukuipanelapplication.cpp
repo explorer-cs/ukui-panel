@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -30,8 +30,8 @@
 #include "ukuipanelapplication_p.h"
 #include "ukuipanel.h"
 #include "config/configpaneldialog.h"
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
+//#include <UKUi/Settings>
+#include "common/ukuisettings.h"
 #include <QtDebug>
 #include <QUuid>
 #include <QScreen>
@@ -77,7 +77,7 @@ IUKUIPanel::Position UKUIPanelApplicationPrivate::computeNewPanelPosition(const 
 }
 
 UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
-    : LXQt::Application(argc, argv, true),
+    : UKUi::Application(argc, argv, true),
     d_ptr(new UKUIPanelApplicationPrivate(this))
 
 {
@@ -91,7 +91,7 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
     QCoreApplication::setApplicationVersion(VERINFO);
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(QLatin1String("LXQt Panel"));
+    parser.setApplicationDescription(QLatin1String("UKUi Panel"));
     parser.addHelpOption();
     parser.addVersionOption();
 
@@ -103,24 +103,24 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
     parser.process(*this);
 
-    QFile::remove(QString(qgetenv("HOME"))+"/.config/lxqt/panel.conf");
+    QFile::remove(QString(qgetenv("HOME"))+"/.config/ukui/panel.conf");
     const QString configFile = parser.value(configFileOption);
     qDebug()<<"configFile is : "<<configFile;
 
     if (configFile.isEmpty())
     {
-        qDebug()<<"conf file is not exit";
+        qDebug()<<"configFile.is not Empty"<<endl;
         QString defaultConf = QString(PLUGIN_DESKTOPS_DIR)+"/../";
-        QString loaclCong = QString(qgetenv("HOME"))+"/.config/lxqt/";
+        QString loaclCong = QString(qgetenv("HOME"))+"/.config/ukui/";
         QFile file(loaclCong+"panel.conf");
         if(!file.exists())
             copyFileToPath(defaultConf,loaclCong,"panel.conf",false);
-        d->mSettings = new LXQt::Settings(QLatin1String("panel"), this);
+        d->mSettings = new UKUi::Settings(QLatin1String("panel"), this);
     }
     else
     {
         qDebug()<<"configFile.is not Empty"<<endl;
-        d->mSettings = new LXQt::Settings(configFile, QSettings::IniFormat, this);
+        d->mSettings = new UKUi::Settings(configFile, QSettings::IniFormat, this);
     }
     // This is a workaround for Qt 5 bug #40681.
     const auto allScreens = screens();
@@ -157,13 +157,13 @@ UKUIPanelApplication::UKUIPanelApplication(int& argc, char** argv)
 
 void UKUIPanelApplication::updateStylesheet(QString themeName)
 {
-    QFile file(QString(PLUGIN_DESKTOPS_DIR)+"/../panel.qss");
-    file.open(QFile::ReadOnly);
-    QTextStream filetext(&file);
-    QString stylesheet = filetext.readAll();
-    this->setStyleSheet(stylesheet);
-    file.close();
-    qDebug()<<"updateStylesheet:"<<themeName;
+//    QFile file(QString(PLUGIN_DESKTOPS_DIR)+"/../panel.qss");
+//    file.open(QFile::ReadOnly);
+//    QTextStream filetext(&file);
+//    QString stylesheet = filetext.readAll();
+//    this->setStyleSheet(stylesheet);
+//    file.close();
+//    qDebug()<<"updateStylesheet:"<<themeName;
 }
 
 UKUIPanelApplication::~UKUIPanelApplication()
@@ -249,8 +249,8 @@ void UKUIPanelApplication::reloadPanelsAsNeeded()
 void UKUIPanelApplication::screenDestroyed(QObject* screenObj)
 {
     // NOTE by PCMan: This is a workaround for Qt 5 bug #40681.
-    // With this very dirty workaround, we can fix lxqt/lxqt bug #204, #205, and #206.
-    // Qt 5 has two new regression bugs which breaks lxqt-panel in a multihead environment.
+    // With this very dirty workaround, we can fix ukui/ukui bug #204, #205, and #206.
+    // Qt 5 has two new regression bugs which breaks ukui-panel in a multihead environment.
     // #40681: Regression bug: QWidget::winId() returns old value and QEvent::WinIdChange event is not emitted sometimes. (multihead setup)
     // #40791: Regression: QPlatformWindow, QWindow, and QWidget::winId() are out of sync.
     // Explanations for the workaround:

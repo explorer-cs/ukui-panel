@@ -19,7 +19,7 @@ set(LIBRARIES
 )
 
 include_directories(
-    ${LXQT_INCLUDE_DIRS}
+    ${UKUI_INCLUDE_DIRS}
     "${CMAKE_CURRENT_SOURCE_DIR}/../panel"
 )
 

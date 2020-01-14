@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  *
  * This program or library is free software; you can redistribute it
  * and/or modify it under the terms of the GNU Lesser General Public
@@ -29,7 +29,7 @@
 #include <QAbstractListModel>
 #include <memory>
 
-namespace LXQt
+namespace UKUi
 {
     class PluginInfo;
     struct PluginData;
@@ -206,7 +206,7 @@ public slots:
      *
      * \note AddPluginDialog::pluginSelected is connected to this slot.
      */
-    void addPlugin(const LXQt::PluginInfo &desktopFile);
+    void addPlugin(const UKUi::PluginInfo &desktopFile);
     /*!
      * \brief removePlugin Removes a Plugin from the model.
      *
@@ -281,7 +281,7 @@ private:
      * its settings.
      * \return A QPointer to the Plugin that was loaded.
      */
-    QPointer<Plugin> loadPlugin(LXQt::PluginInfo const & desktopFile, QString const & settingsGroup);
+    QPointer<Plugin> loadPlugin(UKUi::PluginInfo const & desktopFile, QString const & settingsGroup);
     /*!
      * \brief findNewPluginSettingsGroup Creates a name for a new Plugin
      * that is not yet present in the settings file. Whenever multiple

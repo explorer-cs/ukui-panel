@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *   Maciej Płaza <plaza.maciej@gmail.com>
@@ -41,13 +41,12 @@
 #include <QDebug>
 #include <QTimer>
 
-#include <lxqt-globalkeys.h>
-#include "../common/ukuigridlayout.h"
+#include "../panel/common/ukuigridlayout.h"
 #include <XdgIcon>
 
 #include "ukuitaskbar.h"
 #include "ukuitaskgroup.h"
-using namespace LXQt;
+using namespace UKUi;
 
 /************************************************
 
@@ -74,11 +73,10 @@ UKUITaskBar::UKUITaskBar(IUKUIPanelPlugin *plugin, QWidget *parent) :
     mStyle(new LeftAlignedTextStyle())
 {
     setStyle(mStyle);
-    mLayout = new LXQt::GridLayout(this);
+    mLayout = new UKUi::GridLayout(this);
     setLayout(mLayout);
-    mLayout->setMargin(6);
-    mLayout->setSpacing(29);
-    mLayout->setStretch(LXQt::GridLayout::StretchHorizontal | LXQt::GridLayout::StretchVertical);
+    mLayout->setMargin(0);
+    mLayout->setStretch(UKUi::GridLayout::StretchHorizontal | UKUi::GridLayout::StretchVertical);
 
     realign();
 
@@ -556,7 +554,7 @@ void UKUITaskBar::realign()
 
     mLayout->setCellMinimumSize(minSize);
     mLayout->setCellMaximumSize(maxSize);
-    mLayout->setDirection(rotated ? LXQt::GridLayout::TopToBottom : LXQt::GridLayout::LeftToRight);
+    mLayout->setDirection(rotated ? UKUi::GridLayout::TopToBottom : UKUi::GridLayout::LeftToRight);
     mLayout->setEnabled(true);
 
     //our placement on screen could have been changed
@@ -647,42 +645,42 @@ void UKUITaskBar::registerShortcuts()
     // Register shortcuts to switch to the task
     // mPlaceHolder is always at position 0
     // tasks are at positions 1..10
-    GlobalKeyShortcut::Action * gshortcut;
-    QString path;
-    QString description;
-    for (int i = 1; i <= 10; ++i)
-    {
-        path = QString("/panel/%1/task_%2").arg(mPlugin->settings()->group()).arg(i);
-        description = tr("Activate task %1").arg(i);
+//    GlobalKeyShortcut::Action * gshortcut;
+//    QString path;
+//    QString description;
+//    for (int i = 1; i <= 10; ++i)
+//    {
+//        path = QString("/panel/%1/task_%2").arg(mPlugin->settings()->group()).arg(i);
+//        description = tr("Activate task %1").arg(i);
 
-        gshortcut = GlobalKeyShortcut::Client::instance()->addAction(QStringLiteral(), path, description, this);
+//        gshortcut = GlobalKeyShortcut::Client::instance()->addAction(QStringLiteral(), path, description, this);
 
-        if (nullptr != gshortcut)
-        {
-            mKeys << gshortcut;
-            connect(gshortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
-            connect(gshortcut, &GlobalKeyShortcut::Action::activated, mSignalMapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
-            mSignalMapper->setMapping(gshortcut, i);
-        }
-    }
+//        if (nullptr != gshortcut)
+//        {
+//            mKeys << gshortcut;
+//            connect(gshortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
+//            connect(gshortcut, &GlobalKeyShortcut::Action::activated, mSignalMapper, static_cast<void (QSignalMapper::*)()>(&QSignalMapper::map));
+//            mSignalMapper->setMapping(gshortcut, i);
+//        }
+//    }
 }
 
 void UKUITaskBar::shortcutRegistered()
 {
-    GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
+//    GlobalKeyShortcut::Action * const shortcut = qobject_cast<GlobalKeyShortcut::Action*>(sender());
 
-    disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
+//    disconnect(shortcut, &GlobalKeyShortcut::Action::registrationFinished, this, &UKUITaskBar::shortcutRegistered);
 
-    const int i = mKeys.indexOf(shortcut);
-    Q_ASSERT(-1 != i);
+//    const int i = mKeys.indexOf(shortcut);
+//    Q_ASSERT(-1 != i);
 
-    if (shortcut->shortcut().isEmpty())
-    {
-        // Shortcuts come in order they were registered
-        // starting from index 0
-        const int key = (i + 1) % 10;
-        shortcut->changeShortcut(QStringLiteral("Meta+%1").arg(key));
-    }
+//    if (shortcut->shortcut().isEmpty())
+//    {
+//        // Shortcuts come in order they were registered
+//        // starting from index 0
+//        const int key = (i + 1) % 10;
+//        shortcut->changeShortcut(QStringLiteral("Meta+%1").arg(key));
+//    }
 }
 
 void UKUITaskBar::activateTask(int pos)

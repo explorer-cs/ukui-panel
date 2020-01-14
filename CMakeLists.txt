@@ -8,7 +8,7 @@ project(ukui-panel)
 
 
 option(UPDATE_TRANSLATIONS "Update source translation translations/*.ts files" OFF)
-option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 'screensaver' plugin to 'quicklaunch'. This requires the lxqt-leave (lxqt-session) to be installed in runtime." OFF)
+option(WITH_SCREENSAVER_FALLBACK "Include support for converting the deprecated 'screensaver' plugin to 'quicklaunch'. This requires the ukui-leave (ukui-session) to be installed in runtime." OFF)
 # plugin-mainmenu
 option(USE_MENU_CACHE "Use menu-cached (no noticable penalty even on a 2004 single core pentium if not used)" OFF)
 
@@ -33,7 +33,7 @@ set(CMAKE_AUTORCC ON)
 
 set(REQUIRED_QT_VERSION "5.7.1")
 set(KF5_MINIMUM_VERSION "5.36.0")
-set(LXQT_MINIMUM_VERSION "0.14.1")
+set(UKUI_MINIMUM_VERSION "0.14.1")
 set(QTXDG_MINIMUM_VERSION "3.3.1")
 set(QT_MINIMUM_VERSION "5.7.1")
 
@@ -43,9 +43,9 @@ find_package(Qt5Widgets ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(Qt5X11Extras ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(Qt5Xml ${REQUIRED_QT_VERSION} REQUIRED)
 find_package(KF5WindowSystem ${KF5_MINIMUM_VERSION} REQUIRED)
-find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
-find_package(lxqt-globalkeys ${LXQT_MINIMUM_VERSION} REQUIRED)
-find_package(lxqt-globalkeys-ui ${LXQT_MINIMUM_VERSION} REQUIRED)
+#find_package(ukui ${UKUI_MINIMUM_VERSION} REQUIRED)
+#find_package(ukui-globalkeys ${UKUI_MINIMUM_VERSION} REQUIRED)
+#find_package(ukui-globalkeys-ui ${UKUI_MINIMUM_VERSION} REQUIRED)
 find_package(Qt5 ${QT_MINIMUM_VERSION} CONFIG REQUIRED Widgets DBus X11Extras LinguistTools)
 find_package(Qt5Xdg ${QTXDG_MINIMUM_VERSION} REQUIRED)
 find_package(X11 REQUIRED)
@@ -56,20 +56,20 @@ set(UKUI_PANEL_PATCH_VERSION 0)
 set(UKUI_MAJOR_VERSION 3)
 set(UKUI_MINOR_VERSION 0)
 
-set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/lxqt/translations/")
+set(UKUI_TRANSLATIONS_DIR "${CMAKE_INSTALL_FULL_DATAROOTDIR}/ukui/translations/")
 set(UKUI_PANEL_VERSION ${UKUI_MAJOR_VERSION}.${UKUI_MINOR_VERSION}.${UKUI_PANEL_PATCH_VERSION})
 add_definitions("-DUKUI_PANEL_VERSION=\"${UKUI_PANEL_VERSION}\"")
 
-#include(LXQtPreventInSourceBuilds)
-include(LXQtTranslate)
+include(./cmake/ukui-build-tools/modules/UKUiPreventInSourceBuilds.cmake)
+#include(./cmake/ukui-build-tools/modules/UKUiTranslate.cmake)
 
-# All LXQtCompilerSettings except CMAKE_MODULE_LINKER_FLAGS work just fine
-# So we reset only these Flags after loading LXQtCompilerSettings
-# lxqt-build-tools:
+# All UKUiCompilerSettings except CMAKE_MODULE_LINKER_FLAGS work just fine
+# So we reset only these Flags after loading UKUiCompilerSettings
+# ukui-build-tools:
 #  set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined ${SYMBOLIC_FLAGS} ${CMAKE_MODULE_LINKER_FLAGS}")
 message(STATUS "==OLD== CMAKE_MODULE_LINKER_FLAGS: ${CMAKE_MODULE_LINKER_FLAGS}")
 set( OLD_CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS}")
-#include(LXQtCompilerSettings NO_POLICY_SCOPE)
+#include(UKUiCompilerSettings NO_POLICY_SCOPE)
 set(CMAKE_MODULE_LINKER_FLAGS "${OLD_CMAKE_MODULE_LINKER_FLAGS} ${SYMBOLIC_FLAGS}")
 
 # Warning: This must be before add_subdirectory(panel). Move with caution.
@@ -93,7 +93,10 @@ message(STATUS "Panel plugins location: ${PLUGIN_DIR}")
 #    cmake -DWORLDCLOCK_PLUGIN=No ..  # Disable worldclock plugin
 
 include("cmake/BuildPlugin.cmake")
-
+#include(./cmake/ukui-build-tools/modules/UKUiTranslateDesktop.cmake)
+include(./cmake/ukui-build-tools/modules/UKUiTranslateDesktop.cmake)
+#include(./cmake/ukui-build-tools/modules/UKUiTranslationLoader.cmake)
+include(./cmake/ukui-build-tools/modules/UKUiTranslationLoader.cmake)
 set(ENABLED_PLUGINS) # list of enabled plugins
 set(STATIC_PLUGINS) # list of statically linked plugins
 
@@ -115,7 +118,7 @@ if(MAINMENU_PLUGIN)
     add_subdirectory(plugin-mainmenu)
 endif()
 
-setByDefault(MOUNT_PLUGIN Yes)
+#setByDefault(MOUNT_PLUGIN Yes)
 if(MOUNT_PLUGIN)
     list(APPEND ENABLED_PLUGINS "Mount")
     add_subdirectory(plugin-mount)
@@ -224,7 +227,7 @@ if(TASKVIEW_PLUGIN)
     add_subdirectory(plugin-taskview)
 endif(TASKVIEW_PLUGIN)
 
-setByDefault(SEGMENTATION_PLUGIN Yes)
+#setByDefault(SEGMENTATION_PLUGIN Yes)
 if(SEGMENTATION_PLUGIN)
 #    list(APPEND STATIC_PLUGINS "powerswitch")
 #    add_definitions(-DWITH_POWERSWITCH_PLUGIN)
@@ -249,8 +252,9 @@ message(STATUS "****************************************************************
 
 add_subdirectory(panel)
 
-# merged from lxqt-common
+# merged from ukui-common
 #add_subdirectory(autostart)
-add_subdirectory(menu)
-add_subdirectory(common)
+#add_subdirectory(menu)
+file(GLOB_RECURSE QRC_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
+
 

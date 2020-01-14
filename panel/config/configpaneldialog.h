@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -32,10 +32,10 @@
 #include "configpluginswidget.h"
 #include "../ukuipanel.h"
 
-//#include <LXQt/ConfigDialog>
-#include "../common/lxqtconfigdialog.h"
+//#include <UKUi/ConfigDialog>
+#include "../common/ukuiconfigdialog.h"
 
-class ConfigPanelDialog : public LXQt::ConfigDialog
+class ConfigPanelDialog : public UKUi::ConfigDialog
 {
     Q_OBJECT
 

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -31,8 +31,8 @@
 #include "../ukuipanel.h"
 #include <QSettings>
 #include <QTimer>
-//#include <LXQt/ConfigDialog>
-#include "../common/lxqtconfigdialog.h"
+//#include <UKUi/ConfigDialog>
+#include "../common/ukuiconfigdialog.h"
 
 class UKUIPanel;
 
@@ -52,6 +52,7 @@ public:
     IUKUIPanel::Position position() const { return mPosition; }
     void updateIconThemeSettings();
     IUKUIPanel::Position mPosition;
+    void editChangedByManual();
 
 signals:
     void changed();

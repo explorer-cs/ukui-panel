@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -60,7 +60,7 @@ private:
 class UKUITaskBarPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    // Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    // Q_PLUGIN_METADATA(IID "ukui.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const { return new UKUITaskBarPlugin(startupInfo);}

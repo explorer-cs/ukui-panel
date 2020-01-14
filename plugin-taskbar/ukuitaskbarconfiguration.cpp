@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Maciej Płaza <plaza.maciej@gmail.com>
  *   Kuzma Shapran <kuzma.shapran@gmail.com>

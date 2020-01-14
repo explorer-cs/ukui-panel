@@ -1,11 +1,11 @@
 ﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2012-2013 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Kuzma Shapran <kuzma.shapran@gmail.com>
  *
@@ -65,7 +65,7 @@ IndicatorCalendar::IndicatorCalendar(const IUKUIPanelPluginStartupInfo &startupI
     mContent = new CalendarActiveLabel;
     mWebViewDiag = new UkuiWebviewDialog;
 
-    mRotatedWidget = new LXQt::RotatedWidget(*mContent, mMainWidget);
+    mRotatedWidget = new UKUi::RotatedWidget(*mContent, mMainWidget);
 
     mRotatedWidget->setTransferWheelEvent(true);
 

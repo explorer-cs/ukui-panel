@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -26,11 +26,11 @@
  * END_COMMON_COPYRIGHT_HEADER */
 
 #include <QAction>
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 //#include <XdgIcon>
 #include "xdgicon.h"
-//#include <LXQt/Notification>
-#include "../common/lxqtnotification.h"
+//#include <UKUi/Notification>
+#include "../panel/common/ukuinotification.h"
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/NETWM>
 #include "showdesktop.h"
@@ -46,10 +46,10 @@ ShowDesktop::ShowDesktop(const IUKUIPanelPluginStartupInfo &startupInfo) :
     IUKUIPanelPlugin(startupInfo)
 {
 
-//    QAction * act = new QAction(XdgIcon::fromTheme("ukui-icon-theme-one"), tr(""), this);
-//    connect(act, SIGNAL(triggered()), this, SLOT(toggleShowingDesktop()));
+    QAction * act = new QAction(XdgIcon::fromTheme("ukui-icon-theme-one"), tr(""), this);
+    connect(act, SIGNAL(triggered()), this, SLOT(toggleShowingDesktop()));
 
-//    mButton.setDefaultAction(act);
+    mButton.setDefaultAction(act);
     mButton.setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     mButton.setAutoRaise(true);
     realign();

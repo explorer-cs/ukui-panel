@@ -1,11 +1,11 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2011 Razor team
- *            2014 LXQt team
+ *            2014 UKUi team
  * Authors:
  *   Alexander Sokoloff <sokoloff.a@gmail.com>
  *   Kuzma Shapran <kuzma.shapran@gmail.com>
@@ -31,8 +31,8 @@
 #include "ukuitaskgroup.h"
 #include "ukuitaskbar.h"
 
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
+//#include <UKUi/Settings>
+#include "../panel/common/ukuisettings.h"
 
 #include <QDebug>
 #include <XdgIcon>
@@ -56,7 +56,7 @@
 #include <KWindowSystem/KWindowSystem>
 // Necessary for closeApplication()
 #include <KWindowSystem/NETWM>
-#include <QX11Info>
+#include <QtX11Extras/QX11Info>
 
 bool UKUITaskButton::sDraggging = false;
 
@@ -101,7 +101,7 @@ UKUITaskButton::UKUITaskButton(const WId window, UKUITaskBar * taskbar, QWidget 
     mDNDTimer->setSingleShot(true);
     mDNDTimer->setInterval(700);
     connect(mDNDTimer, SIGNAL(timeout()), this, SLOT(activateWithDraggable()));
-    connect(LXQt::Settings::globalSettings(), SIGNAL(iconThemeChanged()), this, SLOT(updateIcon()));
+    connect(UKUi::Settings::globalSettings(), SIGNAL(iconThemeChanged()), this, SLOT(updateIcon()));
     connect(mParentTaskBar, &UKUITaskBar::iconByClassChanged, this, &UKUITaskButton::updateIcon);
     mParentTaskBar->setStyleSheet(
                 //正常状态样式

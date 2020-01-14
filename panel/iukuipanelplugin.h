@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2012 Razor team
  * Authors:
@@ -34,21 +34,21 @@
 #include "ukuipanelglobals.h"
 #include <QDebug>
 /**
-LXQt panel plugins are standalone sharedlibraries
+UKUi panel plugins are standalone sharedlibraries
 (*.so) located in PLUGIN_DIR (define provided by CMakeLists.txt).
 
 Plugin for the panel is a library written in C++. One more necessary thing
 is a .desktop file describing this plugin. The same may be additional files,
 like translations. Themselves plugins will be installed to
-/usr/local/lib/lxqt-panel or /usr/lib/lxqt-panel (dependent on cmake option
+/usr/local/lib/ukui-panel or /usr/lib/ukui-panel (dependent on cmake option
 -DCMAKE_INSTALL_PREFIX). Desktop files are installed to
-/usr/local/share/lxqt/lxqt-panel, translations to
-/usr/local/share/lxqt/lxqt-panel/PLUGIN_NAME.
+/usr/local/share/ukui/ukui-panel, translations to
+/usr/local/share/ukui/ukui-panel/PLUGIN_NAME.
 **/
 
 class QDialog;
 class PluginSettings;
-namespace LXQt
+namespace UKUi
 {
     class PluginInfo;
 }
@@ -57,11 +57,11 @@ struct UKUI_PANEL_API IUKUIPanelPluginStartupInfo
 {
     IUKUIPanel *ukuiPanel;
     PluginSettings *settings;
-    const LXQt::PluginInfo *desktopFile;
+    const UKUi::PluginInfo *desktopFile;
 };
 
 
-/** \brief Base abstract class for LXQt panel widgets/plugins.
+/** \brief Base abstract class for UKUi panel widgets/plugins.
 All plugins *must* be inherited from this one.
 
 This class provides some basic API and inherited/implemented
@@ -174,7 +174,7 @@ public:
 
 
     PluginSettings *settings() const { return mSettings; }
-    const LXQt::PluginInfo *desktopFile() const { return mDesktopFile; }
+    const UKUi::PluginInfo *desktopFile() const { return mDesktopFile; }
 
     /**
      Helper functions for calculating global screen position of some popup window with windowSize size.
@@ -212,7 +212,7 @@ public:
 private:
     PluginSettings *mSettings;
     IUKUIPanel *mPanel;
-    const LXQt::PluginInfo *mDesktopFile;
+    const UKUi::PluginInfo *mDesktopFile;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(IUKUIPanelPlugin::Flags)
@@ -221,13 +221,13 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(IUKUIPanelPlugin::Flags)
 Every plugin must have the IUKUIPanelPluginLibrary loader. You should only reimplement the instance() method which should return your plugin.
 Example:
 @code
-class LXQtClockPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
+class UKUiClockPluginLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_PLUGIN_METADATA(IID "ukui.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
-    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) { return new LXQtClock(startupInfo);}
+    IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) { return new UKUiClock(startupInfo);}
 };
 @endcode
 **/
@@ -247,6 +247,6 @@ public:
 
 
 Q_DECLARE_INTERFACE(IUKUIPanelPluginLibrary,
-                    "lxqt.org/Panel/PluginInterface/3.0")
+                    "ukui.org/Panel/PluginInterface/3.0")
 
 #endif // IUKUIPANELPLUGIN_H

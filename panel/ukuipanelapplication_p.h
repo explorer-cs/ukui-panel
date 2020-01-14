@@ -1,5 +1,5 @@
 /*
- * LXQt - a lightweight, Qt based, desktop toolset
+ * UKUi - a lightweight, Qt based, desktop toolset
  * Copyright (C) 2016  Luís Pereira <luis.artur.pereira@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -23,7 +23,7 @@
 
 #include "ukuipanelapplication.h"
 
-namespace LXQt {
+namespace UKUi {
 class Settings;
 }
 
@@ -34,7 +34,7 @@ public:
     UKUIPanelApplicationPrivate(UKUIPanelApplication *q);
     ~UKUIPanelApplicationPrivate() {};
 
-    LXQt::Settings *mSettings;
+    UKUi::Settings *mSettings;
 
     IUKUIPanel::Position computeNewPanelPosition(const UKUIPanel *p, const int screenNum);
 

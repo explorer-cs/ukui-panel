@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  * Authors:
  *   Paulo Lieuthier <paulolieuthier@gmail.com>
  *
@@ -33,7 +33,7 @@
 class PluginSettingsFactory
 {
 public:
-    static PluginSettings * create(LXQt::Settings *settings, const QString &group, QObject *parent = nullptr);
+    static PluginSettings * create(UKUi::Settings *settings, const QString &group, QObject *parent = nullptr);
 };
 
 #endif //PLUGIN_SETTINGS_P_H

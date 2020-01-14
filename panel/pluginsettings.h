@@ -1,10 +1,10 @@
 ﻿/* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  * Authors:
  *   Paulo Lieuthier <paulolieuthier@gmail.com>
  *
@@ -33,7 +33,7 @@
 #include <QVariant>
 #include "ukuipanelglobals.h"
 
-namespace LXQt
+namespace UKUi
 {
     class Settings;
 }
@@ -86,7 +86,7 @@ Q_SIGNALS:
     void settingsChanged();
 
 private:
-    explicit PluginSettings(LXQt::Settings *settings, const QString &group, QObject *parent = nullptr);
+    explicit PluginSettings(UKUi::Settings *settings, const QString &group, QObject *parent = nullptr);
 
 private:
     QScopedPointer<PluginSettingsPrivate> d_ptr;

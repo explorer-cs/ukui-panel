@@ -23,11 +23,10 @@ set(UIS
 )
 
 set(LIBRARIES
-    lxqt
-    lxqt-globalkeys
     Qt5Xdg
+    Qt5X11Extras
 )
-
+find_package(X11 REQUIRED)
 #find_package(PkgConfig)
 ##configure_file(no_keywords link_pkgconfig)
 #pkg_check_modules(TASKBAR_DEPS REQUIRED Qt5X11Extras)

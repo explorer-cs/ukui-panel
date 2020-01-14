@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  * Authors:
  *   Paulo Lieuthier <paulolieuthier@gmail.com>
  *
@@ -27,13 +27,13 @@
 
 #include "pluginsettings.h"
 #include "pluginsettings_p.h"
-//#include <LXQt/Settings>
-#include "../common/ukuisettings.h"
+//#include <UKUi/Settings>
+#include "common/ukuisettings.h"
 
 class PluginSettingsPrivate
 {
 public:
-    PluginSettingsPrivate(LXQt::Settings* settings, const QString &group)
+    PluginSettingsPrivate(UKUi::Settings* settings, const QString &group)
         : mSettings(settings)
         , mOldSettings(settings)
         , mGroup(group)
@@ -46,8 +46,8 @@ public:
         return mGroup + "/" + prefix();
     }
 
-    LXQt::Settings *mSettings;
-    LXQt::SettingsCache mOldSettings;
+    UKUi::Settings *mSettings;
+    UKUi::SettingsCache mOldSettings;
     QString mGroup;
     QStringList mSubGroups;
 };
@@ -59,12 +59,12 @@ QString PluginSettingsPrivate::prefix() const
     return QString();
 }
 
-PluginSettings::PluginSettings(LXQt::Settings* settings, const QString &group, QObject *parent)
+PluginSettings::PluginSettings(UKUi::Settings* settings, const QString &group, QObject *parent)
     : QObject(parent)
     , d_ptr(new PluginSettingsPrivate{settings, group})
 {
     Q_D(PluginSettings);
-    connect(d->mSettings, &LXQt::Settings::settingsChangedFromExternal, this, &PluginSettings::settingsChanged);
+    connect(d->mSettings, &UKUi::Settings::settingsChangedFromExternal, this, &PluginSettings::settingsChanged);
 }
 
 QString PluginSettings::group() const
@@ -212,7 +212,7 @@ void PluginSettings::loadFromCache()
     d->mSettings->endGroup();
 }
 
-PluginSettings* PluginSettingsFactory::create(LXQt::Settings *settings, const QString &group, QObject *parent/* = nullptr*/)
+PluginSettings* PluginSettingsFactory::create(UKUi::Settings *settings, const QString &group, QObject *parent/* = nullptr*/)
 {
     return new PluginSettings{settings, group, parent};
 }

@@ -1,8 +1,8 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
  * Copyright: 2010-2011 Razor team
  * Authors:
@@ -30,8 +30,8 @@
 #include "plugin.h"
 #include "../ukuipanelapplication.h"
 
-//#include <LXQt/HtmlDelegate>
-#include "../common/ukuihtmldelegate.h"
+//#include <UKUi/HtmlDelegate>
+#include "common/ukuihtmldelegate.h"
 #include <XdgIcon>
 #include <XdgDirs>
 
@@ -54,12 +54,12 @@ AddPluginDialog::AddPluginDialog(QWidget *parent):
     desktopFilesDirs << QString("%1/%2").arg(XdgDirs::dataHome(), "/ukui/ukui-panel");
     desktopFilesDirs << PLUGIN_DESKTOPS_DIR;
 
-    mPlugins = LXQt::PluginInfo::search(desktopFilesDirs, QLatin1String("UKUIPanel/Plugin"), QLatin1String("*"));
-    std::sort(mPlugins.begin(), mPlugins.end(), [](const LXQt::PluginInfo &p1, const LXQt::PluginInfo &p2) {
+    mPlugins = UKUi::PluginInfo::search(desktopFilesDirs, QLatin1String("UKUIPanel/Plugin"), QLatin1String("*"));
+    std::sort(mPlugins.begin(), mPlugins.end(), [](const UKUi::PluginInfo &p1, const UKUi::PluginInfo &p2) {
         return p1.name() < p2.name() || (p1.name() == p2.name() && p1.comment() < p2.comment());
     });
 
-    ui->pluginList->setItemDelegate(new LXQt::HtmlDelegate(QSize(32, 32), ui->pluginList));
+    ui->pluginList->setItemDelegate(new UKUi::HtmlDelegate(QSize(32, 32), ui->pluginList));
     ui->pluginList->setContextMenuPolicy(Qt::CustomContextMenu);
 
     filter();
@@ -96,7 +96,7 @@ void AddPluginDialog::filter()
     int pluginCount = mPlugins.length();
     for (int i = 0; i < pluginCount; ++i)
     {
-        const LXQt::PluginInfo &plugin = mPlugins.at(i);
+        const UKUi::PluginInfo &plugin = mPlugins.at(i);
 
         QString s = QString("%1 %2 %3 %4 %5").arg(plugin.name(),
                                                plugin.comment(),
@@ -129,7 +129,7 @@ void AddPluginDialog::emitPluginSelected()
     QListWidget* pluginList = ui->pluginList;
     if (pluginList->currentItem() && pluginList->currentItem()->isSelected())
     {
-        LXQt::PluginInfo plugin = mPlugins.at(pluginList->currentItem()->data(INDEX_ROLE).toInt());
+        UKUi::PluginInfo plugin = mPlugins.at(pluginList->currentItem()->data(INDEX_ROLE).toInt());
         emit pluginSelected(plugin);
     }
 }

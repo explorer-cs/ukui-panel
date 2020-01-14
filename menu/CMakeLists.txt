@@ -1,7 +1,7 @@
 file(GLOB DIRECTORY_FILES_IN desktop-directories/*.directory.in)
 
 # Translations **********************************
-#lxqt_translate_desktop(DIRECTORY_FILES
+#ukui_translate_desktop(DIRECTORY_FILES
 #    SOURCES
 #        ${DIRECTORY_FILES_IN}
 #)
@@ -15,8 +15,8 @@ install(FILES
 )
 
 install(FILES
-    lxqt-applications.menu
-    DESTINATION "${LXQT_ETC_XDG_DIR}/menus"
+    ukui-applications.menu
+    DESTINATION "${UKUI_ETC_XDG_DIR}/menus"
     COMPONENT Runtime
 )
 

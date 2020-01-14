@@ -1,10 +1,10 @@
 /* BEGIN_COMMON_COPYRIGHT_HEADER
  * (c)LGPL2+
  *
- * LXQt - a lightweight, Qt based, desktop toolset
- * https://lxqt.org
+ * UKUi - a lightweight, Qt based, desktop toolset
+ * https://ukui.org
  *
- * Copyright: 2015 LXQt team
+ * Copyright: 2015 UKUi team
  * Authors:
  *   Paulo Lieuthier <paulolieuthier@gmail.com>
  *
@@ -32,7 +32,7 @@
 #include "../plugin.h"
 #include "../iukuipanelplugin.h"
 
-#include <HtmlDelegate>
+#include "../common/ukuihtmldelegate.h"
 #include <QPushButton>
 #include <QItemSelectionModel>
 
@@ -50,7 +50,7 @@ ConfigPluginsWidget::ConfigPluginsWidget(UKUIPanel *panel, QWidget* parent) :
     }
     {
         QScopedPointer<QAbstractItemDelegate> d(ui->listView_plugins->itemDelegate());
-        ui->listView_plugins->setItemDelegate(new LXQt::HtmlDelegate(QSize(16, 16), ui->listView_plugins));
+        ui->listView_plugins->setItemDelegate(new UKUi::HtmlDelegate(QSize(16, 16), ui->listView_plugins));
     }
 
     resetButtons();
