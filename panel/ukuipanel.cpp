@@ -809,16 +809,16 @@ void UKUIPanel::updateStyleSheet()
             .arg((float) mOpacity / 100);
 //        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
         sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(8,10,12,90%); }");
-        GSettings *settings = NULL;
-        QString str;
-        char *path;
-        char color_hex[10];
-        path = g_strdup_printf ("%s/","/org/mate/desktop/interface");
-        settings = g_settings_new_with_path ("org.mate.interface",path);
-        if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-blue"))
-        {
+//        GSettings *settings = NULL;
+//        QString str;
+//        char *path;
+//        char color_hex[10];
+//        path = g_strdup_printf ("%s/","/org/mate/desktop/interface");
+//        settings = g_settings_new_with_path ("org.mate.interface",path);
+//        if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-blue"))
+//        {
 
-        }
+//        }
     }
 
     if (QFileInfo(mBackgroundImage).exists())

@@ -427,6 +427,7 @@ private slots:
     void setPanelStyle();
     void systeMonitor();
     void showDesktop();
+    void showTaskView();
     void realign();
     /**
      * @brief Moves a plugin in PanelPluginsModel, i.e. calls
