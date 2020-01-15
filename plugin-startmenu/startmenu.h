@@ -39,7 +39,6 @@ private:
     //StartMenuWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
     QToolButton mButton;
-    StartMenu *mStartMenu;
     bool mCapturing;
 
 private slots:

@@ -1,4 +1,4 @@
-etc/xdg
+#etc/xdg
 usr/bin/ukui-panel
 usr/include/ukui
 usr/lib/*/ukui-panel

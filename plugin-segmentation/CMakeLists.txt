@@ -10,10 +10,12 @@ set(SOURCES
 
 set(UIS
 )
-
+set(LIBRARIES
+    Qt5Xdg
+)
 install(FILES
     img/segmentation.svg img/segmentationh.svg
-    DESTINATION "${LXQT_DATA_DIR}/plugin-segmentation/img"
+    DESTINATION "${PACKAGE_DATA_DIR}/plugin-segmentation/img"
     COMPONENT Runtime
 )
 set(UKUI_TRANSLATIONS_DAT "/usr/local/share/")

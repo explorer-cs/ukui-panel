@@ -103,6 +103,10 @@ extern void * loadPluginTranslation_calendar_helper;
 #include "../plugin-startmenu/startmenu.h" // startmenu
 extern void * loadPluginTranslation_startmenu_helper;
 #endif
+#if defined(WITH_SEGMENTATION_PLUGIN)
+#include "../plugin-segmentation/segmentation.h" // startmenu
+extern void * loadPluginTranslation_segmentation_helper;
+#endif
 
 
 QColor Plugin::mMoveMarkerColor= QColor(255, 0, 0, 255);
@@ -268,6 +272,9 @@ namespace
 #endif
 #if defined(WITH_STARTMENU_PLUGIN)
         std::make_tuple(QLatin1String("startmenu"), plugin_ptr_t{new UKUIStartMenuLibrary}, loadPluginTranslation_startmenu_helper),// startmenu
+#endif
+#if defined(WITH_SEGMENTATION_PLUGIN)
+        std::make_tuple(QLatin1String("segmentation"), plugin_ptr_t{new StartMenuLibrary}, loadPluginTranslation_segementation_helper),// startmenu
 #endif
     };
     static constexpr plugin_tuple_t const * const plugins_begin = static_plugins;

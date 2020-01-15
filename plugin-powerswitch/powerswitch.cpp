@@ -53,7 +53,7 @@ PowerSwitchWidget::PowerSwitchWidget(QWidget *parent):
                 //正常状态样式
                 "QToolButton{"
                 /*"background-color:rgba(100,225,100,80%);"//背景色（也可以设置图片）*/
-                "qproperty-icon:url(/usr/share/plugin-powerswitch/img/powerswitch.svg);"
+                "qproperty-icon:url(/usr/share/ukui-panel/plugin-powerswitch/img/powerswitch.svg);"
                 "qproperty-iconSize:24px 24px;"
                 "border-style:outset;"                  //边框样式（inset/outset）
                 "border-width:0px;"                     //边框宽度像素

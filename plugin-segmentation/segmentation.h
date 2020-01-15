@@ -32,21 +32,24 @@ public:
     ~Segmentation();
 
     virtual QWidget *widget() { return &mButton; }
-    virtual QString themeId() const { return QStringLiteral("startmenu"); }
+    virtual QString themeId() const { return QStringLiteral("segmentation"); }
     void realign();
     virtual IUKUIPanelPlugin::Flags flags() const { return PreferRightAlignment | HaveConfigDialog ; }
 private:
     //StartMenuWidget mWidget;
-    QWidget mWidget;
+    //QWidget mWidget;
     IUKUIPanelPlugin *mPlugin;
     QToolButton mButton;
     bool mCapturing;
+
+private slots:
+    void captureMouse();
 };
 
 class StartMenuLibrary: public QObject, public IUKUIPanelPluginLibrary
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "lxqt.org/Panel/PluginInterface/3.0")
+    Q_PLUGIN_METADATA(IID "ukui.org/Panel/PluginInterface/3.0")
     Q_INTERFACES(IUKUIPanelPluginLibrary)
 public:
     IUKUIPanelPlugin *instance(const IUKUIPanelPluginStartupInfo &startupInfo) const
