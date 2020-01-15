@@ -53,6 +53,7 @@
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/NETWM>
 
+
 // Turn on this to show the time required to load each plugin during startup
 // #define DEBUG_PLUGIN_LOADTIME
 #ifdef DEBUG_PLUGIN_LOADTIME
@@ -784,6 +785,10 @@ void UKUIPanel::showDesktop()
 {
     KWindowSystem::setShowingDesktop(!KWindowSystem::showingDesktop());
 }
+void UKUIPanel::showTaskView()
+{
+    system("ukui-window-switch --show-workspace");
+}
 void UKUIPanel::updateStyleSheet()
 {
     QStringList sheet;
@@ -804,6 +809,16 @@ void UKUIPanel::updateStyleSheet()
             .arg((float) mOpacity / 100);
 //        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
         sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(8,10,12,90%); }");
+        GSettings *settings = NULL;
+        QString str;
+        char *path;
+        char color_hex[10];
+        path = g_strdup_printf ("%s/","/org/mate/desktop/interface");
+        settings = g_settings_new_with_path ("org.mate.interface",path);
+        if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-blue"))
+        {
+
+        }
     }
 
     if (QFileInfo(mBackgroundImage).exists())
@@ -1160,34 +1175,26 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 */
     menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("设置任务栏"),
+                   tr("Set up Panel"),
                    this, SLOT(setPanelStyle())
                   )->setDisabled(mLockPanel);
 
     menu->addSeparator();
 
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("显示'任务视图'按钮"),
-                   this, SLOT(setPanelStyle())
-                  )->setDisabled(mLockPanel);
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("显示'屏幕按键'按钮"),
-                   this, SLOT(setPanelStyle())
-                  )->setDisabled(mLockPanel);
-    menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("显示'工作区切换'按钮"),
-                   this, SLOT(setPanelStyle())
+                   tr("Show Taskview"),
+                   this, SLOT(showTaskView())
                   )->setDisabled(mLockPanel);
 
         menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                       tr("显示桌面"),
+                       tr("Show Desktop"),
                        this, SLOT(showDesktop())
                       )->setDisabled(mLockPanel);
 
     menu->addSeparator();
 
     menu->addAction(XdgIcon::fromTheme(QLatin1String("list-remove")),               
-    tr("系统监视器"),
+    tr("Show System Monitor"),
                    this, SLOT(systeMonitor())
                   )->setDisabled(mLockPanel);
 
@@ -1207,7 +1214,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
 
     QMenu *pmenu_panelsize;
     pmenu_panelsize=new QMenu(this);
-    pmenu_panelsize->setTitle("调整高度");
+    pmenu_panelsize->setTitle("调整大小");
     pmenu_panelsize->addAction(pmenuaction_s);
     pmenu_panelsize->addAction(pmenuaction_m);
     pmenu_panelsize->addAction(pmenuaction_l);
@@ -1307,7 +1314,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     connect(act_lock, &QAction::triggered, [this] { mLockPanel = !mLockPanel; saveSettings(false); });
 /*
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
-                   tr("重置任务栏"),
+                   tr("Reset Panel"),
                    this, SLOT(panelReset())
                   )->setDisabled(mLockPanel);
 */
