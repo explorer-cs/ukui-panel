@@ -708,6 +708,7 @@ private slots:
     void panelsizechange_m();
     void panelsizechange_l();
     void panelReset();
+    void panelBackgroundChange();
 
 public:
     //ConfigPanelWidget *mconfigpanelwidget;

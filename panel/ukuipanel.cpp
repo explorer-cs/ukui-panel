@@ -52,8 +52,9 @@
 
 #include <KWindowSystem/KWindowSystem>
 #include <KWindowSystem/NETWM>
-
-
+//#include <glib.h>
+//#include <gio/gio.h>
+#include <QGSettings>
 // Turn on this to show the time required to load each plugin during startup
 // #define DEBUG_PLUGIN_LOADTIME
 #ifdef DEBUG_PLUGIN_LOADTIME
@@ -81,6 +82,9 @@
 #define CFG_KEY_SHOW_DELAY         "show-delay"
 #define CFG_KEY_LOCKPANEL          "lockPanel"
 
+
+#define GSETTINGS_SCHEMA_SCREENSAVER "org.mate.interface"
+#define KEY_MODE "gtk-theme"
 /************************************************
  Returns the Position by the string.
  String is one of "Top", "Left", "Bottom", "Right", string is not case sensitive.
@@ -573,6 +577,21 @@ void UKUIPanel::setMargins()
 
 void UKUIPanel::realign()
 {
+    QStringList sheet;
+    QGSettings *gsettings;
+    gsettings= new QGSettings("org.mate.interface", "", this);
+    QString mode;
+    mode=gsettings->get("gtk-theme").toString();
+    qDebug()<<"ukui-theme:"<<mode;
+    if(mode=="ukui-blue")
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(230,232,235,90%); }");
+    }
+    else
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(19,22,28,90%); }");
+    }
+    setStyleSheet(sheet.join("\n"));
     if (!isVisible())
         return;
 #if 0
@@ -791,40 +810,37 @@ void UKUIPanel::showTaskView()
 }
 void UKUIPanel::updateStyleSheet()
 {
-    QStringList sheet;
-    sheet << QString("Plugin > QAbstractButton, UKUiTray { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
-    sheet << QString("Plugin > * > QAbstractButton, TrayIcon { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
 
-    if (mFontColor.isValid())
-        sheet << QString("Plugin * { color: " + mFontColor.name() + "; }");
+//    sheet << QString("Plugin > QAbstractButton, UKUiTray { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
+//    sheet << QString("Plugin > * > QAbstractButton, TrayIcon { qproperty-iconSize: %1px %1px; }").arg(mIconSize);
 
-    QString object = UKUIPanelWidget->objectName();
+//    if (mFontColor.isValid())
+//        sheet << QString("Plugin * { color: " + mFontColor.name() + "; }");
 
-    if (mBackgroundColor.isValid())
-    {
-        QString color = QString("%1, %2, %3, %4")
-            .arg(mBackgroundColor.red())
-            .arg(mBackgroundColor.green())
-            .arg(mBackgroundColor.blue())
-            .arg((float) mOpacity / 100);
-//        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
-        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(8,10,12,90%); }");
+//    QString object = UKUIPanelWidget->objectName();
+
+//    if (mBackgroundColor.isValid())
+//    {
+//        QString color = QString("%1, %2, %3, %4")
+//            .arg(mBackgroundColor.red())
+//            .arg(mBackgroundColor.green())
+//            .arg(mBackgroundColor.blue())
+//            .arg((float) mOpacity / 100);
+////        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(" + color + "); }");
+
+//    }
+//   sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(8,10,12,90%); }");
 //        GSettings *settings = NULL;
 //        QString str;
 //        char *path;
 //        char color_hex[10];
 //        path = g_strdup_printf ("%s/","/org/mate/desktop/interface");
 //        settings = g_settings_new_with_path ("org.mate.interface",path);
-//        if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-blue"))
+//        if(!strcmp(g_settings_get_string(settings, "gtk-theme"),"ukui-white"))
 //        {
-
+//            qDebug()<<"ukui-white";
 //        }
-    }
 
-    if (QFileInfo(mBackgroundImage).exists())
-        sheet << QString("UKUIPanel #BackgroundWidget { background-image: url('" + mBackgroundImage + "');}");
-
-    setStyleSheet(sheet.join("\n"));
 }
 
 
@@ -1176,7 +1192,7 @@ void UKUIPanel::showPopupMenu(Plugin *plugin)
     menu->setWindowOpacity(0.9);
     menu->addAction(XdgIcon::fromTheme(QLatin1String("configure")),
                    tr("Set up Panel"),
-                   this, SLOT(setPanelStyle())
+                   this, SLOT(panelBackgroundChange())
                   )->setDisabled(mLockPanel);
 
     menu->addSeparator();
@@ -1676,5 +1692,14 @@ void UKUIPanel::panelReset()
 {
     QFile::remove(QString(qgetenv("HOME"))+"/.config/lxqt/panel.conf");
     system("killall ukui-panel");
+}
+void UKUIPanel::panelBackgroundChange()
+{
+    qDebug()<<"panel background change ***";
+    if(mConfigDialog.isNull())
+    {
+        mConfigDialog = new ConfigPanelDialog(this, nullptr);
+    }
+    mConfigDialog->backgroundChange();
 }
 
