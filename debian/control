@@ -32,7 +32,8 @@ Build-Depends: debhelper (>= 12),
                libxcb-util-dev,
                libxcb-damage0-dev,
 	       cmake,
-	       libqt5xdg-dev	       
+	       libqt5xdg-dev,
+		libgsettings-qt-dev	       
 Standards-Version: 4.3.0
 Vcs-Browser: https://github.com/explorer-cs/ukui-panel
 Vcs-Git: https://github.com/explorer-cs/ukui-panel

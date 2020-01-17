@@ -137,6 +137,7 @@ int UKUIQuickLaunch::countOfButtons() const
 
 void UKUIQuickLaunch::realign()
 {
+    btn->setFixedSize(46,mPlugin->panel()->panelSize());
     mLayout->setEnabled(false);
     IUKUIPanel *panel = mPlugin->panel();
 
@@ -165,8 +166,8 @@ void UKUIQuickLaunch::addButton(QuickLaunchAction* action)
 {
     mLayout->setEnabled(false);
 
-    QuickLaunchButton* btn = new QuickLaunchButton(action, mPlugin, this);
-    btn->setFixedSize(mPlugin->panel()->panelSize(),mPlugin->panel()->panelSize());
+    btn = new QuickLaunchButton(action, mPlugin, this);
+    btn->setFixedSize(46,mPlugin->panel()->panelSize());
 
     mLayout->addWidget(btn);
     //set button style

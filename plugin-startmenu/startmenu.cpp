@@ -11,7 +11,21 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
     realign();
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
-    mButton.setFixedSize(panel()->panelSize(),panel()->panelSize());
+
+
+
+
+}
+
+
+StartMenu::~StartMenu()
+{
+}
+
+
+void StartMenu::realign()
+{
+    mButton.setFixedSize(46,panel()->panelSize());
     mButton.setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
@@ -36,20 +50,6 @@ StartMenu::StartMenu(const IUKUIPanelPluginStartupInfo &startupInfo) :
                 "background-color:rgba(190,216,239,12%);"
                 "}"
                 );
-
-
-
-
-}
-
-
-StartMenu::~StartMenu()
-{
-}
-
-
-void StartMenu::realign()
-{
 
 }
 

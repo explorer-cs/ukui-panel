@@ -40,9 +40,7 @@ PowerSwitchWidget::PowerSwitchWidget(QWidget *parent):
 
 
     //mButton.setAutoRaise(true);
-    mButton.setFixedSize(40,40);
-
-
+    mButton.setFixedSize(46,46);
 
     mCapturing = false;
     connect(&mButton, SIGNAL(clicked()), this, SLOT(captureMouse()));
