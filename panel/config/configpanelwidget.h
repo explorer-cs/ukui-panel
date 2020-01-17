@@ -67,6 +67,7 @@ void positionChanged_right();
 void changeToMidSize();
 void changeToLargeSize();
 void changeToSmallSize();
+void changeBackground();
 
 
 private slots:

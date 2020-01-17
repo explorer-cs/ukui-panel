@@ -154,7 +154,7 @@ void UKUITaskGroup::contextMenuEvent(QContextMenuEvent *event)
 
     QMenu * menu = new QMenu(tr("Group"));
     menu->setAttribute(Qt::WA_DeleteOnClose);
-    QAction *a = menu->addAction(XdgIcon::fromTheme("process-stop"), tr("Close group"));
+    QAction *a = menu->addAction(XdgIcon::fromTheme("process-stop"), tr("关闭"));
     connect(a, SIGNAL(triggered()), this, SLOT(closeGroup()));
     connect(menu, &QMenu::aboutToHide, [this] {
         mPreventPopup = false;
@@ -188,7 +188,7 @@ UKUITaskButton * UKUITaskGroup::addWindow(WId id)
     btn->setStyleSheet(
                 //正常状态样式
                 "QToolButton{"
-                "background-color:rgba(174,0,0,90%);"//背景色（也可以设置图片）
+                "background-color:rgba(190,216,239,5%);"//背景色（也可以设置图片）
                 "qproperty-iconSize:24px 24px;"
                 "border-style:outset;"                  //边框样式（inset/outset）
                 "border-width:0px;"                     //边框宽度像素
@@ -511,14 +511,6 @@ void UKUITaskGroup::setPopupVisible(bool visible, bool fast)
 {
     if (visible && !mPreventPopup && !mSingleButton)
     {
-
-        if (!mPopup->isVisible())
-        {
-            // setup geometry
-
-            recalculateFrameSize();
-            recalculateFramePosition();
-        }
         showPreview();
         /* for origin preview
         plugin()->willShowWindow(mPopup);
@@ -775,7 +767,7 @@ void UKUITaskGroup::showPreview()
         //QLabel * label = new QLabel(mPopup); // 创建堆对象
 
         UKUITaskButton *btn = it.value();
-        btn->setFixedSize(thumbnail.width(),thumbnail.height());
+        btn->setFixedSize(thumbnail.width(),80);
         btn->setIcon(thumbnail);
         btn->setIconSize(thumbnail.rect().size());
 
@@ -786,11 +778,7 @@ void UKUITaskGroup::showPreview()
         XCloseDisplay(display);
     }
     plugin()->willShowWindow(mPopup);
-    //mPopup->adjustSize();
-    //mPopup->setGeometry(300,QApplication::desktop()->availableGeometry().height() - 130,200,150);
-    //recalculateFrameIfVisible();
-    //recalculateFramePosition();
-    //mPopup->setGeometry(mPlugin->panel()->calculatePopupWindowPos(QPoint(0,QApplication::desktop()->availableGeometry().height() - mPopup->height()),QSize(200,150)));
+    mPopup->setGeometry(plugin()->panel()->calculatePopupWindowPos(mapToGlobal(QPoint(0,0)), mPopup->size()));
     mPopup->show();
 
    emit popupShown(this);

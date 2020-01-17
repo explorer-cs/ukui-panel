@@ -61,6 +61,7 @@ public slots:
     void configPanelSize_m();
     void configPanelSize_l();
     void configPanelSize_S();
+    void backgroundChange();
 
 signals:
     void testsig();

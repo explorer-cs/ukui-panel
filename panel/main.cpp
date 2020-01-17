@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
     QTranslator translator;
     if (locale == "zh_CN"){
-        if (translator.load("ukui-panel_zh_CN.qm", "/usr/share/plugin-startmenu/img"))
+        if (translator.load("ukui-panel_zh_CN.qm", "/usr/share/ukui-panel/plugin-startmenu/img"))
             app.installTranslator(&translator);
         else
             qDebug() << "Load translations file" << locale << "failed!";

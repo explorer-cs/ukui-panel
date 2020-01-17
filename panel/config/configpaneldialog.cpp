@@ -107,4 +107,9 @@ void ConfigPanelDialog::configPanelSize_l()
 {
     mPanelPage->changeToLargeSize();
 }
+void ConfigPanelDialog::backgroundChange()
+{
+    mPanelPage->changeBackground();
+}
+
 

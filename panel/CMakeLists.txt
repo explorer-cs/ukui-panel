@@ -165,13 +165,23 @@ add_executable(${PROJECT}
     ${SOURCES}
     ${UI}
 )
-
+find_package(PkgConfig)
+pkg_check_modules(GLIB2 REQUIRED glib-2.0)
+pkg_check_modules(GIO2 REQUIRED gio-2.0)
+pkg_check_modules(Gsetting REQUIRED gsettings-qt)
+include_directories(${GLIB2_INCLUDE_DIRS})
+include_directories(${GIO2_INCLUDE_DIRS})
+include_directories(${Gsetting_INCLUDE_DIRS})
+#ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 target_link_libraries(${PROJECT}
     ${LIBRARIES}
     ${QTX_LIBRARIES}
     KF5::WindowSystem
     ${STATIC_PLUGINS}
     Qt5Xdg
+    ${GLIB2_LIBRARIES}
+    ${GIO2_LIBRARIES}
+    ${Gsetting_LIBRARIES}
 )
 
 

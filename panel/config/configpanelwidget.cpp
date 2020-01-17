@@ -38,9 +38,10 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QStandardPaths>
-
+#include <QGSettings>
 using namespace UKUi;
-
+#define GSETTINGS_SCHEMA_SCREENSAVER "org.mate.interface"
+#define KEY_MODE "gtk-theme"
 struct ScreenPosition
 {
     int screen;
@@ -122,6 +123,10 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
 
     connect(ui->groupBox_icon, &QGroupBox::clicked, this, &ConfigPanelWidget::editChanged);
     connect(ui->comboBox_icon, QOverload<int>::of(&QComboBox::activated), this, &ConfigPanelWidget::editChanged);
+    QStringList sheet;
+    QGSettings *gsettings;
+    gsettings= new QGSettings("org.mate.interface", "", this);
+    connect(gsettings,&QGSettings::changed,this,&ConfigPanelWidget::reset);
 
 }
 
@@ -131,6 +136,21 @@ ConfigPanelWidget::ConfigPanelWidget(UKUIPanel *panel, QWidget *parent) :
  ************************************************/
 void ConfigPanelWidget::reset()
 {
+    QStringList sheet;
+    QGSettings *gsettings;
+    gsettings= new QGSettings("org.mate.interface", "", this);
+    QString mode;
+    mode=gsettings->get("gtk-theme").toString();
+    qDebug()<<"ukui-theme:"<<mode;
+    if(mode=="ukui-blue")
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(230,232,235,90%); }");
+    }
+    else
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(19,22,28,90%); }");
+    }
+    setStyleSheet(sheet.join("\n"));
     ui->spinBox_panelSize->setValue(mOldPanelSize);
     ui->spinBox_iconSize->setValue(mOldIconSize);
     ui->spinBox_lineCount->setValue(mOldLineCount);
@@ -314,6 +334,21 @@ ConfigPanelWidget::~ConfigPanelWidget()
  ************************************************/
 void ConfigPanelWidget::editChanged()
 {
+    QStringList sheet;
+    QGSettings *gsettings;
+    gsettings= new QGSettings("org.mate.interface", "", this);
+    QString mode;
+    mode=gsettings->get("gtk-theme").toString();
+    qDebug()<<"ukui-theme:"<<mode;
+    if(mode=="ukui-blue")
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(230,232,235,90%); }");
+    }
+    else
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(19,22,28,90%); }");
+    }
+    setStyleSheet(sheet.join("\n"));
     mPanel->setPanelSize(ui->spinBox_panelSize->value(), true);
     mPanel->setIconSize(ui->spinBox_iconSize->value(), true);
     mPanel->setLineCount(ui->spinBox_lineCount->value(), true);
@@ -520,3 +555,23 @@ void ConfigPanelWidget::changeToLargeSize()
     reset();
 }
 
+void ConfigPanelWidget::changeBackground()
+{
+    QStringList sheet;
+    QGSettings *gsettings;
+    gsettings= new QGSettings("org.mate.interface", "", this);
+    QString mode;
+    mode=gsettings->get("gtk-theme").toString();
+    qDebug()<<"ukui-theme:"<<mode;
+    if(mode=="ukui-blue")
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(230,232,235,90%); }");
+    }
+    else
+    {
+        sheet << QString("UKUIPanel #BackgroundWidget { background-color: rgba(19,22,28,90%); }");
+    }
+    setStyleSheet(sheet.join("\n"));
+    editChanged();
+    reset();
+}

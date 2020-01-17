@@ -16,7 +16,7 @@ set(LIBRARIES
 
 install(FILES
     img/taskview.svg
-    DESTINATION "${PACKAGE_DATA_DIR}/plugin-taskview/img"
+    DESTINATION "/usr/share/ukui-panel/plugin-taskview/img"
     COMPONENT Runtime
 )
 BUILD_UKUI_PLUGIN(${PLUGIN})
